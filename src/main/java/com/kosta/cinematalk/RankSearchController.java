@@ -22,8 +22,8 @@ public class RankSearchController {
 
 	@PostMapping("/searchrankresult")               
 	public String RankSearchResult(Model model) throws OpenAPIFault, Exception{
-		
-		model.addAttribute("list", rankApiClient.requestRank().getBoxOfficeResult());
+
+		model.addAttribute("list", rankApiClient.requestRank().getDailyBoxOfficeList());
 		return "searchrankresult";
 	}
 }

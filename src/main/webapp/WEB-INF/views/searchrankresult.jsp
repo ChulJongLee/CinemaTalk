@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach var="item" items="${list.dailyBoxOfficeList}">
+	<c:forEach var="item" items="${list}">
 			해당일자의 박스오피스 순위 : ${item.rank}<br>
 			영화의 개봉일 : ${item.openDt}<br>
 			누적관객수 : ${item.audiAcc}<br>

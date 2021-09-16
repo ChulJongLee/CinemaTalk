@@ -9,7 +9,10 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
-import com.kosta.dto.boxOfficeResultDTO;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.kosta.dto.RankResponseDTO;
 
 import kr.or.kobis.kobisopenapi.consumer.rest.KobisOpenAPIRestService;
 import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
@@ -29,7 +32,7 @@ public class RankAPIClient {
 		key = value;
 	}
 
-	public boxOfficeResultDTO requestRank() throws OpenAPIFault, Exception {
+	public RankResponseDTO requestRank() throws OpenAPIFault, Exception {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 		cal.add(Calendar.DATE, -1);
@@ -37,8 +40,11 @@ public class RankAPIClient {
 
 		KobisOpenAPIRestService service = new KobisOpenAPIRestService(key);
 		String dailyResponse = service.getDailyBoxOffice(true, yesterday, "", "", "", "");
-		System.out.println("ddddd...."+dailyResponse);
-		Gson gson = new Gson();
-		return gson.fromJson(dailyResponse, boxOfficeResultDTO.class);
+
+		Gson gson = new Gson();		
+		JsonObject obj = gson.fromJson(dailyResponse, JsonObject.class);
+		
+		return gson.fromJson(obj.getAsJsonObject("boxOfficeResult").toString(), RankResponseDTO.class);
+		
 	}
 }
