@@ -5,12 +5,11 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
-import com.kosta.dto.RankResponseDTO;
+import com.kosta.dto.boxOfficeResultDTO;
 
 import kr.or.kobis.kobisopenapi.consumer.rest.KobisOpenAPIRestService;
 import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
@@ -22,11 +21,15 @@ import lombok.RequiredArgsConstructor;
 public class RankAPIClient {
 
 	private final SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyyMMdd");
-
-	@Value("${key}")
+	
 	private static String key;
+	
+	@Value("${key}")
+	public void setKey(String value) {
+		key = value;
+	}
 
-	public RankResponseDTO requestRank() throws OpenAPIFault, Exception {
+	public boxOfficeResultDTO requestRank() throws OpenAPIFault, Exception {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 		cal.add(Calendar.DATE, -1);
@@ -34,9 +37,8 @@ public class RankAPIClient {
 
 		KobisOpenAPIRestService service = new KobisOpenAPIRestService(key);
 		String dailyResponse = service.getDailyBoxOffice(true, yesterday, "", "", "", "");
-
+		System.out.println("ddddd...."+dailyResponse);
 		Gson gson = new Gson();
-
-		return gson.fromJson(dailyResponse, RankResponseDTO.class);
+		return gson.fromJson(dailyResponse, boxOfficeResultDTO.class);
 	}
 }
