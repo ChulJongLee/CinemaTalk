@@ -15,31 +15,31 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ActorApiClient {
 	private final RestTemplate restTemplate;
-	
+
 	private static String CLIENT_ID;
 	private static String CLIENT_SECRET;
-		
-	   @Value("${CLIENT_ID}")
-	   public void setClientId(String value) {
-		   CLIENT_ID = value;
-	   }
-	   
-	   @Value("${CLIENT_SECRET}")
-	   public void setClientSecret(String value) {
-		   CLIENT_SECRET = value;
-	   }
-	
-	
+
+	@Value("${CLIENT_ID}")
+	public void setClientId(String value) {
+		CLIENT_ID = value;
+	}
+
+	@Value("${CLIENT_SECRET}")
+	public void setClientSecret(String value) {
+		CLIENT_SECRET = value;
+	}
+
+
 	private final String OpenNaverImageUrl_getImages = "https://openapi.naver.com/v1/search/image.json?query={keyword}&display=1";
-	
+
 	public ActorResponseDTO requestActor(String keyword) {
-		
+
 		final HttpHeaders headers = new HttpHeaders();
 		headers.set("X-Naver-Client-Id", CLIENT_ID);
-        headers.set("X-Naver-Client-Secret", CLIENT_SECRET);
-        
-        final HttpEntity<String> entity = new HttpEntity<String>(headers);
-        return restTemplate.exchange(OpenNaverImageUrl_getImages, HttpMethod.GET, entity, ActorResponseDTO.class, keyword).getBody();
-        		
+		headers.set("X-Naver-Client-Secret", CLIENT_SECRET);
+
+		final HttpEntity<String> entity = new HttpEntity<String>(headers);
+		return restTemplate.exchange(OpenNaverImageUrl_getImages, HttpMethod.GET, entity, ActorResponseDTO.class, keyword).getBody();
+
 	}
 }
