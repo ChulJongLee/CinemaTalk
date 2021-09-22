@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class MovieSearchController {
-	private final MovieApiClient movieApiClient;
+//	private final MovieApiClient movieApiClient;
 
 //	@GetMapping("/searchmovie")
 //	public String goMovieSearch(){

@@ -10,7 +10,7 @@
 <body>
 	<h1>영화디테일</h1>
 				<c:forEach var="item" items="${dto}">
-					<img src="${item.image}">
+					<img src="${item.image}"><br>
 				</c:forEach>
 			
 			영화코드 : ${detail.movieCd}<br>

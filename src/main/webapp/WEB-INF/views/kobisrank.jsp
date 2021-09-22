@@ -16,7 +16,7 @@
 			누적관객수 : ${item.audiAcc}<br>
 			해당일의 관객수 : ${item.audiCnt}<br>
 			영화명(국문) : ${item.movieNm}<br>
-			<a href="moviedetail.do?movieCd=${item.movieCd }">영화코드 : ${item.movieCd}</a><br>
+			<a href="moviedetail/${item.movieCd }">영화코드 : ${item.movieCd}</a><br>
 			<hr>
 	</c:forEach>
 	
