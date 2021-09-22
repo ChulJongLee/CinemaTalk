@@ -8,20 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach var="item" items="${list}">
-			영화코드 : ${item.movieCd}<br>
-			영화명(국문) : ${item.movieNm}<br>
-			영화명(영문) : ${item.movieNmEn}<br>
-			제작연도 : ${item.prdtYear}<br>
-			개봉일 : ${item.openDt}<br>
-			영화유형 : ${item.typeNm}<br>
-			대표 제작 국가 : ${item.repNationNm }<br>
-			대표 장르명 : ${item.repGenreNm }<br>
-			<hr>
-	</c:forEach>
-	<hr>
-	<hr>
-			<h1>영화디테일</h1>
+	<h1>영화디테일</h1>
 				<c:forEach var="item" items="${dto}">
 					<img src="${item.image}">
 				</c:forEach>
@@ -54,8 +41,5 @@
 			<c:forEach var="item" items="${detail.audits }">
 			 	관람등급 명칭 :  ${item.watchGradeNm }<br>
 			</c:forEach>
-			 
-		 	<hr>
-	
 </body>
 </html>

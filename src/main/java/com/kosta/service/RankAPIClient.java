@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.kosta.dto.RankResponseDTO;
+import com.kosta.dto.KobisResponseDTO;
 
 import kr.or.kobis.kobisopenapi.consumer.rest.KobisOpenAPIRestService;
 import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
@@ -30,7 +30,7 @@ public class RankAPIClient {
 		key = value;
 	}
 
-	public RankResponseDTO requestRank() throws OpenAPIFault, Exception {
+	public KobisResponseDTO requestRank() throws OpenAPIFault, Exception {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 		cal.add(Calendar.DATE, -1);
@@ -42,7 +42,7 @@ public class RankAPIClient {
 		Gson gson = new Gson();		
 		JsonObject obj = gson.fromJson(dailyResponse, JsonObject.class);
 		
-		return gson.fromJson(obj.getAsJsonObject("boxOfficeResult").toString(), RankResponseDTO.class);
+		return gson.fromJson(obj.getAsJsonObject("boxOfficeResult").toString(), KobisResponseDTO.class);
 		
 	}
 }
