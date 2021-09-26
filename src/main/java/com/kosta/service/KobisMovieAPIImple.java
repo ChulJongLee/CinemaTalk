@@ -21,11 +21,11 @@ public class KobisMovieAPIImple implements KobisMovieAPI {
 		key = value;
 	}
 	@Override
-	public KobisResponseDTO requestMovieCode(String keyword) throws OpenAPIFault, Exception {
+	public KobisResponseDTO requestMovieList(String keyword) throws OpenAPIFault, Exception {
 		// TODO Auto-generated method stub
 		KobisOpenAPIRestService service = new KobisOpenAPIRestService(key);
 //		service.getMovieList(isJson, curPage, itemPerPage, movieNm, directorNm, openStartDt, openEndDt, prdtStartYear, prdtEndYear, repNationCd, movieTypeCdArr)
-		String listResponse = service.getMovieList(true, "1", "10", keyword, "", "", "", "", "", "", new String[0]);
+		String listResponse = service.getMovieList(true, "1", "30", keyword, "", "", "", "", "", "", new String[0]);
 		Gson gson = new Gson();
 		JsonObject obj = gson.fromJson(listResponse, JsonObject.class);
 		System.out.println("서비스에서 리스트의 obj"+obj);
@@ -45,7 +45,7 @@ public class KobisMovieAPIImple implements KobisMovieAPI {
 //		}
 		Gson gson = new Gson();
 		JsonObject obj = gson.fromJson(detailResponse, JsonObject.class);
-		System.out.println("서비스에서 디테일의 obj"+obj);
+//		System.out.println("서비스에서 디테일의 obj"+obj);
 		return gson.fromJson(obj.getAsJsonObject("movieInfoResult").toString(), KobisResponseDTO.class);
 
 //	}

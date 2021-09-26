@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+<mapper namespace="com.kosta.mapper.MovieMapper">
+
+	<insert id="insertMovie" parameterType="java.util.HashMap">
+		insert into movieinfo_one(
+			movie_no
+			, movie_name
+			, movie_info
+			, movie_genre_no
+			, movie_trailer
+			, country_name
+			, movie_date
+			, movie_age
+			, movie_runningtime
+			)
+		values(hemp_seq.nextval, #{fname}, sysdate , #{dname})
+	
+	</insert>
+</mapper> -->

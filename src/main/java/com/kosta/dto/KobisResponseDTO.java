@@ -21,4 +21,7 @@ public class KobisResponseDTO {
     private KobisDTO movieInfo;
     
     //영화인
+    
+    //영화포스터
+    private String poster;
 }
