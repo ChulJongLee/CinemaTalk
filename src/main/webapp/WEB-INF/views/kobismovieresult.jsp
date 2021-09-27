@@ -6,27 +6,40 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/resources/css/searchlist.css">
 </head>
 <body>
-	<h1>영화리스트</h1>
-	<c:forEach var="item" items="${list}">
-		<a href="moviedetail/${item.movieCd }">
-			<img alt="포스터" src="${item.poster}"><br>
-			영화명(국문) : ${item.movieNm}<br>
-			<%-- 영화명(영문) : ${item.movieNmEn}<br>
-			제작연도 : ${item.prdtYear}<br>
-			개봉일 : ${item.openDt}<br>
-			영화유형 : ${item.typeNm}<br>
-			대표 제작 국가 : ${item.repNationNm }<br>
-			대표 장르명 : ${item.repGenreNm }<br> --%>
-			
-			<c:forEach var="item2" items="${item.directors }">
-					감독명 : ${item2.peopleNm }
-			</c:forEach>
-		</a><br>
+	<div id="boardWrap">
+		<h1>영화리스트</h1>
+		
+		<c:forEach var="item" items="${list}">
+			<div onclick="location.href='moviedetail/${item.movieCd }'">
+				<div class="poster">
+				<img alt="포스터" src="${item.poster}">
+				</div>
+				<div class="movieInfo">
+					<h1>${item.movieNm}</h1>
+					<p>${item.repGenreNm } | ${item.repNationNm } | ${item.showTm}분 | ${item.openDt}</p>
+					<p>감독 :
+					<c:forEach var="item2" items="${item.directors }">
+							${item2.peopleNm }
+					</c:forEach>
+					</p>
+						<p class="d-inline-block text-truncate" style="max-width: 1000px;">배우 : 
+						<c:forEach var="item2" items="${item.actors }">
+							<c:if test="${item2.peopleNmEn!=''}" >
+								${item2.peopleNm } |
+							 </c:if>
+							 
+						</c:forEach>
+						</p>
+				</div>
+			</div>
 			<hr>
-	</c:forEach>
-
+		</c:forEach>
 	
+	</div>	
 </body>
 </html>

@@ -7,4 +7,5 @@ import com.kosta.dto.KmdbResponseDTO;
 
 public interface KmdbAPI {
 	public KmdbResponseDTO requestMovieDetail(String movieCd, String movieNm, String showTm, String director) throws MalformedURLException, IOException;
+	public String requestMoviePoster(String movieNm, String director) throws MalformedURLException, IOException;
 }

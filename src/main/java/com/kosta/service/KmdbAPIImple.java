@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -28,9 +29,8 @@ public class KmdbAPIImple implements KmdbAPI {
 	public KmdbResponseDTO requestMovieDetail(String movieCd, String movieNm, String showTm, String director) throws IOException {
 		// TODO Auto-generated method stub
 	    String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]";
-	    movieNm =movieNm.replaceAll(match, "").replace(" ", "");
-	    director=director.replaceAll(match, "").replace(" ", "");
-		System.out.println("영화제목 : "+movieNm);
+	    movieNm =movieNm.replaceAll(match, "^").replace(" ", "").replace("3D", "");
+	    director=director.replaceAll(match, "").replace(" ", "^");
 
 		String urladdr = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey="
 				+ key + "&detail=Y&query=" + movieNm+"&director="+director;
@@ -53,14 +53,40 @@ public class KmdbAPIImple implements KmdbAPI {
 		while ((line = br.readLine()) != null) {
 			sb.append(line);
 		}
-
-		Gson gson = new Gson();
-		System.out.println("sb......" + sb.toString());
-
 		br.close();
 		conn.disconnect();
-		return gson.fromJson(sb.toString(), KmdbResponseDTO.class);
+		System.out.println("sb......" + sb.toString());
 
+		Gson gson = new Gson();
+		KmdbResponseDTO result=gson.fromJson(sb.toString(), KmdbResponseDTO.class);
+		if(result.getTotalCount()!=0)
+			return result;
+		else
+			return null;
+
+
+	}
+
+	@Override
+	public String requestMoviePoster(String movieNm, String director) throws MalformedURLException, IOException {
+		// TODO Auto-generated method stub
+		if(requestMovieDetail("", movieNm,"",director)!=null) {
+			String poster="";
+			System.out.println("테스트....."+requestMovieDetail("", movieNm, "", director).getData().get(0).getResult().size());
+			if(requestMovieDetail("", movieNm, "", director).getData().get(0).getResult().size()!=0) {
+				
+			
+			String posters = requestMovieDetail("", movieNm, "", director)
+					.getData().get(0).getResult().get(0).getPosters();
+			String posterlist[] = posters.replace("|", ",").split(",");
+			poster = posterlist[0];
+			System.out.println("포스터"+poster);
+			}
+			return poster;
+		}
+		else {
+			return null;
+		}
 	}
 
 }
