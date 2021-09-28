@@ -35,8 +35,9 @@ public class KobisDTO {
   	private List<KobisDTO2> directors;		//영화감독(리스트)
  	private List<KobisDTO2> actors;			//배우(리스트)
  	private List<KobisDTO2> audits;		//심의정보(리스트)
-
-    
+ 	private String plotText;
+    private String[] keywordlist;
+    private String watchGradeNm;
     
     //영화인
  	
