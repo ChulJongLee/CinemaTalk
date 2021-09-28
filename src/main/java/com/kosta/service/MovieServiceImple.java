@@ -9,6 +9,8 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -16,7 +18,9 @@ import org.springframework.stereotype.Service;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.kosta.dto.KmdbResponseDTO;
+import com.kosta.dto.KobisDTO;
 import com.kosta.dto.KobisResponseDTO;
+import com.kosta.dto.KmdbDTO.KmdbDTO2;
 
 import kr.or.kobis.kobisopenapi.consumer.rest.KobisOpenAPIRestService;
 import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
@@ -39,7 +43,7 @@ public class MovieServiceImple implements MovieService {
 	}
 	
 	@Override
-	public KobisResponseDTO requestMovieList(String keyword) throws OpenAPIFault, Exception {
+	public List<KobisDTO> requestMovieList(String keyword) throws OpenAPIFault, Exception {
 		// TODO Auto-generated method stub
 		KobisOpenAPIRestService service = new KobisOpenAPIRestService(kobiskey);
 //		service.getMovieList(isJson, curPage, itemPerPage, movieNm, directorNm, openStartDt, openEndDt, prdtStartYear, prdtEndYear, repNationCd, movieTypeCdArr)
@@ -47,30 +51,71 @@ public class MovieServiceImple implements MovieService {
 		Gson gson = new Gson();
 		JsonObject obj = gson.fromJson(listResponse, JsonObject.class);
 		System.out.println("서비스에서 리스트의 obj"+obj);
-		return gson.fromJson(obj.getAsJsonObject("movieListResult").toString(), KobisResponseDTO.class);
+		KobisResponseDTO dto=gson.fromJson(obj.getAsJsonObject("movieListResult").toString(), KobisResponseDTO.class);
+		String totalcount=dto.getTotCnt();
+		System.out.println("총 갯수 : "+totalcount);
+		List<KobisDTO> list = dto.getMovieList();
+		for (Iterator<KobisDTO> it = list.iterator(); it.hasNext();) {
+			KobisDTO str = it.next();
+			if (str.getMovieNmEn().equals("Package Screening"))
+				it.remove();
+			if (str.getOpenDt().equals(""))
+				it.remove();
+		}
+		for (int i = 0; i < list.size(); i++) {
+			String director = "";
+			KobisDTO detail = requestMovieDetail(list.get(i).getMovieCd());
+			if (detail.getDirectors().size() != 0)
+				director = detail.getDirectors().get(0).getPeopleNm();
+			if (requestMoviePoster(detail.getMovieNm(), director) != "")
+				list.get(i).setPoster(requestMoviePoster(detail.getMovieNm(), director));
+			list.get(i).setShowTm(detail.getShowTm());
+			list.get(i).setActors(detail.getActors());
+			list.get(i).setPlotText(detail.getPlotText());
+			list.get(i).setKeywordlist(detail.getKeywordlist());
+			list.get(i).setWatchGradeNm(detail.getAudits().get(0).getWatchGradeNm());
+		}
+		
+		return list;
 	}
 
 	@Override
-	public KobisResponseDTO requestMovieDetail(String movieCdList) throws OpenAPIFault, Exception {
+	public KobisDTO requestMovieDetail(String movieCdList) throws OpenAPIFault, Exception {
 		// TODO Auto-generated method stub
 		String detailResponse = "";
-//		String[] movieCdListTest= {"20183782"};
-
-//		for (int i = 0; i < movieCdList.length; i++) {
-			KobisOpenAPIRestService service = new KobisOpenAPIRestService(kobiskey);
-
-			detailResponse = service.getMovieInfo(true, movieCdList);
-//		}
+		KobisOpenAPIRestService service = new KobisOpenAPIRestService(kobiskey);
+		
+		detailResponse = service.getMovieInfo(true, movieCdList);
 		Gson gson = new Gson();
 		JsonObject obj = gson.fromJson(detailResponse, JsonObject.class);
 		System.out.println("서비스에서 디테일의 obj"+obj);
-		return gson.fromJson(obj.getAsJsonObject("movieInfoResult").toString(), KobisResponseDTO.class);
+		KobisDTO detail = gson.fromJson(obj.getAsJsonObject("movieInfoResult").toString(), KobisResponseDTO.class).getMovieInfo();
+		
+		String movieNm = detail.getMovieNm();
+		String director = "";
+		if (detail.getDirectors().size() != 0)
+			director = detail.getDirectors().get(0).getPeopleNm();
+		
+		KmdbResponseDTO dto = requestMovieDetail("", movieNm, "", director);
+		if (dto != null) {
+			// 줄거리 받아오기
+			List<KmdbDTO2> kmdblist = dto.getData().get(0).getResult();
+			detail.setPlotText(kmdblist.get(0).getPlots().getPlot().get(0).getPlotText());
 
-//	}
+			// 포스터 받아오기
+			detail.setPoster(requestMoviePoster(movieNm, director));
 
-//	public KobisResponseDTO requestMovieDetail(String moviecd) {
-//		
-//	}
+			// 키워드 받아오기
+			String keywords = kmdblist.get(0).getKeywords();
+			String[] keywordlist = keywords.split(",");
+			detail.setKeywordlist(keywordlist);
+		}
+		
+		
+		
+		return detail;
+
+
 
 	}
 
@@ -161,7 +206,7 @@ public class MovieServiceImple implements MovieService {
 		return poster;
 	}
 	@Override
-	public KobisResponseDTO requestRank() throws OpenAPIFault, Exception {
+	public List<KobisDTO> requestRank() throws OpenAPIFault, Exception {
 		// TODO Auto-generated method stub
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
@@ -173,8 +218,8 @@ public class MovieServiceImple implements MovieService {
 
 		Gson gson = new Gson();		
 		JsonObject obj = gson.fromJson(dailyResponse, JsonObject.class);
-		
-		return gson.fromJson(obj.getAsJsonObject("boxOfficeResult").toString(), KobisResponseDTO.class);
+		List<KobisDTO> list=gson.fromJson(obj.getAsJsonObject("boxOfficeResult").toString(), KobisResponseDTO.class).getDailyBoxOfficeList();
+		return list;
 		
 	}
 }

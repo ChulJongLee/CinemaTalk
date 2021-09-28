@@ -12,7 +12,7 @@
 				<%-- <c:forEach var="item" items="${dto}">
 					<img src="${item.image}">
 				</c:forEach><br> --%>
-			<img alt="포스터" src="${poster}"><br>
+			<img alt="포스터" src="${detail.poster}"><br>
 			영화코드 : ${detail.movieCd}<br>
 			영화명(국문) : ${detail.movieNm}<br>
 			영화명(영문) : ${detail.movieNmEn}<br>
@@ -38,9 +38,9 @@
 				 </c:if>
 			</c:forEach>
 			
-			줄거리 : ${story } <br>
+			줄거리 : ${detail.plotText } <br>
 			키워드 : 
-			<c:forEach var="item" items="${keywordlist }">
+			<c:forEach var="item" items="${detail.keywordlist }">
 					${item } |
 			</c:forEach><br>
 			

@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @PropertySource("classpath:api.properties")
-public class RankAPIClient {
+public class XRankAPIClient {
 
 	private final SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyyMMdd");
 	
