@@ -39,7 +39,11 @@
 			</c:forEach>
 			
 			줄거리 : ${story } <br>
-				
+			키워드 : 
+			<c:forEach var="item" items="${keywordlist }">
+					${item } |
+			</c:forEach><br>
+			
 				
 		 	
 			<c:forEach var="item" items="${detail.audits }">

@@ -1,18 +1,18 @@
-package com.kosta.cinematalk;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.kosta.service.MovieApiClient;
-
-import lombok.RequiredArgsConstructor;
-
-@Controller
-@RequiredArgsConstructor
-public class MovieSearchController {
+//package com.kosta.cinematalk;
+//
+//import org.springframework.stereotype.Controller;
+//import org.springframework.ui.Model;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.RequestParam;
+//
+//import com.kosta.service.MovieApiClient;
+//
+//import lombok.RequiredArgsConstructor;
+//
+//@Controller
+//@RequiredArgsConstructor
+//public class XMovieSearchController {
 //	private final MovieApiClient movieApiClient;
 
 //	@GetMapping("/searchmovie")
@@ -31,4 +31,4 @@ public class MovieSearchController {
 //		model.addAttribute("list", actorlist);
 //		return "searchmovieresult";
 //	}
-}
+//}

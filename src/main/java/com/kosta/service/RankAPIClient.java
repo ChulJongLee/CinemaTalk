@@ -23,11 +23,11 @@ public class RankAPIClient {
 
 	private final SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyyMMdd");
 	
-	private static String key;
-	
-	@Value("${key}")
-	public void setKey(String value) {
-		key = value;
+	private static String kobiskey;
+
+	@Value("${kobiskey}")
+	public void setKobiskey(String value) {
+		kobiskey = value;
 	}
 
 	public KobisResponseDTO requestRank() throws OpenAPIFault, Exception {
@@ -36,7 +36,7 @@ public class RankAPIClient {
 		cal.add(Calendar.DATE, -1);
 		String yesterday = DATE_FMT.format(cal.getTime());
 
-		KobisOpenAPIRestService service = new KobisOpenAPIRestService(key);
+		KobisOpenAPIRestService service = new KobisOpenAPIRestService(kobiskey);
 		String dailyResponse = service.getDailyBoxOffice(true, yesterday, "", "", "", "");
 
 		Gson gson = new Gson();		
