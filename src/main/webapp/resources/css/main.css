@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+body{
+    background-color: #212121;
+}
+
+#carouselExampleCaptions{
+    width: 800px;
+    left: 50%;
+    margin-top: 50px;
+}

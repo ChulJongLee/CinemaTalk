@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+
+header{
+    padding: 10px 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #212121;
+    color: #bebebe;
+}
+
+#home{
+    width: 10%;
+    border: 5px solid orange;
+}
+#category{
+    width: 10%;
+    border: 5px solid green;
+}
+#search{
+    width: 30%;
+    border: 5px solid blueviolet;
+}
+
+#logo{
+    width: 20%;
+    border: 5px solid skyblue;
+}
+
+#login{
+    border: 5px solid tomato;
+}
+
+

@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+/* 영화 정보 */
+#movieview {
+    border: 2px solid red;
+    width: 1300px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#movieinfo2{
+    list-style: none;
+    text-align: center;
+    margin-top: 50px;
+}
+#movieimg{
+    margin-left: 200px;
+}
+
+
+
+/* 카테고리 */
+nav{
+    border: 2px solid red;
+    width: 1300px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.category{
+    margin: 0px 80px;
+}
+
+
+/* 리뷰 게시판*/
+#bestsection{
+    border: 2px solid red;
+    width: 1300px;
+    margin: 0px auto;
+}
+#generalsection{
+    border: 2px solid red;
+    width: 1300px;
+    margin: 0px auto;
+}
+
+
+/* 리뷰 쓰기 */
+#writereview{
+    border: 2px solid red;
+    width: 1300px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+}
+.form-label{
+    border: 2px solid red;
+}
+#form-switch{
+    border: 2px solid red;
+    display: inline-block;
+    margin-left: 570px;
+    
+}
