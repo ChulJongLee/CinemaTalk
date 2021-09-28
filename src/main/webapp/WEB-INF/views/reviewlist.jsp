@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@
 
 	<%@ include file="header.jsp" %>
 
-    <!-- 영화 정보 -->
+    <!-- ********영화 정보********* -->
     <div id="movieview">
         <div id="movieinfo">
             <ul id="movieinfo2">
@@ -29,7 +30,7 @@
         </div>
     </div>
 
-    <!-- 카테고리 -->
+    <!-- ********카테고리******** -->
     <nav>
         <input type="button" value="기본정보" id="info" class="category">
         <input type="button" value="리뷰" id="review_board" class="category">
@@ -37,21 +38,32 @@
         <input type="button" value="자유게시판" id="general_forum" class="category">
     </nav>
 
-    <!-- 베스트 리뷰 -->
+    <!-- ********베스트 리뷰******** -->
     <section id="bestsection">
-        <a href="#"><h3>베스트 리뷰</h3></a>
+        <h3><a href="#">베스트 리뷰</a></h3>
         <div id="bestreview">
             <ul id="bestreview2">
                 <li>
-                    아이디, 날짜, 내용, 좋아요, 싫어요, 신고 => 2개씩, 3개도 될듯?
+                	<c:if test="${reviewlist==null }">              		
+                		자료가 없습니다.
+                	</c:if>      
+                	<c:if test="${reviewlist!=null }">
+                		<c:forEach var="list" items="${reviewlist }">
+                			${list.userno }
+                			${list.writedate }
+                			${list.contents }
+                			${list.like }
+                			${list.dislike }
+                		</c:forEach>
+                	</c:if>              
                 </li>
             </ul>
         </div>
     </section>
 
-    <!-- 일반 리뷰 -->
+    <!-- ********일반 리뷰******** -->
     <section id="generalsection">
-        <a href="#"><h3>일반 리뷰</h3></a>
+        <h3><a href="#">일반 리뷰</a></h3>
         <div id="generalreview">
             <ul id="generalreview2">
                 <li>
@@ -61,7 +73,7 @@
         </div>
     </section>
 
-    <!-- 리뷰 쓰기 -->
+    <!-- ********리뷰 쓰기******** -->
     <div id="writereview">
         <div class="mb-3">
 
