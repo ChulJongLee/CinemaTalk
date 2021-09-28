@@ -10,7 +10,7 @@
   	<selectKey keyProperty="user_no" resultType="int" order="AFTER">
   		select user_no as user_no from user_info
   		where user_id=#{user_id}
-  	</selectKey>
+  	</selectKey> 
   	insert into user_info(user_id, user_pwd, user_email,
   						  user_nickname, user_bdate, user_grade_no, user_point)
   	values( #{user_id}

@@ -8,7 +8,7 @@ import com.kosta.dto.UserDTO;
 
 @Mapper
 public interface UserMapper {
-	
+	 
 	public List<UserDTO> getlist();
 	
 	public int insertuser(UserDTO dto);

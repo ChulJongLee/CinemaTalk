@@ -12,7 +12,7 @@ import com.kosta.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequiredArgsConstructor
+@RequiredArgsConstructor 
 public class UserController {
 	
 	@Resource(name="userservice")

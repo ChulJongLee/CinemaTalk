@@ -74,7 +74,7 @@
 	
 	//구글 로그아웃
 	  function signOut(){
-         gapi.auth2.getAuthInstance().disconnect();
+         gapi.auth2.getAuthInstance().disconnect(); 
       }
     </script>
 </head>

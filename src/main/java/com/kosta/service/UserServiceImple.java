@@ -30,7 +30,7 @@ public class UserServiceImple implements UserService {
 		
 		return result;
 	}
-
+ 
 	@Override
 	public int deleteuser(int user_no) {
 		// TODO Auto-generated method stub
