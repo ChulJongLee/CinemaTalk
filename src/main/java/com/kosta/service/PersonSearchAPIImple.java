@@ -63,21 +63,41 @@ public class PersonSearchAPIImple implements PersonSearchAPI {
 		Document doc = conn.post();	
 		int totalCount = Integer.parseInt(doc.select("em.fwb").get(0).text());
 //		for(int j = 1 ; j <= (totalCount / 10) + 1 ; j++) {
-
-//		doc.select("form#pagingForm>input[name=curPage]").removeAttr("value").attr("value", String.valueOf(2));
-		Elements menu =  doc.select(".tbl_comm>tbody>tr");
+		Document doc2 = conn.data("curPage", String.valueOf(2)).post();
+		System.out.println("j가 몇번돌아가는지....");
+//		doc.select("#pagingForm>input:nth-child(2)").removeAttr("value").attr("value", String.valueOf(2));
+		
+		Elements menu =  doc2.select(".tbl_comm>tbody>tr");
 //		conn.data("curPage", String.valueOf(j)).post();
-		for(int i = 0 ; i < list.size() ; i ++) {
+		int su;
+		if(totalCount <= 10) {
+			su = totalCount;
+		} else {
+			if(2 == (totalCount / 10) + 1) {
+				su = totalCount % 10;
+			} else {
+				su = 10;
+			}
+//			System.out.println("j일때 su의 값은....."+su);
+		}
+		for(int i = 0 ; i < su ; i ++) {
 
-			while(list.get(i).getPeopleCd().equals(menu.select("td").get(2).text())) {
+			for(int k = 0 ; k < list.size() ; k++) {
+			//참일동안만 괄호안이 진행됨. 그러면 두번째 페이지는 안맞으니깐 넘어가는겨
+			if(list.get(i).getPeopleCd().equals(menu.select("td").get(2).text())) {
 				
 				list.get(i).setPerson_bdate(menu.select("td").get(5).text());
 				list.get(i).setCountry_no(menu.select("td").get(6).text());
 
-				menu = menu.next();
-			
-			}
 
+//				System.out.println("if문 안에..........");
+			} else {
+//				if(k == list.size() - 1) {
+//					break;
+//				}
+				menu = menu.next();
+			}
+			}
 			// 페이지를 넘겨서 값을 받는 거 다시 고려
 //			if(i == 0) {
 //				list.get(i).setPerson_bdate(menu.get(4).text());
@@ -110,9 +130,9 @@ public class PersonSearchAPIImple implements PersonSearchAPI {
 			System.out.println("생년월일은....." + list.get(i).getPerson_bdate());
 			System.out.println("=============================================");
 		}
-//		}
+		}
 
-	}
+//	}
 }
 
 

@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.kosta.service.PersonSearchAPI;
-import com.kosta.service.PersonSearchAPIImple;
 
 import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
 import lombok.RequiredArgsConstructor;
