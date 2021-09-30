@@ -23,6 +23,20 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.getreview();
 	}
 
+
+	@Override
+	public List<ReviewDTO> generalReviewList() {
+		
+		return mapper.getgeneralreview();
+	}
+
+
+	@Override
+	public List<ReviewDTO> allReview() {
+
+		return mapper.getallreview();
+	}
+
 	
 	
 }

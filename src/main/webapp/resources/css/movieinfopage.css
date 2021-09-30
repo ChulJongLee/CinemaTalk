@@ -32,35 +32,3 @@ nav{
 .category{
     margin: 0px 80px;
 }
-
-
-/* 리뷰 게시판*/
-#bestsection{
-    border: 2px solid red;
-    width: 1300px;
-    margin: 0px auto;
-}
-#generalsection{
-    border: 2px solid red;
-    width: 1300px;
-    margin: 0px auto;
-}
-
-
-/* 리뷰 쓰기 */
-#writereview{
-    border: 2px solid red;
-    width: 1300px;
-    margin: 0px auto;
-    display: flex;
-    justify-content: center;
-}
-.form-label{
-    border: 2px solid red;
-}
-#form-switch{
-    border: 2px solid red;
-    display: inline-block;
-    margin-left: 570px;
-    
-}

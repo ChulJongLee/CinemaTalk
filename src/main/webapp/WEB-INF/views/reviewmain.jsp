@@ -7,13 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
- <link rel="stylesheet" href="resources/css/review_board.css">
+ <link rel="stylesheet" href="resources/css/reviewmain.css">
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-
+	<!-- ******** 헤더 ********* -->
 	<%@ include file="header.jsp" %>
 
-    <!-- ********영화 정보********* -->
+    <!-- ******** 영화 정보 ********* -->
     <div id="movieview">
         <div id="movieinfo">
             <ul id="movieinfo2">
@@ -30,7 +31,7 @@
         </div>
     </div>
 
-    <!-- ********카테고리******** -->
+    <!-- ******** 카테고리 ******** -->
     <nav>
         <input type="button" value="기본정보" id="info" class="category">
         <input type="button" value="리뷰" id="review_board" class="category">
@@ -38,42 +39,45 @@
         <input type="button" value="자유게시판" id="general_forum" class="category">
     </nav>
 
-    <!-- ********베스트 리뷰******** -->
+    <!-- ******** 베스트 리뷰 ******** -->
     <section id="bestsection">
-        <h3><a href="#">베스트 리뷰</a></h3>
-        <div id="bestreview">
-            <ul id="bestreview2">
-                <li>
-                	<c:if test="${reviewlist==null }">              		
-                		자료가 없습니다.
-                	</c:if>      
-                	<c:if test="${reviewlist!=null }">
-                		<c:forEach var="list" items="${reviewlist }">
-                			${list.userno }
-                			${list.writedate }
-                			${list.contents }
-                			${list.like }
-                			${list.dislike }
-                		</c:forEach>
-                	</c:if>              
-                </li>
-            </ul>
+        <h3><a href="reviewall" id="bestreviewbtn">베스트 리뷰</a></h3>
+        <div class="bestreview">
+       		<c:if test="${bestreviewlist==null }">              		
+         		자료가 없습니다.
+         	</c:if>
+         	<c:if test="${bestreviewlist!=null }">
+         		<c:forEach var="list" items="${bestreviewlist }">
+					<table class="bestreviewtable">
+						<tr><td colspan="3">${list.userno }</td><td class="reviewdate">${list.writedate }</td></tr>
+						<tr><td colspan="4">${list.contents }</td></tr>
+						<tr><td>${list.like }</td><td colspan="2">${list.dislike }</td><td class="reviewreport">신고</td></tr>
+					</table>
+				</c:forEach>
+         	</c:if>                            
         </div>
     </section>
 
-    <!-- ********일반 리뷰******** -->
+    <!-- ******** 일반 리뷰 ******** -->
     <section id="generalsection">
-        <h3><a href="#">일반 리뷰</a></h3>
-        <div id="generalreview">
-            <ul id="generalreview2">
-                <li>
-                   	 아이디, 날짜, 내용, 좋아요, 싫어요, 신고
-                </li>
-            </ul>
+        <h3><a href="reviewall">일반 리뷰</a></h3>
+        <div class="generalreview">
+       		<c:if test="${generalreviewlist==null }">              		
+         		자료가 없습니다.
+         	</c:if>
+         	<c:if test="${generalreviewlist!=null }">
+         		<c:forEach var="list" items="${generalreviewlist }">
+					<table class="bestreviewtable">
+						<tr><td colspan="3">${list.userno }</td><td class="reviewdate">${list.writedate }</td></tr>
+						<tr><td colspan="4">${list.contents }</td></tr>
+						<tr><td>${list.like }</td><td colspan="2">${list.dislike }</td><td class="reviewreport">신고</td></tr>
+					</table>
+				</c:forEach>
+         	</c:if>                            
         </div>
     </section>
 
-    <!-- ********리뷰 쓰기******** -->
+    <!-- ******** 리뷰 쓰기 ******** -->
     <div id="writereview">
         <div class="mb-3">
 
@@ -89,8 +93,9 @@
                 <button class="btn btn-primary" type="button">리뷰 등록</button>
             </div>
         </div>
-    </div>
+    </div>    
     
+    <!-- ******** 푸터 ********* -->
 	<%@ include file="footer.jsp" %>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>

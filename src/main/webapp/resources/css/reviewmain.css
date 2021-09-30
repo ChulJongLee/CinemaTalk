@@ -1,0 +1,123 @@
+@charset "UTF-8";
+
+/* 영화 정보 */
+#movieview {
+    border: 2px solid red;
+    width: 1300px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#movieinfo2{
+    list-style: none;
+    text-align: center;
+    margin-top: 50px;
+}
+#movieimg{
+    margin-left: 200px;
+}
+
+
+
+/* 카테고리 */
+nav{
+    border: 2px solid red;
+    width: 1300px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.category{
+    margin: 0px 80px;
+}
+/* 카테고리 바*/
+.category {
+	text-decoration: none;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 5px 10px;
+    background-color: white;
+	color : #A8A8A8;
+    border: none;
+    border-bottom: solid 3px #F1F1F1;	
+}
+.category:hover {
+	border-bottom: solid 3px #fd0000;
+	color: black;
+}
+
+
+
+
+
+/* 리뷰 게시판*/
+#bestsection{	/* 베스트 리뷰 */
+    border: 2px solid orange;
+    width: 1300px;
+    margin: 0px auto;
+}
+#generalsection{	/* 일반 리뷰 */
+    border: 2px solid red;
+    width: 1300px;
+    margin: 0px auto;
+}
+
+/* 리뷰 테이블 정렬 */
+.bestreview{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.bestreviewtable{
+    border: 1px solid blue;
+    width: 40%;
+    margin: 15px 30px;
+}
+.reviewdate{
+    text-align: right;
+}
+.reviewreport{
+    text-align: right;
+}
+
+.generalreview{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+/* 리뷰 쓰기 */
+#writereview{
+    border: 2px solid red;
+    width: 1300px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+}
+.form-label{
+    border: 2px solid yellow;
+}
+#form-switch{
+    border: 2px solid red;
+    display: inline-block;
+    margin-left: 570px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

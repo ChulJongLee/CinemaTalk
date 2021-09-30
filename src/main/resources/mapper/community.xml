@@ -18,7 +18,23 @@
 <select id="getreview" resultMap="reviewdto">
 	select user_no, content_date, content_content, content_like, content_hate
 	from comm_board
+	order by content_like DESC
+	limit 2
 </select>
+
+<select id="getgeneralreview" resultMap="reviewdto">
+	select user_no, content_date, content_content, content_like, content_hate
+	from comm_board
+	order by content_date DESC
+	limit 4
+</select>
+
+<select id="getallreview" resultMap="reviewdto">
+	select user_no, content_date, content_content, content_like, content_hate
+	from comm_board
+	order by content_date DESC
+</select>
+  
   
   
 </mapper>

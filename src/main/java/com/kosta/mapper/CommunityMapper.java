@@ -10,7 +10,11 @@ import com.kosta.dto.ReviewDTO;
 public interface CommunityMapper {
 	
 	
+	public List<ReviewDTO> getgeneralreview();
+
 	public List<ReviewDTO> getreview();
+
+	public List<ReviewDTO> getallreview();
 	
 	
 	

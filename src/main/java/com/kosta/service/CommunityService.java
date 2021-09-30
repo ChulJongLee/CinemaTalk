@@ -9,4 +9,8 @@ public interface CommunityService {
 	
 	public List<ReviewDTO> reviewList();
 
+	public List<ReviewDTO> generalReviewList();
+
+	public List<ReviewDTO> allReview();
+
 }

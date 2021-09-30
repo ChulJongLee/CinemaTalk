@@ -19,13 +19,33 @@ public class CommunityController {
 	@Resource(name = "reviewservice")
 	private CommunityService service;
 	
-	@RequestMapping("/reviewlist")
-	public String reviewBoard(Model model) {
+	
+	// 리뷰 메인 페이지
+	@RequestMapping("/reviewmain")
+	public String reviewMain(Model model) {
 		
-		List<ReviewDTO> reviewlist = service.reviewList();
-		model.addAttribute("reviewlist", reviewlist);
+		// 베스트 리뷰 2개
+		List<ReviewDTO> bestreviewlist = service.reviewList();
+		model.addAttribute("bestreviewlist", bestreviewlist);
 		
-		return "reviewlist";
+		// 일반 리뷰 4개
+		List<ReviewDTO> generalreviewlist = service.generalReviewList();
+		model.addAttribute("generalreviewlist", generalreviewlist);
+		
+		return "reviewmain";
+	}
+	
+	// 리뷰 전체 리스트
+	@RequestMapping("/reviewall")
+	public String reviewAll(Model model) {
+		
+		List<ReviewDTO> allreview = service.allReview();
+		model.addAttribute("allreview", allreview);
+		
+		return "reviewall";
 	}
 
+	
+	
+	
 }

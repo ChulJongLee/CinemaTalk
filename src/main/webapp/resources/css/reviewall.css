@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+section{
+    border: 2px solid orange;
+    width: 1300px;
+    margin: 0px auto;
+}
+
+.allreview{
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+}
+.allreviewtable{
+    border: 1px solid blue;
+    width: 90%;
+    margin: 15px 30px;
+}
+.reviewdate{
+    text-align: right;
+}
+.reviewreport{
+    text-align: right;
+}
