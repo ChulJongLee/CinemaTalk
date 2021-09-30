@@ -1,9 +1,12 @@
 package com.kosta.dto;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter @Setter
 @AllArgsConstructor
@@ -15,6 +18,8 @@ public class PersonInfoDTO {
 	private String repRoleNm;
 	
 	private String person_bdate;
-	private String country_no;
+	private String nationality;
 	private String person_pic;
+	
+	private List<KobisDTO> filmos;
 }
