@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
+
 /* 영화 정보 */
-#movieview {
+/* #movieview {
     border: 2px solid red;
     width: 1300px;
     margin: 0px auto;
@@ -16,12 +17,11 @@
 }
 #movieimg{
     margin-left: 200px;
-}
-
+} */
 
 
 /* 카테고리 */
-nav{
+/* nav{
     border: 2px solid red;
     width: 1300px;
     margin: 0px auto;
@@ -32,7 +32,7 @@ nav{
 .category{
     margin: 0px 80px;
 }
-/* 카테고리 바*/
+카테고리 바
 .category {
 	text-decoration: none;
     font-size: 20px;
@@ -46,13 +46,16 @@ nav{
 .category:hover {
 	border-bottom: solid 3px #fd0000;
 	color: black;
-}
-
-
-
+} */
 
 
 /* 리뷰 게시판*/
+#bestreviewbtn{	/* 베스트 리뷰 버튼 */
+	margin: 30px 50px;
+}
+#generalreviewbtn{	/* 일반 리뷰 버튼 */
+	margin: 30px 50px;
+}
 #bestsection{	/* 베스트 리뷰 */
     border: 2px solid orange;
     width: 1300px;

@@ -13,7 +13,7 @@
 	<!-- 헤더  -->
 	<%@ include file="header.jsp" %>
 	<!-- 영화정보 & 카테고리 -->
-	<%@ include file="movieinfopage.jsp" %>
+	<%@ include file="movieinfotop.jsp" %>
 	
 	<!-- ******* 전체 리뷰 ******* -->
 	<section>
