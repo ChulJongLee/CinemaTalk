@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MovieController {
 	private final MovieService movieService;
-	private final KobisAPI kobisAPI;
+//	private final KobisAPI kobisAPI;
 	
 	@GetMapping("/searchmovie")
 	public String goMovieSearch() {

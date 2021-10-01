@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.kosta.mapper.CommunityMapper">
+
+<parameterMap type="java.util.HashMap" id="hashmap"/>
   
   <resultMap type="com.kosta.dto.ReviewDTO" id="reviewdto">
   	<result column="user_no" property="userno" />
@@ -12,6 +14,47 @@
   	<result column="content_like" property="like" />
   	<result column="content_hate" property="dislike" /> 
   </resultMap>
+  
+
+<select id="totalCount" parameterMap="hashmap" resultType="int">
+	select count(*)
+	from comm_board
+	<where>
+		<if test="searchtxt!=null and searchtxt!='' and !searchtxt.equals('') ">
+			<choose>
+				<when test="search=='userno'">
+					and user_no=#{searchtxt}				
+				</when>
+				<when test="search=='dislike'">
+					and upper(content_hate) like '%'|| upper(#{searchtxt})||'%'				
+				</when>
+				<when test="search=='like'">
+					and content_like=#{searchtxt}				
+				</when>
+			</choose>	
+		</if>		
+	</where>
+</select>
+
+
+
+<select id="list" parameterMap="hashmap" resultMap="reviewdto">
+	select A.*
+	from (select S.*, @rownum:=@rownum+1 as rn
+	  	  from (select user_no, content_date, content_content, content_like, content_hate
+			    from comm_board, (select @rownum:=0)R
+                where 1=1) S
+				order by content_date DESC ) A
+			<where>
+				<![CDATA[
+					rn>=#{startrow} and rn<=#{endrow}
+				]]>	
+			</where>
+</select>
+
+
+  
+  
   
   
   

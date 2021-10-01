@@ -2,13 +2,17 @@ package com.kosta.cinematalk;
 
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kosta.dto.PageBlock;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.service.CommunityService;
 import com.kosta.service.CommunityServiceImple;
@@ -49,10 +53,46 @@ public class CommunityController {
 	
 	// 리뷰 전체 리스트
 	@RequestMapping("/reviewall")
-	public String reviewAll(Model model) {
+	public String reviewAll( @RequestParam(required = false, defaultValue = "1") int currPage
+							, @RequestParam(required = false, defaultValue = "") String search
+							, @RequestParam(required = false, defaultValue = "") String searchtxt
+							, Model model) {
+		Pattern p = Pattern.compile("([0-9]*$)");	// 012345111
+		if(search=="userno" || search.equals("userno") || search=="like" || search.equals("like")) {
+			
+			Matcher m = p.matcher(searchtxt);
+			if(m.find()) {
+				model.addAttribute("searchtxt", searchtxt);
+			}else {
+				model.addAttribute("searchtxt", "");
+			}
+		}
 		
-		List<ReviewDTO> allreview = service.allReview();
+		int totalcount = service.totalCount(search, searchtxt); // 전체 자료수
+		int pagesize=10;
+		int blocksize=5;
+		
+		
+		
+		
+		PageBlock page = new PageBlock(currPage, totalcount, pagesize, blocksize);
+		
+//		List<ReviewDTO> review = service.review(search, searchtxt, page.getStartRow(), page.getEndRow());
+		List<ReviewDTO> allreview = service.allReview(search, searchtxt, page.getStartRow(), page.getEndRow());
+		
 		model.addAttribute("allreview", allreview);
+		model.addAttribute("page", page);
+		model.addAttribute("search", search);
+//		model.addAttribute("searchtxt", searchtxt);
+		
+		
+		
+		
+		
+		
+		
+		
+//		model.addAttribute("allreview", allreview);
 		
 		return "reviewall";
 	}

@@ -15,6 +15,7 @@
 	<!-- 영화정보 & 카테고리 -->
 	<%@ include file="movieinfotop.jsp" %>
 	
+	
 	<!-- ******* 전체 리뷰 ******* -->
 	<section>
 		<div id="allreview">
@@ -32,25 +33,62 @@
 		 </c:if>
 		</div>
 	</section>
+	
+	
+	<form method="get" action="list">
+		<select name="search">
+			<option value="userno">닉네임</option>
+			<option value="contents">내용</option>
+			<option value="like">필요없음</option>
+		</select>
+		<input type="text" name="searchtxt">
+		<input type="submit" value="검색">
+	</form>
 
-<!-- ************페이징************ -->
+
+<!-- 페이징  -->
 <nav aria-label="...">
-  <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link">&laquo;</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">2</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">&raquo;</a>
-    </li>
-  </ul>
-</nav>
+	<ul class="pagination">	
+	
+		<!-- 이전 버튼 -->		  
+		<c:if test="${page.prev == false}">		
+			<li class="page-item disabled">
+		      <a class="page-link" href="reviewall?currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">&laquo;</a>
+		    </li>
+		</c:if>
+		<c:if test="${page.prev == true}">		
+			<li class="page-item">
+		      <a class="page-link" href="reviewall?currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">&laquo;</a>
+		    </li>
+		</c:if>
+		
+		<!-- 페이지 번호 -->
+		<c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
+			<c:if test="${index==page.currPage }">
+				<li class="page-item active" aria-current="page">
+		      		<a class="page-link" href="#"><c:out value="${index }"/></a>
+		    	</li>				
+			</c:if>
+			<c:if test="${index!=page.currPage }">
+				<li class="page-item" aria-current="page">
+			      <a class="page-link" href="reviewall?currPage=${index }&search=${search}&searchtxt=${searchtxt}"><c:out value="${index }"/></a>
+			    </li>
+			</c:if>
+		</c:forEach>
+		
+		<!-- 다음 버튼 -->
+		<c:if test="${page.next == false}">
+			<li class="page-item disabled">
+		      <a class="page-link" href="reviewall?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">&raquo;</a>
+		    </li>
+		</c:if>
+		<c:if test="${page.next == true}">
+			<li class="page-item">
+		      <a class="page-link" href="reviewall?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">&raquo;</a>
+		    </li>
+		</c:if>		
+  	</ul>
+</nav>	
 
 
 	<!-- 푸터  -->
