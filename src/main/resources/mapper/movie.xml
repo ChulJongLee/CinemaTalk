@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.kosta.mapper.MovieMapper">
+	
+	<select id="getmovielist" resultType="com.kosta.dto.KobisDTO">
+		select movieCd, movieNm, plotText, genreNm, repNationNm, openDt, watchGradeNm, showTm, poster
+		from movie_info
+		where movieNm like '%'#{keyword}'%'
+		order by openDt desc
+	</select>
+	<select id="getmoviedetail" resultType="com.kosta.dto.KobisDTO" parameterType="int">
+		select movieCd, movieNm, plotText, genreNm, repNationNm, openDt, watchGradeNm, showTm, poster
+		from movie_info
+		where movieCd=#{movieCd}
+	</select>
+	
+	<insert id="insertmovie" parameterType="java.util.List">
+		insert into movie_info(
+			movieCd
+			, movieNm
+			, plotText
+			, genreNm
+			, repNationNm
+			, openDt
+			, watchGradeNm
+			, showTm
+			, poster
+		)
+		values
+		<foreach collection="list" item="item" separator=" , " >
+	        (#{item.movieCd}, #{item.movieNm}, #{item.plotText}, #{item.repGenreNm}, #{item.repNationNm}
+			, #{item.openDt}, #{item.watchGradeNm}, #{item.showTm}, #{item.poster})
+   		 </foreach>
+		
+		
+	</insert>
+  
+  	<insert id="insertrank" parameterType="java.util.List">
+		insert into movie_rank(
+			rank,
+			movieCd
+		)
+		values
+		<foreach collection="list" item="item" separator=" , " >
+	        (#{item.rank}, #{item.movieCd})
+   		 </foreach>
+		
+		
+	</insert>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </mapper>

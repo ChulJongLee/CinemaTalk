@@ -17,6 +17,7 @@ public class KobisDTO {
 	private String repNationNm;		//대표 제작국가명
 	private String repGenreNm;		//대표 장르명
 	private String poster;
+	private int totalcount;
 	//영화 순위
     public String rank;		//해당일자의 박스오피스 순위
     public String audiAcc;		 //누적관객수
@@ -38,6 +39,7 @@ public class KobisDTO {
  	private String plotText;
     private String[] keywordlist;
     private String watchGradeNm;
+    private String genreNm;
     
     //영화인
  	

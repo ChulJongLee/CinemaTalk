@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosta.dto.KobisDTO;
+import com.kosta.service.KobisAPI;
 import com.kosta.service.MovieService;
 
 import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
@@ -19,15 +20,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MovieController {
 	private final MovieService movieService;
-
-	@GetMapping("/kobismovie")
+	private final KobisAPI kobisAPI;
+	
+	@GetMapping("/searchmovie")
 	public String goMovieSearch() {
 		return "kobismovie";
 	}
 
-	@PostMapping("/kobismovieresult")
+	@PostMapping("/searchmovieresult")
 	public String MovieSearchResult(@RequestParam String keyword, Model model) throws OpenAPIFault, Exception {
-		List<KobisDTO> list = movieService.requestMovieList(keyword);
+		List<KobisDTO> list = movieService.getMovieList(keyword);
 		model.addAttribute("list", list);
 		
 		return "kobismovieresult";
@@ -35,15 +37,15 @@ public class MovieController {
 
 	@GetMapping("/kobisrank")
 	public String RankSearchResult(Model model) throws OpenAPIFault, Exception {
-		model.addAttribute("list", movieService.requestRank());
+//		model.addAttribute("list", kobisAPI.requestRank(rdto);
 		
 		return "kobisrank";
 	}
 
 	@GetMapping("/moviedetail/{movieCd}")
 	public String MovieDetail(@PathVariable String movieCd, Model model) throws OpenAPIFault, Exception {
-		KobisDTO detail = movieService.requestMovieDetail(movieCd);
-		model.addAttribute("detail", detail);
+//		KobisDTO detail = movieService.requestMovieDetail(movieCd);
+//		model.addAttribute("detail", detail);
 
 		return "moviedetail";
 	}
