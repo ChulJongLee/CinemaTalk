@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
 <body>
 	<div id="boardWrap">
 		<h1>영화리스트</h1>
-		
+		<p>검색 결과 : ${keyword } (${fn:length(list) }) </p>
 		<c:forEach var="item" items="${list}">
 			<div onclick="location.href='moviedetail/${item.movieCd }'">
 				<div class="poster">
@@ -21,9 +22,8 @@
 				</div>
 				<div class="movieInfo">
 					<h1>${item.movieNm}</h1>
-					<p>${item.movieCd }</p>
-					<p>${item.watchGradeNm }</p>
-					<p>${item.repGenreNm } | ${item.repNationNm } | ${item.showTm}분 | ${item.openDt}</p>
+					<p>${item.watchGradeNm }세 이상 관람가</p>
+					<p>${item.genreNm } | ${item.repNationNm } | ${item.showTm}분 | ${item.openDt}</p>
 					<p>감독 :
 					<c:forEach var="item2" items="${item.directors }">
 							${item2.peopleNm }
@@ -37,11 +37,6 @@
 						 
 					</c:forEach>
 					</p>
-					줄거리 : ${item.plotText } <br>
-					키워드 : 
-					<c:forEach var="item2" items="${item.keywordlist }">
-						${item2 } |
-					</c:forEach><br>
 				</div>
 			</div>
 			<hr>

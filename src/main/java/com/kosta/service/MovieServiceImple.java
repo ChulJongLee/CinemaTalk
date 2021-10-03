@@ -44,7 +44,7 @@ public class MovieServiceImple implements MovieService {
 	@Override
 	public KobisDTO getMovieDetail(String movieCd) {
 		// TODO Auto-generated method stub
-		return mapper.getmoviedetail(Integer.parseInt(movieCd));
+		return mapper.getmoviedetail(movieCd);
 	}
 	@Override
 	public List<KobisDTO> getMovieList(String keyword) {
@@ -57,8 +57,15 @@ public class MovieServiceImple implements MovieService {
 		rdto.setKobiskey(kobiskey);
 		KobisAPI kobisAPI=new KobisAPIImple();
 		List<KobisDTO> list=kobisAPI.requestRank(rdto);
+//		System.out.println(list.size());
 		mapper.insertrank(list);
 	}
+	@Override
+	public List<KobisDTO> getMovieRank() {
+		// TODO Auto-generated method stub
+		return mapper.getmoviedailyrank();
+	}
+	
 	
 }
 	

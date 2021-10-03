@@ -12,20 +12,37 @@
 				<%-- <c:forEach var="item" items="${dto}">
 					<img src="${item.image}">
 				</c:forEach><br> --%>
-			<img alt="포스터" src="${detail.poster}"><br>
-			영화코드 : ${detail.movieCd}<br>
-			영화명(국문) : ${detail.movieNm}<br>
-			영화명(영문) : ${detail.movieNmEn}<br>
+			<img alt="포스터" src="${detail.poster}">
+			
+			<p>${detail.movieNm} : ${detail.movieNmEn}</p>
+			<p>${detail.openDt}  ${detail.watchGradeNm}     ${detail.showTm }</p>
+			장르명 : <c:forEach var="item" items="${detail.genres }">
+				${item.genreNm } 
+			</c:forEach><br>
+			출연배우 : 
+			<c:forEach var="item" items="${detail.actors }" end="4">
+				<c:if test="${item.peopleNmEn!=''}" >
+					${item.peopleNm }
+				 </c:if>
+			</c:forEach>
+			
+			<p>평점 별 위치</p>
+			<hr>
+			줄거리
+			<div>
+				${detail.plotText }
+			</div>
+			
+			<%-- 영화코드 : ${detail.movieCd}<br>
+			
 			제작연도 : ${detail.prdtYear}<br>
-			개봉일 : ${detail.openDt}<br>
+			<br>
 			영화유형 : ${detail.typeNm}<br>
 			상영시간 : ${detail.showTm }<br>
 			<c:forEach var="item" items="${detail.nations }">
 				제작국가 : ${item.nationNm}<br>
 			</c:forEach>
-			<c:forEach var="item" items="${detail.genres }">
-				장르명 : ${item.genreNm }<br>
-			</c:forEach>
+			
 			<c:forEach var="item" items="${detail.directors }">
 				영화감독명(국문) : ${item.peopleNm }<br>
 				영화감독명(영문) : ${item.peopleNmEn }<br>
@@ -38,7 +55,7 @@
 				 </c:if>
 			</c:forEach>
 			
-			줄거리 : ${detail.plotText } <br>
+			
 			키워드 : 
 			<c:forEach var="item" items="${detail.keywordlist }">
 					${item } |
@@ -48,6 +65,6 @@
 		 	
 			<c:forEach var="item" items="${detail.audits }">
 			 	관람등급 명칭 :  ${item.watchGradeNm }<br>
-			</c:forEach>
+			</c:forEach> --%>
 </body>
 </html>

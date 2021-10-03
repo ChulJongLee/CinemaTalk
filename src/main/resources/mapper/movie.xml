@@ -5,20 +5,25 @@
   
   <mapper namespace="com.kosta.mapper.MovieMapper">
 	
-	<select id="getmovielist" resultType="com.kosta.dto.KobisDTO">
+	<select id="getmovielist" resultType="com.kosta.dto.KobisDTO" parameterType="String">
 		select movieCd, movieNm, plotText, genreNm, repNationNm, openDt, watchGradeNm, showTm, poster
 		from movie_info
-		where movieNm like '%'#{keyword}'%'
-		order by openDt desc
+		where movieNm like CONCAT('%',#{keyword},'%')
+		
 	</select>
-	<select id="getmoviedetail" resultType="com.kosta.dto.KobisDTO" parameterType="int">
+	<select id="getmoviedetail" resultType="com.kosta.dto.KobisDTO" parameterType="String">
 		select movieCd, movieNm, plotText, genreNm, repNationNm, openDt, watchGradeNm, showTm, poster
 		from movie_info
 		where movieCd=#{movieCd}
 	</select>
 	
+	<select id="getmoviedailyrank" resultType="com.kosta.dto.KobisDTO">
+		select rank, movieCd
+		from movie_dailyrank
+	</select>
+	
 	<insert id="insertmovie" parameterType="java.util.List">
-		insert into movie_info(
+		replace into movie_info(
 			movieCd
 			, movieNm
 			, plotText
@@ -28,18 +33,19 @@
 			, watchGradeNm
 			, showTm
 			, poster
+			, keywords
 		)
 		values
 		<foreach collection="list" item="item" separator=" , " >
 	        (#{item.movieCd}, #{item.movieNm}, #{item.plotText}, #{item.repGenreNm}, #{item.repNationNm}
-			, #{item.openDt}, #{item.watchGradeNm}, #{item.showTm}, #{item.poster})
+			, #{item.openDt}, #{item.watchGradeNm}, #{item.showTm}, #{item.poster}, #{item.keywords})
    		 </foreach>
 		
 		
 	</insert>
   
   	<insert id="insertrank" parameterType="java.util.List">
-		insert into movie_rank(
+		replace into movie_dailyrank(
 			rank,
 			movieCd
 		)

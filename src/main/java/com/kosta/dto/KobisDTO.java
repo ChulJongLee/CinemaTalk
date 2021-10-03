@@ -37,6 +37,7 @@ public class KobisDTO {
  	private List<KobisDTO2> actors;			//배우(리스트)
  	private List<KobisDTO2> audits;		//심의정보(리스트)
  	private String plotText;
+ 	private String keywords;
     private String[] keywordlist;
     private String watchGradeNm;
     private String genreNm;

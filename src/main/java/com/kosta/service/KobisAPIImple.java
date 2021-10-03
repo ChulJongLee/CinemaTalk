@@ -20,79 +20,96 @@ import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
 public class KobisAPIImple implements KobisAPI {
 	private final SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyyMMdd");
 
-	@Override
+	
 	public List<KobisDTO> getMovieList(RequestDTO rdto) throws OpenAPIFault, Exception {
-		// TODO Auto-generated method stub
 		KobisOpenAPIRestService kobisService = new KobisOpenAPIRestService(rdto.getKobiskey());
 		String listResponse = kobisService.getMovieList(true, rdto.getCurPage(), rdto.getItemPerPage(),
 				rdto.getMovieNm(), "", "", "", "", "", "", new String[0]);
 		Gson gson = new Gson();
 		JsonObject obj = gson.fromJson(listResponse, JsonObject.class);
-//		System.out.println("getMovieList obj"+obj);
+		System.out.println("getMovieList obj"+obj);
 		KobisResponseDTO dto = gson.fromJson(obj.getAsJsonObject("movieListResult").toString(), KobisResponseDTO.class);
 		List<KobisDTO> list = dto.getMovieList();
 		return list;
 	}
 
-	@Override
+	
 	public void deleteMovieList(List<KobisDTO> list) {
-		// TODO Auto-generated method stub
 		for (int j = 0; j < list.size(); j++) {
-			if (list.get(j).getMovieNmEn().equals("Package Screening") || list.get(j).getOpenDt().equals("")) {
+			if (list.get(j).getMovieNmEn()
+					.equals("Package Screening")/* ||list.get(j).getMovieNm().contains("작은영화영화제") */) {
 				list.remove(j);
+//				System.out.println(list.get(j).getOpenDt());
 				j--;
 			}
 		}
 	}
 
-	@Override
+	
 	public List<KobisDTO> getMovieListPlus(List<KobisDTO> list, RequestDTO rdto) throws OpenAPIFault, Exception {
-		// TODO Auto-generated method stub
 		List<KobisDTO> result = new ArrayList<KobisDTO>();
 		KmdbAPI kmdbAPI = new KmdbAPIImple();
 
 		for (int j = 0; j < list.size(); j++) {
 			String director = "";
-			rdto.setMovieCd(list.get(j).getMovieCd());
+			KobisDTO kobis = list.get(j);
+			rdto.setMovieCd(kobis.getMovieCd());
 			KobisDTO detail = getMovieDetail(rdto);
-			if (detail.getDirectors().size() != 0)
-				director = detail.getDirectors().get(0).getPeopleNm();
+		
+			if (detail.getDirectors().size() != 0) {
+				director = getKor(detail.getDirectors().get(0).getPeopleNm());
+//				System.out.println(director);
+				String[] directornames=director.split(" ");
+				director = directornames[0];
+//				System.out.println(director);
+				
+			}
 			rdto.setMovieNm(detail.getMovieNm());
 			rdto.setDirectorNm(director);
-			list.get(j).setShowTm(detail.getShowTm());
-			list.get(j).setActors(detail.getActors());
-			list.get(j).setKeywordlist(detail.getKeywordlist());
 
+			kobis.setShowTm(detail.getShowTm());
+			kobis.setActors(detail.getActors());
+			kobis.setKeywordlist(detail.getKeywordlist());
+
+			String openDt = "";
+			if (detail.getOpenDt() != "")
+				openDt = detail.getOpenDt();
+			kobis.setOpenDt(openDt);
+			String keywords = "";
+			if (detail.getKeywords() != null)
+				keywords = detail.getKeywords();
+			kobis.setKeywords(keywords);
 			String plotText = "";
 			if (detail.getPlotText() != null)
 				plotText = detail.getPlotText();
-			list.get(j).setPlotText(plotText);
+			kobis.setPlotText(plotText);
 			String poster = "";
 			if (kmdbAPI.requestMoviePoster(rdto) != null)
 				poster = kmdbAPI.requestMoviePoster(rdto);
-			list.get(j).setPoster(poster);
+			System.out.println(poster);
+			kobis.setPoster(poster);
 			if (detail.getAudits().size() != 0) {
 				String watchGrade = detail.getAudits().get(0).getWatchGradeNm();
 				if (watchGrade.contains("전체관람가") || watchGrade.contains("모든") || watchGrade.contains("연소자관람가")
 						|| watchGrade.contains("미성년자관람가"))
-					list.get(j).setWatchGradeNm("0");
+					kobis.setWatchGradeNm("0");
 				else if (watchGrade.contains("12") || watchGrade.contains("중학생") || watchGrade.contains("국민학생"))
-					list.get(j).setWatchGradeNm("12");
+					kobis.setWatchGradeNm("12");
 				else if (watchGrade.contains("15") || watchGrade.contains("고등"))
-					list.get(j).setWatchGradeNm("15");
+					kobis.setWatchGradeNm("15");
 				else
-					list.get(j).setWatchGradeNm("19");
+					kobis.setWatchGradeNm("19");
 			} else
-				list.get(j).setWatchGradeNm("19");
-			result.add(list.get(j));
+				kobis.setWatchGradeNm("19");
+			result.add(kobis);
+
 		}
 		return result;
 
 	}
 
-	@Override
+	
 	public int getMovieCount(RequestDTO rdto) throws OpenAPIFault, Exception {
-		// TODO Auto-generated method stub
 		KobisOpenAPIRestService kobisService = new KobisOpenAPIRestService(rdto.getKobiskey());
 //		service.getMovieList(isJson, curPage, itemPerPage, movieNm, directorNm, openStartDt, openEndDt, prdtStartYear, prdtEndYear, repNationCd, movieTypeCdArr)
 		String listResponse = kobisService.getMovieList(true, rdto.getCurPage(), rdto.getItemPerPage(),
@@ -107,9 +124,8 @@ public class KobisAPIImple implements KobisAPI {
 		return Integer.parseInt(totalcount);
 	}
 
-	@Override
+	
 	public KobisDTO getMovieDetail(RequestDTO rdto) throws OpenAPIFault, Exception {
-		// TODO Auto-generated method stub
 		KobisOpenAPIRestService kobisService = new KobisOpenAPIRestService(rdto.getKobiskey());
 		KmdbAPI kmdbAPI = new KmdbAPIImple();
 		String detailResponse = "";
@@ -119,13 +135,12 @@ public class KobisAPIImple implements KobisAPI {
 //		System.out.println("서비스에서 디테일의 obj"+obj);
 		KobisDTO detail = gson.fromJson(obj.getAsJsonObject("movieInfoResult").toString(), KobisResponseDTO.class)
 				.getMovieInfo();
-
 		String movieNm = detail.getMovieNm();
 //		System.out.println(movieNm);
+		movieNm=getKor(movieNm);
 		String director = "";
 		if (detail.getDirectors().size() != 0)
 			director = detail.getDirectors().get(0).getPeopleNm();
-
 		rdto.setMovieNm(movieNm);
 		rdto.setDirectorNm(director);
 		KmdbResponseDTO dto = kmdbAPI.requestMovieDetail(rdto);
@@ -133,11 +148,13 @@ public class KobisAPIImple implements KobisAPI {
 			List<KmdbDTO2> kmdblist = dto.getData().get(0).getResult();
 			detail.setPlotText(kmdblist.get(0).getPlots().getPlot().get(0).getPlotText());
 			detail.setPoster(kmdbAPI.requestMoviePoster(rdto));
-			String keywords = kmdblist.get(0).getKeywords();
-			String[] keywordlist = keywords.split(",");
-			detail.setKeywordlist(keywordlist);
-		}
 
+			String keywords = kmdblist.get(0).getKeywords();
+//			System.out.println(keywords);
+			detail.setKeywords(keywords);
+//			String[] keywordlist = keywords.split(",");
+//			detail.setKeywordlist(keywordlist);
+		}
 		return detail;
 	}
 
@@ -167,8 +184,11 @@ public class KobisAPIImple implements KobisAPI {
 
 		rdto.setMovieNm(rdto.getKeyword());
 		int totalcount = getMovieCount(rdto);
-//		for (int i = 121; i <= 180; i++) {
-		for (int i = 1; i <= (totalcount / 100) + 1; i++) {	
+		//일 3000회 제한
+		int a = 63;	//63 할 차례
+		for (int i = a; i <= a; i++) {
+//		for (int i = a; i <= a+28; i++) {
+//		for (int i = 1; i <= (totalcount / 100) + 1; i++) {
 			rdto.setMovieNm(rdto.getKeyword());
 			rdto.setCurPage(String.valueOf(i));
 			List<KobisDTO> list = getMovieList(rdto);
@@ -177,11 +197,23 @@ public class KobisAPIImple implements KobisAPI {
 			for (KobisDTO item : list) {
 				result.add(item);
 			}
-			System.out.println("--------------결과값------------"+result.size());
+			System.out.println(i + "번째-------결과값------------" + result.size());
 
 		}
 		return result;
 
 	}
 
+	public String getKor(String word) {
+		String[] wordlist=word.split("");
+		word="";
+		for(String item:wordlist) {
+			if(item.charAt(0)>122 || item.charAt(0)==32 || (item.charAt(0)>=48)&&item.charAt(0)<=57) {
+				word+=item;
+			}
+		}
+			
+		return word;
+	}
+	
 }

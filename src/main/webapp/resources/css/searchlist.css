@@ -16,18 +16,18 @@ ul li{
     bottom: 20px;
 }
 h1{
-	margin-top: 20px;
+	/* margin-top: 20px; */
 }
 .poster{
-	width: 150px;
-	height: 200px;
+	width: 180px;
+	height: 250px;
 	display: inline-block;
 	vertical-align: top;
 }
 
 div img{
-	width: 150px;
-	height: 200px;
+	width: 180;
+	height: 250px;
 }
 
 .movieInfo{

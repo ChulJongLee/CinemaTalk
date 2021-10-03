@@ -18,11 +18,18 @@ public class KmdbAPIImple implements KmdbAPI {
 		// TODO Auto-generated method stub
 		String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]";
 		String movieNm = rdto.getMovieNm().replaceAll(match, "^").replace(" ", "").replace("3D", "");
-		String director = rdto.getDirectorNm().replaceAll(match, "").replace(" ", "^");
+		for (int i = 0; i < 3; i++) {
+			if (movieNm.startsWith("^")) {
+				movieNm = movieNm.substring(1);
+			}
+		}
 
+		String director = rdto.getDirectorNm().replaceAll(match, "").replace(" ", "^");
+		if (director.startsWith("^")) {
+			director = director.substring(1);
+		}
 		String urladdr = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey="
 				+ rdto.getKmdbkey() + "&detail=Y&query=" + movieNm + "&director=" + director;
-
 		URL url = new URL(urladdr);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -47,10 +54,12 @@ public class KmdbAPIImple implements KmdbAPI {
 
 		Gson gson = new Gson();
 		KmdbResponseDTO result = gson.fromJson(sb.toString(), KmdbResponseDTO.class);
-		if (result.getTotalCount() != 0)
+		if (result.getTotalCount() != 0) {
 			return result;
-		else
+
+		} else {
 			return null;
+		}
 	}
 
 	@Override

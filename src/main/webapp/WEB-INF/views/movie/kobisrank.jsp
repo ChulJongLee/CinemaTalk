@@ -56,8 +56,8 @@
 		<c:forEach var="item" items="${list}">
 			<div>
 				<a href="moviedetail/${item.movieCd }">
-						<div style="background-color: yellow; width: 150px; height: 200px"></div>
-						<!-- <img alt="포스터" src="imsi" width="150px" height="200px"> -->
+						<!-- <div style="background-color: yellow; width: 150px; height: 200px"></div> -->
+						<img alt="포스터" src="${item.poster }" width="150px" height="200px">
 						<%-- 해당일자의 박스오피스 순위 : ${item.rank}<br>
 						영화의 개봉일 : ${item.openDt}<br>
 						누적관객수 : ${item.audiAcc}<br>
