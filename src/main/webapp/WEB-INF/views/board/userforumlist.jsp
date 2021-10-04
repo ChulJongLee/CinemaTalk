@@ -12,7 +12,7 @@
 </head>
 <body>
 	<!-- ******** 헤더 ********* -->
-	<%@ include file="header.jsp" %>
+	<%-- <%@ include file="header.jsp" %> --%>
 	
 	<!-- 영화정보 & 카테고리 -->
 	<%@ include file="movieinfotop.jsp" %>
@@ -54,6 +54,16 @@
 					<tr><td>20</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
 					<tr><td>21</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
 					<tr><td>22</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
+					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
+					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
+					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
+					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
+					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
+					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
+					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
+					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
+					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
+					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
 					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
 				</tbody>
 			</table>		
@@ -113,7 +123,7 @@
 
 
 	<!-- ******** 푸터 ********* -->
-	<%@ include file="footer.jsp" %>
+	<%-- <%@ include file="footer.jsp" %> --%>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>

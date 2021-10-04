@@ -32,7 +32,8 @@ public class CommunityController {
 	public String movieInfoMain() {
 		
 		
-		return "movieinfomain";
+//		return "movieinfomain";
+		return "/view.jsp?page=board/movieinfomain";
 	}	
 	
 	
@@ -48,7 +49,8 @@ public class CommunityController {
 		List<ReviewDTO> generalreviewlist = service.generalReviewList();
 		model.addAttribute("generalreviewlist", generalreviewlist);
 		
-		return "reviewmain";
+//		return "reviewmain";
+		return "/view.jsp?page=board/reviewmain";
 	}
 	
 	// 리뷰 전체 리스트
@@ -84,14 +86,18 @@ public class CommunityController {
 		model.addAttribute("searchtxt", searchtxt);
 		
 		
-		return "reviewall";
+//		return "reviewall";
+		return "/view.jsp?page=board/reviewall";
+		
 	}
 	
 	// 리뷰 디테일 페이지
 	@RequestMapping("/reviewdetail")
 	public String reviewDetail(Model model) {
 		
-		return "reviewdetail";
+//		return "reviewdetail";
+		return "/view.jsp?page=board/reviewdetail";
+		
 	}
 	
 	
@@ -106,20 +112,23 @@ public class CommunityController {
 		model.addAttribute("famouslinelist", famouslinelist);
 		
 		
-		return "bestscenemain";
+//		return "bestscenemain";
+		return "/view.jsp?page=board/bestscenemain";
 	}
 	// 최고장면,최악장면 리스트
 	@RequestMapping("/bestscenelist")
 	public String bestSceneList() {
 		
 		
-		return "bestscenelist";
+//		return "bestscenelist";
+		return "/view.jsp?page=board/bestscenelist";
 	}
 	// 최고장면,최악장면 디테일
 	@RequestMapping("/bestscenedetail")
 	public String bestSceneDetail() {
 		
-		return "bestscenedetail";
+//		return "bestscenedetail";
+		return "/view.jsp?page=board/bestscenedetail";
 	}
 	
 	// 명대사 리스트
@@ -156,14 +165,16 @@ public class CommunityController {
 		
 		
 
-		return "famouslinelist";
+//		return "famouslinelist";
+		return "/view.jsp?page=board/famouslinelist";
 	}
 	// 명대사 디테일
 	@RequestMapping("/famouslinedetail")
 	public String famouslinedetail() {
 		
 		
-		return "famouslinedetail";
+//		return "famouslinedetail";
+		return "/view.jsp?page=board/famouslinedetail";
 	}
 	
 	
@@ -178,14 +189,16 @@ public class CommunityController {
 		
 		
 		
-		return "userforumlist";
+//		return "userforumlist";
+		return "/view.jsp?page=board/userforumlist";
 	}
 	// 자유 게시판 디테일 페이지
 	@RequestMapping("/userforumdetail")
 	public String userForumDetail(Model model) {
 		
 		
-		return "userforumdetail";
+//		return "userforumdetail";
+		return "/view.jsp?page=board/userforumdetail";
 	}
 	
 	

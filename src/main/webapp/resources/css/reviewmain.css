@@ -74,24 +74,41 @@
     flex-wrap: wrap;
     justify-content: center;
 }
-.bestreviewtable{
-    border: 1px solid blue;
-    width: 40%;
-    margin: 15px 30px;
-}
-.reviewdate{
-    text-align: right;
-}
-.reviewreport{
-    text-align: right;
-}
-
 .generalreview{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
 }
+
+
+#date{
+    text-align: right;
+}
+#report{
+    text-align: right;
+}
+#content{
+	text-align: left;
+}
+table{
+ 	border: 1px solid blue;
+ 	width: 40%;
+ 	margin: 15px 30px;
+ }
+tr td{
+	height: 20px;
+}
+tr td{
+ 	border: 1px solid black;
+ 	text-align: center;
+ }
+tr th{
+ 	border: 1px solid black;
+ 	text-align: center;
+ }
+
+
 
 
 /* 리뷰 쓰기 */

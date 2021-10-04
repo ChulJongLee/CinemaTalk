@@ -37,15 +37,30 @@ section{
     flex-wrap: wrap;
     justify-content: center;
 }
-.bestreviewtable{
-    border: 1px solid blue;
-    width: 40%;
-    margin: 15px 30px;
-}
-.reviewdate{
+#date{
     text-align: right;
 }
-.reviewreport{
+#report{
     text-align: right;
 }
+#content{
+	text-align: left;
+}
+table{
+ 	border: 1px solid blue;
+ 	width: 40%;
+ 	margin: 15px 30px;
+ }
+tr td{
+	height: 20px;
+}
+tr td{
+ 	border: 1px solid black;
+ 	text-align: center;
+ }
+tr th{
+ 	border: 1px solid black;
+ 	text-align: center;
+ }
+
 

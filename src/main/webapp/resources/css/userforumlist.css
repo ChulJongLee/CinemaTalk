@@ -39,6 +39,9 @@ table{
  	margin: 15px 30px;
  }
 tr td{
+	height: 20px;
+}
+tr td{
  	border: 1px solid black;
  	text-align: center;
  }

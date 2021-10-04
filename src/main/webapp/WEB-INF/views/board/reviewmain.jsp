@@ -12,7 +12,7 @@
 </head>
 <body>
 	<!-- ******** 헤더 ********* -->
-	<%@ include file="header.jsp" %>
+	<%-- <%@ include file="header.jsp" %> --%>
 
 	<!-- 영화정보 & 카테고리 -->
 	<%@ include file="movieinfotop.jsp" %>
@@ -27,9 +27,9 @@
          	<c:if test="${bestreviewlist!=null }">
          		<c:forEach var="list" items="${bestreviewlist }">
 					<table class="bestreviewtable">
-						<tr><td colspan="3">${list.userno }</td><td class="reviewdate">${list.writedate }</td></tr>
+						<tr><td colspan="3">${list.userno }</td><td id="date">${list.writedate }</td></tr>
 						<tr><td colspan="4">${list.contents }</td></tr>
-						<tr><td>${list.like }</td><td colspan="2">${list.dislike }</td><td class="reviewreport">신고</td></tr>
+						<tr><td width="10%">${list.like }</td><td width="10%">${list.dislike }</td><td colspan="2" id="report">신고</td></tr>
 					</table>
 				</c:forEach>
          	</c:if>                            
@@ -46,9 +46,9 @@
          	<c:if test="${generalreviewlist!=null }">
          		<c:forEach var="list" items="${generalreviewlist }">
 					<table class="bestreviewtable">
-						<tr><td colspan="3">${list.userno }</td><td class="reviewdate">${list.writedate }</td></tr>
+						<tr><td colspan="3">${list.userno }</td><td id="date">${list.writedate }</td></tr>
 						<tr><td colspan="4">${list.contents }</td></tr>
-						<tr><td>${list.like }</td><td colspan="2">${list.dislike }</td><td class="reviewreport">신고</td></tr>
+						<tr><td width="10%">${list.like }</td><td width="10%">${list.dislike }</td><td colspan="2" id="report">신고</td></tr>
 					</table>
 				</c:forEach>
          	</c:if>                            
@@ -74,7 +74,7 @@
     </div>    
     
     <!-- ******** 푸터 ********* -->
-	<%@ include file="footer.jsp" %>
+	<%-- <%@ include file="footer.jsp" %> --%>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>
