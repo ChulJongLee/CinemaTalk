@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+
+
+section{
+    border: 2px solid orange;
+    width: 1300px;
+    margin: 0px auto;
+    
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.sceneimg{
+	border: 2px solid red;
+	/* display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center; */
+	width: 50%;
+}
+.scenebtn{	/* 명장면 버튼 */
+	margin: 30px 50px;
+}
+
+
+/* 명대사 버튼 */
+#famouslinebtn{
+	margin: 30px 50px;
+}
+/* 명대사 테이블(베스트 리뷰 테이블과 같음) */
+.bestreview{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.bestreviewtable{
+    border: 1px solid blue;
+    width: 40%;
+    margin: 15px 30px;
+}
+.reviewdate{
+    text-align: right;
+}
+.reviewreport{
+    text-align: right;
+}
+

@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+section{
+    border: 2px solid orange;
+    width: 1300px;
+    margin: 0px auto;
+}
+
+/* .allreview{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.allreviewtable{
+    border: 1px solid blue;
+    width: 90%;
+    margin: 15px 30px;
+}
+.reviewdate{
+    text-align: right;
+}
+.reviewreport{
+    text-align: right;
+}
+ */
+ 
+#userforum{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	
+}
+ 
+table{
+ 	border: 1px solid blue;
+ 	width: 90%;
+ 	margin: 15px 30px;
+ }
+tr td{
+ 	border: 1px solid black;
+ 	text-align: center;
+ }
+tr th{
+ 	border: 1px solid black;
+ 	text-align: center;
+ }
+ 
+ 
+#writebtn{
+	border: 1px solid green;
+	display: flex;
+	justify-content: flex-end;
+	padding: 0px 65px;
+}
+
+ 
+ 
