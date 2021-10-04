@@ -9,7 +9,7 @@ section{
 .allreview{
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     justify-content: center;
 }
 .allreviewtable{

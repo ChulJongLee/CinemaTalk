@@ -72,9 +72,7 @@ public class CommunityController {
 		int pagesize=10;
 		int blocksize=5;
 		
-		
-		
-		
+
 		PageBlock page = new PageBlock(currPage, totalcount, pagesize, blocksize);
 		
 //		List<ReviewDTO> review = service.review(search, searchtxt, page.getStartRow(), page.getEndRow());
@@ -83,16 +81,8 @@ public class CommunityController {
 		model.addAttribute("allreview", allreview);
 		model.addAttribute("page", page);
 		model.addAttribute("search", search);
-//		model.addAttribute("searchtxt", searchtxt);
+		model.addAttribute("searchtxt", searchtxt);
 		
-		
-		
-		
-		
-		
-		
-		
-//		model.addAttribute("allreview", allreview);
 		
 		return "reviewall";
 	}
@@ -107,9 +97,14 @@ public class CommunityController {
 	
 
 	
-	// 참여 게시판 페이지
+	// 참여 게시판 메인 페이지
 	@RequestMapping("/bestscenemain")
-	public String bestSceneMain(Model model) {				
+	public String bestSceneMain(Model model) {		
+		
+		// 명대사 4개
+		List<ReviewDTO> famouslinelist = service.famousLineList();
+		model.addAttribute("famouslinelist", famouslinelist);
+		
 		
 		return "bestscenemain";
 	}
@@ -129,8 +124,38 @@ public class CommunityController {
 	
 	// 명대사 리스트
 	@RequestMapping("/famouslinelist")
-	public String famousLineList() {
+	public String famousLineList(@RequestParam(required = false, defaultValue = "1") int currPage
+								, @RequestParam(required = false, defaultValue = "") String search
+								, @RequestParam(required = false, defaultValue = "") String searchtxt
+								, Model model) {
 		
+		Pattern p = Pattern.compile("([0-9]*$)");	// 012345111
+		if(search=="userno" || search.equals("userno") || search=="like" || search.equals("like")) {
+			
+			Matcher m = p.matcher(searchtxt);
+			if(m.find()) {
+				model.addAttribute("searchtxt", searchtxt);
+			}else {
+				model.addAttribute("searchtxt", "");
+			}
+		}
+
+		int totalcount = service.totalCount(search, searchtxt); // 전체 자료수
+		int pagesize=10;
+		int blocksize=5;
+		
+
+		PageBlock page = new PageBlock(currPage, totalcount, pagesize, blocksize);
+
+		List<ReviewDTO> allfamousline = service.allFamousLine(search, searchtxt, page.getStartRow(), page.getEndRow());
+		
+		model.addAttribute("page", page);
+		model.addAttribute("allfamousline", allfamousline);
+		model.addAttribute("search", search);
+		model.addAttribute("searchtxt", searchtxt);
+		
+		
+
 		return "famouslinelist";
 	}
 	// 명대사 디테일
@@ -144,9 +169,13 @@ public class CommunityController {
 	
 	
 	
-	// 자유 게시판 리스트 페이지
+	// 자유 게시판 리스트 페이지(메인)
 	@RequestMapping("/userforumlist")
 	public String userForumList(Model model) {
+		
+		List<ReviewDTO> alluserforum = service.allUserForum();
+		model.addAttribute("alluserforum", alluserforum);
+		
 		
 		
 		return "userforumlist";

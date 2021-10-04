@@ -50,19 +50,14 @@ public class CommunityServiceImple implements CommunityService {
 		
 		return result;
 	}
+	
+
 
 
 	@Override
 	public List<ReviewDTO> review() {
 		return null;
 	}
-
-
-//	@Override
-//	public List<ReviewDTO> review(String search, String searchtxt, int startRow, int endRow) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 
 	@Override
@@ -75,6 +70,48 @@ public class CommunityServiceImple implements CommunityService {
 		hm.put("endrow", endRow);
 	
 		return mapper.list(hm);
+	}
+
+
+	@Override
+	public List<ReviewDTO> famousLineList() {
+		
+		return mapper.getfamousline();
+	}
+
+
+//	@Override
+//	public List<ReviewDTO> allFamousLine() {
+//		
+//		return mapper.getallfamousline();
+//	}
+
+
+	@Override
+	public int totalCount() {
+		
+		return 0;
+	}
+
+
+	@Override
+	public List<ReviewDTO> allFamousLine(String search, String searchtxt, int startRow, int endRow) {
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("startrow", startRow);
+		hm.put("endrow", endRow);
+		
+		
+		return mapper.getallfamousline(hm);
+	}
+
+
+	@Override
+	public List<ReviewDTO> allUserForum() {
+		
+		
+		return mapper.getalluserforum();
 	}
 
 	

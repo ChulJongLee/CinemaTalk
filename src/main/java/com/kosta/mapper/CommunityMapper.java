@@ -20,6 +20,14 @@ public interface CommunityMapper {
 
 	public List<ReviewDTO> getallreview();
 
+	public List<ReviewDTO> getfamousline();
+
+	public List<ReviewDTO> getallfamousline();
+
+	public List<ReviewDTO> getallfamousline(HashMap<String, Object> hm);
+
+	public List<ReviewDTO> getalluserforum();
+
 
 
 	

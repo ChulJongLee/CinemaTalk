@@ -13,6 +13,8 @@ import lombok.ToString;
 public class ReviewDTO {
 	
 	private int userno;
+	private String userid;
+	private String title;
 	private Date writedate;
 	private String contents;
 	private int like;

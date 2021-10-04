@@ -19,8 +19,68 @@
 	
 	
 	
+	<!-- ******* 전체 명대사 ******* -->
+	<section>
+		<div id="allreview">
+		 <c:if test="${allfamousline==null }">              		
+	        	자료가 없습니다.
+	     </c:if>
+		 <c:if test="${allfamousline!=null }">
+			<c:forEach var="list" items="${allfamousline }">
+				<table class="allreviewtable">
+					<tr><td colspan="3">${list.userno }</td><td class="reviewdate">${list.writedate }</td></tr>
+					<tr><td colspan="4">${list.contents }</td></tr>
+					<tr><td>${list.like }</td><td colspan="2">${list.dislike }</td><td class="reviewreport">신고</td></tr>
+				</table>
+			</c:forEach>
+		 </c:if>
+		</div>
+	</section>
 	
 	
+	<!-- 페이징  -->
+<nav aria-label="...">
+	<ul class="pagination">	
+	
+		<!-- 이전 버튼 -->		  
+		<c:if test="${page.prev == false}">		
+			<li class="page-item disabled">
+		      <a class="page-link" href="famouslinelist?currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">&laquo;</a>
+		    </li>
+		</c:if>
+		<c:if test="${page.prev == true}">		
+			<li class="page-item">
+		      <a class="page-link" href="famouslinelist?currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">&laquo;</a>
+		    </li>
+		</c:if>
+		
+		<!-- 페이지 번호 -->
+		<c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
+			<c:if test="${index==page.currPage }">
+				<li class="page-item active" aria-current="page">
+		      		<a class="page-link" href="#"><c:out value="${index }"/></a>
+		    	</li>				
+			</c:if>
+			<c:if test="${index!=page.currPage }">
+				<li class="page-item" aria-current="page">
+			      <a class="page-link" href="famouslinelist?currPage=${index }&search=${search}&searchtxt=${searchtxt}"><c:out value="${index }"/></a>
+			    </li>
+			</c:if>
+		</c:forEach>
+		
+		<!-- 다음 버튼 -->
+		<c:if test="${page.next == false}">
+			<li class="page-item disabled">
+		      <a class="page-link" href="famouslinelist?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">&raquo;</a>
+		    </li>
+		</c:if>
+		<c:if test="${page.next == true}">
+			<li class="page-item">
+		      <a class="page-link" href="famouslinelist?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">&raquo;</a>
+		    </li>
+		</c:if>		
+  	</ul>
+</nav>	
 	
 	
 	<!-- ******** 푸터 ********* -->

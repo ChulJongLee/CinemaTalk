@@ -9,6 +9,8 @@
   
   <resultMap type="com.kosta.dto.ReviewDTO" id="reviewdto">
   	<result column="user_no" property="userno" />
+  	<result column="user_id" property="userid" />
+  	<result column="content_title" property="title" />
   	<result column="content_date" property="writedate" />
   	<result column="content_content" property="contents" />
   	<result column="content_like" property="like" />
@@ -37,13 +39,13 @@
 </select>
 
 
-
 <select id="list" parameterMap="hashmap" resultMap="reviewdto">
 	select A.*
 	from (select S.*, @rownum:=@rownum+1 as rn
-	  	  from (select user_no, content_date, content_content, content_like, content_hate
+	  	  from (select user_no, board_distinct_no, content_date, content_content, content_like, content_hate
 			    from comm_board, (select @rownum:=0)R
                 where 1=1) S
+                where board_distinct_no = 1
 				order by content_date DESC ) A
 			<where>
 				<![CDATA[
@@ -57,27 +59,66 @@
   
   
   
-  
+<!-- 리뷰 페이지 쿼리 -->
 <select id="getreview" resultMap="reviewdto">
 	select user_no, content_date, content_content, content_like, content_hate
 	from comm_board
+	where board_distinct_no = 1
 	order by content_like DESC
 	limit 2
 </select>
 
+
 <select id="getgeneralreview" resultMap="reviewdto">
 	select user_no, content_date, content_content, content_like, content_hate
 	from comm_board
+	where board_distinct_no = 1
 	order by content_date DESC
 	limit 4
 </select>
 
+
 <select id="getallreview" resultMap="reviewdto">
 	select user_no, content_date, content_content, content_like, content_hate
 	from comm_board
+	where board_distinct_no = 1
 	order by content_date DESC
 </select>
-  
+
+
+<!-- 참여 게시판 메인 쿼리 -->
+<select id="getfamousline" resultMap="reviewdto">
+	select user_no, content_date, content_content, content_like, content_hate
+	from comm_board
+	where board_distinct_no = 2
+	order by content_date DESC
+	limit 4
+</select>
+
+
+<!-- 참여 게시판 명대사 리스트 쿼리 -->
+<select id="getallfamousline" parameterMap="hashmap" resultMap="reviewdto">
+	select A.*
+	from (select S.*, @rownum:=@rownum+1 as rn
+	  	  from (select user_no, board_distinct_no, content_date, content_content, content_like, content_hate
+			    from comm_board, (select @rownum:=0)R
+                where 1=1) S
+                where board_distinct_no = 2
+				order by content_date DESC ) A
+			<where>
+				<![CDATA[
+					rn>=#{startrow} and rn<=#{endrow}
+				]]>	
+			</where>
+</select>
+
+<select id="getalluserforum" resultMap="reviewdto">
+	select user_no, content_date, content_title, content_content, content_like, content_hate
+	from comm_board
+	where board_distinct_no = 5
+	order by content_date DESC
+</select>
+
   
   
 </mapper>
