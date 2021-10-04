@@ -23,7 +23,7 @@ public class MovieController {
 	
 	@GetMapping("/searchmovie")
 	public String goMovieSearch() {
-		return "movie/kobismovie";
+		return "/view.jsp?page=movie/kobismovie";
 	}
 
 	@PostMapping("/kobismovieresult")
@@ -32,7 +32,7 @@ public class MovieController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("list", list);
 		
-		return "movie/kobismovieresult";
+		return "/view.jsp?page=movie/kobismovieresult";
 	}
 
 	@GetMapping("/kobisrank")
@@ -48,7 +48,7 @@ public class MovieController {
 		
 		model.addAttribute("list", result);
 		
-		return "movie/kobisrank";
+		return "/view.jsp?page=movie/kobisrank";
 	}
 
 	@GetMapping("/moviedetail/{movieCd}")
@@ -56,7 +56,7 @@ public class MovieController {
 		KobisDTO detail = movieService.getMovieDetail(movieCd);
 		model.addAttribute("detail", detail);
 
-		return "movie/moviedetail";
+		return "/view.jsp?page=movie/moviedetail";
 	}
 
 }

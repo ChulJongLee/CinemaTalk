@@ -23,49 +23,56 @@ public class MovieServiceImple implements MovieService {
 	public void setKobiskey(String value) {
 		kobiskey = value;
 	}
+
 	@Value("${kmdbkey}")
 	public void setKmdbkey(String value) {
 		kmdbkey = value;
 	}
-	
+
 	@Autowired
 	private MovieMapper mapper;
-	
+
 	@Override
 	public void insertMovie(RequestDTO rdto) throws OpenAPIFault, Exception {
 		// TODO Auto-generated method stub
 		rdto.setKobiskey(kobiskey);
 		rdto.setKmdbkey(kmdbkey);
-		KobisAPI kobisAPI=new KobisAPIImple();
-		List<KobisDTO> list=kobisAPI.requestMovieList(rdto);
-		System.out.println("size...."+list.size());
-		mapper.insertmovie(list);
+		KobisAPI kobisAPI = new KobisAPIImple();
+		List<KobisDTO> list = kobisAPI.requestMovieList(rdto);
+		if (list.size() != 0) {
+			System.out.println("size...." + list.size());
+			mapper.insertmovie(list);
+		} else {
+			System.out.println("에러발생");
+		}
 	}
+
 	@Override
 	public KobisDTO getMovieDetail(String movieCd) {
 		// TODO Auto-generated method stub
 		return mapper.getmoviedetail(movieCd);
 	}
+
 	@Override
 	public List<KobisDTO> getMovieList(String keyword) {
 		// TODO Auto-generated method stub
 		return mapper.getmovielist(keyword);
 	}
+
 	@Override
 	public void insertRank(RequestDTO rdto) throws OpenAPIFault, Exception {
 		// TODO Auto-generated method stub
 		rdto.setKobiskey(kobiskey);
-		KobisAPI kobisAPI=new KobisAPIImple();
-		List<KobisDTO> list=kobisAPI.requestRank(rdto);
+		KobisAPI kobisAPI = new KobisAPIImple();
+		List<KobisDTO> list = kobisAPI.requestRank(rdto);
 //		System.out.println(list.size());
 		mapper.insertrank(list);
 	}
+
 	@Override
 	public List<KobisDTO> getMovieRank() {
 		// TODO Auto-generated method stub
 		return mapper.getmoviedailyrank();
 	}
-	
-	
+
 }
-	

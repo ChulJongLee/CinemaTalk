@@ -20,20 +20,21 @@ import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
 public class KobisAPIImple implements KobisAPI {
 	private final SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyyMMdd");
 
-	
 	public List<KobisDTO> getMovieList(RequestDTO rdto) throws OpenAPIFault, Exception {
 		KobisOpenAPIRestService kobisService = new KobisOpenAPIRestService(rdto.getKobiskey());
 		String listResponse = kobisService.getMovieList(true, rdto.getCurPage(), rdto.getItemPerPage(),
 				rdto.getMovieNm(), "", "", "", "", "", "", new String[0]);
+		if (listResponse.contains("errorCode")) {
+			return new ArrayList<KobisDTO>();
+		}
 		Gson gson = new Gson();
 		JsonObject obj = gson.fromJson(listResponse, JsonObject.class);
-		System.out.println("getMovieList obj"+obj);
+		System.out.println("getMovieList obj" + obj);
 		KobisResponseDTO dto = gson.fromJson(obj.getAsJsonObject("movieListResult").toString(), KobisResponseDTO.class);
 		List<KobisDTO> list = dto.getMovieList();
 		return list;
 	}
 
-	
 	public void deleteMovieList(List<KobisDTO> list) {
 		for (int j = 0; j < list.size(); j++) {
 			if (list.get(j).getMovieNmEn()
@@ -45,7 +46,6 @@ public class KobisAPIImple implements KobisAPI {
 		}
 	}
 
-	
 	public List<KobisDTO> getMovieListPlus(List<KobisDTO> list, RequestDTO rdto) throws OpenAPIFault, Exception {
 		List<KobisDTO> result = new ArrayList<KobisDTO>();
 		KmdbAPI kmdbAPI = new KmdbAPIImple();
@@ -55,14 +55,15 @@ public class KobisAPIImple implements KobisAPI {
 			KobisDTO kobis = list.get(j);
 			rdto.setMovieCd(kobis.getMovieCd());
 			KobisDTO detail = getMovieDetail(rdto);
-		
+			System.out.println("detail..." + detail);
+			if (detail == null) {
+				return result;		//추가된 detail까지 result로 리턴
+			}
 			if (detail.getDirectors().size() != 0) {
 				director = getKor(detail.getDirectors().get(0).getPeopleNm());
-//				System.out.println(director);
-				String[] directornames=director.split(" ");
+				String[] directornames = director.split(" ");
 				director = directornames[0];
-//				System.out.println(director);
-				
+
 			}
 			rdto.setMovieNm(detail.getMovieNm());
 			rdto.setDirectorNm(director);
@@ -108,7 +109,6 @@ public class KobisAPIImple implements KobisAPI {
 
 	}
 
-	
 	public int getMovieCount(RequestDTO rdto) throws OpenAPIFault, Exception {
 		KobisOpenAPIRestService kobisService = new KobisOpenAPIRestService(rdto.getKobiskey());
 //		service.getMovieList(isJson, curPage, itemPerPage, movieNm, directorNm, openStartDt, openEndDt, prdtStartYear, prdtEndYear, repNationCd, movieTypeCdArr)
@@ -124,12 +124,15 @@ public class KobisAPIImple implements KobisAPI {
 		return Integer.parseInt(totalcount);
 	}
 
-	
 	public KobisDTO getMovieDetail(RequestDTO rdto) throws OpenAPIFault, Exception {
 		KobisOpenAPIRestService kobisService = new KobisOpenAPIRestService(rdto.getKobiskey());
 		KmdbAPI kmdbAPI = new KmdbAPIImple();
 		String detailResponse = "";
 		detailResponse = kobisService.getMovieInfo(true, rdto.getMovieCd());
+		System.out.println("detailResponse...." + detailResponse);
+		if (detailResponse.contains("errorCode")) {
+			return null;
+		}
 		Gson gson = new Gson();
 		JsonObject obj = gson.fromJson(detailResponse, JsonObject.class);
 //		System.out.println("서비스에서 디테일의 obj"+obj);
@@ -137,7 +140,7 @@ public class KobisAPIImple implements KobisAPI {
 				.getMovieInfo();
 		String movieNm = detail.getMovieNm();
 //		System.out.println(movieNm);
-		movieNm=getKor(movieNm);
+		movieNm = getKor(movieNm);
 		String director = "";
 		if (detail.getDirectors().size() != 0)
 			director = detail.getDirectors().get(0).getPeopleNm();
@@ -183,17 +186,26 @@ public class KobisAPIImple implements KobisAPI {
 		List<KobisDTO> result = new ArrayList<KobisDTO>();
 
 		rdto.setMovieNm(rdto.getKeyword());
-		int totalcount = getMovieCount(rdto);
-		//일 3000회 제한
-		int a = 63;	//63 할 차례
-		for (int i = a; i <= a; i++) {
-//		for (int i = a; i <= a+28; i++) {
+//		int totalcount = getMovieCount(rdto);		//이거 풀면 totalcount받아올때도 에러체크 해야함
+		// 일 3000회 제한
+		int a = 237; // 237 할 차례
+//		for (int i = a; i <= a; i++) {
+//		for (int i = a; i <= a + 2; i++) {
+		for (int i = a; i <= a+27; i++) {
 //		for (int i = 1; i <= (totalcount / 100) + 1; i++) {
 			rdto.setMovieNm(rdto.getKeyword());
 			rdto.setCurPage(String.valueOf(i));
 			List<KobisDTO> list = getMovieList(rdto);
+			if (list.size() == 0) {
+				System.out.println(i + "번째 페이지에서 에러발생");
+				return result;
+			}
 			deleteMovieList(list);
 			getMovieListPlus(list, rdto);
+			if (list.size() == 0) {
+				System.out.println(i + "번째 페이지에서 에러발생");
+				return result;
+			}
 			for (KobisDTO item : list) {
 				result.add(item);
 			}
@@ -205,15 +217,15 @@ public class KobisAPIImple implements KobisAPI {
 	}
 
 	public String getKor(String word) {
-		String[] wordlist=word.split("");
-		word="";
-		for(String item:wordlist) {
-			if(item.charAt(0)>122 || item.charAt(0)==32 || (item.charAt(0)>=48)&&item.charAt(0)<=57) {
-				word+=item;
+		String[] wordlist = word.split("");
+		word = "";
+		for (String item : wordlist) {
+			if (item.charAt(0) > 122 || item.charAt(0) == 32 || (item.charAt(0) >= 48) && item.charAt(0) <= 57) {
+				word += item;
 			}
 		}
-			
+
 		return word;
 	}
-	
+
 }
