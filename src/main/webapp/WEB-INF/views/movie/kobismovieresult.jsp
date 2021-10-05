@@ -13,12 +13,11 @@
 </head>
 <body>
 	<div id="boardWrap">
-		<h1>영화리스트</h1>
 		<p>검색 결과 : ${keyword } (${fn:length(list) }) </p>
 		<c:forEach var="item" items="${list}">
 			<div onclick="location.href='moviedetail/${item.movieCd }'">
 				<div class="poster">
-				<img alt="포스터" src="${item.poster}">
+				<img id="poster" alt="포스터" src="${item.poster}">
 				</div>
 				<div class="movieInfo">
 					<h1>${item.movieNm}</h1>

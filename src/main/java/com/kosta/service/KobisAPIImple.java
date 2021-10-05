@@ -29,7 +29,7 @@ public class KobisAPIImple implements KobisAPI {
 		}
 		Gson gson = new Gson();
 		JsonObject obj = gson.fromJson(listResponse, JsonObject.class);
-		System.out.println("getMovieList obj" + obj);
+//System.out.println("getMovieList obj" + obj);
 		KobisResponseDTO dto = gson.fromJson(obj.getAsJsonObject("movieListResult").toString(), KobisResponseDTO.class);
 		List<KobisDTO> list = dto.getMovieList();
 		return list;
@@ -55,7 +55,7 @@ public class KobisAPIImple implements KobisAPI {
 			KobisDTO kobis = list.get(j);
 			rdto.setMovieCd(kobis.getMovieCd());
 			KobisDTO detail = getMovieDetail(rdto);
-			System.out.println("detail..." + detail);
+//System.out.println("detail..." + detail);
 			if (detail == null) {
 				return result;		//추가된 detail까지 result로 리턴
 			}
@@ -87,7 +87,7 @@ public class KobisAPIImple implements KobisAPI {
 			String poster = "";
 			if (kmdbAPI.requestMoviePoster(rdto) != null)
 				poster = kmdbAPI.requestMoviePoster(rdto);
-			System.out.println(poster);
+//System.out.println(poster);
 			kobis.setPoster(poster);
 			if (detail.getAudits().size() != 0) {
 				String watchGrade = detail.getAudits().get(0).getWatchGradeNm();
@@ -129,7 +129,7 @@ public class KobisAPIImple implements KobisAPI {
 		KmdbAPI kmdbAPI = new KmdbAPIImple();
 		String detailResponse = "";
 		detailResponse = kobisService.getMovieInfo(true, rdto.getMovieCd());
-		System.out.println("detailResponse...." + detailResponse);
+//System.out.println("detailResponse...." + detailResponse);
 		if (detailResponse.contains("errorCode")) {
 			return null;
 		}
@@ -188,10 +188,10 @@ public class KobisAPIImple implements KobisAPI {
 		rdto.setMovieNm(rdto.getKeyword());
 //		int totalcount = getMovieCount(rdto);		//이거 풀면 totalcount받아올때도 에러체크 해야함
 		// 일 3000회 제한
-		int a = 237; // 237 할 차례
+		int a = 266; // 237 할 차례
 //		for (int i = a; i <= a; i++) {
-//		for (int i = a; i <= a + 2; i++) {
-		for (int i = a; i <= a+27; i++) {
+//		for (int i = a; i <= a + 1; i++) {
+		for (int i = a; i <= a+28; i++) {
 //		for (int i = 1; i <= (totalcount / 100) + 1; i++) {
 			rdto.setMovieNm(rdto.getKeyword());
 			rdto.setCurPage(String.valueOf(i));
