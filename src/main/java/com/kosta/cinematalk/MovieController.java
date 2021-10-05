@@ -57,7 +57,7 @@ public class MovieController {
 		model.addAttribute("detail", detail);
 
 //		return "/view.jsp?page=movie/moviedetail";
-		 return "/view.jsp?page=board/movieinfomain";
+		return "/view.jsp?page=movie/movieinfomain";
 	}
 
 }

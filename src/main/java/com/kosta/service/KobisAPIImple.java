@@ -29,7 +29,7 @@ public class KobisAPIImple implements KobisAPI {
 		}
 		Gson gson = new Gson();
 		JsonObject obj = gson.fromJson(listResponse, JsonObject.class);
-//System.out.println("getMovieList obj" + obj);
+System.out.println("getMovieList obj" + obj);
 		KobisResponseDTO dto = gson.fromJson(obj.getAsJsonObject("movieListResult").toString(), KobisResponseDTO.class);
 		List<KobisDTO> list = dto.getMovieList();
 		return list;
@@ -57,14 +57,22 @@ public class KobisAPIImple implements KobisAPI {
 			KobisDTO detail = getMovieDetail(rdto);
 //System.out.println("detail..." + detail);
 			if (detail == null) {
+				System.out.println("detail은 null입니다.");
 				return result;		//추가된 detail까지 result로 리턴
 			}
 			if (detail.getDirectors().size() != 0) {
-				director = getKor(detail.getDirectors().get(0).getPeopleNm());
-				String[] directornames = director.split(" ");
-				director = directornames[0];
+				String getname=detail.getDirectors().get(0).getPeopleNm();
+				//감독명이 영문만 있을 경우 그대로 사용
+				if(!getType(getname))
+					director = getKor(getname);
+				else
+					director = getname;
+//			System.out.println(getname);
+					String[] directornames = director.split(" ");
+					director = directornames[0];
 
 			}
+//System.out.println("kobis에서 제목:"+detail.getMovieNm());
 			rdto.setMovieNm(detail.getMovieNm());
 			rdto.setDirectorNm(director);
 
@@ -128,6 +136,7 @@ public class KobisAPIImple implements KobisAPI {
 		KobisOpenAPIRestService kobisService = new KobisOpenAPIRestService(rdto.getKobiskey());
 		KmdbAPI kmdbAPI = new KmdbAPIImple();
 		String detailResponse = "";
+//System.out.println("detail에서 코드..."+rdto.getMovieCd());
 		detailResponse = kobisService.getMovieInfo(true, rdto.getMovieCd());
 //System.out.println("detailResponse...." + detailResponse);
 		if (detailResponse.contains("errorCode")) {
@@ -140,7 +149,7 @@ public class KobisAPIImple implements KobisAPI {
 				.getMovieInfo();
 		String movieNm = detail.getMovieNm();
 //		System.out.println(movieNm);
-		movieNm = getKor(movieNm);
+//		movieNm = getKor(movieNm);
 		String director = "";
 		if (detail.getDirectors().size() != 0)
 			director = detail.getDirectors().get(0).getPeopleNm();
@@ -188,10 +197,10 @@ public class KobisAPIImple implements KobisAPI {
 		rdto.setMovieNm(rdto.getKeyword());
 //		int totalcount = getMovieCount(rdto);		//이거 풀면 totalcount받아올때도 에러체크 해야함
 		// 일 3000회 제한
-		int a = 266; // 237 할 차례
+		int a = 293; // 237 할 차례
 //		for (int i = a; i <= a; i++) {
-//		for (int i = a; i <= a + 1; i++) {
-		for (int i = a; i <= a+28; i++) {
+		for (int i = a; i <= a + 4; i++) {
+//		for (int i = a; i <= a+28; i++) {
 //		for (int i = 1; i <= (totalcount / 100) + 1; i++) {
 			rdto.setMovieNm(rdto.getKeyword());
 			rdto.setCurPage(String.valueOf(i));
@@ -226,6 +235,21 @@ public class KobisAPIImple implements KobisAPI {
 		}
 
 		return word;
+	}
+	
+	public boolean getType(String word) {
+		//모두 영어이면 true 리턴하게 코드 짜야함
+		boolean result=true;
+		 for(int i=0;i<word.length();i++) {
+			int index = word.charAt(i);
+				//영어와 띄어쓰기로만 이루어져있지 않으면 false
+				if(!(index<=122&&index>=65)&&index!=32) {
+					result=false;
+					return result;
+				}
+				
+		}
+		 return result;
 	}
 
 }

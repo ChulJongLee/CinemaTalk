@@ -8,7 +8,10 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
+<link rel="stylesheet" href="/resources/css/kobisrank.css">
 </head>
 <body>
 	<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -52,23 +55,20 @@
 
 	<div class="row">
 		<p>영화순위</p>
-	
-		<c:forEach var="item" items="${list}">
-			<div>
-				<a href="moviedetail/${item.movieCd }">
-						<!-- <div style="background-color: yellow; width: 150px; height: 200px"></div> -->
-						<img alt="포스터" src="${item.poster }" width="150px" height="200px">
-						<%-- 해당일자의 박스오피스 순위 : ${item.rank}<br>
-						영화의 개봉일 : ${item.openDt}<br>
-						누적관객수 : ${item.audiAcc}<br>
-						해당일의 관객수 : ${item.audiCnt}<br> --%>
-						<div class="col-2 text-truncate">${item.movieNm}<br></div>
-				</a>
-			</div>
-		</c:forEach>
+		
+		<div id="test-slide" class="swiper-container">
+ 			<ul class="swiper-wrapper">
+				<c:forEach var="item" items="${list}">
+					<li class="swiper-slide" onclick="location.href='moviedetail/${item.movieCd }'">
+		    			<img alt="포스터" src="${item.poster }" width="150px" height="200px"><br>
+						<div class="col-2 text-truncate">${item.movieNm}</div>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
 	</div>
 	
-	 <script src="js/rank.js"></script> 
+	 <script src="/js/rank.js"></script> 
 	
 </body>
 </html>
