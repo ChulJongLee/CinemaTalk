@@ -17,4 +17,6 @@ public interface UserService {
 	public void updateuser(UserDTO dto);
 	//아이디 중복체크
 	public int idcheck(UserDTO dto);
+	//로그인
+	public UserDTO userlogin(UserDTO dto);
 }

@@ -29,12 +29,6 @@
   	where user_id=#{user_id}
   </select>
   
-  <!-- 로그인 기능 -->
-  <select id="userlogin" resultType="com.kosta.dto.UserDTO">
-  	select user_id, user_pwd from user_info
-  	where user_id=#{user_id} and user_pwd=#{user_pwd}
-  </select>
-  
   <delete id="deleteuser" parameterType="int">
   	delete from user_info
   	where user_no=#{user_no}

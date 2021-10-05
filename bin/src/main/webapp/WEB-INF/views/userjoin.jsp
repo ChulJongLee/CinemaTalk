@@ -77,75 +77,6 @@
          gapi.auth2.getAuthInstance().disconnect(); 
       }
     </script>
-    <script type="text/javascript">
-    	function idcheck(){
-    		$.ajax({
-    			url:"/cinematalk/idcheck",
-    			type:"post",
-    			dataType:"json",
-    			data:{"user_id":$("#user_id").val()},
-    			success:function(data){
-    				if(data == 1){
-    					alert("중복된 아이디입니다.");
-    				}else if(data == 0){
-    					$("#idcheck").attr("value","Y");
-    					alert("사용가능한 아이디입니다.")
-    				}
-    			}
-    		});
-    	}
-    </script>
-    <script type="text/javascript">
-		$(document).ready(function(){
-
-			$("#submit").on("click", function(){
-				if($("#user_id").val()==""){
-					alert("아이디를 입력해주세요.");
-					$("#user_id").focus();
-					return false;
-				}
-				if($("#user_pwd").val()==""){
-					alert("비밀번호를 입력해주세요.");
-					$("#user_pwd").focus();
-					return false;
-				}
-				if($("#user_pwd2").val()==""){
-					alert("비밀번호확인을 입력해주세요.");
-					$("#user_pwd2").focus();
-					return false;
-				}
-				if($("#user_nickname").val()==""){
-					alert("닉네임을 입력해주세요.");
-					$("#user_nickname").focus();
-					return false;
-				}
-				if($("#user_email").val()==""){
-					alert("이메일을 입력해주세요.");
-					$("#user_email").focus();
-					return false;
-				}
-				if($("#user_bdate").val()==""){
-					alert("생일을 입력해주세요.");
-					$("#user_bdate").focus();
-					return false;
-				}
-				if($("#idcheck").val()=="Y"){
-					alert("회원가입을 축하드립니다.");
-					return false;
-				}
-			});
-		})
-		function passwordCheckFunction(){
-			var user_pwd = $("#user_pwd").val();
-			var user_pwd2 = $("#user_pwd2").val();
-			if(user_pwd != user_pwd2){
-				$("#passwordCheckMessage").html("비밀번호가 서로 일치하지 않습니다.");
-			}else{
-				$("#passwordCheckMessage").html("");
-				}
-			}
-	</script>
-    
 </head>
 <body>
 	<div class="container">
@@ -159,31 +90,31 @@
 				<tbody>
 					<tr>
 						<td style="width: 110px;"><h5>아이디</h5></td>
-						<td><input class="form-control" type="text" id="user_id" name="user_id" maxLength="20" placeholder="아이디를 입력하세요"></td>
-						<td style="width: 110px;"><button class="btn btn-primary" onclick="idcheck();" type="button" value="N">중복체크</button></td>
+						<td><input class="form-control" type="text" id="user_id" name="user_id" maxLength="20"></td>
+						<td style="width: 110px;"><button class="btn btn-primary" onclick="registerCheckFunction();" type="button">중복체크</button></td>
 					</tr>
 					<tr>
 						<td style="width: 110px;"><h5>비밀번호</h5></td>
-						<td><input class="form-control" type="password" id="user_pwd" name="user_pwd" onkeyup="passwordCheckFunction();" maxLength="20" placeholder="비밀번호를를 입력하세요"></td>
+						<td><input class="form-control" type="password" id="user_pwd" name="user_pwd" maxLength="20"></td>
 					</tr>
 					<tr>
 						<td style="width: 110px;"><h5>비밀번호 확인</h5></td>
-						<td><input class="form-control" type="password" id="user_pwd2" name="user_pwd2" onkeyup="passwordCheckFunction();" maxLength="20" placeholder="동일한 비밀번호를 입력하세요"></td>
+						<td><input class="form-control" type="password" id="user_pwd2" name="user_pwd2" maxLength="20"></td>
 					</tr>
 					<tr>
 						<td style="width: 110px;"><h5>닉네임</h5></td>
-						<td><input class="form-control" type="text" id="user_nickname" name="user_nickname" maxLength="20" placeholder="닉네임을 입력하세요"></td>
+						<td><input class="form-control" type="text" id="user_nickname" name="user_nickname" maxLength="20"></td>
 					</tr>
 					<tr>
 						<td style="width: 110px;"><h5>이메일</h5></td>
-						<td><input class="form-control" type="email" id="user_email" name="user_email" maxLength="20" placeholder="이메일을 입력하세요"></td>
+						<td><input class="form-control" type="email" id="user_email" name="user_email" maxLength="20"></td>
 					</tr>
 					<tr>
 						<td style="width: 110px;"><h5>생일</h5></td>
-						<td><input class="form-control" type="text" id="user_bdate" name="user_bdate" maxLength="20" placeholder="ex)2000-01-01"></td>
+						<td><input class="form-control" type="text" id="user_bdate" name="user_bdate" maxLength="20"></td>
 					</tr>
 					<tr>
-						<td style="text-align: right" colspan="3"><h5 style="color:red;" id="passwordCheckMessage"></h5><input class="btn btn-primary pull-right" id="submit" type="submit" value="회원가입"></td>
+						<td style="text-align: middle" colspan="3"><input class="btn btn-primary pull-right" type="submit" value="회원가입"></td>
 					</tr>
 					<tr>
 					<a href="javascript:kakaoLogin();"><img src="${pageContext.servletContext.contextPath }/resources/dist/img/kakao_login_medium_narrow.png"></a>

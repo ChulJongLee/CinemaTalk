@@ -20,5 +20,7 @@ public interface UserMapper {
 	public void updateuser(UserDTO dto);
 	
 	public int idcheck(UserDTO dto);
+	
+	public UserDTO userlogin(UserDTO dto);
 
 }
