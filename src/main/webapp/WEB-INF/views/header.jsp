@@ -12,8 +12,7 @@
 	<header>
 		<div id="headerwrap">
 			<div id="logo">
-				<a href="#"> <img src="resources/img/SANAI.png" alt="logo" width="70px">
-				</a>
+				<a href="#"> <img src="resources/img/SANAI.png" alt="logo" width="70px"></a>
 			</div>
 	
 			<div id="home">

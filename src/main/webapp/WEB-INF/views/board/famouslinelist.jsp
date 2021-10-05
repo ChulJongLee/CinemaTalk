@@ -28,7 +28,7 @@
 		 <c:if test="${allfamousline!=null }">
 			<c:forEach var="list" items="${allfamousline }">
 				<table class="allreviewtable">
-					<tr><td colspan="3">${list.userno }</td><td id="date">${list.writedate }</td></tr>
+					<tr><td colspan="3" width="30%">${list.userid }아이디자리</td><td id="date">${list.writedate }</td></tr>
 					<tr><td colspan="4" id="content">${list.contents }</td></tr>
 					<tr><td width="10%">${list.like }</td><td width="10%">${list.dislike }</td><td colspan="2" id="report">신고</td></tr>
 				</table>

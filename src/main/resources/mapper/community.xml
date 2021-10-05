@@ -61,28 +61,31 @@
   
 <!-- 리뷰 페이지 쿼리 -->
 <select id="getreview" resultMap="reviewdto">
-	select user_no, content_date, content_content, content_like, content_hate
-	from comm_board
+	select user_id, e1.user_no, content_date, content_content, content_like, content_hate
+	from comm_board e1 inner join user_info e2
+    on e1.user_no=e2.user_no
 	where board_distinct_no = 1
-	order by content_like DESC
-	limit 2
+	order by content_date DESC, content_like DESC
+	limit 2;
 </select>
 
 
 <select id="getgeneralreview" resultMap="reviewdto">
-	select user_no, content_date, content_content, content_like, content_hate
-	from comm_board
+	select user_id, e1.user_no, content_date, content_content, content_like, content_hate
+	from comm_board e1 inner join user_info e2
+    on e1.user_no=e2.user_no
 	where board_distinct_no = 1
-	order by content_date DESC
+	order by content_date DESC, content_like DESC
 	limit 4
 </select>
 
 
 <select id="getallreview" resultMap="reviewdto">
-	select user_no, content_date, content_content, content_like, content_hate
-	from comm_board
+	select user_id, e1.user_no, content_date, content_content, content_like, content_hate
+	from comm_board e1 inner join user_info e2
+    on e1.user_no=e2.user_no
 	where board_distinct_no = 1
-	order by content_date DESC
+	order by content_date DESC, content_like DESC
 </select>
 
 

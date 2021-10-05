@@ -81,7 +81,6 @@
     justify-content: center;
 }
 
-
 #date{
     text-align: right;
 }
@@ -90,6 +89,8 @@
 }
 #content{
 	text-align: left;
+	vertical-align: baseline;
+	height: 100px;
 }
 table{
  	border: 1px solid blue;
@@ -97,14 +98,11 @@ table{
  	margin: 15px 30px;
  }
 tr td{
-	height: 20px;
-}
-tr td{
- 	border: 1px solid black;
+	border: 1px solid black;
  	text-align: center;
  }
 tr th{
- 	border: 1px solid black;
+ 	/* border: 1px solid black; */
  	text-align: center;
  }
 
@@ -127,17 +125,4 @@ tr th{
     display: inline-block;
     margin-left: 570px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
