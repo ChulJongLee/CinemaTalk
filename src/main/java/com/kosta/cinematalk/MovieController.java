@@ -56,7 +56,8 @@ public class MovieController {
 		KobisDTO detail = movieService.getMovieDetail(movieCd);
 		model.addAttribute("detail", detail);
 
-		return "/view.jsp?page=movie/moviedetail";
+//		return "/view.jsp?page=movie/moviedetail";
+		 return "/view.jsp?page=board/movieinfomain";
 	}
 
 }

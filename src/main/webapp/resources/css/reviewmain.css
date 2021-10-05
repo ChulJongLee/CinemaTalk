@@ -73,12 +73,14 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    color: white;
 }
 .generalreview{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    color: white;
 }
 
 #date{
@@ -116,6 +118,7 @@ tr th{
     margin: 0px auto;
     display: flex;
     justify-content: center;
+    color: white;
 }
 .form-label{
     border: 2px solid yellow;

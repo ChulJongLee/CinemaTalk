@@ -55,20 +55,22 @@
 
     <!-- ******** 리뷰 쓰기 ******** -->
     <div id="writereview">
-        <div class="mb-3">
 
-            <label for="exampleFormControlTextarea1" class="form-label">리뷰 쓰기</label>
+	        <div class="mb-3">
+	
+	            <label for="exampleFormControlTextarea1" class="form-label">리뷰 쓰기</label>
+	
+	            <div class="form-check form-switch" id="form-switch">
+	                <label class="form-check-label" for="flexSwitchCheckDefault">스포일러 여부</label>
+	                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">            
+	            </div>
+	
+	            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="width: 800px; margin-bottom: 5px;"></textarea>
+	            <div class="d-grid gap-2">
+	                <button class="btn btn-primary" type="submit">리뷰 등록</button>
+	            </div>
+	        </div>
 
-            <div class="form-check form-switch" id="form-switch">
-                <label class="form-check-label" for="flexSwitchCheckDefault">스포일러 여부</label>
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">            
-            </div>
-
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="width: 800px; margin-bottom: 5px;"></textarea>
-            <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button">리뷰 등록</button>
-            </div>
-        </div>
     </div>    
     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
