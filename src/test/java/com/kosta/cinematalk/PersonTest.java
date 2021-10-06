@@ -16,14 +16,14 @@ import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src\\main\\webapp\\WEB-INF\\spring\\root-context.xml")
 public class PersonTest {
-//	@Resource(name="personSearchAPIImple")
-//	private PersonServiceImple personSearchAPI;
+	@Resource(name="personServiceImple")
+	private PersonServiceImple personServiceImple;
 
-	
-//	@Test
-//	   public void test1() throws OpenAPIFault, Exception {
-//	      personSearchAPI.addPersonPic();
-//	   }
+
+	@Test
+	public void test1() throws OpenAPIFault, Exception {
+		personServiceImple.insertPersonInfo("");
+	}
 	
 
 }

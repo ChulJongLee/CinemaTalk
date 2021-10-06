@@ -101,7 +101,8 @@ public class CrawlPersonInfoImple implements CrawlPersonInfo {
 		for(String item : wordarr) {
 			title += getWord(item);
 		}
-		String url = "https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&mra=bkEw&pkid=68&os=&qvt=0&query=" + title + "%20%EC%B6%9C%EC%97%B0%EC%A7%84";
+
+		String url = "https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&mra=bkEw&pkid=68&os=&qvt=0&query=%EC%98%81%ED%99%94%20" + title + "%20%EC%B6%9C%EC%97%B0%EC%A7%84";
 
 		Document doc = Jsoup.connect(url).get();
 		Elements menu = doc.select("div.title_box>strong.name._ellpisis>span._text");
