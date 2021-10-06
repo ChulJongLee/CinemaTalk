@@ -9,27 +9,35 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kosta.dto.KobisDTO;
 import com.kosta.dto.PageBlock;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.service.CommunityService;
 import com.kosta.service.CommunityServiceImple;
+import com.kosta.service.MovieService;
+
+import lombok.RequiredArgsConstructor;
 
 @Controller
+//@RequiredArgsConstructor
 public class CommunityController {
 
 	@Resource(name = "reviewservice")
 	private CommunityService service;
 	
-	
-	
+//	private final MovieService movieService;
 	
 	
 	// 영화 정보 메인 페이지                   
 	@RequestMapping("/movieinfomain")
 	public String movieInfoMain() {
+		
+		
 		
 		
 //		return "movieinfomain";
@@ -40,6 +48,9 @@ public class CommunityController {
 	// 리뷰 메인 페이지
 	@RequestMapping("/reviewmain")
 	public String reviewMain(Model model) {
+		
+//		KobisDTO detail = movieService.getMovieDetail(movieCd);
+//		model.addAttribute("detail", detail);
 		
 		// 베스트 리뷰 2개
 		List<ReviewDTO> bestreviewlist = service.reviewList();
@@ -92,8 +103,11 @@ public class CommunityController {
 	}
 	
 	// 리뷰 디테일 페이지
-	@RequestMapping("/reviewdetail")
-	public String reviewDetail(Model model) {
+	@RequestMapping(value = "/reviewdetail/{contentno}", method = RequestMethod.GET)
+	public String reviewDetail(@PathVariable int contentno, Model model) {
+		
+		ReviewDTO dto = service.reviewdetail(contentno);
+		model.addAttribute("revdetail", dto);
 		
 //		return "reviewdetail";
 		return "/view.jsp?page=board/reviewdetail";
@@ -101,7 +115,6 @@ public class CommunityController {
 	}
 	
 	
-
 	
 	// 참여 게시판 메인 페이지
 	@RequestMapping("/bestscenemain")
@@ -186,8 +199,7 @@ public class CommunityController {
 		
 		List<ReviewDTO> alluserforum = service.allUserForum();
 		model.addAttribute("alluserforum", alluserforum);
-		
-		
+
 		
 //		return "userforumlist";
 		return "/view.jsp?page=board/userforumlist";

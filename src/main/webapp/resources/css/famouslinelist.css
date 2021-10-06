@@ -8,43 +8,78 @@ section{
 }
 
 #allreview{
-    display: flex;
+	border: 2px solid purple;
+/*     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    width: 90%;
+    margin: 0px auto; */
     color: white;
 }
-/* 
-.allreviewtable{
-    border: 1px solid blue;
-    width: 90%;
-    margin: 15px 30px;
-}
- */
  
- 
-#date{
-    text-align: right;
-}
-#report{
-    text-align: right;
-}
-#content{
-	text-align: left;
-	vertical-align: baseline;
-	height: 50px;
+#contentslist{
+	list-style: none;
+	border: 2px solid purple;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-table{
- 	border: 1px solid blue;
- 	width: 90%;
- 	margin: 15px 30px;
- }
-tr td{
- 	border: 1px solid black;
- 	text-align: center;
- }
-tr th{
- 	border: 1px solid black;
- 	text-align: center;
- }
+#contents{
+	border: 2px solid blue;
+	width: 80%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin: 10px 0px;
+}
+#id, #date, #content, #like, #dislike, #report{
+	border: 2px solid yellow;
+}
+
+#contentslist{
+	border: 2px solid green;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	list-style: none;
+}
+#contents{
+	border: 2px solid blue;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	width: 40%;
+	margin: 20px 0px;
+}
+
+#id, #date, #content, #like, #dislike, #report{
+	border: 2px solid yellow;
+}
+
+#content{
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	margin: 10px 0px;
+}
+#id{
+	width: 70%;
+}
+#date{
+	width: 30%;
+	text-align: right;
+}
+#like, #dislike{
+	width: 20%;
+	text-align: center;
+}
+#report{
+	width: 60%;
+	text-align: right;
+}

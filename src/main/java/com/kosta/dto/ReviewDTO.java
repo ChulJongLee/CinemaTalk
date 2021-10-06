@@ -12,6 +12,7 @@ import lombok.ToString;
 @ToString
 public class ReviewDTO {
 	
+	private int contentno;
 	private int userno;
 	private String userid;
 	private String title;

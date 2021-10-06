@@ -114,6 +114,13 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.getalluserforum();
 	}
 
+
+	@Override
+	public ReviewDTO reviewdetail(int contentno) {
+
+		return mapper.reviewdetail(contentno);
+	}
+
 	
 	
 }

@@ -28,6 +28,8 @@ public interface CommunityMapper {
 
 	public List<ReviewDTO> getalluserforum();
 
+	public ReviewDTO reviewdetail(int contentno);
+
 
 
 	

@@ -22,14 +22,20 @@
        		<c:if test="${bestreviewlist==null }">              		
          		자료가 없습니다.
          	</c:if>
+         	
          	<c:if test="${bestreviewlist!=null }">
+         	<ul id="contentslist">
          		<c:forEach var="list" items="${bestreviewlist }">
-					<table class="bestreviewtable">
-						<tr><td colspan="3" width="30%">${list.userid }</td><td id="date">${list.writedate }</td></tr>
-						<tr><td id="content" colspan="4">${list.contents }</td></tr>
-						<tr><td width="10%">${list.like }</td><td width="10%">${list.dislike }</td><td colspan="2" id="report">신고</td></tr>
-					</table>
+					<li id="contents">
+						<div id="id">${list.userid }</div>
+						<div id="date">${list.writedate }</div>
+						<div id="content">${list.contents }</div>
+						<div id="like">${list.like }</div>
+						<div id="dislike">${list.dislike }</div>
+						<div id="report"><button>신고</button> </div>					
+					</li>				
 				</c:forEach>
+			</ul>
          	</c:if>                            
         </div>
     </section>
@@ -41,14 +47,20 @@
        		<c:if test="${generalreviewlist==null }">              		
          		자료가 없습니다.
          	</c:if>
+         	
          	<c:if test="${generalreviewlist!=null }">
+         	<ul id="contentslist">
          		<c:forEach var="list" items="${generalreviewlist }">
-					<table class="bestreviewtable">
-						<tr><td colspan="3" width="30%">${list.userid }</td><td id="date">${list.writedate }</td></tr>
-						<tr><td id="content" colspan="4">${list.contents }</td></tr>
-						<tr><td width="10%">${list.like }</td><td width="10%">${list.dislike }</td><td colspan="2" id="report">신고</td></tr>
-					</table>
+					<li id="contents">
+						<div id="id">${list.userid }</div>
+						<div id="date">${list.writedate }</div>
+						<div id="content">${list.contents }</div>
+						<div id="like">${list.like }</div>
+						<div id="dislike">${list.dislike }</div>
+						<div id="report">신고</div>					
+					</li>					
 				</c:forEach>
+			</ul>	
          	</c:if>                            
         </div>
     </section>

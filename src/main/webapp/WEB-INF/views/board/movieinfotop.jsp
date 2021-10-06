@@ -11,6 +11,7 @@
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+
  <!-- ******** 영화 정보 ********* -->
 <!--     <div id="movieview">
         <div id="movieinfotop">
@@ -28,13 +29,14 @@
         </div>
     </div> -->
     
+    
         <div id="movieview">
 	        <div id="movieinfotop">
 	            <ul id="movieinfotop2">
 	                <li><span>${detail.movieNm} : ${detail.movieNmEn} </span><span>평점 </span><span>인원</span></li>
 	                <li><span>${detail.openDt} </span><span>${detail.watchGradeNm}세 </span><span>${detail.showTm }분</span></li>
 	                <li><span>장르명 : 
-	                            <c:forEach var="item" items="${detail.genres }">
+	                        <c:forEach var="item" items="${detail.genres }">
 	                           ${item.genreNm } 
 	                        </c:forEach></span></li>
 	                <li><span>출연배우 : 
@@ -47,17 +49,9 @@
 	                <li>별별별별</li>
 	            </ul>
 	        </div>
-    	</div>
-    
-    
-    
-
-
-
-
-
-
-
+    	</div>  
+    	
+		
     <!-- ******** 카테고리 ******** -->
     <nav>
         <input type="button" value="영화정보" id="info" class="category">

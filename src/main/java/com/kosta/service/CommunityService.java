@@ -24,5 +24,7 @@ public interface CommunityService {
 	
 	
 	public List<ReviewDTO> allUserForum();
+	
+	public ReviewDTO reviewdetail(int contentno);
 
 }

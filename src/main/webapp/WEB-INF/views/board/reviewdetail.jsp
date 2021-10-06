@@ -14,12 +14,22 @@
 	<%@ include file="movieinfotop.jsp" %>
 	
 	
+	<section>
+		<div id="detailwrap">
+			<ul>
+				<li>
+					<div id="id">${revdetail.userid }</div>
+					<div id="date">${revdetail.writedate }</div>
+					<div id="content">${revdetail.contents }</div>
+					<div id="like">${revdetail.like }</div>
+					<div id="dislike">${revdetail.dislike }</div>
+					<div id="report">신고</div>	
+				</li>	
+			</ul>	
+		</div>
+	</section>
 	
 	
-	
-	
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>

@@ -10,8 +10,6 @@
  <link rel="stylesheet" href="resources/css/reviewall.css">
 </head>
 <body>
-	<!-- 헤더  -->
-	<%-- <%@ include file="header.jsp" %> --%>
 	<!-- 영화정보 & 카테고리 -->
 	<%@ include file="movieinfotop.jsp" %>
 	
@@ -23,13 +21,18 @@
 	        	자료가 없습니다.
 	     </c:if>
 		 <c:if test="${allreview!=null }">
-			<c:forEach var="list" items="${allreview }">
-				<table class="allreviewtable">
-					<tr><td colspan="3" width="30%">${list.userid }아이디자리</td><td id="date">${list.writedate }</td></tr>
-					<tr><td colspan="4" id="content">${list.contents }</td></tr>
-					<tr><td width="10%">${list.like }</td><td width="10%">${list.dislike }</td><td colspan="2" id="report">신고</td></tr>
-				</table>
-			</c:forEach>
+		 	<ul id="contentslist">
+				<c:forEach var="list" items="${allreview }">
+					<li id="contents">
+						<div id="id">${list.userid }id</div>
+						<div id="date">${list.writedate }</div>
+						<div id="content">${list.contents }</div>
+						<div id="like">${list.like }</div>
+						<div id="dislike">${list.dislike }</div>
+						<div id="report">신고</div>					
+					</li>		
+				</c:forEach>
+			</ul>
 		 </c:if>
 		</div>
 	</section>
@@ -91,8 +94,6 @@
 </nav>	
 
 
-	<!-- 푸터  -->
-	<%-- <%@ include file="footer.jsp" %> --%>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>

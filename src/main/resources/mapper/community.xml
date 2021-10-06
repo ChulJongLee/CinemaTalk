@@ -8,6 +8,7 @@
 <parameterMap type="java.util.HashMap" id="hashmap"/>
   
   <resultMap type="com.kosta.dto.ReviewDTO" id="reviewdto">
+  	<result column="content_no" property="contentno" />
   	<result column="user_no" property="userno" />
   	<result column="user_id" property="userid" />
   	<result column="content_title" property="title" />
@@ -15,6 +16,8 @@
   	<result column="content_content" property="contents" />
   	<result column="content_like" property="like" />
   	<result column="content_hate" property="dislike" /> 
+
+  	
   </resultMap>
   
 
@@ -59,7 +62,7 @@
   
   
   
-<!-- 리뷰 페이지 쿼리 -->
+<!-- 리뷰 페이지 베스트 리뷰 -->
 <select id="getreview" resultMap="reviewdto">
 	select user_id, e1.user_no, content_date, content_content, content_like, content_hate
 	from comm_board e1 inner join user_info e2
@@ -69,7 +72,7 @@
 	limit 2;
 </select>
 
-
+<!-- 리뷰 페이지 일반 리뷰 -->
 <select id="getgeneralreview" resultMap="reviewdto">
 	select user_id, e1.user_no, content_date, content_content, content_like, content_hate
 	from comm_board e1 inner join user_info e2
@@ -79,7 +82,7 @@
 	limit 4
 </select>
 
-
+<!-- 리뷰 페이지 모든 리뷰 -->
 <select id="getallreview" resultMap="reviewdto">
 	select user_id, e1.user_no, content_date, content_content, content_like, content_hate
 	from comm_board e1 inner join user_info e2
@@ -89,7 +92,7 @@
 </select>
 
 
-<!-- 참여 게시판 메인 쿼리 -->
+<!-- 참여 게시판 메인 명대사 -->
 <select id="getfamousline" resultMap="reviewdto">
 	select user_no, content_date, content_content, content_like, content_hate
 	from comm_board
@@ -99,7 +102,7 @@
 </select>
 
 
-<!-- 참여 게시판 명대사 리스트 쿼리 -->
+<!-- 참여 게시판 모든 명대사 -->
 <select id="getallfamousline" parameterMap="hashmap" resultMap="reviewdto">
 	select A.*
 	from (select S.*, @rownum:=@rownum+1 as rn
@@ -122,6 +125,17 @@
 	order by content_date DESC
 </select>
 
+  
+<select id="reviewdetail" resultMap="reviewdto">
+	
+	select user_id, content_date, content_content, content_like, content_hate
+	from comm_board
+	where content_no=#{contentno}
+
+
+
+</select>
+  
   
   
 </mapper>
