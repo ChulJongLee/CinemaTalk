@@ -56,7 +56,13 @@
 		
 		
 	</insert>
-  
+  	<select id="getrandomlist" resultType="com.kosta.dto.KobisDTO">
+		select movieCd, movieNm, plotText, genreNm, repNationNm, openDt, watchGradeNm, showTm, poster
+		from movie_info
+		where poster!="" and openDt!="" and plotText!=""
+		order by rand() limit 10
+		
+	</select>
   
   
   

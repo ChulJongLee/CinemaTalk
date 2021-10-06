@@ -54,5 +54,11 @@ public class MovieTest {
 		System.out.println(dto.getMovieCd()+", "+dto.getMovieNm());
 	}
 	
+	@Test
+	public void getRandList() {
+		List<KobisDTO> list=movieService.getRandomList();
+		System.out.println(list.size());
+	}
+	
 	
 }

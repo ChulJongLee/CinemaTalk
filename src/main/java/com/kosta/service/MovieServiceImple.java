@@ -58,6 +58,12 @@ public class MovieServiceImple implements MovieService {
 		// TODO Auto-generated method stub
 		return mapper.getmovielist(keyword);
 	}
+	
+	@Override
+	public List<KobisDTO> getRandomList(){
+		// TODO Auto-generated method stub
+		return mapper.getrandomlist();
+	}
 
 	@Override
 	public void insertRank(RequestDTO rdto) throws OpenAPIFault, Exception {

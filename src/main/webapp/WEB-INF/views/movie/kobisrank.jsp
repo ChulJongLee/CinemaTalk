@@ -4,71 +4,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+ 
+	<link rel="stylesheet" href="/resources/css/kobisrank.css">
 
-<link rel="stylesheet" href="/resources/css/kobisrank.css">
-</head>
-<body>
-	<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-	  <div class="carousel-indicators">
-	    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-	    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-	    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-	  </div>
-	  <div class="carousel-inner">
-	    <div class="carousel-item active">
-	      <img src="/resources/image/black.jpg" class="d-block w-100" alt="검은배경1">
-	      <div class="carousel-caption d-none d-md-block">
-	        <h5>First slide label</h5>
-	        <p>Some representative placeholder content for the first slide.</p>
-	      </div>
-	    </div>
-	    <div class="carousel-item">
-	      <img src="/resources/image/black.jpg" class="d-block w-100" alt="검은배경2">
-	      <div class="carousel-caption d-none d-md-block">
-	        <h5>Second slide label</h5>
-	        <p>Some representative placeholder content for the second slide.</p>
-	      </div>
-	    </div>
-	    <div class="carousel-item">
-	      <img src="/resources/image/black.jpg" class="d-block w-100" alt="검은배경3">
-	      <div class="carousel-caption d-none d-md-block">
-	        <h5>Third slide label</h5>
-	        <p>Some representative placeholder content for the third slide.</p>
-	      </div>
-	    </div>
-	  </div>
-	  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	    <span class="visually-hidden">Previous</span>
-	  </button>
-	  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	    <span class="visually-hidden">Next</span>
-	  </button>
-	</div>
-
-	<div class="row">
-		<p>영화순위</p>
-		
-		<div id="test-slide" class="swiper-container">
- 			<ul class="swiper-wrapper">
-				<c:forEach var="item" items="${list}">
-					<li class="swiper-slide" onclick="location.href='moviedetail/${item.movieCd }'">
-		    			<img alt="포스터" src="${item.poster }" width="150px" height="200px"><br>
-						<div class="col-2 text-truncate">${item.movieNm}</div>
-					</li>
-				</c:forEach>
-			</ul>
-		</div>
-	</div>
-	
-	 <script src="/js/rank.js"></script> 
-	
-</body>
+  <body>
+	  <!-- Swiper -->
+    <div class="swiper banner">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img alt="포스터" src="https://movie-phinf.pstatic.net/20210820_154/16294355415011sxk1_JPEG/movie_image.jpg?type=m665_443_2"></div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+        <div class="swiper-slide">Slide 6</div>
+        <div class="swiper-slide">Slide 7</div>
+        <div class="swiper-slide">Slide 8</div>
+        <div class="swiper-slide">Slide 9</div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+	  
+    <!-- Swiper -->
+   <h3>박스 오피스 순위</h3>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+       <c:forEach var="item" items="${list}">
+	     		 <div class="swiper-slide" onclick="location.href='moviedetail/${item.movieCd }'">
+		    			<img alt="포스터" src="${item.poster }"><br>
+		    			<span class="col-10 text-truncate">${item.movieNm}</span>
+		    			<div class="rank">${item.rank }</div>
+				</div>
+				
+			</c:forEach>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <!-- <div class="swiper-pagination"></div> -->
+    </div>
+    <h3>평점 순위</h3>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+       <c:forEach var="item" items="${randomList}">
+	     		 <div class="swiper-slide" onclick="location.href='moviedetail/${item.movieCd }'">
+		    			<img alt="포스터" src="${item.poster }"><br>
+		    			<span class="col-10 text-truncate">${item.movieNm}</span>
+				</div>
+			</c:forEach>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    <h3>내가 관심있는 영화</h3>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+       <c:forEach var="item" items="${randomList}">
+	     		 <div class="swiper-slide" onclick="location.href='moviedetail/${item.movieCd }'">
+		    			<img alt="포스터" src="${item.poster }"><br>
+		    			<span class="col-10 text-truncate">${item.movieNm}</span>
+				</div>
+			</c:forEach>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+	<h3>랜덤 영화</h3>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+       <c:forEach var="item" items="${randomList}">
+	     		 <div class="swiper-slide" onclick="location.href='moviedetail/${item.movieCd }'">
+		    			<img alt="포스터" src="${item.poster }"><br>
+		    			<span class="col-10 text-truncate">${item.movieNm}</span>
+				</div>
+			</c:forEach>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<script src="/resources/js/kobisrank.js"></script>
+    
+  </body>
 </html>

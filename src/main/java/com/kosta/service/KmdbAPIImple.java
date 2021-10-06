@@ -18,6 +18,7 @@ public class KmdbAPIImple implements KmdbAPI {
 		// TODO Auto-generated method stub
 		String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]";
 		String movieNm = rdto.getMovieNm().replaceAll(match, "^").replace(" ", "").replace("3D", "");
+//		System.out.println(movieNm);
 		for (int i = 0; i < 3; i++) {
 			if (movieNm.startsWith("^")) {
 				movieNm = movieNm.substring(1);
@@ -37,29 +38,27 @@ public class KmdbAPIImple implements KmdbAPI {
 		conn.setRequestProperty("Content-type", "application/json");
 //		System.out.println("Response code: " + conn.getResponseCode());
 		BufferedReader br;
-		if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+		int responseCode=conn.getResponseCode();
+		if (responseCode >= 200 && responseCode <= 300) {
 			br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		} else {
 			br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
 		}
 		StringBuilder sb = new StringBuilder();
 		String line;
-
 		while ((line = br.readLine()) != null) {
 			sb.append(line);
 		}
 		br.close();
 		conn.disconnect();
-//		System.out.println("sb......" + sb.toString());
-
-		Gson gson = new Gson();
-		KmdbResponseDTO result = gson.fromJson(sb.toString(), KmdbResponseDTO.class);
-		if (result.getTotalCount() != 0) {
-			return result;
-
-		} else {
-			return null;
+//	System.out.println(sb.toString().isEmpty());
+		if(!sb.toString().isEmpty()) {
+			Gson gson = new Gson();
+			KmdbResponseDTO result = gson.fromJson(sb.toString(), KmdbResponseDTO.class);
+			if (result.getTotalCount() != 0)
+				return result;
 		}
+		return null;
 	}
 
 	@Override

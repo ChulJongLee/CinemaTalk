@@ -41,12 +41,16 @@ public class MovieController {
 		List<KobisDTO> result=new ArrayList<KobisDTO>();
 		
 		for (int i = 0; i < list.size(); i++) {
-			list.get(i).getRank();
+			String rank=list.get(i).getRank();
 			KobisDTO detail = movieService.getMovieDetail(list.get(i).getMovieCd());
+			detail.setRank(rank);
 			result.add(detail);
 		}
-		
 		model.addAttribute("list", result);
+		
+		List<KobisDTO> randomList=movieService.getRandomList();
+		model.addAttribute("randomList", randomList);
+		
 		
 		return "/view.jsp?page=movie/kobisrank";
 	}
@@ -59,5 +63,10 @@ public class MovieController {
 //		return "/view.jsp?page=movie/moviedetail";
 		return "/view.jsp?page=movie/movieinfomain";
 	}
-
+	
+	@GetMapping("/test")
+	public String Test() {
+		
+		return "/view.jsp?page=movie/test";
+	}
 }

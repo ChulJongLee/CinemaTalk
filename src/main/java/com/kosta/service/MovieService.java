@@ -14,4 +14,5 @@ public interface MovieService {
 	public List<KobisDTO> getMovieList(String keyword);
 	public void insertRank(RequestDTO rdto) throws OpenAPIFault, Exception;
 	public List<KobisDTO> getMovieRank();
+	public List<KobisDTO> getRandomList();
 }

@@ -55,21 +55,21 @@ System.out.println("getMovieList obj" + obj);
 			KobisDTO kobis = list.get(j);
 			rdto.setMovieCd(kobis.getMovieCd());
 			KobisDTO detail = getMovieDetail(rdto);
-//System.out.println("detail..." + detail);
 			if (detail == null) {
 				System.out.println("detail은 null입니다.");
-				return result;		//추가된 detail까지 result로 리턴
-			}
+				break;
+			}else {
+				
 			if (detail.getDirectors().size() != 0) {
 				String getname=detail.getDirectors().get(0).getPeopleNm();
 				//감독명이 영문만 있을 경우 그대로 사용
-				if(!getType(getname))
+				if(!getType(getname)) {
 					director = getKor(getname);
-				else
+				}else {
 					director = getname;
-//			System.out.println(getname);
-					String[] directornames = director.split(" ");
-					director = directornames[0];
+				}
+				String[] directornames = director.split(" ");
+				director = directornames[0];
 
 			}
 //System.out.println("kobis에서 제목:"+detail.getMovieNm());
@@ -97,21 +97,25 @@ System.out.println("getMovieList obj" + obj);
 				poster = kmdbAPI.requestMoviePoster(rdto);
 //System.out.println(poster);
 			kobis.setPoster(poster);
+			String age="";
+			String watchGrade = "19";
 			if (detail.getAudits().size() != 0) {
-				String watchGrade = detail.getAudits().get(0).getWatchGradeNm();
+				watchGrade = detail.getAudits().get(0).getWatchGradeNm();
 				if (watchGrade.contains("전체관람가") || watchGrade.contains("모든") || watchGrade.contains("연소자관람가")
 						|| watchGrade.contains("미성년자관람가"))
-					kobis.setWatchGradeNm("0");
+					age="0";
 				else if (watchGrade.contains("12") || watchGrade.contains("중학생") || watchGrade.contains("국민학생"))
-					kobis.setWatchGradeNm("12");
+					age="12";
 				else if (watchGrade.contains("15") || watchGrade.contains("고등"))
-					kobis.setWatchGradeNm("15");
+					age="15";
 				else
-					kobis.setWatchGradeNm("19");
-			} else
-				kobis.setWatchGradeNm("19");
+					age="19";
+			}else
+				age="19";
+			kobis.setWatchGradeNm(age);
+//System.out.println(kobis.getWatchGradeNm());
 			result.add(kobis);
-
+			}
 		}
 		return result;
 
@@ -140,6 +144,7 @@ System.out.println("getMovieList obj" + obj);
 		detailResponse = kobisService.getMovieInfo(true, rdto.getMovieCd());
 //System.out.println("detailResponse...." + detailResponse);
 		if (detailResponse.contains("errorCode")) {
+			System.out.println("errorCode 발생");
 			return null;
 		}
 		Gson gson = new Gson();
@@ -188,40 +193,41 @@ System.out.println("getMovieList obj" + obj);
 		return list;
 
 	}
-
+	
 	@Override
 	public List<KobisDTO> requestMovieList(RequestDTO rdto) throws OpenAPIFault, Exception {
 		// TODO Auto-generated method stub
-		List<KobisDTO> result = new ArrayList<KobisDTO>();
+		List<KobisDTO> results = new ArrayList<KobisDTO>();
 
 		rdto.setMovieNm(rdto.getKeyword());
 //		int totalcount = getMovieCount(rdto);		//이거 풀면 totalcount받아올때도 에러체크 해야함
 		// 일 3000회 제한
-		int a = 293; // 237 할 차례
+		int a = 594; // 237 할 차례
 //		for (int i = a; i <= a; i++) {
-		for (int i = a; i <= a + 4; i++) {
-//		for (int i = a; i <= a+28; i++) {
+//		for (int i = a; i <= a + 5; i++) {
+		for (int i = a; i <= a+28; i++) {
 //		for (int i = 1; i <= (totalcount / 100) + 1; i++) {
 			rdto.setMovieNm(rdto.getKeyword());
 			rdto.setCurPage(String.valueOf(i));
 			List<KobisDTO> list = getMovieList(rdto);
 			if (list.size() == 0) {
-				System.out.println(i + "번째 페이지에서 에러발생");
-				return result;
+				System.out.println(i-1 + "번째 페이지에서 에러발생");
+				return results;
 			}
 			deleteMovieList(list);
-			getMovieListPlus(list, rdto);
+			List<KobisDTO> result=getMovieListPlus(list, rdto);
+	
 			if (list.size() == 0) {
-				System.out.println(i + "번째 페이지에서 에러발생");
-				return result;
+				System.out.println(i-1 + "번째 페이지에서 에러발생");
+				return results;
 			}
-			for (KobisDTO item : list) {
-				result.add(item);
+			for (KobisDTO item : result) {
+				results.add(item);
 			}
-			System.out.println(i + "번째-------결과값------------" + result.size());
+			System.out.println(i + "번째-------결과값------------" + results.size());
 
 		}
-		return result;
+		return results;
 
 	}
 
@@ -243,7 +249,7 @@ System.out.println("getMovieList obj" + obj);
 		 for(int i=0;i<word.length();i++) {
 			int index = word.charAt(i);
 				//영어와 띄어쓰기로만 이루어져있지 않으면 false
-				if(!(index<=122&&index>=65)&&index!=32) {
+				if(!(index<=122&&index>=65)&&index!=32&&index!=45) {
 					result=false;
 					return result;
 				}
