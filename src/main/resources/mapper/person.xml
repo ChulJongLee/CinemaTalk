@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.kosta.mapper.PersonMapper">
+  
+  	<insert id="insertPersonInfo" parameterType="java.util.List">
+  		replace into person_info(
+  			peopleCd, peopleNm, peopleNmEn, person_bdate, nationality, person_pic
+  		)
+  		values
+  		<foreach collection="list" item="item" separator=" , " >
+	        (#{item.peopleCd}, #{item.peopleNm}, #{item.peopleNmEn}, #{item.person_bdate}, #{item.nationality}, #{item.person_pic})
+   		</foreach>
+  	</insert>
+  
+	<insert id="insertPersonDistinct" parameterType="java.util.List">
+  		insert into person_distinct(
+  			movieCd, peopleCd, person_job
+  		)
+  		values
+  		<foreach collection="list" item="item" separator=" , " >
+  			<foreach collection="item.filmos" item="it" separator=" , ">
+	        (#{it.movieCd}, #{item.peopleCd}, #{item.repRoleNm})
+	        </foreach>
+   		</foreach>
+  	</insert>
+
+  
+  </mapper>

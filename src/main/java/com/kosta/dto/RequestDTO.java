@@ -24,4 +24,6 @@ public class RequestDTO {
 	private String kobiskey;
 	private String kmdbkey;
 	private String movieCd;
+	
+	private String peopleNm;
 }
