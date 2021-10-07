@@ -17,19 +17,20 @@
         <div id="movieinfotop">
             <ul id="movieinfotop2">
             	
-                <li><span>${detail.movieNm} : ${detail.movieNmEn} </span><span>평점 </span><span>인원</span></li>
+                <%-- <c:if test="${detail.movieNmEn!=''}"> : ${detail.movieNmEn} </c:if> --%>
+                <li><span id="movieNm">${detail.movieNm}   </span><span>평점 </span><span>인원</span></li>
                 <li><span>${detail.openDt} </span><span>${detail.watchGradeNm}세 </span><span>${detail.showTm }분</span></li>
-                <li><span>장르명 : 
+                <li><span>장르 : 
                 				<c:forEach var="item" items="${detail.genres }">
 									${item.genreNm } 
 								</c:forEach></span></li>
-                <li><span>출연배우 : 
+                <li><span>출연진 : 
 								<c:forEach var="item" items="${detail.actors }" end="4">
 									<c:if test="${item.peopleNmEn!=''}" >
 										${item.peopleNm }
 									 </c:if>
 								</c:forEach></span></li>
-                <li><span><button type="button" class="btn btn-primary btn-sm">감상링크</button> <button type="button" class="btn btn-secondary btn-sm">관심목록+</button></span></li>
+                <!-- <li><span><button type="button" class="btn btn-primary btn-sm">감상링크</button> <button type="button" class="btn btn-secondary btn-sm">관심목록+</button></span></li> -->
                 
             </ul>
             <div class="starRating">
@@ -54,7 +55,7 @@
             	
 
     <!-- ******** 카테고리 ******** -->
-    <div class="accordion" id="accordionExample">
+    <div class="accordion" id="accordion">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

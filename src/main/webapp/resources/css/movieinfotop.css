@@ -1,23 +1,42 @@
 @charset "UTF-8";
 
 /* 영화 정보 */
+li{
+	margin-top: 10px;
+}
+
 #movieview {
     border: 2px solid red;
     width: 1300px;
     margin: 0px auto;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     background-color: #212121;
     color: white;
+    position: relative;
 }
 #movieinfotop2{
+	position: absolute;
+	top: 0px;
+	left: 100px;
     list-style: none;
-    text-align: center;
+    text-align: left;
     margin-top: 50px;
 }
+
+.starRating{
+	position: absolute;
+	top: 225px;
+	left: 125px;
+}
 #movieimg{
-    margin-left: 200px;
+	width: 300px;
+    margin-left: 700px;
+}
+
+#movieNm{
+	font-size: 30px;
+    font-weight: 600;
 }
 
 
@@ -37,7 +56,8 @@ nav{
     margin: 0px 80px;
 }
 /* 카테고리 바*/
-.category {
+/* .category {
+	position: relative;
 	text-decoration: none;
     font-size: 20px;
     font-weight: bolder;
@@ -46,6 +66,11 @@ nav{
 	color : #808080;
     border: none;
     border-bottom: solid 3px #212121;	
+} */
+
+#accordion{
+	/* position: relative; */
+	
 }
 .category:hover {
 	border-bottom: solid 3px #fd0000;
