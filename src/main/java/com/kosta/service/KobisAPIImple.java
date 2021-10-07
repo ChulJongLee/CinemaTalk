@@ -202,13 +202,16 @@ public class KobisAPIImple implements KobisAPI {
 		List<KobisDTO> results = new ArrayList<KobisDTO>();
 
 		rdto.setMovieNm(rdto.getKeyword());
-		//		int totalcount = getMovieCount(rdto);		//이거 풀면 totalcount받아올때도 에러체크 해야함
-		// 일 3000회 제한
-		int a = 634; // 237 할 차례
-		//		for (int i = a; i <= a; i++) {
-				for (int i = a; i <= a + 2; i++) {
-//		for (int i = a; i <= a+28; i++) {
-			//		for (int i = 1; i <= (totalcount / 100) + 1; i++) {
+				int totalcount = getMovieCount(rdto);		//이거 풀면 totalcount받아올때도 에러체크 해야함
+				int lasttotalcount = 84192;
+				
+				// 일 3000회 제한
+		//마지막 토탈 카운트 84192
+//		int a = 1;
+//			for (int i = a; i <= a; i++) {
+//			for (int i = a; i <= a + 9; i++) {
+//			for (int i = a; i <= a+28; i++) {
+		for (int i = 1; i <= (totalcount-lasttotalcount / 100) + 1; i++) {
 			rdto.setMovieNm(rdto.getKeyword());
 			rdto.setCurPage(String.valueOf(i));
 			List<KobisDTO> list = getMovieList(rdto);
@@ -265,8 +268,8 @@ public class KobisAPIImple implements KobisAPI {
 	public List<PersonInfoDTO> requestPersonList(RequestDTO rdto) throws OpenAPIFault, Exception {
 		List<PersonInfoDTO> result = new ArrayList<>();
 		//******여기 수정하면 됨!!!
-		int a = 510;
-		for(int i = 481 ; i < a+1 ; i++) {
+		int a = 720;
+		for(int i = 691 ; i < a+1 ; i++) {
 			rdto.setCurPage(String.valueOf(i));
 			List<PersonInfoDTO> list = getKobisPersonList(rdto);
 

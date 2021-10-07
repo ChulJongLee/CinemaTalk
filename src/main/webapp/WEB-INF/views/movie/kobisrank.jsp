@@ -81,6 +81,7 @@
 					onclick="location.href='moviedetail/${item.movieCd }'">
 					<img alt="포스터" src="${item.poster }"><br> <span
 						class="col-10 text-truncate">${item.movieNm}</span>
+					<div class="rank">${item.rank }</div>
 				</div>
 			</c:forEach>
 		</div>

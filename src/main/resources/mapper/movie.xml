@@ -64,6 +64,17 @@
 		
 	</select>
   
+  	<insert id="movierate" parameterType="com.kosta.dto.RateDTO">
+		replace into movie_rating(
+			user_no
+			, movieCd
+			, rate
+		)
+		values
+			("1", #{movieCd}, #{rate})
+		
+		
+	</insert>
   
   
   

@@ -30,14 +30,27 @@
 									 </c:if>
 								</c:forEach></span></li>
                 <li><span><button type="button" class="btn btn-primary btn-sm">감상링크</button> <button type="button" class="btn btn-secondary btn-sm">관심목록+</button></span></li>
-                <li>별별별별</li>
+                
             </ul>
+            <div class="starRating">
+ 				<input type="hidden" id="rate" name="rate" />
+	 						  <span class="starR1 on"></span>
+							  <span class="starR2"></span>
+							  <span class="starR1"></span>
+							  <span class="starR2"></span>
+							  <span class="starR1"></span>
+							  <span class="starR2"></span>
+							  <span class="starR1"></span>
+							  <span class="starR2"></span>
+							  <span class="starR1"></span>
+							  <span class="starR2"></span>
+       		 </div>
         </div>
         <div id="movieimg">
             <img src="${detail.poster}" alt="포스터" width="200px">
         </div>
     </div>
-	<%-- <input type="hidden" value="${detail.movieCd }" id="movieCd"> --%>
+	<input type="hidden" value="${detail.movieCd }" id="movieCd">
             	
 
     <!-- ******** 카테고리 ******** -->
@@ -92,22 +105,7 @@
   </div>
 </div>
     
-    
-    
-    <%-- <nav class="nav nav-pills flex-column flex-sm-row">
-	  <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="/moviedetail/${detail.movieCd }">영화정보</a>
-	  <a class="flex-sm-fill text-sm-center nav-link" href="/moviedetail/${detail.movieCd }/reviewmain">리뷰</a>
-	  <a class="flex-sm-fill text-sm-center nav-link" href="/moviedetail/${detail.movieCd }/bestscenemain">참여게시판</a>
-	  <a class="flex-sm-fill text-sm-center nav-link" href="/moviedetail/${detail.movieCd }/userforumlist">자유게시판</a>
-	</nav> --%>
-   <!--  <nav>
-        <input type="button" value="영화정보" id="info" class="category">
-        <input type="button" value="리뷰" id="review_board" class="category">
-        <input type="button" value="참여게시판" id="best_board" class="category">
-        <input type="button" value="자유게시판" id="user_forum" class="category">
-    </nav> -->
-    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-<!-- <script src="/resources/js/movieinfo_categorybtn.js"></script> -->
+<script src="/resources/js/movieinfotop.js"></script>
 </body>
 </html>

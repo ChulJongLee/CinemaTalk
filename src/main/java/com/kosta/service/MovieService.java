@@ -3,6 +3,7 @@ package com.kosta.service;
 import java.util.List;
 
 import com.kosta.dto.KobisDTO;
+import com.kosta.dto.RateDTO;
 import com.kosta.dto.RequestDTO;
 
 import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
@@ -15,4 +16,5 @@ public interface MovieService {
 	public void insertRank(RequestDTO rdto) throws OpenAPIFault, Exception;
 	public List<KobisDTO> getMovieRank();
 	public List<KobisDTO> getRandomList();
+	public void movieRate(RateDTO movieRateData);
 }

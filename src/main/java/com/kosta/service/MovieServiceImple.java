@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.kosta.dto.KobisDTO;
+import com.kosta.dto.RateDTO;
 import com.kosta.dto.RequestDTO;
 import com.kosta.mapper.MovieMapper;
 
@@ -79,6 +80,12 @@ public class MovieServiceImple implements MovieService {
 	public List<KobisDTO> getMovieRank() {
 		// TODO Auto-generated method stub
 		return mapper.getmoviedailyrank();
+	}
+
+	@Override
+	public void movieRate(RateDTO movieRateData) {
+		// TODO Auto-generated method stub
+		mapper.movierate(movieRateData);
 	}
 
 }

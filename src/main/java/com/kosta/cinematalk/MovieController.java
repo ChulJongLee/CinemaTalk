@@ -1,7 +1,9 @@
 package com.kosta.cinematalk;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosta.dto.KobisDTO;
+import com.kosta.dto.RateDTO;
 import com.kosta.service.MovieService;
 
 import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
@@ -69,4 +73,26 @@ public class MovieController {
 		
 		return "/view.jsp?page=movie/test";
 	}
+	
+	
+	@PostMapping("/movieRate")
+    @ResponseBody
+    public Map<String, Object> testAjax(RateDTO movieRateData){
+        
+        Map<String, Object> result = new HashMap<String, Object>();
+        movieService.movieRate(movieRateData);
+        
+        
+//        System.out.println(movieRateData.getMovieCd());
+//        System.out.println(movieRateData.getRate());
+//      System.out.println(testVo.getUser_no());
+
+        // 응답 데이터 셋팅
+        result.put("result", "평점 주기 완료");
+        
+        return result;
+        
+    }
+
+
 }
