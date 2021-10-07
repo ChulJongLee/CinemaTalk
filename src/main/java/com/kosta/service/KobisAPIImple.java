@@ -204,10 +204,10 @@ public class KobisAPIImple implements KobisAPI {
 		rdto.setMovieNm(rdto.getKeyword());
 		//		int totalcount = getMovieCount(rdto);		//이거 풀면 totalcount받아올때도 에러체크 해야함
 		// 일 3000회 제한
-		int a = 594; // 237 할 차례
+		int a = 634; // 237 할 차례
 		//		for (int i = a; i <= a; i++) {
-		//		for (int i = a; i <= a + 5; i++) {
-		for (int i = a; i <= a+28; i++) {
+				for (int i = a; i <= a + 2; i++) {
+//		for (int i = a; i <= a+28; i++) {
 			//		for (int i = 1; i <= (totalcount / 100) + 1; i++) {
 			rdto.setMovieNm(rdto.getKeyword());
 			rdto.setCurPage(String.valueOf(i));

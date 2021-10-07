@@ -14,14 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kosta.dto.KobisDTO;
 import com.kosta.dto.PageBlock;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.service.CommunityService;
-import com.kosta.service.CommunityServiceImple;
-import com.kosta.service.MovieService;
-
-import lombok.RequiredArgsConstructor;
 
 @Controller
 //@RequiredArgsConstructor
@@ -46,7 +41,7 @@ public class CommunityController {
 	
 	
 	// 리뷰 메인 페이지
-	@RequestMapping("/reviewmain")
+	@RequestMapping("/moviedetail/{movieCd}/reviewmain")
 	public String reviewMain(Model model) {
 		
 //		KobisDTO detail = movieService.getMovieDetail(movieCd);
@@ -65,7 +60,7 @@ public class CommunityController {
 	}
 	
 	// 리뷰 전체 리스트
-	@RequestMapping("/reviewall")
+	@RequestMapping("/moviedetail/{movieCd}/reviewall")
 	public String reviewAll( @RequestParam(required = false, defaultValue = "1") int currPage
 							, @RequestParam(required = false, defaultValue = "") String search
 							, @RequestParam(required = false, defaultValue = "") String searchtxt
@@ -103,7 +98,7 @@ public class CommunityController {
 	}
 	
 	// 리뷰 디테일 페이지
-	@RequestMapping(value = "/reviewdetail/{contentno}", method = RequestMethod.GET)
+	@RequestMapping(value = "/moviedetail/{movieCd}/reviewdetail/{contentno}", method = RequestMethod.GET)
 	public String reviewDetail(@PathVariable int contentno, Model model) {
 		
 		ReviewDTO dto = service.reviewdetail(contentno);
@@ -117,7 +112,7 @@ public class CommunityController {
 	
 	
 	// 참여 게시판 메인 페이지
-	@RequestMapping("/bestscenemain")
+	@RequestMapping("/moviedetail/{movieCd}/bestscenemain")
 	public String bestSceneMain(Model model) {		
 		
 		// 명대사 4개
@@ -137,7 +132,7 @@ public class CommunityController {
 		return "/view.jsp?page=board/bestscenelist";
 	}
 	// 최고장면,최악장면 디테일
-	@RequestMapping("/bestscenedetail")
+	@RequestMapping("/moviedetail/{movieCd}/bestscenedetail")
 	public String bestSceneDetail() {
 		
 //		return "bestscenedetail";
@@ -145,7 +140,7 @@ public class CommunityController {
 	}
 	
 	// 명대사 리스트
-	@RequestMapping("/famouslinelist")
+	@RequestMapping("/moviedetail/{movieCd}/famouslinelist")
 	public String famousLineList(@RequestParam(required = false, defaultValue = "1") int currPage
 								, @RequestParam(required = false, defaultValue = "") String search
 								, @RequestParam(required = false, defaultValue = "") String searchtxt
@@ -182,7 +177,7 @@ public class CommunityController {
 		return "/view.jsp?page=board/famouslinelist";
 	}
 	// 명대사 디테일
-	@RequestMapping("/famouslinedetail")
+	@RequestMapping("/moviedetail/{movieCd}/famouslinedetail")
 	public String famouslinedetail() {
 		
 		
@@ -194,7 +189,7 @@ public class CommunityController {
 	
 	
 	// 자유 게시판 리스트 페이지(메인)
-	@RequestMapping("/userforumlist")
+	@RequestMapping("/moviedetail/{movieCd}/userforumlist")
 	public String userForumList(Model model) {
 		
 		List<ReviewDTO> alluserforum = service.allUserForum();
@@ -205,7 +200,7 @@ public class CommunityController {
 		return "/view.jsp?page=board/userforumlist";
 	}
 	// 자유 게시판 디테일 페이지
-	@RequestMapping("/userforumdetail")
+	@RequestMapping("/moviedetail/{movieCd}/userforumdetail")
 	public String userForumDetail(Model model) {
 		
 		

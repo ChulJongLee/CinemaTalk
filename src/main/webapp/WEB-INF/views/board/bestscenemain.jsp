@@ -13,7 +13,7 @@
 <body>
 	
 	<!-- 영화정보 & 카테고리 -->
-	<%@ include file="movieinfotop.jsp" %>
+	<%-- <%@ include file="movieinfotop.jsp" %> --%>
 
 	<section>		 
 		<div id="bestscene" class="sceneimg">

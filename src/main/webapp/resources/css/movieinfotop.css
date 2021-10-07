@@ -51,3 +51,22 @@ nav{
 	border-bottom: solid 3px #fd0000;
 	color: white;
 }
+.accordion-button {
+	width: 200px;
+    background-color: #212121;
+    color: white;
+	}
+.accordion-item{
+	display: inline-block;
+}
+
+.accordion-button::after {	
+	display: none;
+}
+
+.accordion-item:first-of-type .accordion-button {
+	width: 200px;
+    background-color: #212121;
+    color: white;
+	
+	}

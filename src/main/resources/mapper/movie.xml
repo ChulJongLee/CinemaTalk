@@ -59,7 +59,7 @@
   	<select id="getrandomlist" resultType="com.kosta.dto.KobisDTO">
 		select movieCd, movieNm, plotText, genreNm, repNationNm, openDt, watchGradeNm, showTm, poster
 		from movie_info
-		where poster!="" and openDt!="" and plotText!=""
+		where poster!="" and openDt!="" and plotText!="" and genreNm!="성인물(에로)"
 		order by rand() limit 10
 		
 	</select>
