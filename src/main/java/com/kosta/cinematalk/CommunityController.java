@@ -41,7 +41,8 @@ public class CommunityController {
 	
 	
 	// 리뷰 메인 페이지
-	@RequestMapping("/moviedetail/{movieCd}/reviewmain")
+//	@RequestMapping("/moviedetail/{movieCd}/reviewmain")
+	@RequestMapping("/reviewmain")
 	public String reviewMain(Model model) {
 		
 //		KobisDTO detail = movieService.getMovieDetail(movieCd);
@@ -60,7 +61,8 @@ public class CommunityController {
 	}
 	
 	// 리뷰 전체 리스트
-	@RequestMapping("/moviedetail/{movieCd}/reviewall")
+//	@RequestMapping("/moviedetail/{movieCd}/reviewall")
+	@RequestMapping("/reviewall")
 	public String reviewAll( @RequestParam(required = false, defaultValue = "1") int currPage
 							, @RequestParam(required = false, defaultValue = "") String search
 							, @RequestParam(required = false, defaultValue = "") String searchtxt

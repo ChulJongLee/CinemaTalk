@@ -10,8 +10,7 @@
  <link rel="stylesheet" href="resources/css/reviewall.css">
 </head>
 <body>
-	<!-- 영화정보 & 카테고리 -->
-	<%@ include file="movieinfotop.jsp" %>
+
 	
 	
 	<!-- ******* 전체 리뷰 ******* -->

@@ -17,7 +17,7 @@
 
     <!-- ******** 베스트 리뷰 ******** -->
     <section id="bestsection">
-        <h3><a href='"moviedetail/"+movieCd+"reviewall"' id="bestreviewbtn">베스트 리뷰</a></h3>
+        <h3><a href="reviewall" id="bestreviewbtn">베스트 리뷰</a></h3>
         <div class="bestreview">
        		<c:if test="${bestreviewlist==null }">              		
          		자료가 없습니다.
