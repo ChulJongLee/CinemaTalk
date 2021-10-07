@@ -13,7 +13,7 @@
 <body>
 	
 	<!-- 영화정보 & 카테고리 -->
-	<%-- <%@ include file="movieinfotop.jsp" %> --%>
+	<%@ include file="movieinfotop.jsp" %>
 
 	<section>		 
 		<div id="bestscene" class="sceneimg">
@@ -39,7 +39,7 @@
 	         	<ul id="contentslist">
 	         		<c:forEach var="list" items="${famouslinelist }">
 						<li id="contents">
-							<div id="id">${list.userid }</div>
+							<div id="id">${list.userid }아이디자리</div>
 							<div id="date">${list.writedate }</div>
 							<div id="content">${list.contents }</div>
 							<div id="like">${list.like }</div>

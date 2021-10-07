@@ -11,72 +11,33 @@
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-	<!-- ******** 헤더 ********* -->
-	<%-- <%@ include file="header.jsp" %> --%>
-	
 	<!-- 영화정보 & 카테고리 -->
-	<%-- <%@ include file="movieinfotop.jsp" %> --%>
-	
-	
-<%-- 	<section>
-		<div>
-			<c:if test="${alluserforum==null }">              		
-	        	자료가 없습니다.
-	     	</c:if>
-	     	 <c:if test="${alluserforum!=null }">
-			<c:forEach var="list" items="${alluserforum }">
-				<table class="allreviewtable">
-					<tr><td>${list.content_no }12</td><td>${list.title }</td><td>${list.user_id }</td><td class="reviewdate">${list.writedate }</td><td>${list.like }</td><td>${list.dislike }</td></tr>					
-				</table>
-			</c:forEach>
-		 </c:if>
-		
-		
-		</div>
-		<button type="button" class="btn btn-outline-primary">글쓰기</button>
-	</section> --%>
+	<%@ include file="movieinfotop.jsp" %>
 	
 	<section>
-		<div id="userforum">
-			<table>
-				<thead>
-					<tr><th>번호</th><th>제목</th><th>아이디</th><th>작성일</th><th>좋아요</th><th>싫어요</th></tr>
-				</thead>
-				<tbody>
-					<tr><td>12</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>13</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>14</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>15</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>16</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>17</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>18</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>19</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>20</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>21</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>22</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-					<tr><td>23</td><td>[img] 안녕하세요 첫 자유게시판 제목입니다. [7]</td><td>아이디를입력</td><td>2021-09-30</td><td>54</td><td>99</td></tr>
-				</tbody>
-			</table>		
+		<div id="userforumwrap">
+			<div id="listhead">
+				<div id="headno">번호</div><div id="headtitle">제목</div><div id="headid">아이디</div><div id="headdate">작성일</div><div id="headlike">좋아요</div><div id="headdislike">싫어요</div>
+			</div>
+			<ul id="userforumboard">
+				<c:forEach var="list" items="${alluserforum }">
+					<li id="userforumlist">
+						<div id="number">${list.contentno }</div>
+						<div id="title">${list.title }</div>
+						<div id="id">${list.userid }</div>
+						<div id="writedate">${list.writedate }</div>
+						<div id="like">${list.like }</div>
+						<div id="dislike">${list.dislike }</div>					
+					</li>
+				</c:forEach>			
+			</ul>		
 		</div>
 		<div id="writebtn">
 			<button type="button" class="btn btn-outline-primary">글쓰기</button>
 		</div>
 	</section>
-	
-	
-	
-	
-	
+
+
 <!-- 페이징  -->
 <nav aria-label="...">
 	<ul class="pagination">	
@@ -121,9 +82,6 @@
   	</ul>
 </nav>	
 
-
-	<!-- ******** 푸터 ********* -->
-	<%-- <%@ include file="footer.jsp" %> --%>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>
