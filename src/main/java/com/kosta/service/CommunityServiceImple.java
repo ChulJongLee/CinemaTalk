@@ -24,20 +24,17 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.getreview();
 	}
 
-
 	@Override
 	public List<ReviewDTO> generalReviewList() {
 		
 		return mapper.getgeneralreview();
 	}
 
-
 	@Override
 	public List<ReviewDTO> allReview() {
 
 		return mapper.getallreview();
 	}
-
 
 	@Override
 	public int totalCount(String search, String searchtxt) {		
@@ -51,9 +48,6 @@ public class CommunityServiceImple implements CommunityService {
 		return result;
 	}
 	
-
-
-
 	@Override
 	public List<ReviewDTO> review() {
 		return null;
@@ -61,11 +55,10 @@ public class CommunityServiceImple implements CommunityService {
 
 
 	@Override
-	public List<ReviewDTO> allReview(String search, String searchtxt, int startRow, int endRow) {
+	public List<ReviewDTO> allReview(int startRow, int endRow) {
 		HashMap<String, Object> hm = new HashMap<String, Object>();
 		
-		hm.put("search", search);
-		hm.put("searchtxt", searchtxt);
+
 		hm.put("startrow", startRow);
 		hm.put("endrow", endRow);
 	
@@ -79,18 +72,19 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.getfamousline();
 	}
 
-
+	
+	
 //	@Override
-//	public List<ReviewDTO> allFamousLine() {
-//		
-//		return mapper.getallfamousline();
+//	public int totalCount2() {
+//
+//		return mapper.totalCount2();
 //	}
-
-
+	
 	@Override
-	public int totalCount() {
+	public int totalCount2(int boardno) {
 		
-		return 0;
+		int result = boardno;
+		return mapper.totalCount2(result);
 	}
 
 
@@ -110,7 +104,6 @@ public class CommunityServiceImple implements CommunityService {
 	@Override
 	public List<ReviewDTO> allUserForum() {
 		
-		
 		return mapper.getalluserforum();
 	}
 
@@ -121,6 +114,26 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.reviewdetail(contentno);
 	}
 
-	
+
+	@Override
+	public List<ReviewDTO> allUserForum(int startRow, int endRow) {
+		
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("startrow", startRow);
+		hm.put("endrow", endRow);
+		
+		return mapper.allUserForum(hm);
+	}
+
+
+	@Override
+	public void reviewLike(int contentno) {
+		mapper.reviewlike(contentno);
+		
+	}
+
+
+
+
 	
 }

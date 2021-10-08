@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
  <link rel="stylesheet" href="resources/css/reviewmain.css">
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -17,7 +18,8 @@
 
     <!-- ******** 베스트 리뷰 ******** -->
     <section id="bestsection">
-        <h3><a href="reviewall" id="bestreviewbtn">베스트 리뷰</a></h3>
+<!--    <h3><a href="reviewall" id="bestreviewbtn">베스트 리뷰</a></h3>  -->
+        <h3 id="bestreviewbtn">베스트 리뷰</h3>
         <div class="bestreview">
        		<c:if test="${bestreviewlist==null }">              		
          		자료가 없습니다.
@@ -30,9 +32,9 @@
 						<div id="id">${list.userid }</div>
 						<div id="date">${list.writedate }</div>
 						<div id="content">${list.contents }</div>
-						<div id="like">${list.like }</div>
-						<div id="dislike">${list.dislike }</div>
-						<div id="report"><button>신고</button> </div>					
+						<div id="like"><button id="likebtn"> <i class="fas fa-thumbs-up"> ${list.like }</i></button></div>
+						<div id="dislike"><button id="dislikebtn"> <i class="fas fa-thumbs-down"> ${list.dislike }</i></button></div>
+						<div id="report"><button id="reportbtn"> <i class="fas fa-flag"> 신고</i></button></div>					
 					</li>				
 				</c:forEach>
 			</ul>
@@ -42,7 +44,8 @@
 
     <!-- ******** 일반 리뷰 ******** -->
     <section id="generalsection">
-        <h3><a href="reviewall" id="generalreviewbtn">일반 리뷰</a></h3>
+        <!-- <h3><a href="reviewall" id="generalreviewbtn">일반 리뷰</a></h3> -->
+        <h3 id="generalreviewbtn">일반 리뷰</h3>
         <div class="generalreview">
        		<c:if test="${generalreviewlist==null }">              		
          		자료가 없습니다.
@@ -51,19 +54,23 @@
          	<c:if test="${generalreviewlist!=null }">
          	<ul id="contentslist">
          		<c:forEach var="list" items="${generalreviewlist }">
-					<li id="contents">
-						<div id="id">${list.userid }</div>
+					<li id="contents">				
+						<div id="id">${list.userid }, ${list.contentno }</div>
 						<div id="date">${list.writedate }</div>
 						<div id="content">${list.contents }</div>
-						<div id="like">${list.like }</div>
-						<div id="dislike">${list.dislike }</div>
-						<div id="report">신고</div>					
+						<div id="like"><button class="likebtn" value="${list.contentno }"> <i class="fas fa-thumbs-up"> ${list.like }</i></button></div>
+						<div id="dislike"><button class="dislikebtn" value="${list.contentno }"> <i class="fas fa-thumbs-down"> ${list.dislike }</i></button></div>
+						<div id="report"><button class="reportbtn" value="${list.contentno }"> <i class="fas fa-flag"> 신고</i></button></div>						
 					</li>					
 				</c:forEach>
 			</ul>	
          	</c:if>                            
         </div>
+        <div id="reviewallbtn">
+        	<a href="reviewall">모든 리뷰 보기</a>
+        </div>
     </section>
+    
 
     <!-- ******** 리뷰 쓰기 ******** -->
     <div id="writereview">
@@ -84,7 +91,7 @@
 	        </div>
 
     </div>    
-    
+<script src="/resources/js/reviewmain.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>

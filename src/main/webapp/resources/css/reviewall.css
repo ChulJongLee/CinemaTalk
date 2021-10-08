@@ -22,6 +22,7 @@ section{
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	list-style: none;
+	padding-left: 0;
 }
 #contents{
 	border: 2px solid blue;
@@ -54,7 +55,33 @@ section{
 	width: 20%;
 	text-align: center;
 }
+#like:hover{
+	color: #3498db;
+}
+#dislike:hover{
+	color: #f1c40f;
+}
+
 #report{
 	width: 60%;
 	text-align: right;
+}
+
+
+
+
+
+/* 글쓰기 버튼 */
+#writebtn{
+	border: 1px solid green;
+	display: flex;
+	justify-content: flex-end;
+	width: 87%;
+	margin: 0px auto;
+}
+
+/* 페이징 */
+#paging{
+	display: flex;
+	justify-content: center;
 }

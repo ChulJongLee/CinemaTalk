@@ -88,8 +88,6 @@ section{
 }
 
 
-
-
 /* 글쓰기 버튼 */
 #writebtn{
 	border: 1px solid green;
@@ -97,5 +95,11 @@ section{
 	justify-content: flex-end;
 	width: 80%;
 	margin: 0px auto;
+}
+
+/* 페이징 */
+#paging{
+	display: flex;
+	justify-content: center;
 }
  

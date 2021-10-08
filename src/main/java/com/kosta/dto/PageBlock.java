@@ -35,6 +35,16 @@ public class PageBlock {
 		calBlock();	
 	}
 	
+//	public PageBlock(int currPage, int pageSize, int blockSize) {		
+//		
+//		this.currPage=currPage;
+//		this.pageSize=pageSize;
+//		this.blockSize=blockSize;			
+//		
+//		calRow();
+//		calBlock();	
+//	}
+	
 	
 	private void calRow() {
 		

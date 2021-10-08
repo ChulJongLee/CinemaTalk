@@ -15,9 +15,7 @@
   	<result column="content_date" property="writedate" />
   	<result column="content_content" property="contents" />
   	<result column="content_like" property="like" />
-  	<result column="content_hate" property="dislike" /> 
-
-  	
+  	<result column="content_hate" property="dislike" /> 	
   </resultMap>
   
 
@@ -41,6 +39,15 @@
 	</where>
 </select>
 
+<select id="totalCount2" resultType="int">
+	select count(*)
+	from comm_board
+	where board_distinct_no = #{boardno}
+</select>
+
+
+
+
 
 <select id="list" parameterMap="hashmap" resultMap="reviewdto">
 	select A.*
@@ -59,12 +66,9 @@
 
 
   
-  
-  
-  
 <!-- 리뷰 페이지 베스트 리뷰 -->
 <select id="getreview" resultMap="reviewdto">
-	select user_id, e1.user_no, content_date, content_content, content_like, content_hate
+	select content_no, user_id, e1.user_no, content_date, content_content, content_like, content_hate
 	from comm_board e1 inner join user_info e2
     on e1.user_no=e2.user_no
 	where board_distinct_no = 1
@@ -74,7 +78,7 @@
 
 <!-- 리뷰 페이지 일반 리뷰 -->
 <select id="getgeneralreview" resultMap="reviewdto">
-	select user_id, e1.user_no, content_date, content_content, content_like, content_hate
+	select content_no, user_id, e1.user_no, content_date, content_content, content_like, content_hate
 	from comm_board e1 inner join user_info e2
     on e1.user_no=e2.user_no
 	where board_distinct_no = 1
@@ -84,7 +88,7 @@
 
 <!-- 리뷰 페이지 모든 리뷰 -->
 <select id="getallreview" resultMap="reviewdto">
-	select user_id, e1.user_no, content_date, content_content, content_like, content_hate
+	select content_no, user_id, e1.user_no, content_date, content_content, content_like, content_hate
 	from comm_board e1 inner join user_info e2
     on e1.user_no=e2.user_no
 	where board_distinct_no = 1
@@ -94,7 +98,7 @@
 
 <!-- 참여 게시판 메인 명대사 -->
 <select id="getfamousline" resultMap="reviewdto">
-	select user_no, content_date, content_content, content_like, content_hate
+	select content_no, user_no, content_date, content_content, content_like, content_hate
 	from comm_board
 	where board_distinct_no = 2
 	order by content_date DESC
@@ -118,6 +122,9 @@
 			</where>
 </select>
 
+
+
+<!-- 자유게시판 리스트 -->
 <select id="getalluserforum" resultMap="reviewdto">
 	select content_no, user_id, e1.user_no, content_date, content_title, content_content, content_like, content_hate
 	from comm_board e1 inner join user_info e2
@@ -126,16 +133,43 @@
 	order by content_date DESC
 </select>
 
+
+<select id="allUserForum" parameterType="hashmap" resultMap="reviewdto">
+	select A.*
+	from (select S.*, @rownum:=@rownum+1 as rn
+	  	  from (select content_no, user_id, e1.user_no, board_distinct_no, content_title, content_content, content_date, content_like, content_hate
+			    from comm_board e1 inner join user_info e2 
+			    on e1.user_no=e2.user_no, (select @rownum:=0)R
+                where 1=1) S
+                where board_distinct_no = 5
+				order by content_date DESC ) A
+			<where>
+				<![CDATA[
+					rn>=#{startrow} and rn<=#{endrow}
+				]]>	
+			</where>
+</select>  
+  
   
 <select id="reviewdetail" resultMap="reviewdto">
 	
 	select user_id, content_date, content_content, content_like, content_hate
 	from comm_board
 	where content_no=#{contentno}
-
-
-
 </select>
+  
+  
+<update id="reviewlike" parameterType="int">
+	update comm_board
+	set content_like = content_like+1
+	where content_no = #{contentno}
+</update>
+  
+
+  
+  
+  
+  
   
   
   

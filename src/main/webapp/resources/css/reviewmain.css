@@ -3,10 +3,12 @@
 
 /* 리뷰 게시판*/
 #bestreviewbtn{	/* 베스트 리뷰 버튼 */
-	margin: 30px 50px;
+	margin: 20px 50px;
+	color: white;
 }
 #generalreviewbtn{	/* 일반 리뷰 버튼 */
-	margin: 30px 50px;
+	margin: 20px 50px;
+	color: white;
 }
 #bestsection{	/* 베스트 리뷰 */
     border: 2px solid orange;
@@ -47,6 +49,7 @@
 	flex-wrap: wrap;
 	justify-content: space-around;
 	list-style: none;
+	padding-left: 0;
 }
 #contents{
 	border: 2px solid blue;
@@ -78,12 +81,44 @@
 #like, #dislike{
 	width: 20%;
 	text-align: center;
+
 }
+.likebtn, .dislikebtn{
+	border: none;
+	background-color: #212121;
+	color: #a9a9a9;
+}
+
+.likebtn:hover{
+	color: #3498db;
+	transform: scale(1.1, 1.1);
+}
+.dislikebtn:hover{
+	color: #f1c40f;
+	transform: scale(1.1, 1.1);
+}
+
 #report{
 	width: 60%;
 	text-align: right;
 }
+.reportbtn{
+	border: none;
+	background-color: #212121;
+	color: #a9a9a9;
+	font-size: small;
+}
+.reportbtn:hover{
+	color: red;
+	transform: scale(1.1, 1.1);
+}
 
+
+/* 모든 리뷰 보기 버튼*/
+#reviewallbtn{
+	display: flex;
+	justify-content: center;
+}
 
 
 /* 리뷰 쓰기 */

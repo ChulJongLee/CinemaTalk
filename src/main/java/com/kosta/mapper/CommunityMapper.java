@@ -12,6 +12,12 @@ public interface CommunityMapper {
 	
 	public int totalCount(HashMap<String, Object> hm);
 	
+//	public int totalCount2(HashMap<String, Object> hm);
+	
+//	public int totalCount2();
+	
+	public int totalCount2(int result);
+	
 	public List<ReviewDTO> list(HashMap<String, Object> hm);	
 	
 	public List<ReviewDTO> getgeneralreview();
@@ -29,6 +35,21 @@ public interface CommunityMapper {
 	public List<ReviewDTO> getalluserforum();
 
 	public ReviewDTO reviewdetail(int contentno);
+
+	public List<ReviewDTO> allUserForum(HashMap<String, Object> hm);
+
+
+	public void reviewlike(int contentno);
+
+	
+
+	
+
+
+
+
+
+
 
 
 

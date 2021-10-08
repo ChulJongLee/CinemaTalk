@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
  <link rel="stylesheet" href="resources/css/famouslinelist.css">
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -28,9 +29,9 @@
 						<div id="id">${list.userid }id</div>
 						<div id="date">${list.writedate }</div>
 						<div id="content">${list.contents }</div>
-						<div id="like">${list.like }</div>
-						<div id="dislike">${list.dislike }</div>
-						<div id="report"><button>신고</button> </div>					
+						<div id="like"><i class="fas fa-thumbs-up"> ${list.like }</i></div>
+						<div id="dislike"><i class="fas fa-thumbs-down"> ${list.dislike }</i></div>
+						<div id="report"><button> <i class="fas fa-flag"> 신고</i></button></div>						
 					</li>		
 				</c:forEach>
 			</ul>
