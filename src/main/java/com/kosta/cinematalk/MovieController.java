@@ -39,7 +39,7 @@ public class MovieController {
 		return "/view.jsp?page=movie/kobismovieresult";
 	}
 
-	@GetMapping("/kobisrank")
+	@GetMapping("/cinematalk")
 	public String RankSearchResult(Model model) throws OpenAPIFault, Exception {
 		List<KobisDTO> list = movieService.getMovieRank();
 		List<KobisDTO> result=new ArrayList<KobisDTO>();
@@ -56,7 +56,7 @@ public class MovieController {
 		model.addAttribute("randomList", randomList);
 		
 		
-		return "/view.jsp?page=movie/kobisrank";
+		return "/view.jsp?page=movie/main";
 	}
 
 	@GetMapping("/moviedetail/{movieCd}")
@@ -64,8 +64,7 @@ public class MovieController {
 		KobisDTO detail = movieService.getMovieDetail(movieCd);
 		model.addAttribute("detail", detail);
 
-//		return "/view.jsp?page=movie/moviedetail";
-		return "/view.jsp?page=movie/movieinfotop";
+		return "/view.jsp?page=movie/moviedetail";
 	}
 	
 	@GetMapping("/test")
@@ -74,7 +73,7 @@ public class MovieController {
 		return "/view.jsp?page=movie/test";
 	}
 	
-	
+//	Ajax
 	@PostMapping("/movieRate")
     @ResponseBody
     public Map<String, Object> testAjax(RateDTO movieRateData){

@@ -23,7 +23,7 @@
 <link rel="stylesheet"
 	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
-<link rel="stylesheet" href="/resources/css/kobisrank.css">
+<link rel="stylesheet" href="/resources/css/main.css">
 <body>
 	<!-- Swiper -->
 	<div class="swiper banner">
@@ -125,7 +125,7 @@
 
 	<!-- Swiper JS -->
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-	<script src="/resources/js/kobisrank.js"></script>
+	<script src="/resources/js/main.js"></script>
 
 </body>
 </html>

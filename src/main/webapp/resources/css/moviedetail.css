@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+/* 영화 정보 */
+*{
+	background-color: #212121;
+	color: white;
+}
+
+li{
+	margin-top: 10px;
+	list-style: none;
+}
+
+#movieview {
+    border: 2px solid red;
+    width: 1300px;
+    margin: 0px auto;
+    /* display: flex;
+    flex-direction: row; */
+    background-color: #212121;
+    color: white;
+    display: block;
+    position: relative;
+    height: 300px;
+}
+#movieinfotop{
+	height: 100%;
+	position: absolute;
+	display: block;
+	top: 0px;
+	left: 100px;
+    list-style: none;
+    text-align: left;
+    margin-top: 50px;
+}
+
+#movieNm{
+	font-size: 30px;
+    font-weight: 600;
+}
+
+/* .starRating{
+	position: absolute;
+	top: 225px;
+	left: 125px;
+} */
+
+/* 별점 */
+.starRating{
+	display: block;
+    width: 150px;
+    margin: 0 auto;
+}
+.starR1{
+    background: url('../image/star.png') no-repeat -52px 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    cursor: pointer;
+}
+.starR2{
+	background: url('../image/star.png') no-repeat right 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left; /*이미지를 어떻게 띄워서 텍스트와 함께 배치할 것인가에 대한 속성*/
+    cursor: pointer;
+}
+.starR1.on{background-position:0 0;}
+.starR2.on{background-position:-15px 0;}
+#movieimg{
+	position: absolute;
+	right: 100px;
+	height: 100%;
+	width: 300px;
+}
+
+/* 아코디언 */
+.accordion-button::after {
+	display: none;
+}
+
+.accordion-header{
+	width: 200px;
+    color: white;
+}
+
+.accordion-item{
+	background-color: #212121;
+}
+
+#accordionFlushExample{
+	position: relative;
+	margin-top: 15px;
+}
+#flush-headingOne{
+	position: absolute;
+	top: 10px;
+	left: 120px;
+}
+
+#flush-headingTwo{
+	position: absolute;
+	top: 10px;
+	left: 420px;
+}
+
+#flush-headingThree{
+	position: absolute;
+	top: 10px;
+	left: 720px;
+}
+#flush-headingFour{
+	position: absolute;
+	top: 10px;
+	left: 1020px;
+}
+
+#flush-collapseOne, #flush-collapseTwo, #flush-collapseThree, #flush-collapseFour {
+	position: absolute;
+	top: 70px;
+}
+
+button.accordion-button{
+	background-color: #212121;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    justify-content: center;
+}
+
+#endPoint{
+	position: relative;
+}

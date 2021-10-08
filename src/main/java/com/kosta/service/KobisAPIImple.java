@@ -268,8 +268,8 @@ public class KobisAPIImple implements KobisAPI {
 	public List<PersonInfoDTO> requestPersonList(RequestDTO rdto) throws OpenAPIFault, Exception {
 		List<PersonInfoDTO> result = new ArrayList<>();
 		//******여기 수정하면 됨!!!
-		int a = 720;
-		for(int i = 691 ; i < a+1 ; i++) {
+		int a = 780;
+		for(int i = 751 ; i < a+1 ; i++) {
 			rdto.setCurPage(String.valueOf(i));
 			List<PersonInfoDTO> list = getKobisPersonList(rdto);
 

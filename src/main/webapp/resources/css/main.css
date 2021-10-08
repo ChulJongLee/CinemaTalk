@@ -1,18 +1,118 @@
 @charset "UTF-8";
 
-
-*{
-	margin:0;
-	padding:0;
-	box-sizing: border-box;
+html, body {
+	position: relative;
+	height: 100%;
 }
 
-body{
-    background-color: #212121;
+body {
+	background: #eee;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	color: #000;
+	margin: 0;
+	padding: 0;
+}
+.banner{
+	padding-top: 30px;
 }
 
-#carouselExampleCaptions{
-    width: 800px;
-    left: 50%;
-    margin-top: 50px;
+
+
+/* 최상단 배너 */
+.banner {
+	width: 1250px;
+	height: 380px;
+}
+
+.banner>.swiper-wrapper>.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.banner>.swiper-wrapper>.swiper-slide img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.banner>.swiper-wrapper>.swiper-slide {
+	width: 50%;
+}
+
+/* 영화 목록 */
+.mySwiper {
+	width: 1250px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.mySwiper>.swiper-wrapper>.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-wrap: wrap;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.mySwiper>.swiper-wrapper>.swiper-slide img {
+	display: block;
+	width: 230px;
+	height: 330px;
+	object-fit: cover;
+	position: relative;
+	
+}
+
+.mySwiper>.swiper-wrapper>.swiper-slide span {
+	color: white;
+}
+.swiper-title{
+	color: white;
+	font-size: 20px;
+	font-weight: 600;
+	
+	padding-left: 25px;
+	padding-top: 30px;
+	padding-bottom: 10px;
+}
+.rank{
+	position: absolute;
+	font-weight: 500;
+	width: 26px;
+	height: 27px;
+	background-color: gold;
+	left: 4px;
+  	top: 0px;
+  	z-index: 2;
+}
+
+#lastSwiper{
+	margin-bottom: 70px;
 }
