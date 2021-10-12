@@ -41,7 +41,7 @@
                 <c:forEach var="item" items="${personInfo }">
                 	<c:if test="${item.repRoleNm=='감독' && item.person_pic=='' }">
                 		<div class="imgN" onclick="location.href='/personinfo/${item.peopleCd }'">
-							<span class="peopleNm">${item.peopleNm }</span>
+							<span class="peopleNm">${item.peopleNm }<c:if test="${not status.last }">, </c:if></span>
 						</div>
 					</c:if>
 				</c:forEach>
@@ -51,7 +51,7 @@
 			<!-- 배우 -->
 			<div id="actor">
                 <h3 class="title">배우</h3>
-                <c:forEach var="item" items="${personInfo }">
+                <c:forEach var="item" items="${personInfo }" varStatus="status">
                 	<c:if test="${item.repRoleNm=='배우' && item.person_pic!='' }">
                 		<div class="imgY" onclick="location.href='/personinfo/${item.peopleCd }'">
 							<img alt="배우사진" src="${item.person_pic }" class="person_pic"><br>
@@ -59,10 +59,10 @@
 						</div>
 					</c:if>
 				</c:forEach><br>
-				 <c:forEach var="item" items="${personInfo }">
+				 <c:forEach var="item" items="${personInfo }" varStatus="status">
                 	<c:if test="${item.repRoleNm=='배우' && item.person_pic=='' }">
                 		<div class="imgN" onclick="location.href='/personinfo/${item.peopleCd }'">
-							<span class="peopleNm">${item.peopleNm }</span>
+							<span class="peopleNm">${item.peopleNm }<c:if test="${not status.last }">, </c:if></span>
 						</div>
 					</c:if>
 				</c:forEach>

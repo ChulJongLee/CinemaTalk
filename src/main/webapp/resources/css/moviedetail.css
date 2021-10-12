@@ -50,11 +50,11 @@ ul.movieinfotop{
     font-weight: 600;
 }
 
-/* .starRating{
-	position: absolute;
-	top: 225px;
-	left: 125px;
-} */
+#star1{
+	width: 24px;
+    height: 24px;
+    margin-bottom: 9px;
+}
 
 /* 별점 */
 .starRating{

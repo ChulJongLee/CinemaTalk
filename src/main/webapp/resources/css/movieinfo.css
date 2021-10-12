@@ -50,6 +50,7 @@ iframe{
     /* border: 2px solid purple; */
     width: 34%;
     margin: 10px 30px;
+    
 }
 .person_pic{
 	width: 100px;
@@ -61,11 +62,12 @@ iframe{
     width: 100px;
     display: inline-block;
     margin: 10px;
+    cursor: pointer;
 }
 
 .imgN{
 	display: inline-block;
-	
+	cursor: pointer;
 }
 /* 감독 */
 #director{

@@ -12,9 +12,12 @@
 		
 	</select>
 	<select id="getmoviedetail" resultType="com.kosta.dto.KobisDTO" parameterType="String">
-		select movieCd, movieNm, plotText, genreNm, repNationNm, openDt, watchGradeNm, showTm, poster
-		from movie_info
-		where movieCd=#{movieCd}
+		select i.movieCd, movieNm, plotText, genreNm, repNationNm, DATE_FORMAT(openDt, "%Y.%m.%d") as openDt, watchGradeNm, showTm, poster, avg(rate) as rate
+		from movie_info as i
+			inner join movie_rating as r
+			on i.movieCd=r.movieCd
+		where i.movieCd=#{movieCd}
+		group by r.movieCd
 	</select>
 	
 	
@@ -100,7 +103,7 @@
 	</select>
   
    <select id="getmovierate" resultType="com.kosta.dto.KobisDTO">
-		select avg(rate), i.movieCd, movieNm, poster
+		select avg(rate) as rate, i.movieCd, movieNm, poster
 		from movie_rating as r
 			inner join movie_info as i
 			on r.movieCd=i.movieCd

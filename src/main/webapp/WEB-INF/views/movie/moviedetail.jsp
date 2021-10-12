@@ -20,8 +20,8 @@
 	        </div>
 	        
             <ul class="movieinfotop">
-                <li class="info"><span id="movieNm">${detail.movieNm}   </span><span>평점 </span><span>인원</span></li>
-                <li class="info"><span>${detail.openDt} </span><span>${detail.watchGradeNm}세 </span><span>${detail.showTm }분</span></li>
+                <li class="info"><span id="movieNm">${detail.movieNm}   </span><span><img src="/resources/image/star1.png" alt="별" id="star1">${detail.rate }</span></li>
+                <li class="info"><span>${detail.openDt} / </span><span>${detail.watchGradeNm}세 / </span><span>${detail.showTm }분</span></li>
                 <li class="info"><span>장르 : ${detail.genreNm }</span></li>
                 <li class="info"><span>출연진 : 
 								<c:forEach var="item" items="${personInfo }" end="5" varStatus="status">
