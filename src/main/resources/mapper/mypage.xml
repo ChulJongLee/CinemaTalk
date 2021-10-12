@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.kosta.mapper.MypageMapper">
+
+<!--   <select id="getUserInfo">
+  
+  </select> -->
+  
+    <resultMap type="com.kosta.dto.KobisDTO" id="collection">
+  		<result property="movieNm" column="movieNm"/>
+  		<result property="poster" column="poster"/>
+  		<result property="rank" column="rate"/>
+  	</resultMap>
+  
+  <select id="getMyCollection" parameterType="String" resultMap="collection">
+  	select movieNm, poster, rate
+  	from movie_info i inner join movie_rating r
+  	on i.movieCd = r.movieCd
+  	where user_no = #{user_no}
+  	order by ratingDate desc
+  	limit 0, 6
+  </select>
+  
+  <resultMap type="com.kosta.dto.ReviewDTO" id="review">
+  		<result property="title" column="movieNm"/>
+  		<result property="contents" column="content_content"/>
+  	</resultMap>
+  
+  <select id="getMyReview" parameterType="String" resultMap="review">
+  	select movieNm, content_content
+  	from comm_board c inner join movie_info m
+  	on c.movieCd = m.movieCd
+  	where user_no = #{user_no} and board_distinct_no = "1"
+  	order by content_no desc
+  </select>
+  
+    <resultMap type="com.kosta.dto.RateDTO" id="rates">
+  		<result property="rate" column="rate"/>
+  		<result property="user_no" column="cnt"/>
+  	</resultMap>
+  
+  <select id="getRates" parameterType="String" resultMap="rates">
+  	select rate, count(rate) cnt
+	from movie_rating
+	where user_no = #{user_no}
+	group by rate
+	order by rate
+  </select>
+  
+  <resultMap type="com.kosta.dto.RateDTO" id="rateStatistic">
+  		<result property="rate" column="avg"/>
+  		<result property="user_no" column="cnt"/>
+  </resultMap>
+  
+  <select id="getRateStatistic" parameterType="String" resultMap="rateStatistic">
+  	select avg(rate) avg, count(*) cnt
+	from movie_rating
+	where user_no = #{user_no};
+  </select>
+  
+    <resultMap type="com.kosta.dto.PersonInfoDTO" id="actor">
+  		<result property="peopleNm" column="pnm"/>
+  		<result property="person_pic" column="person_pic"/>
+  		<result property="peopleCd" column="cnt"/> 
+  	</resultMap>
+  
+  <select id="getFavActor" parameterType="String" resultMap="actor">
+  	select p.peopleNm pnm, person_pic, count(p.peopleCd) cnt
+	from person_info p inner join person_distinct d
+	on p.peopleCd = d.peopleCd
+	inner join movie_info m
+	on d.movieCd = m.movieCd
+	inner join movie_rating r
+	on m.movieCd = r.movieCd
+	where user_no = #{user_no} and person_job='배우'
+	group by p.peopleNm
+	order by cnt desc
+	limit 0, 6
+  </select>
+  
+  
+</mapper>
+  
+  
+  

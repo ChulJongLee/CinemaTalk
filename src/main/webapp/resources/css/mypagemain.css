@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+div>ul>li{
+	list-style: none;
+}
+
+#mycollection{
+	border: 2px solid red;
+	width: 1300px;
+	margin: 0px auto;
+	color: white;
+}
+
+#rate_statistics{
+	border: 2px solid red;
+	width: 1300px;
+	margin: 0px auto;
+	color: white;
+}
+
+#myreview{
+	border: 2px solid red;
+	width: 1300px;
+	margin: 0px auto;
+	color: white;
+}
+
+#fav_actor{
+	border: 2px solid red;
+	width: 1300px;
+	margin: 0px auto;
+	color: white;
+}
+
+
+
+#mycollection>div, #myreview>div, #fav_actor>div{
+	border: 2px solid red;
+    width: 1300px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #212121;
+    color: white;
+}

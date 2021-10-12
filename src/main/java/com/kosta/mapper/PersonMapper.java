@@ -15,6 +15,16 @@ public interface PersonMapper {
 
 	public void insertPersonDistinct(List<PersonInfoDTO> list);
 
+	public PersonInfoDTO getPersonInfo(String peopleCd);
+
+	public String[] getPersonFilmo(String peopleCd);
+
+	public KobisDTO getMovieFilmo(String movieCd);
+
+	public String[] getRelatedPerson(Map<String, String> hm);
+
+	public List<KobisDTO> getFilmoList(String peopleCd);
+	
 
 
 

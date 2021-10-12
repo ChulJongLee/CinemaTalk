@@ -27,5 +27,43 @@
    		</foreach>
   	</insert>
 
+	<select id="getPersonInfo" resultType="com.kosta.dto.PersonInfoDTO">
+		select peopleCd, peopleNm, person_bdate, nationality, person_pic, peopleNmEn
+		from person_info
+		where peopleCd = #{peopleCd}
+	</select>
+	
+	<select id="getPersonFilmo" resultType="String">
+		select movieCd
+		from person_distinct
+		where peopleCd = #{peopleCd}
+		order by movieCd desc
+	</select>
   
+  	<select id="getMovieFilmo" resultType="com.kosta.dto.KobisDTO">
+  		select movieCd, movieNm, poster
+  		from movie_info
+  		where movieCd = #{movieCd}
+  	</select>
+  	
+  	<select id="getRelatedPerson" resultType="String">
+  		select distinct peopleCd
+  		from person_distinct
+  		where movieCd = #{movieCd} and peopleCd != #{peopleCd} and person_job='배우'
+  		order by peopleCd
+  	</select>
+  	
+  	<resultMap type="com.kosta.dto.KobisDTO" id="filmolist">
+  		<result property="movieCd" column="mov"/>
+  		<result property="movieNm" column="movieNm"/>
+  		<result property="poster" column="poster"/> 
+  	</resultMap>
+  	
+  	<select id="getFilmoList" resultMap="filmolist" parameterType="String">
+  		select p.movieCd as mov, movieNm, poster
+  		from person_distinct p inner join movie_info m
+  		on p.movieCd = m.movieCd
+  		where p.peopleCd = #{peopleCd} 
+  	</select>
+  	
   </mapper>

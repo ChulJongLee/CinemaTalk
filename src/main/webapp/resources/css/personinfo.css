@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+#personinfotop{
+	border: 2px solid red;
+    width: 1300px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #212121;
+    color: white;
+}
+
+#personinfo>ul{
+	list-style: none;
+	color: white;
+    margin-top: 75px;
+}
+
+#personinfo>ul>li{
+	margin: 10px;
+}
+
+#personpic{
+	margin: 15px 0px 15px 230px;
+}
+
+
+#personinfobottom{
+	border: 2px solid red;
+    width: 1300px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #212121;
+    color: white;
+}
+
+#personfilmo{
+	border: 2px solid orange;
+    width: 800px;
+}
+#personfilmo>.posterandname{
+	margin: 20px 0px;
+	display: inline-block;
+}
+
+#personfilmo>.posterandname>ul{
+	list-style: none;
+	color: white;
+}
+
+#relatedperson{
+	border: 2px solid yellow;
+    width: 480px;
+}
+
+#relatedperson>.pictureandname{
+	display: inline-block;
+}
+
+#relatedperson>.pictureandname>ul{
+	list-style: none;
+	color: white;
+    margin-top: 20px;
+}
+#personfilmo>.posterandname>ul li, #relatedperson>.pictureandname>ul li{
+	text-align: center;
+	margin-top: 5px;
+}
+
+#relatedperson>.pictureandname>ul>li img{
+	border-radius: 50%;
+}
+
+p{
+	margin-top: 30px;
+	margin-left: 30px;
+}
