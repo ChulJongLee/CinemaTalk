@@ -45,15 +45,13 @@
 	where board_distinct_no = #{boardno}
 </select>
 
-
-
-
-
+<!-- 리뷰 페이지 모든 리뷰 -->
 <select id="list" parameterMap="hashmap" resultMap="reviewdto">
 	select A.*
 	from (select S.*, @rownum:=@rownum+1 as rn
-	  	  from (select user_no, board_distinct_no, content_date, content_content, content_like, content_hate
-			    from comm_board, (select @rownum:=0)R
+	  	  from (select content_no, user_id, e1.user_no, board_distinct_no, content_date, content_content, content_like, content_hate
+			    from comm_board e1 left join user_info e2
+			    on e1.user_no=e2.user_no, (select @rownum:=0)R
                 where 1=1) S
                 where board_distinct_no = 1
 				order by content_date DESC ) A
@@ -69,31 +67,31 @@
 <!-- 리뷰 페이지 베스트 리뷰 -->
 <select id="getreview" resultMap="reviewdto">
 	select content_no, user_id, e1.user_no, content_date, content_content, content_like, content_hate
-	from comm_board e1 inner join user_info e2
+	from comm_board e1 left join user_info e2
     on e1.user_no=e2.user_no
 	where board_distinct_no = 1
-	order by content_date DESC, content_like DESC
-	limit 2;
+	order by content_like DESC, content_date DESC
+	limit 2
 </select>
 
 <!-- 리뷰 페이지 일반 리뷰 -->
 <select id="getgeneralreview" resultMap="reviewdto">
 	select content_no, user_id, e1.user_no, content_date, content_content, content_like, content_hate
-	from comm_board e1 inner join user_info e2
+	from comm_board e1 left join user_info e2
     on e1.user_no=e2.user_no
 	where board_distinct_no = 1
-	order by content_date DESC, content_like DESC
+	order by content_date DESC
 	limit 4
 </select>
 
 <!-- 리뷰 페이지 모든 리뷰 -->
-<select id="getallreview" resultMap="reviewdto">
+<!-- <select id="getallreview" resultMap="reviewdto">
 	select content_no, user_id, e1.user_no, content_date, content_content, content_like, content_hate
 	from comm_board e1 inner join user_info e2
     on e1.user_no=e2.user_no
 	where board_distinct_no = 1
-	order by content_date DESC, content_like DESC
-</select>
+	order by content_date DESC
+</select> -->
 
 
 <!-- 참여 게시판 메인 명대사 -->
@@ -122,23 +120,20 @@
 			</where>
 </select>
 
-
-
 <!-- 자유게시판 리스트 -->
 <select id="getalluserforum" resultMap="reviewdto">
 	select content_no, user_id, e1.user_no, content_date, content_title, content_content, content_like, content_hate
-	from comm_board e1 inner join user_info e2
+	from comm_board e1 left join user_info e2
 	on e1.user_no=e2.user_no
 	where board_distinct_no = 5
 	order by content_date DESC
 </select>
 
-
 <select id="allUserForum" parameterType="hashmap" resultMap="reviewdto">
 	select A.*
 	from (select S.*, @rownum:=@rownum+1 as rn
 	  	  from (select content_no, user_id, e1.user_no, board_distinct_no, content_title, content_content, content_date, content_like, content_hate
-			    from comm_board e1 inner join user_info e2 
+			    from comm_board e1 left join user_info e2 
 			    on e1.user_no=e2.user_no, (select @rownum:=0)R
                 where 1=1) S
                 where board_distinct_no = 5
@@ -149,26 +144,35 @@
 				]]>	
 			</where>
 </select>  
-  
-  
-<select id="reviewdetail" resultMap="reviewdto">
-	
-	select user_id, content_date, content_content, content_like, content_hate
-	from comm_board
-	where content_no=#{contentno}
+
+<!-- 자유게시판 디테일 -->
+<select id="userforumdetail" parameterType="int" resultMap="reviewdto">
+	select content_no, user_id, e1.user_no, board_distinct_no, content_title, content_content, content_date, content_like, content_hate
+	from comm_board e1 left join user_info e2 
+	on e1.user_no=e2.user_no
+	where content_no = #{contentno}
 </select>
+
+
   
   
+<!-- 리뷰 좋아요 -->
 <update id="reviewlike" parameterType="int">
 	update comm_board
 	set content_like = content_like+1
 	where content_no = #{contentno}
 </update>
   
-
+<!-- 리뷰 등록 -->
+<insert id="reviewinsert" parameterMap="hashmap">
+	insert into comm_board (content_content, content_date, board_distinct_no)
+	values( #{contents}, now(), 1 )
+</insert>
   
-  
-  
+<delete id="reviewdelete" parameterType="int">
+	delete from comm_board
+	where content_no = #{contentno}
+</delete>
   
   
   

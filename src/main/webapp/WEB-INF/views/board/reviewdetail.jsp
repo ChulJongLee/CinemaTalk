@@ -13,8 +13,9 @@
 	<!-- 영화정보 & 카테고리 -->
 	<%-- <%@ include file="movieinfotop.jsp" %> --%>
 	
+	페이지 삭제
 	
-	<section>
+<%-- 	<section>
 		<div id="detailwrap">
 			<ul>
 				<li>
@@ -27,7 +28,7 @@
 				</li>	
 			</ul>	
 		</div>
-	</section>
+	</section> --%>
 	
 	
 

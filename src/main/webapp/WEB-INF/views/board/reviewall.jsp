@@ -18,11 +18,11 @@
 		 <c:if test="${allreview==null }">              		
 	        	자료가 없습니다.
 	     </c:if>
-		 <c:if test="${allreview!=null }">
+		 <%-- <c:if test="${allreview!=null }"> --%>
 		 	<ul id="contentslist">
 				<c:forEach var="list" items="${allreview }">
 					<li id="contents">
-						<div id="id">${list.userid }id</div>
+						<div id="id">${list.userid }</div>
 						<div id="date">${list.writedate }</div>
 						<div id="content">${list.contents }</div>
 						<div id="like"><i class="fas fa-thumbs-up"> ${list.like }</i></div>
@@ -31,11 +31,11 @@
 					</li>		
 				</c:forEach>
 			</ul>
-		 </c:if>
+		 <%-- </c:if> --%>
 		</div>
-		<div id="writebtn">
+<!-- 		<div id="writebtn">
 			<button type="button" class="btn btn-outline-primary">글쓰기</button>
-		</div>
+		</div> -->
 
 	<!-- 	
 		<form method="get" action="list">

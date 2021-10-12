@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+section{
+    border: 2px solid orange;
+    width: 1300px;
+    margin: 0px auto;
+    
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	
+    color: white;
+}
+article{
+	border: 2px solid blue;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 70%;
+}
+
+#head{
+	margin-top: 30px;
+	border: 2px solid red;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	width: 100%;
+}
+#title{
+	border: 2px solid green;
+	width: 100%;
+}
+#id{
+	border: 2px solid skyblue;
+	margin-right: 30px;	
+}
+#date{
+	border: 2px solid skyblue;	
+}
+
+#body{
+	border: 2px solid red;
+	margin: 20px 0px;
+	width: 100%;
+}
+#content::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+#content::-webkit-scrollbar-thumb{
+	background-color: darkolivegreen;
+	border-radius: 10px;
+}
+#content::-webkit-scrollbar-track{
+	background-color: #212121;
+}
+
+
+#thumb{
+	border: 2px solid red;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 50%;	
+}
+#like{
+	border: 2px solid skyblue;	
+	margin-right: 20px;	
+}
+#dislike{
+	border: 2px solid skyblue;		
+}
+
+#edit{
+	border: 2px solid red;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	width: 50%;	
+}
+#modify{
+	margin-right: 10px;
+}
+
+
+#reply{
+	border: 2px solid red;
+	height: 300px;
+	width: 100%;
+	
+}

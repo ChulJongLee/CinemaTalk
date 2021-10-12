@@ -54,14 +54,41 @@
          	<c:if test="${generalreviewlist!=null }">
          	<ul id="contentslist">
          		<c:forEach var="list" items="${generalreviewlist }">
-					<li id="contents">				
-						<div id="id">${list.userid }, ${list.contentno }</div>
-						<div id="date">${list.writedate }</div>
-						<div id="content">${list.contents }</div>
-						<div id="like"><button class="likebtn" value="${list.contentno }"> <i class="fas fa-thumbs-up"> ${list.like }</i></button></div>
-						<div id="dislike"><button class="dislikebtn" value="${list.contentno }"> <i class="fas fa-thumbs-down"> ${list.dislike }</i></button></div>
-						<div id="report"><button class="reportbtn" value="${list.contentno }"> <i class="fas fa-flag"> 신고</i></button></div>						
-					</li>					
+						<li id="contents">				
+							<div id="id">${list.userid }, ${list.contentno }</div>
+							<div id="date">${list.writedate }</div>
+							
+							
+							<div id="content"><pre>${list.contents }</pre></div>
+							
+							
+							<div id="like">
+								<button class="likebtn" value="${list.contentno }">
+									<div class="likebtn2">
+										<i class="fas fa-thumbs-up"></i>
+									</div>
+									<div>
+										${list.like }
+									</div>
+								</button>				
+							</div>
+							<div id="dislike">
+								<button class="dislikebtn" value="${list.contentno }">
+									<i class="fas fa-thumbs-down">${list.dislike }</i>
+								</button>
+							</div>
+							<div id="report">
+								<button class="reportbtn" value="${list.contentno }">
+									<i class="fas fa-flag"> 신고</i>
+								</button>
+							</div>
+							<div id="contentedit">
+								<div id="modifycheck"><button class="modifycheckbtn"><i class="fas fa-check fa-lg"></i></button></div>
+								<div id="modifyreturn"><button class="modifyreturnbtn"><i class="fas fa-undo fa-lg"></i></button></div>
+								<div id="modify"><button class="modifybtn" value="${list.contentno }"><i class="fas fa-edit fa-lg"></i></button></div>
+								<div id="delete"><button class="deletebtn" value="${list.contentno }"><i class="fas fa-times fa-lg"></i></button></div>						
+							</div>
+						</li>		
 				</c:forEach>
 			</ul>	
          	</c:if>                            
@@ -70,27 +97,27 @@
         	<a href="reviewall">모든 리뷰 보기</a>
         </div>
     </section>
-    
-
+     
+	
     <!-- ******** 리뷰 쓰기 ******** -->
     <div id="writereview">
+ 	   <form action="reviewinsertresult" method="post">
+ 	   <div id="writereview2">   	   		   
+ 	      <div class="form-check form-switch" id="form-switch">	      	   
+	           <label class="form-check-label" for="flexSwitchCheckDefault">스포일러 여부</label>
+	           <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">	                      
+      	  </div>
+ 	 	  <div class="mb-3">
+ 	 	  	  <label for="contentsbox" class="form-label">리뷰등록</label> 			  
+			  <textarea class="form-control" id="contentsbox" name="contents" rows="5" cols="100" placeholder="리뷰를 작성해 주세요." required="required"></textarea>
+	      </div>
+	   </div>	
+	      <div class="d-grid gap-2">
+	          <button class="btn btn-primary" type="submit">리뷰 등록</button>
+	      </div>
+       </form>	      
+	</div>
 
-	        <div class="mb-3">
-	
-	            <label for="exampleFormControlTextarea1" class="form-label">리뷰 쓰기</label>
-	
-	            <div class="form-check form-switch" id="form-switch">
-	                <label class="form-check-label" for="flexSwitchCheckDefault">스포일러 여부</label>
-	                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">            
-	            </div>
-	
-	            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="width: 800px; margin-bottom: 5px;"></textarea>
-	            <div class="d-grid gap-2">
-	                <button class="btn btn-primary" type="submit">리뷰 등록</button>
-	            </div>
-	        </div>
-
-    </div>    
 <script src="/resources/js/reviewmain.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>

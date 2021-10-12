@@ -30,11 +30,6 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.getgeneralreview();
 	}
 
-	@Override
-	public List<ReviewDTO> allReview() {
-
-		return mapper.getallreview();
-	}
 
 	@Override
 	public int totalCount(String search, String searchtxt) {		
@@ -73,13 +68,6 @@ public class CommunityServiceImple implements CommunityService {
 	}
 
 	
-	
-//	@Override
-//	public int totalCount2() {
-//
-//		return mapper.totalCount2();
-//	}
-	
 	@Override
 	public int totalCount2(int boardno) {
 		
@@ -94,8 +82,7 @@ public class CommunityServiceImple implements CommunityService {
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
 		hm.put("startrow", startRow);
-		hm.put("endrow", endRow);
-		
+		hm.put("endrow", endRow);	
 		
 		return mapper.getallfamousline(hm);
 	}
@@ -108,11 +95,11 @@ public class CommunityServiceImple implements CommunityService {
 	}
 
 
-	@Override
-	public ReviewDTO reviewdetail(int contentno) {
-
-		return mapper.reviewdetail(contentno);
-	}
+//	@Override
+//	public ReviewDTO reviewdetail(int contentno) {
+//
+//		return mapper.reviewdetail(contentno);
+//	}
 
 
 	@Override
@@ -130,6 +117,26 @@ public class CommunityServiceImple implements CommunityService {
 	public void reviewLike(int contentno) {
 		mapper.reviewlike(contentno);
 		
+	}
+
+	@Override
+	public void reviewinsert(HashMap<String, Object> hm) {
+
+		int result = mapper.reviewinsert(hm);
+	}
+
+	@Override
+	public int reviewdelete(int no) {
+		
+		
+		return mapper.reviewdelete(no);
+	}
+
+	@Override
+	public ReviewDTO userforumdetail(int contentno) {
+		
+		
+		return mapper.userforumdetail(contentno);
 	}
 
 

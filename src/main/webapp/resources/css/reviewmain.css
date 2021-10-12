@@ -50,7 +50,9 @@
 	justify-content: space-around;
 	list-style: none;
 	padding-left: 0;
+	width: 100%;
 }
+
 #contents{
 	border: 2px solid blue;
 	display: flex;
@@ -65,12 +67,6 @@
 	border: 2px solid yellow;
 }
 
-#content{
-	width: 100%;
-	height: 200px;
-	overflow: hidden;
-	margin: 10px 0px;
-}
 #id{
 	width: 70%;
 }
@@ -78,6 +74,24 @@
 	width: 30%;
 	text-align: right;
 }
+#content{
+	width: 100%;
+	height: 200px;
+	overflow-y: scroll;
+	margin: 10px 0px;
+	padding-right: 10px;
+}
+#content::-webkit-scrollbar {
+	width: 10px;
+}
+#content::-webkit-scrollbar-thumb{
+	background-color: darkolivegreen;
+	border-radius: 10px;
+}
+#content::-webkit-scrollbar-track{
+	background-color: #212121;
+}
+
 #like, #dislike{
 	width: 20%;
 	text-align: center;
@@ -87,9 +101,12 @@
 	border: none;
 	background-color: #212121;
 	color: #a9a9a9;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
 }
-
-.likebtn:hover{
+.likebtn2:hover{
 	color: #3498db;
 	transform: scale(1.1, 1.1);
 }
@@ -97,7 +114,6 @@
 	color: #f1c40f;
 	transform: scale(1.1, 1.1);
 }
-
 #report{
 	width: 60%;
 	text-align: right;
@@ -113,6 +129,36 @@
 	transform: scale(1.1, 1.1);
 }
 
+#contentedit{
+	border: 2px solid green;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+#modifycheck{
+	width: 7%;
+	border: 1px solid red;
+	text-align: center;
+}
+#modifyreturn{
+	width: 7%;
+	border: 1px solid red;
+	text-align: center;
+}
+
+#modify{
+	width: 79%;
+	margin: 0px;
+	text-align: right;
+	border: 1px solid red;
+}
+#delete{
+	width: 7%;
+	text-align: center;
+	border: 1px solid red;
+	margin: 0px;
+}
+
 
 /* 모든 리뷰 보기 버튼*/
 #reviewallbtn{
@@ -120,22 +166,28 @@
 	justify-content: center;
 }
 
-
 /* 리뷰 쓰기 */
 #writereview{
     border: 2px solid red;
     width: 1300px;
     margin: 0px auto;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     color: white;
+}
+#writereview2{
+	
 }
 .form-label{
     border: 2px solid yellow;
 }
 #form-switch{
-    border: 2px solid red;
-    display: inline-block;
-    margin-left: 570px;
+	border: 2px solid green;
+	width: 40%;	
 }
+
+
+
 
