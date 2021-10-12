@@ -19,4 +19,6 @@ public interface MovieService {
 	public List<KobisDTO> getRandomList();
 	public void movieRate(RateDTO movieRateData);
 	public List<PersonInfoDTO> getPersonInfo(String movieCd);
+	public List<KobisDTO> getMovieRate();
+	public List<KobisDTO> getMovieOpen();
 }

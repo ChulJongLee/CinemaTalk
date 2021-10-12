@@ -17,4 +17,6 @@ public interface MovieMapper {
 	public List<KobisDTO> getrandomlist();
 	public void movierate(RateDTO movieRateData);
 	public List<PersonInfoDTO> personinfo(String movieCd);
+	public List<KobisDTO> getmovierate();
+	public List<KobisDTO> getmovieopen();
 }

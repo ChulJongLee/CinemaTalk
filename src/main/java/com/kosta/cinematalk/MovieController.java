@@ -1,6 +1,5 @@
 package com.kosta.cinematalk;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +16,6 @@ import com.kosta.dto.KobisDTO;
 import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
 import com.kosta.service.MovieService;
-import com.kosta.service.PersonService;
 
 import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
 import lombok.RequiredArgsConstructor;
@@ -43,20 +41,17 @@ public class MovieController {
 
 	@GetMapping("/cinematalk")
 	public String RankSearchResult(Model model) throws OpenAPIFault, Exception {
-		List<KobisDTO> list = movieService.getMovieRank();
-		List<KobisDTO> result=new ArrayList<KobisDTO>();
+		List<KobisDTO> dailyList = movieService.getMovieRank();
+		model.addAttribute("dailyList", dailyList);
 		
-		for (int i = 0; i < list.size(); i++) {
-			String rank=list.get(i).getRank();
-			KobisDTO detail = movieService.getMovieDetail(list.get(i).getMovieCd());
-			detail.setRank(rank);
-			result.add(detail);
-		}
-		model.addAttribute("list", result);
+		List<KobisDTO> rateList = movieService.getMovieRate();
+		model.addAttribute("rateList", rateList);
+		
+		List<KobisDTO> openList = movieService.getMovieOpen();
+		model.addAttribute("openList", openList);
 		
 		List<KobisDTO> randomList=movieService.getRandomList();
 		model.addAttribute("randomList", randomList);
-		
 		
 		return "/view.jsp?page=movie/main";
 	}

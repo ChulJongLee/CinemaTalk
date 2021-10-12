@@ -53,6 +53,7 @@ iframe{
 }
 .person_pic{
 	width: 100px;
+	border-radius: 50%;
 }
 .imgY{
 	text-align: center;

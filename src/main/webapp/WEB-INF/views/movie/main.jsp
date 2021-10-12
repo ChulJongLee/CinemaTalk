@@ -59,7 +59,7 @@
 	<div class="swiper mySwiper">
 		<p class="swiper-title">박스 오피스 순위</p>
 		<div class="swiper-wrapper">
-			<c:forEach var="item" items="${list}">
+			<c:forEach var="item" items="${dailyList}">
 				<div class="swiper-slide"
 					onclick="location.href='moviedetail/${item.movieCd }'">
 					<img alt="포스터" src="${item.poster }"><br> <span
@@ -76,7 +76,7 @@
 	<div class="swiper mySwiper">
 		<p class="swiper-title">평점 순위</p>
 		<div class="swiper-wrapper">
-			<c:forEach var="item" items="${randomList}">
+			<c:forEach var="item" items="${rateList}">
 				<div class="swiper-slide"
 					onclick="location.href='moviedetail/${item.movieCd }'">
 					<img alt="포스터" src="${item.poster }"><br> <span
@@ -89,9 +89,9 @@
 		<div class="swiper-button-prev"></div>
 	</div>
 	<div class="swiper mySwiper">
-		<p class="swiper-title">내가 관심있는 영화</p>
+		<p class="swiper-title">최신 개봉 영화</p>
 		<div class="swiper-wrapper">
-			<c:forEach var="item" items="${randomList}">
+			<c:forEach var="item" items="${openList}">
 				<div class="swiper-slide"
 					onclick="location.href='moviedetail/${item.movieCd }'">
 					<img alt="포스터" src="${item.poster }"><br> <span

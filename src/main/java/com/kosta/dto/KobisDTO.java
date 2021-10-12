@@ -42,7 +42,7 @@ public class KobisDTO {
     private String watchGradeNm;
     private String genreNm;
     
-    //영화인
+    private float rate;
  	
  	@Getter
  	@Setter

@@ -17,10 +17,7 @@
 		where movieCd=#{movieCd}
 	</select>
 	
-	<select id="getmoviedailyrank" resultType="com.kosta.dto.KobisDTO">
-		select rank, movieCd
-		from movie_dailyrank
-	</select>
+	
 	
 	<insert id="insertmovie" parameterType="java.util.List">
 		replace into movie_info(
@@ -72,7 +69,7 @@
 			, ratingDate
 		)
 		values
-			("1", #{movieCd}, #{rate}, now())
+			("6", #{movieCd}, #{rate}, now())
 		
 		
 	</insert>
@@ -94,11 +91,30 @@
   		where m.movieCd=#{movieCd}
   	</select>
   
+  <select id="getmoviedailyrank" resultType="com.kosta.dto.KobisDTO">
+		select rank, i.movieCd, movieNm, poster
+		from movie_dailyrank as d
+			inner join movie_info as i
+			on d.movieCd=i.movieCd
+		order by rank
+	</select>
   
+   <select id="getmovierate" resultType="com.kosta.dto.KobisDTO">
+		select avg(rate), i.movieCd, movieNm, poster
+		from movie_rating as r
+			inner join movie_info as i
+			on r.movieCd=i.movieCd
+		where ratingDate >=date_add(now(), interval-1 month)
+		group by r.movieCd
+		order by avg(rate);
+	</select>
   
-  
-  
-  
+   <select id="getmovieopen" resultType="com.kosta.dto.KobisDTO">
+		select movieCd, movieNm, poster, openDt
+		from movie_info
+        <![CDATA[where openDt <= now() and poster!=""]]>
+		order by openDt desc limit 10
+	</select>
   
   
   

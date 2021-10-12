@@ -95,4 +95,20 @@ public class MovieServiceImple implements MovieService {
 		return mapper.personinfo(movieCd);
 	}
 
+	@Override
+	public List<KobisDTO> getMovieRate() {
+		// TODO Auto-generated method stub
+		List<KobisDTO> list=mapper.getmovierate();
+		for(int i=0;i<list.size();i++) {
+			list.get(i).setRank(i+1+"");
+		}
+		return list;
+	}
+
+	@Override
+	public List<KobisDTO> getMovieOpen() {
+		// TODO Auto-generated method stub
+		return mapper.getmovieopen();
+	}
+
 }

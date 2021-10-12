@@ -32,7 +32,7 @@
                 <h3 class="title">감독</h3>
                  <c:forEach var="item" items="${personInfo }">
                 	<c:if test="${item.repRoleNm=='감독' && item.person_pic!='' }">
-	                	<div class="imgY">
+	                	<div class="imgY" onclick="location.href='/personinfo/${item.peopleCd }'">
 	                	<img src="${item.person_pic}" alt="감독" class="person_pic"><br>
 						<span class="personNm">${item.peopleNm }</span>
 						</div>
@@ -40,7 +40,7 @@
 				</c:forEach><br>
                 <c:forEach var="item" items="${personInfo }">
                 	<c:if test="${item.repRoleNm=='감독' && item.person_pic=='' }">
-                		<div class="imgN">
+                		<div class="imgN" onclick="location.href='/personinfo/${item.peopleCd }'">
 							<span class="peopleNm">${item.peopleNm }</span>
 						</div>
 					</c:if>
@@ -53,7 +53,7 @@
                 <h3 class="title">배우</h3>
                 <c:forEach var="item" items="${personInfo }">
                 	<c:if test="${item.repRoleNm=='배우' && item.person_pic!='' }">
-                		<div class="imgY">
+                		<div class="imgY" onclick="location.href='/personinfo/${item.peopleCd }'">
 							<img alt="배우사진" src="${item.person_pic }" class="person_pic"><br>
 							<span class="peopleNm">${item.peopleNm }</span>
 						</div>
@@ -61,7 +61,7 @@
 				</c:forEach><br>
 				 <c:forEach var="item" items="${personInfo }">
                 	<c:if test="${item.repRoleNm=='배우' && item.person_pic=='' }">
-                		<div class="imgN">
+                		<div class="imgN" onclick="location.href='/personinfo/${item.peopleCd }'">
 							<span class="peopleNm">${item.peopleNm }</span>
 						</div>
 					</c:if>
