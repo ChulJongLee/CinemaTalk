@@ -6,32 +6,43 @@
 	color: white;
 }
 
-li{
-	margin-top: 10px;
+ul, li{
 	list-style: none;
 }
+.info{
+	margin-bottom: 10px;
 
-#movieview {
-    border: 2px solid red;
+}
+
+#moviedetail {
+  /*   border: 2px solid red; */
     width: 1300px;
     margin: 0px auto;
-    /* display: flex;
-    flex-direction: row; */
     background-color: #212121;
     color: white;
-    display: block;
-    position: relative;
-    height: 300px;
 }
 #movieinfotop{
 	height: 100%;
-	position: absolute;
-	display: block;
-	top: 0px;
-	left: 100px;
     list-style: none;
     text-align: left;
     margin-top: 50px;
+}
+.movieinfotop{
+	display: inline-block;
+}
+
+ul.movieinfotop{
+	position: absolute;
+}
+#movieimg{
+	margin-left: 150px;
+	margin-right: 20px;
+	display: inline;
+}
+#poster{
+	width:200px;
+}
+ul.movieinfotop{
 }
 
 #movieNm{
@@ -47,7 +58,6 @@ li{
 
 /* 별점 */
 .starRating{
-	display: block;
     width: 150px;
     margin: 0 auto;
 }
@@ -69,14 +79,82 @@ li{
 }
 .starR1.on{background-position:0 0;}
 .starR2.on{background-position:-15px 0;}
-#movieimg{
-	position: absolute;
-	right: 100px;
-	height: 100%;
-	width: 300px;
+
+
+/* tab */
+.main {
+ padding: 20px;
+ font-family: roboto;
+}
+.tab-content {
+    margin-top: 15px;
+}
+.nav-tabs>li {
+/*  margin-bottom: -4px;
+ margin-left: 10px; */
 }
 
-/* 아코디언 */
+.nav>li>a {
+ padding:5px;
+}
+.nav-tabs>li>a{
+ font-size:16px;
+ line-height:2;
+ color:white;
+ text-decoration: none;
+ border: none;
+ font-weight:bold;
+ margin-left: 130px;
+ margin-bottom: 10px;
+ font-size: 22px;
+ 
+}
+.nav-tabs>li.active a{
+ font-weight:bold;
+ color:blue !important;
+ background-color: #212121;
+}
+.nav-tabs>li.active a:hover{
+ color:blue !important;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+	text-decoration: none;
+	background-color: #212121;
+	border: 0px solid #212121;
+	
+}
+
+.nav-tabs>li>a:hover {
+}
+
+.nav>li>a:focus,
+.nav>li>a:hover {
+ text-decoration: none;
+ background-color: #212121
+}
+.nav-tabs>li.active::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 0.25em;
+    bottom: 0;
+    background-color: #212121;
+}
+
+#tablelist {
+    border-bottom: 0px solid #212121;
+}
+
+h3{
+	font-weight: 600;
+}
+/* 
+
+아코디언
 .accordion-button::after {
 	display: none;
 }
@@ -133,3 +211,4 @@ button.accordion-button{
 #endPoint{
 	position: relative;
 }
+ */

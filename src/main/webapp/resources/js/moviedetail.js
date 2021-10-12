@@ -1,6 +1,10 @@
 /**
  * 
  */
+$('#myTabs a').click(function(e) {
+ e.preventDefault()
+ $(this).tab('show')
+})
 
 $('.starRating span').hover(function(){
 	  $(this).parent().children('span').removeClass('on');

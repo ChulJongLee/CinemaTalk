@@ -11,37 +11,65 @@
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-	<!-- 영화정보 & 카테고리 -->
-	<%-- <%@ include file="movieinfotop.jsp" %> --%>
-		
 	
  <!-- 영화 정보 -->
 	<section id="movieinfo">
 		<!-- 영화 줄거리 -->
 		<div id="moviesummary">
-            <h3>줄거리</h3>
-			<p>${detail.plotText }</p>		
+            <h3 class="title">줄거리</h3>
+			<p>${detail.plotText }</p>	
+			<!-- 영화 트레일러 -->
+			<div id="trailer">
+	            <h3 class="title">트레일러</h3>
+	            <iframe src="https://www.youtube.com/embed/aGZPviLMo7I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	        </div>			
 		</div>
 
 		<!-- 감독, 배우 -->	
 		<div id="directorNactor">
 			<!-- 감독 -->
 			<div id="director">
-                <h3>감독</h3>
-                <p>데이미언 셔젤</p> 
+                <h3 class="title">감독</h3>
+                 <c:forEach var="item" items="${personInfo }">
+                	<c:if test="${item.repRoleNm=='감독' && item.person_pic!='' }">
+	                	<div class="imgY">
+	                	<img src="${item.person_pic}" alt="감독" class="person_pic"><br>
+						<span class="personNm">${item.peopleNm }</span>
+						</div>
+					</c:if>
+				</c:forEach><br>
+                <c:forEach var="item" items="${personInfo }">
+                	<c:if test="${item.repRoleNm=='감독' && item.person_pic=='' }">
+                		<div class="imgN">
+							<span class="peopleNm">${item.peopleNm }</span>
+						</div>
+					</c:if>
+				</c:forEach>
+				
+				
 			</div>
 			<!-- 배우 -->
 			<div id="actor">
-                <h3>배우</h3>
-                <p>라이언 고슬링</p><p>엠마 스톤</p><p>존 레전드</p><p>로즈마리 드윗</p><p>소노야 미즈노</p><p>제시카 로테</p><p>칼리 헤르난데스</p><p>톰 에버렛 스콧</p>
+                <h3 class="title">배우</h3>
+                <c:forEach var="item" items="${personInfo }">
+                	<c:if test="${item.repRoleNm=='배우' && item.person_pic!='' }">
+                		<div class="imgY">
+							<img alt="배우사진" src="${item.person_pic }" class="person_pic"><br>
+							<span class="peopleNm">${item.peopleNm }</span>
+						</div>
+					</c:if>
+				</c:forEach><br>
+				 <c:forEach var="item" items="${personInfo }">
+                	<c:if test="${item.repRoleNm=='배우' && item.person_pic=='' }">
+                		<div class="imgN">
+							<span class="peopleNm">${item.peopleNm }</span>
+						</div>
+					</c:if>
+				</c:forEach>
 			</div>		
 		</div>
 		
-		<!-- 영화 트레일러 -->
-		<div id="trailer">
-            <h3>트레일러</h3>
-            <iframe width="760" height="415" src="https://www.youtube.com/embed/aGZPviLMo7I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>		
+		
 	</section>
 	
 	

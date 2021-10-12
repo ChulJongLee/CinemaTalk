@@ -6,8 +6,8 @@ body{
 
 /* 영화 정보 전체 */
 #movieinfo{
-	border: 2px solid red;
-    width: 1300px;
+	/* border: 2px solid red; */
+    width: 100%;
     margin: 0px auto;
     display: flex;
     justify-content: space-evenly;
@@ -17,36 +17,63 @@ body{
     color: white;
 }
 
-
-
-/* 줄거리  */
-#moviesummary{
-	border: 2px solid orange;
-    width: 60%;
-    margin: 10px 30px;
+p, span{
+	
+    font-size: medium;
+}
+h3.title{
+	font-size: 18px;
+	margin-top: 20px;
+	font-weight: 600;
 }
 
+
+/* 줄거리, 영화 트레일러  */
+#moviesummary{
+	/* border: 2px solid orange; */
+    width: 60%;
+    /* margin: 10px 30px; */
+}
+#trailer{
+	margin-top: 20px;
+	width: 100%;
+	height: 400px;
+}
+iframe{
+	width: 100%;
+	height: 100%;
+}
 
 
 /* 감독, 배우 전체 */
 #directorNactor{
-    border: 2px solid purple;
-    width: 30%;
+    /* border: 2px solid purple; */
+    width: 34%;
     margin: 10px 30px;
+}
+.person_pic{
+	width: 100px;
+}
+.imgY{
+	text-align: center;
+	height: 137px;
+    width: 100px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.imgN{
+	display: inline-block;
+	
 }
 /* 감독 */
 #director{
-    border: 2px solid skyblue;
+    /* border: 2px solid skyblue; */
 }
 /* 배우 */
 #actor{
-    border:  2px solid yellowgreen;
+    /* border:  2px solid yellowgreen; */
 }
 
 
 
-/* 영화 트레일러 */
-#trailer{
-    border: 2px solid blue;
-    margin: 10px 40px;
-}

@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosta.dto.KobisDTO;
+import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
 import com.kosta.service.MovieService;
+import com.kosta.service.PersonService;
 
 import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
 import lombok.RequiredArgsConstructor;
@@ -63,7 +65,9 @@ public class MovieController {
 	public String MovieDetail(@PathVariable String movieCd, Model model) throws OpenAPIFault, Exception {
 		KobisDTO detail = movieService.getMovieDetail(movieCd);
 		model.addAttribute("detail", detail);
-
+		List<PersonInfoDTO> personInfo=movieService.getPersonInfo(movieCd);
+		model.addAttribute("personInfo", personInfo);
+		
 		return "/view.jsp?page=movie/moviedetail";
 	}
 	

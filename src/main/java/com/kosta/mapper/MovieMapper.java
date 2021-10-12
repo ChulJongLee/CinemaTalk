@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.kosta.dto.KobisDTO;
+import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
 @Mapper
 public interface MovieMapper {
@@ -15,4 +16,5 @@ public interface MovieMapper {
 	public List<KobisDTO> getmoviedailyrank();
 	public List<KobisDTO> getrandomlist();
 	public void movierate(RateDTO movieRateData);
+	public List<PersonInfoDTO> personinfo(String movieCd);
 }

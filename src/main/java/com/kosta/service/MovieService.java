@@ -3,6 +3,7 @@ package com.kosta.service;
 import java.util.List;
 
 import com.kosta.dto.KobisDTO;
+import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
 import com.kosta.dto.RequestDTO;
 
@@ -17,4 +18,5 @@ public interface MovieService {
 	public List<KobisDTO> getMovieRank();
 	public List<KobisDTO> getRandomList();
 	public void movieRate(RateDTO movieRateData);
+	public List<PersonInfoDTO> getPersonInfo(String movieCd);
 }

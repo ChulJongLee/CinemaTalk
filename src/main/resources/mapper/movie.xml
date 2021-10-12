@@ -69,13 +69,30 @@
 			user_no
 			, movieCd
 			, rate
+			, ratingDate
 		)
 		values
-			("1", #{movieCd}, #{rate})
+			("1", #{movieCd}, #{rate}, now())
 		
 		
 	</insert>
   
+  	<resultMap type="com.kosta.dto.PersonInfoDTO" id="persondto">
+		<result column="peopleCd" property="peopleCd"/>
+		<result column="peopleNm" property="peopleNm"></result>
+		<result column="person_job" property="repRoleNm"></result>
+		<result column="person_pic" property="person_pic"></result>
+	</resultMap>
+  
+  	<select id="personinfo" resultMap="persondto" parameterType="String">
+  		select i.peopleCd, peopleNm, person_job, person_pic
+  		from person_distinct as d
+	  		inner join person_info as i
+	  		on d.peopleCd=i.peopleCd
+	  		inner join movie_info as m
+	  		on d.movieCd=m.movieCd
+  		where m.movieCd=#{movieCd}
+  	</select>
   
   
   

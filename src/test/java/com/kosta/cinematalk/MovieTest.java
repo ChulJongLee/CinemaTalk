@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.kosta.dto.KobisDTO;
+import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RequestDTO;
 import com.kosta.service.MovieServiceImple;
 
@@ -60,5 +61,13 @@ public class MovieTest {
 		System.out.println(list.size());
 	}
 	
-	
+	@Test
+	public void getPerson() {
+	List<PersonInfoDTO> personInfo=movieService.getPersonInfo("20217742");
+	System.out.println(personInfo.size());
+	for(PersonInfoDTO item:personInfo) {
+		System.out.println(item.getPeopleNm());
+		System.out.println(item.getPerson_pic());
+	}
+	}
 }
