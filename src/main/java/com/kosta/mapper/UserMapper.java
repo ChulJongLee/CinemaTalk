@@ -21,6 +21,6 @@ public interface UserMapper {
 	
 	public int idcheck(UserDTO dto);
 	
-	public UserDTO userlogin(UserDTO dto);
+	public UserDTO loginCheck(UserDTO dto);
 
 }

@@ -10,25 +10,29 @@ import com.kosta.dto.UserDTO;
 
 public interface MypageService {
 
-	public UserDTO getUserInfo();
+	public UserDTO getUserInfo(int user_no);
 	
-	public List<KobisDTO> getMyCollection(String user_no);
+	public List<KobisDTO> getMyCollection(int user_no);
 	
-	public List<ReviewDTO> getMyReview(String user_no);
+	public List<ReviewDTO> getMyReview(int user_no);
 	
-	public List<RateDTO> getRates(String user_no);
+	public List<RateDTO> getRates(int user_no);
 	
-	public RateDTO getRateStatistic(String user_no);
+	public RateDTO getRateStatistic(int user_no);
 	
 	public void getFavTag();
 	
-	public List<PersonInfoDTO> getFavActor(String user_no);
+	public List<PersonInfoDTO> getFavActor(int user_no);
 	
-	public void getFavDirector();
+	public List<PersonInfoDTO> getFavDirector(int user_no);
 	
-	public void getFavGenre();
+	public List<KobisDTO> getFavGenre(int user_no);
 	
-	public void getFavNation();
+	public List<KobisDTO> getFavNation(int user_no);
+
+	public List<KobisDTO> getEveryCollection(int user_no);
+
+	public List<ReviewDTO> getEveryReview(int user_no);
 
 
 

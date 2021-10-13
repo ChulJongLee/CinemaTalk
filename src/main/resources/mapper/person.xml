@@ -64,6 +64,7 @@
   		from person_distinct p inner join movie_info m
   		on p.movieCd = m.movieCd
   		where p.peopleCd = #{peopleCd} 
+  		order by p.movieCd desc
   	</select>
   	
   </mapper>

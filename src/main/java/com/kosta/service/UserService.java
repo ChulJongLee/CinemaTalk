@@ -18,5 +18,5 @@ public interface UserService {
 	//아이디 중복체크
 	public int idcheck(UserDTO dto);
 	//로그인
-	public UserDTO userlogin(UserDTO dto);
+	public UserDTO loginCheck(UserDTO dto);
 }

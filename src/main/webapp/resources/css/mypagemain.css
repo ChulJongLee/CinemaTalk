@@ -25,16 +25,14 @@ div>ul>li{
 	color: white;
 }
 
-#fav_actor{
+#user_info, #fav_actor, #fav_director, #fav_genre, #fav_nations{
 	border: 2px solid red;
 	width: 1300px;
 	margin: 0px auto;
 	color: white;
 }
 
-
-
-#mycollection>div, #myreview>div, #fav_actor>div{
+#user_info>div, #mycollection>div, #myreview>div, #fav_actor>div, #fav_director>div, #fav_genre>div, #fav_nations>div{
 	border: 2px solid red;
     width: 1300px;
     margin: 0px auto;

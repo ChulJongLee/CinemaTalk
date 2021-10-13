@@ -2,7 +2,6 @@ package com.kosta.service;
 
 import java.util.List;
 
-import org.openqa.selenium.Alert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -58,9 +57,9 @@ public class UserServiceImple implements UserService {
 	}
 
 	@Override
-	public UserDTO userlogin(UserDTO dto) {
-		// TODO Auto-generated method stub
-		return mapper.userlogin(dto);
+	public UserDTO loginCheck(UserDTO dto) {
+		
+		return mapper.loginCheck(dto);
 	}
 
 }

@@ -13,17 +13,27 @@ import com.kosta.dto.UserDTO;
 @Mapper
 public interface MypageMapper {
 
-	UserDTO getUserInfo();
+	UserDTO getUserInfo(int user_no);
 
-	List<KobisDTO> getMyCollection(String user_no);
+	List<KobisDTO> getMyCollection(int user_no);
 
-	List<ReviewDTO> getMyReview(String user_no);
+	List<ReviewDTO> getMyReview(int user_no);
 
-	List<PersonInfoDTO> getFavActor(String user_no);
+	List<PersonInfoDTO> getFavActor(int user_no);
 
-	List<RateDTO> getRates(String user_no);
+	List<RateDTO> getRates(int user_no);
 
-	RateDTO getRateStatistic(String user_no);
+	RateDTO getRateStatistic(int user_no);
+
+	List<PersonInfoDTO> getFavDirector(int user_no);
+
+	List<KobisDTO> getFavGenre(int user_no);
+
+	List<KobisDTO> getFavNation(int user_no);
+
+	List<KobisDTO> getEveryCollection(int user_no);
+
+	List<ReviewDTO> getEveryReview(int user_no);
 	
 
 	
