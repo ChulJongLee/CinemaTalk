@@ -2,7 +2,6 @@
 
 /* 영화 정보 */
 *{
-	background-color: #212121;
 	color: white;
 }
 
@@ -36,7 +35,6 @@ ul.movieinfotop{
     top: 65px;
 }
 #movieimg{
-	margin-left: 150px;
 	margin-right: 20px;
 	display: inline;
 }

@@ -7,31 +7,40 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/header.css">
+<style>
+@font-face { 
+    font-family: 'EliceDigitalBaeum_Bold'; /* 엘리스디지털배움체B */
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+	font-family: 'EliceDigitalBaeum_Bold', cursive;
+}
+</style>
 </head>
 <body>
 
 	<header>
 		<div id="headerwrap">
-			<div id="logo">
-				<a href="#"> <img src="resources/img/SANAI.png" alt="logo" width="70px"></a>
-			</div>
-	
-			<div id="home">
-				<a href="#">홈</a>
-			</div>
-	
-			<div id="category">
-				<a href="#">카테고리</a>
+			<div id="header_logo">
+				<a href="/cinematalk">CinemaTalk</a>
 			</div>
 	
 			<div id="search">
-				<form method="post" action="/searchresult">
-				<input type="text" id="keyword" name="keyword">
-				<input type="submit" value="검색">
+				<form method="post" action="/searchresult" id="searchBar">
+					<input type="text" id="header_keyword" name="keyword" placeholder="영화명을 입력하세요.">
+					<img alt="검색" src="/resources/img/search.png" onclick="document.getElementById('searchBar').submit();" id="header_searchBtn">
 				</form>
 			</div>
-	
-			<div id="login">
+			
+			<c:if test="${user != null}">
+				<div id="header_mypage">
+					<a href="/mypage"><img src="/resources/img/mypage.png" alt="마이페이지" id="header_mypageimg"></a>
+				</div>
+			</c:if>
+			
+			<div id="header_login">
 				<c:if test="${user != null}"><a href="/logout">로그아웃</a></c:if>
 				<c:if test="${user == null}"><a href="/login">로그인</a></c:if>
 			</div>

@@ -15,7 +15,7 @@
     font-weight: normal;
     font-style: normal;
 }
-*{
+body{
 	font-family: 'EliceDigitalBaeum_Bold', cursive;
 }
 </style>

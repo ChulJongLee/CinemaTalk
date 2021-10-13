@@ -73,8 +73,7 @@ public class MovieController {
 //	Ajax
 	@PostMapping("/movieRate")
     @ResponseBody
-    public Map<String, Object> testAjax(RateDTO movieRateData, HttpServletRequest request){
-		HttpSession session = request.getSession();
+    public Map<String, Object> testAjax(RateDTO movieRateData, HttpSession session){
 		UserDTO user = (UserDTO) session.getAttribute("user");
 		movieRateData.setUser_no(user.getUser_no());
 		Map<String, Object> result = new HashMap<String, Object>();
