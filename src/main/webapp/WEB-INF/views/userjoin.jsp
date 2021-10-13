@@ -163,11 +163,11 @@
 						<td style="width: 110px;"><button class="btn btn-primary" onclick="idcheck();" type="button" value="N">중복체크</button></td>
 					</tr>
 					<tr>
-						<td style="width: 110px;"><h5>비밀번호</h5></td>
+						<td style="width: 110px;"><h5>패스워드</h5></td>
 						<td><input class="form-control" type="password" id="user_pwd" name="user_pwd" onkeyup="passwordCheckFunction();" maxLength="20" placeholder="비밀번호를를 입력하세요"></td>
 					</tr>
 					<tr>
-						<td style="width: 110px;"><h5>비밀번호 확인</h5></td>
+						<td style="width: 110px;"><h5>패스워드 확인</h5></td>
 						<td><input class="form-control" type="password" id="user_pwd2" name="user_pwd2" onkeyup="passwordCheckFunction();" maxLength="20" placeholder="동일한 비밀번호를 입력하세요"></td>
 					</tr>
 					<tr>
@@ -179,7 +179,7 @@
 						<td><input class="form-control" type="email" id="user_email" name="user_email" maxLength="20" placeholder="이메일을 입력하세요"></td>
 					</tr>
 					<tr>
-						<td style="width: 110px;"><h5>생일</h5></td>
+						<td style="width: 110px;"><h5>생년월일</h5></td>
 						<td><input class="form-control" type="text" id="user_bdate" name="user_bdate" maxLength="20" placeholder="ex)2000-01-01"></td>
 					</tr>
 					<tr>

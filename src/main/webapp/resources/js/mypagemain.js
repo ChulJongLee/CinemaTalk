@@ -1,6 +1,19 @@
 /**
  * 
  */
+ var swiper = new Swiper(".myCollection", {
+        slidesPerView: 5,
+        spaceBetween: 5,
+        slidesPerGroup: 5,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+
+
 var context = document
                 .getElementById('myChart')
                 .getContext('2d');

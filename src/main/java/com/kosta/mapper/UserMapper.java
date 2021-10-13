@@ -13,14 +13,14 @@ public interface UserMapper {
 	
 	public int insertuser(UserDTO dto);
 	
-	public int deleteuser(int userNo);
-	
 	public UserDTO userdetail(int userNo);
-	
-	public void updateuser(UserDTO dto);
-	
+
 	public int idcheck(UserDTO dto);
 	
 	public UserDTO loginCheck(UserDTO dto);
+
+	public int modifyProfile(UserDTO dto);
+	
+	public int deleteUser(int user_no);
 
 }

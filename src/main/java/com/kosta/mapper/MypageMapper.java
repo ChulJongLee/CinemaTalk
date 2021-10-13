@@ -1,6 +1,7 @@
 package com.kosta.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -34,6 +35,8 @@ public interface MypageMapper {
 	List<KobisDTO> getEveryCollection(int user_no);
 
 	List<ReviewDTO> getEveryReview(int user_no);
+
+	int getRate(Map<String, Object> hm);
 	
 
 	

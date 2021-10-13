@@ -2,150 +2,162 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.kosta.mapper.MypageMapper">
 
-  <select id="getUserInfo" parameterType="int" resultType="com.kosta.dto.UserDTO">
-  	select user_id, user_grade_no, user_point
-  	from user_info
-  	where user_no = #{user_no}
-  </select>
-  
-    <resultMap type="com.kosta.dto.KobisDTO" id="collection">
-  		<result property="movieNm" column="movieNm"/>
-  		<result property="poster" column="poster"/>
-  		<result property="rank" column="rate"/>
-  		<result property="movieCd" column="mov"/>
-  	</resultMap>
-  
-  <select id="getMyCollection" parameterType="int" resultMap="collection">
-  	select movieNm, poster, rate, i.movieCd mov
-  	from movie_info i inner join movie_rating r
-  	on i.movieCd = r.movieCd
-  	where user_no = #{user_no}
-  	order by ratingDate desc
-  	limit 0, 6
-  </select>
-  
-  <resultMap type="com.kosta.dto.ReviewDTO" id="review">
-  		<result property="title" column="movieNm"/>
-  		<result property="contents" column="content_content"/>
-  	</resultMap>
-  
-  <select id="getMyReview" parameterType="int" resultMap="review">
-  	select movieNm, content_content
-  	from comm_board c inner join movie_info m
-  	on c.movieCd = m.movieCd
-  	where user_no = #{user_no} and board_distinct_no = "1"
-  	order by content_no desc
-  	limit 0, 3
-  </select>
-  
-    <resultMap type="com.kosta.dto.RateDTO" id="rates">
-  		<result property="rate" column="rate"/>
-  		<result property="user_no" column="cnt"/>
-  	</resultMap>
-  
-  <select id="getRates" parameterType="int" resultMap="rates">
-  	select rate, count(rate) cnt
-	from movie_rating
-	where user_no = #{user_no}
-	group by rate
-	order by rate
-  </select>
-  
-  <resultMap type="com.kosta.dto.RateDTO" id="rateStatistic">
-  		<result property="rate" column="avg"/>
-  		<result property="user_no" column="cnt"/>
-  </resultMap>
-  
-  <select id="getRateStatistic" parameterType="int" resultMap="rateStatistic">
-  	select avg(rate) avg, count(*) cnt
-	from movie_rating
-	where user_no = #{user_no};
-  </select>
-  
-    <resultMap type="com.kosta.dto.PersonInfoDTO" id="person">
-  		<result property="peopleNm" column="pnm"/>
-  		<result property="person_pic" column="person_pic"/>
-  		<result property="peopleNmEn" column="cnt"/> 
-  		<result property="peopleCd" column="pcd"/> 
-  	</resultMap>
-  
-  <select id="getFavActor" parameterType="int" resultMap="person">
-  	select p.peopleNm pnm, person_pic, count(p.peopleCd) cnt, p.peopleCd pcd
-	from person_info p inner join person_distinct d
-	on p.peopleCd = d.peopleCd
-	inner join movie_info m
-	on d.movieCd = m.movieCd
-	inner join movie_rating r
-	on m.movieCd = r.movieCd
-	where user_no = #{user_no} and person_job='배우'
-	group by p.peopleNm
-	order by cnt desc
-	limit 0, 3
-  </select>
-  
-    <select id="getFavDirector" parameterType="int" resultMap="person">
-  	select p.peopleNm pnm, person_pic, count(p.peopleCd) cnt, p.peopleCd pcd
-	from person_info p inner join person_distinct d
-	on p.peopleCd = d.peopleCd
-	inner join movie_info m
-	on d.movieCd = m.movieCd
-	inner join movie_rating r
-	on m.movieCd = r.movieCd
-	where user_no = #{user_no} and person_job='감독'
-	group by p.peopleNm
-	order by cnt desc
-	limit 0, 3
-  </select>
-  
-      <resultMap type="com.kosta.dto.KobisDTO" id="genre">
-  		<result property="genreNm" column="genreNm"/>
-  		<result property="rank" column="cnt"/>
-  	</resultMap>
-  
-  <select id="getFavGenre" parameterType="int" resultMap="genre">
-  	select genreNm, count(genreNm) cnt
-	from movie_info i inner join movie_rating r
-	on i.movieCd = r.movieCd
-	where user_no = #{user_no}
-	group by genreNm
-	order by cnt desc
-	limit 0, 3 	
-  </select>
-  
-  	<resultMap type="com.kosta.dto.KobisDTO" id="nation">
-  		<result property="repNationNm" column="repNationNm"/>
-  		<result property="rank" column="cnt"/>
-  	</resultMap>
-  
-  <select id="getFavNation" parameterType="int" resultMap="nation">
-  	select repNationNm, count(repNationNm) cnt
-  	from movie_info i inner join movie_rating r
-	on i.movieCd = r.movieCd
-	where user_no = #{user_no}
-	group by repNationNm
-	order by cnt desc 
-	limit 0, 3 	
-  </select>
-  
-  <select id="getEveryCollection" parameterType="int" resultMap="collection">
-  	select movieNm, poster, rate
-  	from movie_info i inner join movie_rating r
-  	on i.movieCd = r.movieCd
-  	where user_no = #{user_no}
-  	order by ratingDate desc
-  </select>
-  
-    <select id="getEveryReview" parameterType="int" resultMap="review">
-  	select movieNm, content_content
-  	from comm_board c inner join movie_info m
-  	on c.movieCd = m.movieCd
-  	where user_no = #{user_no} and board_distinct_no = "1"
-  	order by content_no desc
-  </select>
-  
+	<select id="getUserInfo" parameterType="int"
+		resultType="com.kosta.dto.UserDTO">
+		select user_id, user_grade_no, user_point
+		from user_info
+		where user_no = #{user_no}
+	</select>
+
+	<resultMap type="com.kosta.dto.KobisDTO" id="collection">
+		<result property="movieNm" column="movieNm" />
+		<result property="poster" column="poster" />
+		<result property="rank" column="rate" />
+		<result property="movieCd" column="mov" />
+	</resultMap>
+
+	<select id="getMyCollection" parameterType="int"
+		resultMap="collection">
+		select movieNm, poster, rate, i.movieCd mov
+		from movie_info i inner join movie_rating r
+		on i.movieCd = r.movieCd
+		where user_no = #{user_no}
+		order by ratingDate desc
+		limit 0, 6
+	</select>
+
+	<resultMap type="com.kosta.dto.ReviewDTO" id="review">
+		<result property="title" column="movieNm" />
+		<result property="contents" column="content_content" />
+	</resultMap>
+
+	<select id="getMyReview" parameterType="int" resultMap="review">
+		select movieNm, content_content
+		from comm_board c inner join movie_info m
+		on c.movieCd = m.movieCd
+		where user_no = #{user_no} and board_distinct_no = "1"
+		order by content_no desc
+		limit 0, 3
+	</select>
+
+	<resultMap type="com.kosta.dto.RateDTO" id="rates">
+		<result property="rate" column="rate" />
+		<result property="user_no" column="cnt" />
+	</resultMap>
+
+	<select id="getRates" parameterType="int" resultMap="rates">
+		select rate, count(rate) cnt
+		from movie_rating
+		where user_no = #{user_no}
+		group by rate
+		order by rate
+	</select>
+
+	<resultMap type="com.kosta.dto.RateDTO" id="rateStatistic">
+		<result property="rate" column="avg" />
+		<result property="user_no" column="cnt" />
+	</resultMap>
+
+	<select id="getRateStatistic" parameterType="int"
+		resultMap="rateStatistic">
+		select avg(rate) avg, count(*) cnt
+		from movie_rating
+		where user_no = #{user_no};
+	</select>
+
+	<resultMap type="com.kosta.dto.PersonInfoDTO" id="person">
+		<result property="peopleNm" column="pnm" />
+		<result property="person_pic" column="person_pic" />
+		<result property="peopleNmEn" column="cnt" />
+		<result property="peopleCd" column="pcd" />
+	</resultMap>
+
+	<select id="getFavActor" parameterType="int" resultMap="person">
+		select p.peopleNm pnm, person_pic, count(p.peopleCd) cnt, p.peopleCd pcd
+		from person_info p inner join person_distinct d
+		on p.peopleCd = d.peopleCd
+		inner join movie_info m
+		on d.movieCd = m.movieCd
+		inner join movie_rating r
+		on m.movieCd = r.movieCd
+		where user_no = #{user_no} and person_job='배우'
+		group by p.peopleNm
+		order by cnt desc
+		limit 0, 3
+	</select>
+
+	<select id="getFavDirector" parameterType="int"
+		resultMap="person">
+		select p.peopleNm pnm, person_pic, count(p.peopleCd) cnt, p.peopleCd pcd
+		from person_info p inner join person_distinct d
+		on p.peopleCd = d.peopleCd
+		inner join movie_info m
+		on d.movieCd = m.movieCd
+		inner join movie_rating r
+		on m.movieCd = r.movieCd
+		where user_no = #{user_no} and person_job='감독'
+		group by p.peopleNm
+		order by cnt desc
+		limit 0, 3
+	</select>
+
+	<resultMap type="com.kosta.dto.KobisDTO" id="genre">
+		<result property="genreNm" column="genreNm" />
+		<result property="rank" column="cnt" />
+	</resultMap>
+
+	<select id="getFavGenre" parameterType="int" resultMap="genre">
+		select genreNm, count(genreNm) cnt
+		from movie_info i inner join movie_rating r
+		on i.movieCd = r.movieCd
+		where user_no = #{user_no}
+		group by genreNm
+		order by cnt desc
+		limit 0, 3
+	</select>
+
+	<resultMap type="com.kosta.dto.KobisDTO" id="nation">
+		<result property="repNationNm" column="repNationNm" />
+		<result property="rank" column="cnt" />
+	</resultMap>
+
+	<select id="getFavNation" parameterType="int" resultMap="nation">
+		select repNationNm, count(repNationNm) cnt
+		from movie_info i inner join movie_rating r
+		on i.movieCd = r.movieCd
+		where user_no = #{user_no}
+		group by repNationNm
+		order by cnt desc
+		limit 0, 3
+	</select>
+
+	<select id="getEveryCollection" parameterType="int"
+		resultMap="collection">
+		select movieNm, poster, rate
+		from movie_info i inner join movie_rating r
+		on i.movieCd = r.movieCd
+		where user_no = #{user_no}
+		order by ratingDate desc
+	</select>
+
+	<select id="getEveryReview" parameterType="int"
+		resultMap="review">
+		select movieNm, content_content
+		from comm_board c inner join movie_info m
+		on c.movieCd = m.movieCd
+		where user_no = #{user_no} and board_distinct_no = "1"
+		order by content_no desc
+	</select>
+
+	<select id="getRate" resultType="int">
+		select count(rate) cnt
+		from movie_rating
+		where user_no = #{user_no} and rate = #{rate}
+	</select>
+
 </mapper>
   
   

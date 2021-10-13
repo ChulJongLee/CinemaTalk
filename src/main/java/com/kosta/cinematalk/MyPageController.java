@@ -25,26 +25,20 @@ public class MyPageController {
 	private final MypageService mypageService;
 
 	@GetMapping("/mypage")
-	public String mypage(Model model, HttpServletRequest request) {
-		HttpSession session = request.getSession();
+	public String mypage(Model model, HttpSession session) {
 		UserDTO user = (UserDTO) session.getAttribute("user");
+		
 		if(user == null) {
 			return "redirect:./login";
 		} else {
 			int user_no = user.getUser_no();
-			String name = "홍길동";
-			session.setAttribute("user_no", name);
-			//개인정보
+			
+			//개인정보 이거는 회원등급?테이블이랑 조인해야될것같음
 			UserDTO userdto = mypageService.getUserInfo(user_no);
 			model.addAttribute("userdto", userdto);
 
 			//컬렉션
 			List<KobisDTO> movielist = mypageService.getMyCollection(user_no);
-			for(int i = 0; i < movielist.size(); i++) {
-				if(movielist.get(i).getPoster().equals("")) {
-					movielist.get(i).setPoster("/resources/img/poster_noimg.png");
-				}
-			}
 			model.addAttribute("movielist", movielist);
 
 			//나의리뷰
@@ -52,34 +46,17 @@ public class MyPageController {
 			model.addAttribute("reviewlist", reviewlist);
 
 			//별점분포
-			List<RateDTO> ratelist = mypageService.getRates(user_no);
-			model.addAttribute("ratelist", ratelist);
+			int[] arr = mypageService.getRates(user_no);
+			model.addAttribute("arr", arr);
 			RateDTO ratedto = mypageService.getRateStatistic(user_no);
 			model.addAttribute("ratedto", ratedto);
-			//최대값 찾는법 : Arrays.sort(arr);
-			//arr[arr.length()-1]
-			//이거써도됨
-			//Arrays.stream(arr).max().getAsInt()
-
-			//영화선호태그
-			//mypageService.getFavTag();
 
 			//선호배우
 			List<PersonInfoDTO> actorinfolist = mypageService.getFavActor(user_no);
-			for(int i = 0; i < actorinfolist.size(); i++) {
-				if(actorinfolist.get(i).getPerson_pic().equals("")) {
-					actorinfolist.get(i).setPerson_pic("/resources/img/person_noimg.png");
-				}
-			}
 			model.addAttribute("actorinfolist", actorinfolist);
 
 			//선호 감독
 			List<PersonInfoDTO> directorinfolist = mypageService.getFavDirector(user_no);
-			for(int i = 0; i < directorinfolist.size(); i++) {
-				if(directorinfolist.get(i).getPerson_pic().equals("")) {
-					directorinfolist.get(i).setPerson_pic("/resources/img/person_noimg.png");
-				}
-			}
 			model.addAttribute("directorinfolist", directorinfolist);
 
 			//선호 장르
@@ -95,32 +72,24 @@ public class MyPageController {
 	}
 
 	@GetMapping("/mypage/mycollection")
-	public String myCollection(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession();
+	public String myCollection(HttpSession session, Model model) {
 		UserDTO user = (UserDTO) session.getAttribute("user");
 		int user_no = user.getUser_no();
 
 		List<KobisDTO> collectionlist = mypageService.getEveryCollection(user_no);
-		for(int i = 0; i < collectionlist.size(); i++) {
-			if(collectionlist.get(i).getPoster().equals("")) {
-				collectionlist.get(i).setPoster("/resources/img/poster_noimg.png");
-			}
-		}
 		model.addAttribute("collectionlist", collectionlist);
-
 
 		return "mypage/mycollection";
 	}
 
 	@GetMapping("/mypage/myreview")
-	public String myReview(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession();
+	public String myReview(HttpSession session, Model model) {
 		UserDTO user = (UserDTO) session.getAttribute("user");
 		int user_no = user.getUser_no();
 
 		List<ReviewDTO> reviewlist = mypageService.getEveryReview(user_no);
 		model.addAttribute("reviewlist", reviewlist);
-
+		
 		return "mypage/myreview";
 	}
 

@@ -1,6 +1,9 @@
 package com.kosta.service;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +30,13 @@ public class MypageServiceImple implements MypageService {
 	@Override
 	public List<KobisDTO> getMyCollection(int user_no) {
 		
-		return mapper.getMyCollection(user_no);
+		List<KobisDTO> movielist = mapper.getMyCollection(user_no);
+		for(int i = 0; i < movielist.size(); i++) {
+			if(movielist.get(i).getPoster().equals("")) {
+				movielist.get(i).setPoster("/resources/img/poster_noimg.png");
+			}
+		}
+		return movielist;
 	}
 
 	@Override
@@ -37,9 +46,19 @@ public class MypageServiceImple implements MypageService {
 	}
 
 	@Override
-	public List<RateDTO> getRates(int user_no) {
-		
-		return mapper.getRates(user_no);
+	public int[] getRates(int user_no) {
+//		List<RateDTO> ratelist = mapper.getRates(user_no);
+		Map<String, Object> hm = new HashMap<>();
+		hm.put("user_no", user_no);
+		int[] arr = new int[10];
+		int cnt = 0;
+		for(double i = 0.5; i <= 5; i +=0.5) {
+			hm.put("rate", i);
+			int result = mapper.getRate(hm);
+			arr[cnt] = result;
+			cnt++;
+		}
+		return arr;
 	}
 
 	@Override
@@ -49,21 +68,27 @@ public class MypageServiceImple implements MypageService {
 	}
 
 	@Override
-	public void getFavTag() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public List<PersonInfoDTO> getFavActor(int user_no) {
 		
-		return mapper.getFavActor(user_no);
+		List<PersonInfoDTO> actorinfolist = mapper.getFavActor(user_no);
+		for(int i = 0; i < actorinfolist.size(); i++) {
+			if(actorinfolist.get(i).getPerson_pic().equals("")) {
+				actorinfolist.get(i).setPerson_pic("/resources/img/person_noimg.png");
+			}
+		}
+		return actorinfolist;
 	}
 
 	@Override
 	public List<PersonInfoDTO> getFavDirector(int user_no) {
 		
-		return mapper.getFavDirector(user_no);
+		List<PersonInfoDTO> directorinfolist = mapper.getFavDirector(user_no);
+		for(int i = 0; i < directorinfolist.size(); i++) {
+			if(directorinfolist.get(i).getPerson_pic().equals("")) {
+				directorinfolist.get(i).setPerson_pic("/resources/img/person_noimg.png");
+			}
+		}
+		return directorinfolist;
 	}
 
 	@Override
@@ -81,7 +106,13 @@ public class MypageServiceImple implements MypageService {
 	@Override
 	public List<KobisDTO> getEveryCollection(int user_no) {
 		
-		return mapper.getEveryCollection(user_no);
+		List<KobisDTO> collectionlist = mapper.getEveryCollection(user_no);
+		for(int i = 0; i < collectionlist.size(); i++) {
+			if(collectionlist.get(i).getPoster().equals("")) {
+				collectionlist.get(i).setPoster("/resources/img/poster_noimg.png");
+			}
+		}
+		return collectionlist;
 	}
 
 	@Override

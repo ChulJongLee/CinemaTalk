@@ -10,13 +10,13 @@ import com.kosta.dto.UserDTO;
 import com.kosta.mapper.UserMapper;
 
 
-@Service("userservice")
+@Service("userService")
 public class UserServiceImple implements UserService {
 
 	@Autowired @Qualifier("userMapper")
 	private UserMapper mapper;
-	
-	
+
+
 	@Override
 	public List<UserDTO> getlist() {
 		// TODO Auto-generated method stub
@@ -27,27 +27,14 @@ public class UserServiceImple implements UserService {
 	public int insertuser(UserDTO dto) {
 		// TODO Auto-generated method stub
 		int result=mapper.insertuser(dto);
-		
+
 		return result;
-	}
- 
-	@Override
-	public int deleteuser(int user_no) {
-		// TODO Auto-generated method stub
-		return mapper.deleteuser(user_no);
 	}
 
 	@Override
 	public UserDTO userdetail(int user_no) {
 		// TODO Auto-generated method stub
 		return mapper.userdetail(user_no);
-	}
-
-	@Override
-	public void updateuser(UserDTO dto) {
-		// TODO Auto-generated method stub
-		mapper.updateuser(dto);
-
 	}
 
 	@Override
@@ -58,8 +45,19 @@ public class UserServiceImple implements UserService {
 
 	@Override
 	public UserDTO loginCheck(UserDTO dto) {
-		
+
 		return mapper.loginCheck(dto);
 	}
 
+	@Override
+	public int modifyProfile(UserDTO dto) {
+
+		return mapper.modifyProfile(dto);
+	}
+
+	@Override
+	public int deleteUser(int user_no) {
+		
+		return mapper.deleteUser(user_no);
+	}
 }

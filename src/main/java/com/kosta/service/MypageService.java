@@ -16,11 +16,9 @@ public interface MypageService {
 	
 	public List<ReviewDTO> getMyReview(int user_no);
 	
-	public List<RateDTO> getRates(int user_no);
+	public int[] getRates(int user_no);
 	
 	public RateDTO getRateStatistic(int user_no);
-	
-	public void getFavTag();
 	
 	public List<PersonInfoDTO> getFavActor(int user_no);
 	
