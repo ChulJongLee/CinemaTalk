@@ -16,12 +16,17 @@
     <div id="moviedetail">
         <div id="movieinfotop">
 	        <div id="movieimg" class="movieinfotop">
-	            <img src="${detail.poster}" alt="포스터" id="poster">
+	        	<c:if test="${detail.poster==''}"><img src="/resources/img/poster_noimg.png" alt="포스터" class="poster"></c:if>
+	            <c:if test="${detail.poster!=''}"><img src="${detail.poster}" alt="포스터" class="poster"></c:if>
 	        </div>
 	        
             <ul class="movieinfotop">
-                <li class="info"><span id="movieNm">${detail.movieNm}   </span><span><img src="/resources/image/star1.png" alt="별" id="star1">${detail.rate }</span></li>
-                <li class="info"><span>${detail.openDt} / </span><span>${detail.watchGradeNm}세 / </span><span>${detail.showTm }분</span></li>
+                <li class="info"><span id="movieNm">${detail.movieNm}   </span><span><img src="/resources/img/star1.png" alt="별" id="star1">${detail.rate }</span></li>
+                <li class="info">
+	                <span>${detail.openDt}<c:if test="${detail.openDt!=null && detail.watchGradeNm!='' }"> | </c:if></span>
+	                <span>${detail.watchGradeNm}<c:if test="${detail.watchGradeNm!=''}">세 | </c:if></span>
+	                <span>${detail.showTm }<c:if test="${detail.showTm!='' }">분</c:if></span>
+                </li>
                 <li class="info"><span>장르 : ${detail.genreNm }</span></li>
                 <li class="info"><span>출연진 : 
 								<c:forEach var="item" items="${personInfo }" end="5" varStatus="status">

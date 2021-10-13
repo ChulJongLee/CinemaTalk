@@ -17,6 +17,9 @@
 		<!-- 영화 줄거리 -->
 		<div id="moviesummary">
             <h3 class="title">줄거리</h3>
+            <c:if test="${detail.plotText=='' }">
+            	<p>등록된 줄거리가 없습니다.</p>
+            </c:if>
 			<p>${detail.plotText }</p>	
 			<!-- 영화 트레일러 -->
 			<div id="trailer">

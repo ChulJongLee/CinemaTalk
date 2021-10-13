@@ -25,7 +25,10 @@
 			</div>
 	
 			<div id="search">
-				<p>검색</p>
+				<form method="post" action="/searchresult">
+				<input type="text" id="keyword" name="keyword">
+				<input type="submit" value="검색">
+				</form>
 			</div>
 	
 			<div id="login">

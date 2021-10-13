@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kosta.dto.KobisDTO;
 import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
+import com.kosta.dto.UserDTO;
 import com.kosta.service.MovieService;
 
 import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
@@ -25,18 +29,12 @@ import lombok.RequiredArgsConstructor;
 public class MovieController {
 	private final MovieService movieService;
 	
-	@GetMapping("/searchmovie")
-	public String goMovieSearch() {
-		return "/view.jsp?page=movie/kobismovie";
-	}
-
-	@PostMapping("/kobismovieresult")
+	@PostMapping("/searchresult")
 	public String MovieSearchResult(@RequestParam String keyword, Model model) throws OpenAPIFault, Exception {
 		List<KobisDTO> list = movieService.getMovieList(keyword);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("list", list);
-		
-		return "/view.jsp?page=movie/kobismovieresult";
+		return "/view.jsp?page=movie/searchresult";
 	}
 
 	@GetMapping("/cinematalk")
@@ -75,9 +73,11 @@ public class MovieController {
 //	Ajax
 	@PostMapping("/movieRate")
     @ResponseBody
-    public Map<String, Object> testAjax(RateDTO movieRateData){
-        
-        Map<String, Object> result = new HashMap<String, Object>();
+    public Map<String, Object> testAjax(RateDTO movieRateData, HttpServletRequest request){
+		HttpSession session = request.getSession();
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		movieRateData.setUser_no(user.getUser_no());
+		Map<String, Object> result = new HashMap<String, Object>();
         movieService.movieRate(movieRateData);
         
         
@@ -89,7 +89,7 @@ public class MovieController {
         result.put("result", "평점 주기 완료");
         
         return result;
-        
+		
     }
 
 

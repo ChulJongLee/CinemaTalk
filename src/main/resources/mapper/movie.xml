@@ -6,7 +6,7 @@
   <mapper namespace="com.kosta.mapper.MovieMapper">
 	
 	<select id="getmovielist" resultType="com.kosta.dto.KobisDTO" parameterType="String">
-		select movieCd, movieNm, plotText, genreNm, repNationNm, openDt, watchGradeNm, showTm, poster
+		select movieCd, movieNm, plotText, genreNm, repNationNm, DATE_FORMAT(openDt, "%Y.%m.%d") as openDt, watchGradeNm, showTm, poster
 		from movie_info
 		where movieNm like CONCAT('%',#{keyword},'%')
 		
@@ -14,7 +14,7 @@
 	<select id="getmoviedetail" resultType="com.kosta.dto.KobisDTO" parameterType="String">
 		select i.movieCd, movieNm, plotText, genreNm, repNationNm, DATE_FORMAT(openDt, "%Y.%m.%d") as openDt, watchGradeNm, showTm, poster, avg(rate) as rate
 		from movie_info as i
-			inner join movie_rating as r
+			left outer join movie_rating as r
 			on i.movieCd=r.movieCd
 		where i.movieCd=#{movieCd}
 		group by r.movieCd
@@ -72,7 +72,7 @@
 			, ratingDate
 		)
 		values
-			("6", #{movieCd}, #{rate}, now())
+			(#{user_no}, #{movieCd}, #{rate}, now())
 		
 		
 	</insert>

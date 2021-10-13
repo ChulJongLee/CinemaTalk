@@ -11,6 +11,7 @@ ul, li{
 }
 .info{
 	margin-bottom: 10px;
+	font-weight: 600;
 
 }
 
@@ -22,24 +23,24 @@ ul, li{
     color: white;
 }
 #movieinfotop{
-	height: 100%;
+	height: 350px;
     list-style: none;
     text-align: left;
-    margin-top: 50px;
 }
 .movieinfotop{
 	display: inline-block;
 }
 
 ul.movieinfotop{
-	position: absolute;
+	position: relative;
+    top: 65px;
 }
 #movieimg{
 	margin-left: 150px;
 	margin-right: 20px;
 	display: inline;
 }
-#poster{
+.poster{
 	width:200px;
 }
 ul.movieinfotop{
@@ -62,7 +63,7 @@ ul.movieinfotop{
     margin: 0 auto;
 }
 .starR1{
-    background: url('../image/star.png') no-repeat -52px 0;
+    background: url('../img/star.png') no-repeat -52px 0;
     background-size: auto 100%;
     width: 15px;
     height: 30px;
@@ -70,7 +71,7 @@ ul.movieinfotop{
     cursor: pointer;
 }
 .starR2{
-	background: url('../image/star.png') no-repeat right 0;
+	background: url('../img/star.png') no-repeat right 0;
     background-size: auto 100%;
     width: 15px;
     height: 30px;

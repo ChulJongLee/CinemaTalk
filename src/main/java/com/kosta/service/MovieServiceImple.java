@@ -52,7 +52,8 @@ public class MovieServiceImple implements MovieService {
 	@Override
 	public KobisDTO getMovieDetail(String movieCd) {
 		// TODO Auto-generated method stub
-		return mapper.getmoviedetail(movieCd);
+		KobisDTO dto=mapper.getmoviedetail(movieCd);
+		return dto;
 	}
 
 	@Override

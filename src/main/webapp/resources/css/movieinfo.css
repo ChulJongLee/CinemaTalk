@@ -56,6 +56,10 @@ iframe{
 	width: 100px;
 	border-radius: 50%;
 }
+.peopleNm{
+	font-weight: 600;
+}
+
 .imgY{
 	text-align: center;
 	height: 137px;
