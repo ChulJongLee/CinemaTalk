@@ -23,13 +23,18 @@ import com.kosta.dto.PageBlock;
 import com.kosta.dto.RateDTO;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.service.CommunityService;
+import com.kosta.service.MovieService;
 
 @Controller
 //@RequiredArgsConstructor
 public class CommunityController {
 
+	
 	@Resource(name = "reviewservice")
 	private CommunityService service;
+	@Resource
+	private MovieService movieService;
+	
 
 	
 	// 영화 정보 메인 페이지                   
@@ -49,7 +54,6 @@ public class CommunityController {
 		// 베스트 리뷰 2개
 		List<ReviewDTO> bestreviewlist = service.reviewList();
 		model.addAttribute("bestreviewlist", bestreviewlist);
-		
 		// 일반 리뷰 4개
 		List<ReviewDTO> generalreviewlist = service.generalReviewList();
 		model.addAttribute("generalreviewlist", generalreviewlist);
@@ -57,20 +61,25 @@ public class CommunityController {
 		return "/view.jsp?page=board/reviewmain";
 	}
 	
+	
+	
 	// 리뷰 쓰기
-	@RequestMapping("/reviewinsertresult")
+	@RequestMapping("/moviedetail/{movieCd}/reviewinsertresult")
 	public String insertResult(@RequestParam HashMap<String, Object> hm) {
 		
 		service.reviewinsert(hm);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+hm);
 				
-		return "redirect:/reviewmain";
+		return "redirect:/moviedetail/{movieCd}";
 	}
 	
-
+	
+	
 	// 리뷰 전체 리스트
-//	@RequestMapping("/moviedetail/{movieCd}/reviewall")
-	@RequestMapping("/reviewall")
-	public String reviewAll( @RequestParam(required = false, defaultValue = "1") int currPage
+	@RequestMapping("/moviedetail/{movieCd}/reviewall")
+//	@RequestMapping("/reviewall")
+	public String reviewAll(@PathVariable String movieCd
+							, @RequestParam(required = false, defaultValue = "1") int currPage
 							, @RequestParam(required = false, defaultValue = "1") int boardno
 							, Model model) {
 		
@@ -82,21 +91,22 @@ public class CommunityController {
 		
 		List<ReviewDTO> allreview = service.allReview(page.getStartRow(), page.getEndRow());
 		
+		model.addAttribute("movieCd", movieCd);
 		model.addAttribute("allreview", allreview);
 		model.addAttribute("page", page);
 		
-		return "/view.jsp?page=board/reviewall";
-		
+		return "/view.jsp?page=board/reviewall";		
 	}
 	
 	// 리뷰 삭제
-	@RequestMapping("/reviewdelete/{contentno}")
-	public String reviewdelete(@PathVariable(name = "contentno") int no, Model model) {
+//	@RequestMapping("/reviewdelete/{contentno}")
+	@RequestMapping("/moviedetail/{movieCd}/reviewdelete/{contentno}")
+	public String reviewdelete(@PathVariable String movieCd ,@PathVariable(name = "contentno") int no, Model model) {
 		
 		service.reviewdelete(no);
 //		model.addAttribute("result", result);
 		
-		return "redirect:/reviewmain";
+		return "redirect:/moviedetail/{movieCd}";
 	}
 	
 	
@@ -126,6 +136,7 @@ public class CommunityController {
 		
 		return "/view.jsp?page=board/bestscenemain";
 	}
+	
 	// 최고장면,최악장면 리스트
 	@RequestMapping("/bestscenelist")
 	public String bestSceneList() {
@@ -133,6 +144,7 @@ public class CommunityController {
 		
 		return "/view.jsp?page=board/bestscenelist";
 	}
+	
 	// 최고장면,최악장면 디테일
 //	@RequestMapping("/moviedetail/{movieCd}/bestscenedetail")
 	@RequestMapping("/bestscenedetail")
@@ -219,11 +231,9 @@ public class CommunityController {
 	@RequestMapping("/userforumdetail/{contentno}")
 	public String userForumDetail(@PathVariable int contentno, Model model) {
 		
-		
 		ReviewDTO userforumdetail = service.userforumdetail(contentno);
 //		System.out.println("@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!"+userforumdetail);	// 값받아짐.
 		model.addAttribute("userforumdetail", userforumdetail);
-		
 		
 		return "/view.jsp?page=board/userforumdetail";
 	}
@@ -248,14 +258,30 @@ public class CommunityController {
 	// 리뷰 좋아요
 	@PostMapping("/like")
     @ResponseBody
-    public Map<String, Object> testAjax(ReviewDTO like){
+    public Map<String, Object> likeAjax(ReviewDTO like){
         
         Map<String, Object> result = new HashMap<String, Object>();
-//        movieService.movieRate(movieRateData);
         service.reviewLike(like.getContentno());
                 
         System.out.println("숫자가 몇 나왔니?"+like.getContentno());
 
+        // 응답 데이터 셋팅
+        result.put("result", "좋아용~~~~~~~~~~~~~~~~~~~~");
+        
+        return result;       
+    }
+	
+	
+	// 리뷰 싫어요
+	@PostMapping("/dislike")
+    @ResponseBody
+    public Map<String, Object> dislikeAjax(ReviewDTO dislike){
+        
+        Map<String, Object> result = new HashMap<String, Object>();
+        service.reviewDisLike(dislike.getContentno());
+        
+        System.out.println("숫자가 몇 나왔니?"+dislike.getContentno());
+        
         // 응답 데이터 셋팅
         result.put("result", "좋아용~~~~~~~~~~~~~~~~~~~~");
         

@@ -8,20 +8,21 @@
 <title>Insert title here</title>
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
- <link rel="stylesheet" href="resources/css/reviewmain.css">
+ <link rel="stylesheet" href="/resources/css/reviewmain.css">
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
 	<!-- 영화정보 & 카테고리 -->
 	<%-- <%@ include file="movieinfotop.jsp" %> --%>
-
+	${detail.movieCd }
+	<input type="hidden" value="${detail.movieCd }" id="moviecd">
     <!-- ******** 베스트 리뷰 ******** -->
     <section id="bestsection">
 <!--    <h3><a href="reviewall" id="bestreviewbtn">베스트 리뷰</a></h3>  -->
-        <h3 id="bestreviewbtn">베스트 리뷰</h3>
+        <h1 id="bestreviewbtn">베스트 리뷰</h1>
         <div class="bestreview">
-       		<c:if test="${bestreviewlist==null }">              		
+       		<c:if test="${bestreviewlist==null }">
          		자료가 없습니다.
          	</c:if>
          	
@@ -31,11 +32,41 @@
 					<li id="contents">
 						<div id="id">${list.userid }</div>
 						<div id="date">${list.writedate }</div>
+						
+						
 						<div id="content">${list.contents }</div>
-						<div id="like"><button id="likebtn"> <i class="fas fa-thumbs-up"> ${list.like }</i></button></div>
+						
+						
+						<%-- <div id="like"><button id="likebtn"> <i class="fas fa-thumbs-up"> ${list.like }</i></button></div>
 						<div id="dislike"><button id="dislikebtn"> <i class="fas fa-thumbs-down"> ${list.dislike }</i></button></div>
-						<div id="report"><button id="reportbtn"> <i class="fas fa-flag"> 신고</i></button></div>					
-					</li>				
+						<div id="report"><button id="reportbtn"> <i class="fas fa-flag"> 신고</i></button></div>	 --%>
+						<div id="like">
+								<button class="likebtn" value="${list.contentno }">
+									<div>
+										<i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i>
+									</div>
+									<div>
+										${list.like }
+									</div>
+								</button>				
+							</div>
+							<div id="dislike">
+								<button class="dislikebtn" value="${list.contentno }">
+									<div>
+										<i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i>
+									</div>
+									<div>
+										${list.dislike }
+									</div>
+								</button>
+							</div>
+							<div id="report">
+								<button class="reportbtn" value="${list.contentno }">
+									<i class="fas fa-flag" id="reportbtn2"></i>
+									신고
+								</button>
+							</div>				
+					</li>
 				</c:forEach>
 			</ul>
          	</c:if>                            
@@ -45,7 +76,7 @@
     <!-- ******** 일반 리뷰 ******** -->
     <section id="generalsection">
         <!-- <h3><a href="reviewall" id="generalreviewbtn">일반 리뷰</a></h3> -->
-        <h3 id="generalreviewbtn">일반 리뷰</h3>
+        <h1 id="generalreviewbtn">일반 리뷰</h1>
         <div class="generalreview">
        		<c:if test="${generalreviewlist==null }">              		
          		자료가 없습니다.
@@ -57,15 +88,15 @@
 						<li id="contents">				
 							<div id="id">${list.userid }, ${list.contentno }</div>
 							<div id="date">${list.writedate }</div>
-							
-							
-							<div id="content"><pre>${list.contents }</pre></div>
+									
+														
+							<div id="content">${list.contents }</div>
 							
 							
 							<div id="like">
 								<button class="likebtn" value="${list.contentno }">
-									<div class="likebtn2">
-										<i class="fas fa-thumbs-up"></i>
+									<div>
+										<i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i>
 									</div>
 									<div>
 										${list.like }
@@ -74,12 +105,18 @@
 							</div>
 							<div id="dislike">
 								<button class="dislikebtn" value="${list.contentno }">
-									<i class="fas fa-thumbs-down">${list.dislike }</i>
+									<div>
+										<i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i>
+									</div>
+									<div>
+										${list.dislike }
+									</div>
 								</button>
 							</div>
 							<div id="report">
 								<button class="reportbtn" value="${list.contentno }">
-									<i class="fas fa-flag"> 신고</i>
+									<i class="fas fa-flag" id="reportbtn2"></i>
+									신고
 								</button>
 							</div>
 							<div id="contentedit">
@@ -94,14 +131,14 @@
          	</c:if>                            
         </div>
         <div id="reviewallbtn">
-        	<a href="reviewall">모든 리뷰 보기</a>
+        	<a href="/moviedetail/${detail.movieCd }/reviewall">모든 리뷰 보기</a>
         </div>
     </section>
-     
+    
 	
     <!-- ******** 리뷰 쓰기 ******** -->
     <div id="writereview">
- 	   <form action="reviewinsertresult" method="post">
+ 	   <form action="/moviedetail/${detail.movieCd }/reviewinsertresult" method="post">
  	   <div id="writereview2">   	   		   
  	      <div class="form-check form-switch" id="form-switch">	      	   
 	           <label class="form-check-label" for="flexSwitchCheckDefault">스포일러 여부</label>
@@ -109,11 +146,11 @@
       	  </div>
  	 	  <div class="mb-3">
  	 	  	  <label for="contentsbox" class="form-label">리뷰등록</label> 			  
-			  <textarea class="form-control" id="contentsbox" name="contents" rows="5" cols="100" placeholder="리뷰를 작성해 주세요." required="required"></textarea>
+			  <textarea class="form-control" id="contentsbox" name="contents" rows="5" cols="100" placeholder="리뷰를 작성해 주세요." required="required" ></textarea>
 	      </div>
 	   </div>	
 	      <div class="d-grid gap-2">
-	          <button class="btn btn-primary" type="submit">리뷰 등록</button>
+	          <button class="btn btn-primary" id="submitbtn" type="submit">리뷰 등록</button>
 	      </div>
        </form>	      
 	</div>

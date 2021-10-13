@@ -115,9 +115,14 @@ public class CommunityServiceImple implements CommunityService {
 
 	@Override
 	public void reviewLike(int contentno) {
-		mapper.reviewlike(contentno);
-		
+		mapper.reviewlike(contentno);	
 	}
+	@Override
+	public void reviewDisLike(int contentno) {
+		mapper.reviewdislike(contentno);	
+	}
+	
+	
 
 	@Override
 	public void reviewinsert(HashMap<String, Object> hm) {
@@ -138,6 +143,8 @@ public class CommunityServiceImple implements CommunityService {
 		
 		return mapper.userforumdetail(contentno);
 	}
+
+
 
 
 

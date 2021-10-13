@@ -8,10 +8,12 @@
 <title>Insert title here</title>
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
- <link rel="stylesheet" href="resources/css/reviewall.css">
+ <link rel="stylesheet" href="/resources/css/reviewall.css">
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-	
+	<input type="hidden" value="${movieCd }" id="moviecd">
+	${movieCd }sss
 	<!-- ******* 전체 리뷰 ******* -->
 	<section>
 		<div id="allreview">
@@ -25,9 +27,41 @@
 						<div id="id">${list.userid }</div>
 						<div id="date">${list.writedate }</div>
 						<div id="content">${list.contents }</div>
-						<div id="like"><i class="fas fa-thumbs-up"> ${list.like }</i></div>
+						<%-- <div id="like"><i class="fas fa-thumbs-up"> ${list.like }</i></div>
 						<div id="dislike"><i class="fas fa-thumbs-down"> ${list.dislike }</i></div>
-						<div id="report"><i class="fas fa-flag"> 신고</i></div>					
+						<div id="report"><i class="fas fa-flag"> 신고</i></div> --%>
+						<div id="like">
+								<button class="likebtn" value="${list.contentno }">
+									<div>
+										<i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i>
+									</div>
+									<div>
+										${list.like }
+									</div>
+								</button>				
+							</div>
+							<div id="dislike">
+								<button class="dislikebtn" value="${list.contentno }">
+									<div>
+										<i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i>
+									</div>
+									<div>
+										${list.dislike }
+									</div>
+								</button>
+							</div>
+							<div id="report">
+								<button class="reportbtn" value="${list.contentno }">
+									<i class="fas fa-flag" id="reportbtn2"></i>
+									신고
+								</button>
+							</div>
+							<div id="contentedit">
+								<div id="modifycheck"><button class="modifycheckbtn"><i class="fas fa-check fa-lg"></i></button></div>
+								<div id="modifyreturn"><button class="modifyreturnbtn"><i class="fas fa-undo fa-lg"></i></button></div>
+								<div id="modify"><button class="modifybtn" value="${list.contentno }"><i class="fas fa-edit fa-lg"></i></button></div>
+								<div id="delete"><button class="deletebtn" value="${list.contentno }"><i class="fas fa-times fa-lg"></i></button></div>						
+							</div>					
 					</li>		
 				</c:forEach>
 			</ul>
@@ -95,6 +129,8 @@
 	</nav>	
 
 </section>
+
+<script src="/resources/js/reviewall.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -12,13 +12,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosta.dto.KobisDTO;
 import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
+import com.kosta.dto.ReviewDTO;
 import com.kosta.dto.UserDTO;
+import com.kosta.service.CommunityService;
 import com.kosta.service.MovieService;
 
 import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
@@ -28,6 +32,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MovieController {
 	private final MovieService movieService;
+	private final CommunityService communityService;
 	
 	@PostMapping("/searchresult")
 	public String MovieSearchResult(@RequestParam String keyword, Model model) throws OpenAPIFault, Exception {
@@ -54,12 +59,19 @@ public class MovieController {
 		return "/view.jsp?page=movie/main";
 	}
 
-	@GetMapping("/moviedetail/{movieCd}")
+	@RequestMapping (value =  "/moviedetail/{movieCd}", method = {RequestMethod.GET, RequestMethod.POST})
 	public String MovieDetail(@PathVariable String movieCd, Model model) throws OpenAPIFault, Exception {
 		KobisDTO detail = movieService.getMovieDetail(movieCd);
 		model.addAttribute("detail", detail);
 		List<PersonInfoDTO> personInfo=movieService.getPersonInfo(movieCd);
 		model.addAttribute("personInfo", personInfo);
+		
+		// 베스트 리뷰 2개
+		List<ReviewDTO> bestreviewlist = communityService.reviewList();
+		model.addAttribute("bestreviewlist", bestreviewlist);		
+		// 일반 리뷰 4개
+		List<ReviewDTO> generalreviewlist = communityService.generalReviewList();
+		model.addAttribute("generalreviewlist", generalreviewlist);
 		
 		return "/view.jsp?page=movie/moviedetail";
 	}

@@ -26,8 +26,8 @@
 			</div>
 			
 			<div id="thumb">
-				<p id="like"><i class="fas fa-thumbs-up"></i> ${userforumdetail.like }</p>
-				<p id="dislike"><i class="fas fa-thumbs-down"></i> ${userforumdetail.dislike }</p>
+				<p id="like"><i class="fas fa-thumbs-up fa-lg"></i> ${userforumdetail.like }</p>
+				<p id="dislike"><i class="fas fa-thumbs-down fa-lg"></i> ${userforumdetail.dislike }</p>
 			</div>	
 			
 			<div id="edit">
@@ -36,7 +36,7 @@
 			</div>
 			
 			<div id="reply">
-				<i class="fas fa-comment-dots"></i>
+				<i class="fas fa-comment-dots fa-5x"></i>
 				댓글 기능을 구현하여 넣으시오.....
 			</div>
 		

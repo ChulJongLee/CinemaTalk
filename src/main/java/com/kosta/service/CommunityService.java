@@ -30,12 +30,15 @@ public interface CommunityService {
 
 	
 	public void reviewLike(int contentno);
+	public void reviewDisLike(int contentno);
 
 	public void reviewinsert(HashMap<String, Object> hm);
 
 	public int reviewdelete(int no);
 
 	public ReviewDTO userforumdetail(int contentno);
+
+	
 	
 
 }

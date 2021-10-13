@@ -36,12 +36,15 @@ public interface CommunityMapper {
 
 
 	public void reviewlike(int contentno);
+	public void reviewdislike(int contentno);
 
 	public int reviewinsert(HashMap<String, Object> hm);
 
 	public int reviewdelete(int no);
 
 	public ReviewDTO userforumdetail(int contentno);
+
+	
 
 	
 

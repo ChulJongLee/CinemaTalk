@@ -17,7 +17,7 @@
 	
 		<div id="title">
 			<label for="title">제목</label>
-			<input type="text" id="title" name="title" placeholder="제목을 입력하세요.(최대 40자)" required="required" maxlength="40">
+			<input type="text" id="title" name="title" placeholder="제목을 입력하세요.(최대 30자)" required="required" maxlength="30">
 		</div>
 		<div id="content">
 			<label for="content">내용</label>

@@ -162,11 +162,18 @@
 	set content_like = content_like+1
 	where content_no = #{contentno}
 </update>
-  
+<!-- 리뷰 싫어요 -->
+<update id="reviewdislike" parameterType="int">
+	update comm_board
+	set content_hate = content_hate+1
+	where content_no = #{contentno}
+</update>
+
+
 <!-- 리뷰 등록 -->
 <insert id="reviewinsert" parameterMap="hashmap">
-	insert into comm_board (content_content, content_date, board_distinct_no)
-	values( #{contents}, now(), 1 )
+	insert into comm_board (content_content, content_date, board_distinct_no, content_like, content_hate)
+	values( #{contents}, now(), 1, 0, 0 )
 </insert>
   
 <delete id="reviewdelete" parameterType="int">
