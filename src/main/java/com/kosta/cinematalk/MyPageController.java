@@ -36,6 +36,8 @@ public class MyPageController {
 			//개인정보 이거는 회원등급?테이블이랑 조인해야될것같음
 			UserDTO userdto = mypageService.getUserInfo(user_no);
 			model.addAttribute("userdto", userdto);
+			double watchHour = mypageService.getTotalHour(user_no);
+			model.addAttribute("watchHour", watchHour);
 
 			//컬렉션
 			List<KobisDTO> movielist = mypageService.getMyCollection(user_no);

@@ -32,6 +32,8 @@ public interface MypageService {
 
 	public List<ReviewDTO> getEveryReview(int user_no);
 
+	public double getTotalHour(int user_no);
+
 
 
 

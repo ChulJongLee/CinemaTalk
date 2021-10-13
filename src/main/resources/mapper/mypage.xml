@@ -5,10 +5,16 @@
 
 <mapper namespace="com.kosta.mapper.MypageMapper">
 
-	<select id="getUserInfo" parameterType="int"
-		resultType="com.kosta.dto.UserDTO">
+	<select id="getUserInfo" parameterType="int" resultType="com.kosta.dto.UserDTO">
 		select user_id, user_grade_no, user_point
 		from user_info
+		where user_no = #{user_no}
+	</select>
+
+	<select id="getTotalHour" parameterType="int" resultType="int">
+		select sum(showTm)
+		from movie_info m inner join movie_rating r
+		on m.movieCd = r.movieCd
 		where user_no = #{user_no}
 	</select>
 
@@ -26,16 +32,17 @@
 		on i.movieCd = r.movieCd
 		where user_no = #{user_no}
 		order by ratingDate desc
-		limit 0, 6
+		limit 0, 5
 	</select>
 
 	<resultMap type="com.kosta.dto.ReviewDTO" id="review">
 		<result property="title" column="movieNm" />
 		<result property="contents" column="content_content" />
+		<result property="contentno" column="content_no"/>
 	</resultMap>
 
 	<select id="getMyReview" parameterType="int" resultMap="review">
-		select movieNm, content_content
+		select movieNm, content_content, content_no
 		from comm_board c inner join movie_info m
 		on c.movieCd = m.movieCd
 		where user_no = #{user_no} and board_distinct_no = "1"
@@ -63,7 +70,7 @@
 
 	<select id="getRateStatistic" parameterType="int"
 		resultMap="rateStatistic">
-		select avg(rate) avg, count(*) cnt
+		select round(avg(rate), 2) avg, count(*) cnt
 		from movie_rating
 		where user_no = #{user_no};
 	</select>

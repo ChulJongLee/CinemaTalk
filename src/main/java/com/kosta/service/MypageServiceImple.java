@@ -28,6 +28,15 @@ public class MypageServiceImple implements MypageService {
 	}
 
 	@Override
+	public double getTotalHour(int user_no) {
+		
+		double totalHour = mapper.getTotalHour(user_no) / 60.0d;
+		double watchHour = Math.round(totalHour * 10)/10.0;
+		
+		return watchHour;
+	}
+	
+	@Override
 	public List<KobisDTO> getMyCollection(int user_no) {
 		
 		List<KobisDTO> movielist = mapper.getMyCollection(user_no);
@@ -120,7 +129,6 @@ public class MypageServiceImple implements MypageService {
 		
 		return mapper.getEveryReview(user_no);
 	}
-	
 
 
 }

@@ -76,6 +76,7 @@ public class UserController {
 
 		if(userdto != null) {
 			session.setAttribute("user", userdto);
+			session.setMaxInactiveInterval(300);
 		} 
 		return "redirect:/cinematalk";
 	}

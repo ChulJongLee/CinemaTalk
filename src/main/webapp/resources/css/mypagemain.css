@@ -1,44 +1,110 @@
 @charset "UTF-8";
 
-div>ul>li{
-	list-style: none;
-}
-
-#mycollection{
-	border: 2px solid red;
-	width: 1300px;
-	margin: 0px auto;
+#mypage{
+	margin-top: 80px;
+	text-align: center;
 	color: white;
 }
 
-#rate_statistics{
-	border: 2px solid red;
+#user_info, #myCollection, #myReview, #rate_statistics, #fav_actor, #fav_director, #fav_genre, #fav_nations{
+	background-color: #151515;
+	opacity: 50;
 	width: 1300px;
 	margin: 0px auto;
+	margin-top: 80px;
 	color: white;
 }
 
-#myreview{
-	border: 2px solid red;
-	width: 1300px;
-	margin: 0px auto;
-	color: white;
-}
-
-#user_info, #fav_actor, #fav_director, #fav_genre, #fav_nations{
-	border: 2px solid red;
-	width: 1300px;
-	margin: 0px auto;
-	color: white;
-}
-
-#user_info>div, #mycollection>div, #myreview>div, #fav_actor>div, #fav_director>div, #fav_genre>div, #fav_nations>div{
-	border: 2px solid red;
-    width: 1300px;
-    margin: 0px auto;
-    display: flex;
+#user_info>div, #myCollection>div, #myReview>div, #rate, #fav_actor>div, #fav_director>div, #fav_genre>div, #fav_nations>div{
+	display: flex;
     flex-direction: row;
-    justify-content: center;
-    background-color: #212121;
-    color: white;
+    justify-content: space-around;
 }
+
+#user_info>.p-wrapper>p, #myCollection>.p-wrapper>p, #myReview>.p-wrapper>p, #rate_statistics>.p-wrapper>p, #fav_actor>.p-wrapper>p, #fav_director>.p-wrapper>p, #fav_genre>.p-wrapper>p, #fav_nations>.p-wrapper>p{
+	display: inline-block;
+	margin: 15px;
+}
+
+#user_info>.p-wrapper>p, #myCollection>.p-wrapper>p>a, #myReview>.p-wrapper>p>a, #rate_statistics>.p-wrapper, #fav_actor>.p-wrapper, #fav_director>.p-wrapper, #fav_genre>.p-wrapper, #fav_nations>.p-wrapper{
+	text-align: center;
+	font-size: 30px;
+	color: white;
+	text-decoration: none;
+}
+
+#userinfolist, .collectionlist, .reviewlist, .actorlist, .directorlist, .genrelist, .nationlist{
+	margin-top: 20px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.moviename{
+	margin-top: 5px;
+	max-width: 213px;
+	white-space: nowrap;
+	overflow: hidden;
+	display: block;
+	text-overflow: ellipsis;
+}
+
+.reviewlist{
+	width: 380px;
+	height: 220px;
+	background-color: #272727; 
+}
+
+.movtitle{
+	margin-top: 10px;
+}
+
+.revcontent{
+	margin: 0px 20px;
+	margin-top: 20px;
+	text-align: justify;
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 7;
+    height: 140px;
+}
+
+#canvas-wrapper{
+	margin: 20px 20px 40px 40px;
+}
+
+#canvas{
+	display: inline-block;
+}
+
+#rate, .genrelist{
+	text-align: center;
+	padding-bottom: 30px;
+}
+
+#rateavg>div:nth-child(1), #ratenum>div:nth-child(1), .genrelist>div:nth-child(1), .nationlist>div:nth-child(1){
+	font-size: 25px;
+}
+
+.personimg>img{
+	border-radius: 50%;
+}
+
+.personname{
+	margin-top: 10px;
+}
+
+.genrelist, .nationlist{
+	margin-top: 20px;
+	width: 300px;
+	height: 150px;
+	background-color: #272727; 
+}
+
+.gernrename, .nationname{
+	margin-top: 40px;
+	margin-bottom: 10px;
+}
+

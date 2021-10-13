@@ -37,6 +37,8 @@ public interface MypageMapper {
 	List<ReviewDTO> getEveryReview(int user_no);
 
 	int getRate(Map<String, Object> hm);
+
+	int getTotalHour(int user_no);
 	
 
 	
