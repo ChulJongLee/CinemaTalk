@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+#myBtn{
+	color: blue;
+}
+
+#subtitle{
+	margin-top: 100px;
+	text-align: center;
+	color: white;
+}
+
+#mycollection{
+	background-color: #151515;
+	width: 1300px;
+	margin: 0px auto;
+	margin-top: 80px;
+	color: white;
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.collectionlist{
+	display: inline-block;
+	width: 250px;
+}
+
+.collectionlist>div{
+	text-align: center;	
+	margin-left: 40px;
+}
+
+.poster{
+	margin-top: 40px;	
+}
+
+.moviename{
+	margin-top: 5px;
+	max-width: 213px;
+	white-space: nowrap;
+	overflow: hidden;
+	display: block;
+	text-overflow: ellipsis;
+	text-align: center;	
+}
+
+.rank{
+	margin-bottom: 20px;
+}
+
+#paging{
+	margin: 0px auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}

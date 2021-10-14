@@ -2,14 +2,15 @@ package com.kosta.cinematalk;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosta.dto.KobisDTO;
+import com.kosta.dto.PageBlock;
 import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
 import com.kosta.dto.ReviewDTO;
@@ -69,30 +70,44 @@ public class MyPageController {
 			List<KobisDTO> nationlist = mypageService.getFavNation(user_no);
 			model.addAttribute("nationlist", nationlist);
 
-			return "mypage/mypagemain";
+			return "/view.jsp?page=mypage/mypagemain";
 		}
 	}
 
 	@GetMapping("/mypage/mycollection")
-	public String myCollection(HttpSession session, Model model) {
+	public String myCollection(HttpSession session, @RequestParam(required = false, defaultValue = "1") int currPage, Model model) {
 		UserDTO user = (UserDTO) session.getAttribute("user");
 		int user_no = user.getUser_no();
 
-		List<KobisDTO> collectionlist = mypageService.getEveryCollection(user_no);
+		int totalCount = mypageService.collectionCount(user_no); //전체 자료 수 확인
+		int pageSize = 20;
+		int blockSize = 5;
+		
+		PageBlock page = new PageBlock(currPage, totalCount, pageSize, blockSize);
+		
+		List<KobisDTO> collectionlist = mypageService.getEveryCollection(user_no, page.getStartRow() - 1, pageSize);
 		model.addAttribute("collectionlist", collectionlist);
+		model.addAttribute("page", page);
 
-		return "mypage/mycollection";
+		return "/view.jsp?page=mypage/mycollection";
 	}
 
 	@GetMapping("/mypage/myreview")
-	public String myReview(HttpSession session, Model model) {
+	public String myReview(HttpSession session, @RequestParam(required = false, defaultValue = "1") int currPage, Model model) {
 		UserDTO user = (UserDTO) session.getAttribute("user");
 		int user_no = user.getUser_no();
-
-		List<ReviewDTO> reviewlist = mypageService.getEveryReview(user_no);
-		model.addAttribute("reviewlist", reviewlist);
 		
-		return "mypage/myreview";
+		int totalCount = mypageService.reviewCount(user_no); //전체 자료 수 확인
+		int pageSize = 20;
+		int blockSize = 5;
+
+		PageBlock page = new PageBlock(currPage, totalCount, pageSize, blockSize);
+		
+		List<ReviewDTO> reviewlist = mypageService.getEveryReview(user_no, page.getStartRow() - 1, pageSize);
+		model.addAttribute("reviewlist", reviewlist);
+		model.addAttribute("page", page);
+		
+		return "/view.jsp?page=mypage/myreview";
 	}
 
 }

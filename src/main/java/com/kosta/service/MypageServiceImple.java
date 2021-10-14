@@ -113,9 +113,14 @@ public class MypageServiceImple implements MypageService {
 	}
 
 	@Override
-	public List<KobisDTO> getEveryCollection(int user_no) {
+	public List<KobisDTO> getEveryCollection(int user_no, int startRow, int pageSize) {
 		
-		List<KobisDTO> collectionlist = mapper.getEveryCollection(user_no);
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("user_no", user_no);
+		hm.put("startRow", startRow);
+		hm.put("pageSize", pageSize);
+		
+		List<KobisDTO> collectionlist = mapper.getEveryCollection(hm);
 		for(int i = 0; i < collectionlist.size(); i++) {
 			if(collectionlist.get(i).getPoster().equals("")) {
 				collectionlist.get(i).setPoster("/resources/img/poster_noimg.png");
@@ -125,9 +130,26 @@ public class MypageServiceImple implements MypageService {
 	}
 
 	@Override
-	public List<ReviewDTO> getEveryReview(int user_no) {
+	public List<ReviewDTO> getEveryReview(int user_no, int startRow, int pageSize) {
 		
-		return mapper.getEveryReview(user_no);
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("user_no", user_no);
+		hm.put("startRow", startRow);
+		hm.put("pageSize", pageSize);
+		
+		return mapper.getEveryReview(hm);
+	}
+
+	@Override
+	public int collectionCount(int user_no) {
+		
+		return mapper.collectionCount(user_no);
+	}
+
+	@Override
+	public int reviewCount(int user_no) {
+		
+		return mapper.reviewCount(user_no);
 	}
 
 

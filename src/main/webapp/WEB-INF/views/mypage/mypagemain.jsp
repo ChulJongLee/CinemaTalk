@@ -9,15 +9,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<!-- chart.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="/resources/css/mypagemain.css">
 </head>
 <body>
-	<!-- header -->
-	<%@ include file="../header.jsp" %>
-	
-	
+
 	<div id="mypage"><h1><strong>마이 페이지</strong></h1></div>
 	
 	<div id="user_info">
@@ -26,7 +24,7 @@
 			<div id="person">
 				<div>사진</div>
 				<div>${userdto.user_id} 님</div>
-				<div><a href="/mypage/modifyprofile">회원정보 수정</a></div>
+				<div id="modifyinfo"><a href="/mypage/modifyprofile">회원정보 수정</a></div>
 			</div>
 			<div id="point">
 				<div><img src="/resources/img/point.png" width="50px"></div>
@@ -36,7 +34,7 @@
 				<div><img src="/resources/img/time.png" width="50px"></div>
 				<div>${watchHour}시간</div>
 			</div>
-			<div>회원등급 사용하나..?</div>
+			<!-- <div>회원등급 사용하나..?</div> -->
 		</div>
 <%-- 		<table>
 			<thead>
@@ -72,7 +70,7 @@
 		<div id="collectionlist-wrapper">
 		<c:forEach var="item" items="${movielist}">
 			<div class="collectionlist" onclick="location.href='moviedetail/${item.movieCd}'">
-				<img alt="포스터" src="${item.poster}" width="213px" height="300px"><br> 
+				<img src="${item.poster}" alt="${item.movieNm}포스터" width="213px" height="300px"><br> 
 				<div class="moviename">${item.movieNm}</div>
 				<div class="rank"><img src="/resources/img/star1.png" alt="별" width="15px"> ${item.rank}</div>
 			</div>
@@ -154,9 +152,7 @@
 		</c:forEach>
 		</div>
 	</div>
-	
-	<!-- footer -->
-	<%@ include file="../footer.jsp" %>
+
 
 <script>
             var context = document.getElementById('myChart').getContext('2d');

@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+#myBtn{
+	color: blue;
+}
+
+#subtitle{
+	margin-top: 100px;
+	text-align: center;
+	color: white;
+}
+
+#user_info{
+	background-color: #151515;
+	width: 1300px;
+	margin: 0px auto;
+	margin-top: 80px;
+	color: white;
+	text-align: center;	
+}
+
+#user_info>form>ul{
+	list-style: none;
+}

@@ -25,8 +25,7 @@
 		<result property="movieCd" column="mov" />
 	</resultMap>
 
-	<select id="getMyCollection" parameterType="int"
-		resultMap="collection">
+	<select id="getMyCollection" parameterType="int" resultMap="collection">
 		select movieNm, poster, rate, i.movieCd mov
 		from movie_info i inner join movie_rating r
 		on i.movieCd = r.movieCd
@@ -96,8 +95,7 @@
 		limit 0, 3
 	</select>
 
-	<select id="getFavDirector" parameterType="int"
-		resultMap="person">
+	<select id="getFavDirector" parameterType="int" resultMap="person">
 		select p.peopleNm pnm, person_pic, count(p.peopleCd) cnt, p.peopleCd pcd
 		from person_info p inner join person_distinct d
 		on p.peopleCd = d.peopleCd
@@ -141,22 +139,22 @@
 		limit 0, 3
 	</select>
 
-	<select id="getEveryCollection" parameterType="int"
-		resultMap="collection">
+	<select id="getEveryCollection" resultMap="collection">
 		select movieNm, poster, rate
 		from movie_info i inner join movie_rating r
 		on i.movieCd = r.movieCd
 		where user_no = #{user_no}
 		order by ratingDate desc
+		limit #{startRow}, #{pageSize}    
 	</select>
 
-	<select id="getEveryReview" parameterType="int"
-		resultMap="review">
+	<select id="getEveryReview" resultMap="review">
 		select movieNm, content_content
 		from comm_board c inner join movie_info m
 		on c.movieCd = m.movieCd
-		where user_no = #{user_no} and board_distinct_no = "1"
+		where user_no = #{user_no} and board_distinct_no = 1
 		order by content_no desc
+		limit #{startRow}, #{pageSize}
 	</select>
 
 	<select id="getRate" resultType="int">
@@ -164,6 +162,18 @@
 		from movie_rating
 		where user_no = #{user_no} and rate = #{rate}
 	</select>
+	
+	<select id="collectionCount" parameterType="int" resultType="int">
+		select count(*)
+		from movie_rating
+		where user_no = #{user_no}
+	</select>
+	
+	<select id="reviewCount" parameterType="int" resultType="int">
+		select count(*)
+		from comm_board
+		where user_no = #{user_no} and board_distinct_no = 1
+	</select> 
 
 </mapper>
   

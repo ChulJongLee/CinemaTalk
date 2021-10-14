@@ -78,14 +78,14 @@ public class UserController {
 			session.setAttribute("user", userdto);
 			session.setMaxInactiveInterval(300);
 		} 
-		return "redirect:/cinematalk";
+		return "redirect:/";
 	}
 
 	@GetMapping("/logout")
 	public String logOut(HttpSession session) {	
 		session.invalidate();
 
-		return "redirect:/cinematalk";
+		return "redirect:/";
 	}
 
 	@GetMapping("/mypage/modifyprofile")
@@ -94,7 +94,7 @@ public class UserController {
 
 		if(dto!=null)
 		{
-			return "/mypage/userdetail";
+			return "/view.jsp?page=mypage/userdetail";
 		}
 		else {
 			return "redirect:/login";
@@ -112,13 +112,13 @@ public class UserController {
 		model.addAttribute("result", result);
 		session.invalidate();
 
-		return "/mypage/deleteuser";
+		return "/view.jsp?page=mypage/deleteuser";
 	}
 
 	@GetMapping("/mypage/modifyprofileform")
 	public String editUserInfoForm(HttpSession session) {
 		
-		return "/mypage/modifyprofileform";
+		return "/view.jsp?page=mypage/modifyprofileform";
 	}
 
 	@PostMapping("/modifyprofileresult")
@@ -127,7 +127,7 @@ public class UserController {
 		int result = service.modifyProfile(dto);
 		model.addAttribute("result", result);
 
-		return "/mypage/modifyprofileresult";
+		return "/view.jsp?page=mypage/modifyprofileresult";
 	}
 
 

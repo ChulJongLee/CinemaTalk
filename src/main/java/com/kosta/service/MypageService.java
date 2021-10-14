@@ -28,11 +28,15 @@ public interface MypageService {
 	
 	public List<KobisDTO> getFavNation(int user_no);
 
-	public List<KobisDTO> getEveryCollection(int user_no);
+	public List<KobisDTO> getEveryCollection(int user_no, int startRow, int pageSize);
 
-	public List<ReviewDTO> getEveryReview(int user_no);
+	public List<ReviewDTO> getEveryReview(int user_no, int startRow, int pageSize);
 
 	public double getTotalHour(int user_no);
+
+	public int collectionCount(int user_no);
+
+	public int reviewCount(int user_no);
 
 
 

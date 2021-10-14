@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+#myBtn{
+	color: blue;
+}
+
 #mypage{
 	margin-top: 100px;
 	text-align: center;
@@ -8,7 +12,6 @@
 
 #user_info, #myCollection, #myReview, #rate_statistics, #fav_actor, #fav_director, #fav_genre, #fav_nations{
 	background-color: #151515;
-	opacity: 50;
 	width: 1300px;
 	margin: 0px auto;
 	margin-top: 80px;
@@ -43,8 +46,17 @@
 	padding-bottom: 30px;
 }
 
+#userinfolist>div{
+	width: 300px;
+}
+
 #person>div, #point>div, #hour>div{
 	margin-top: 10px;
+}
+
+#modifyinfo>a:link{
+	color: white;
+	text-decoration: none;
 }
 
 .moviename{

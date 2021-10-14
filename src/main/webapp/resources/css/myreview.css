@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+#myBtn{
+	color: blue;
+}
+
+#subtitle{
+	margin-top: 100px;
+	text-align: center;
+	color: white;
+}
+
+#myreview{
+	background-color: #151515;
+	width: 1300px;
+	margin: 0px auto;
+	margin-top: 80px;
+	color: white;
+/* 	align-items: center; */
+}
+
+#review-wrap{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  /*   align-items: center; */
+	margin-left: 110px;
+}
+
+.reviewlist{	
+	display: inline-block;
+	width: 500px;
+	height: 350px;
+	border: 2px solid gold;
+	margin: 50px 20px;
+}
+
+.reviewlist>div{
+	text-align: center;	
+	/* margin-left: 10px; */
+}
+
+.moviename{
+	margin-top: 40px;
+}
+
+.content{
+	margin: 0px 20px;
+	margin-top: 30px;
+	text-align: justify;
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 7;
+    height: 140px;
+}
+
+#paging{
+/* 	display: block;
+	text-align: center; */
+	margin: 0px auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}

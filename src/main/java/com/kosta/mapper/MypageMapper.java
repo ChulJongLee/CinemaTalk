@@ -1,5 +1,6 @@
 package com.kosta.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,13 +33,17 @@ public interface MypageMapper {
 
 	List<KobisDTO> getFavNation(int user_no);
 
-	List<KobisDTO> getEveryCollection(int user_no);
+	List<KobisDTO> getEveryCollection(HashMap<String, Object> hm);
 
-	List<ReviewDTO> getEveryReview(int user_no);
+	List<ReviewDTO> getEveryReview(HashMap<String, Object> hm);
 
 	int getRate(Map<String, Object> hm);
 
 	int getTotalHour(int user_no);
+
+	int collectionCount(int user_no);
+
+	int reviewCount(int user_no);
 	
 
 	
