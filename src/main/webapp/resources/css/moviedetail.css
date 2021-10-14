@@ -13,7 +13,9 @@ ul, li{
 	font-weight: 600;
 
 }
-
+.main{
+	border-top: 1px solid silver;
+}
 #moviedetail {
   /*   border: 2px solid red; */
     width: 1300px;
@@ -22,6 +24,9 @@ ul, li{
     color: white;
 }
 #movieinfotop{
+	position: relative;
+    left: 200px;
+    width: 1000px;
 	height: 350px;
     list-style: none;
     text-align: left;

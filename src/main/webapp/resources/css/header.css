@@ -12,17 +12,14 @@ body{
 }
 #headerwrap{
 	/* border: 2px solid red; */
-   width: 1300px;
-   margin: 0px auto;
-   padding-top: 15px;
-   height: 50px;
-	
+	width: 1300px;
+	margin: 0px auto;
+	padding-top: 15px;
+	height: 70px;
 }
 
 #headerwrap div{
 	display: inline-block;
-	justify-content: space-between;
-    align-items: center;
 }
 
 header{
@@ -38,11 +35,13 @@ header{
     height: 35px;
     margin-left: 200px;
     margin-top: 10px;
+	font-size: 15px;
 }
 
 #header_searchBtn{
 	width:30px;
 	height: 26px;
+	cursor: pointer;
 }
 
 #header_logo{
@@ -56,9 +55,75 @@ header{
 	font-style: italic;
 	font-weight: 600;
 	color: gold;
+	text-decoration: none;
+}
+.headerBtn{
+	margin-left: 10px;
+	margin-right: 10px;
+	color: white;
+    font-size: 20px;
+    font-weight: bold;
+	text-decoration: none;
 }
 
-#header_mypage{
+//Dropdown menu
+.nav-item-dropdown {
+  position: relative;
+  
+  &:hover > .dropdown-menu {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.dropdown-trigger {
+  position: relative;
+  
+  &:focus + .dropdown-menu {
+    display: block;
+    opacity: 1;
+  }
+  
+  &::after {
+    content: "›";
+    position: absolute;
+    color: #ED3E44;
+    font-size: 24px;
+    font-weight: bold;
+    transform: rotate(90deg);
+    top: -5px;
+    right: -15px;
+  }
+}
+
+.dropdown-menu {
+  background-color: #ED3E44;
+  display: inline-block;
+  text-align: right;
+  position: absolute;
+  top: 2.5rem;
+  right: -10px;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease; 
+  width: 160px;
+
+  a {
+    color: #fff;
+  }
+}
+
+.dropdown-menu-item {
+  cursor: pointer;
+  padding: 1em;
+  text-align: center;
+  
+  &:hover {
+    background-color: darken(#ED3E44, 5%);
+  }
+}
+
+/* #header_mypage{
 	border: 1px solid white;
 	background-color: white !important;
 	border-radius: 50%;
@@ -67,7 +132,7 @@ header{
 }
 #header_mypageimg{
 	width: 40px;
-}
+} */
 
 #header_login{
     float: right;
@@ -76,8 +141,9 @@ header{
     top: 20px;
 }
 
-#header_login>a{
+.loginbtn{
 	text-decoration: none;
     color: white;
     font-weight: 600;
+    font-size: 15px;
 }

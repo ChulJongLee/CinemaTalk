@@ -119,7 +119,12 @@
 		order by openDt desc limit 10
 	</select>
   
+  <select id="getmovierateone" resultType="float" parameterType="java.util.HashMap">
+  	select ifnull(rate, 0)
+  	from movie_rating
+  	where user_no=#{user_no} and movieCd=#{movieCd}
   
+  </select>
   
   
   </mapper>

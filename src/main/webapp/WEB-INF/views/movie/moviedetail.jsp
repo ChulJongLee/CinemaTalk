@@ -10,6 +10,15 @@
  <link rel="stylesheet" href="/resources/css/moviedetail.css">
  
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <style>
+@font-face { 
+    font-family: 'EliceDigitalBaeum_Bold'; /* 엘리스디지털배움체B */
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Regular.woff') format('woff');
+}
+body{
+	font-family: 'EliceDigitalBaeum_Bold', cursive;
+}
+</style>
 </head>
 <body>
  <!-- ******** 영화 정보 ********* -->
@@ -38,16 +47,15 @@
                 <li class="info">
 	                <div class="starRating movieinfotop">
 	 				<input type="hidden" id="rate" name="rate" />
-		 						  <span class="starR1 on"></span>
-								  <span class="starR2"></span>
-								  <span class="starR1"></span>
-								  <span class="starR2"></span>
-								  <span class="starR1"></span>
-								  <span class="starR2"></span>
-								  <span class="starR1"></span>
-								  <span class="starR2"></span>
-								  <span class="starR1"></span>
-								  <span class="starR2"></span>
+	 					<c:forEach var="cnt" begin="1" end="${rate }">
+	 						<c:if test="${cnt%2==1 }"><span class="starR1 on"></span></c:if>
+	 						<c:if test="${cnt%2==0 }"><span class="starR2 on"></span></c:if>
+	 					</c:forEach>
+	 					<c:forEach var="cnt"  begin="${rate+1 }" end="10">
+	 						<c:if test="${cnt%2==1 }"><span class="starR1"></span></c:if>
+	 						<c:if test="${cnt%2==0 }"><span class="starR2"></span></c:if>
+	 					</c:forEach>
+		 						  
 	       		 	</div>
 	       		 </li>
             </ul>
@@ -56,7 +64,7 @@
         
     </div>
 	<input type="hidden" value="${detail.movieCd }" id="movieCd">
-            	
+    <hr>        	
     <div class="container">
 		 <div class="col-md-12 main" role="main">
 		

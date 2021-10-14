@@ -1,5 +1,6 @@
 package com.kosta.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -19,4 +20,5 @@ public interface MovieMapper {
 	public List<PersonInfoDTO> personinfo(String movieCd);
 	public List<KobisDTO> getmovierate();
 	public List<KobisDTO> getmovieopen();
+	public float getmovierateone(HashMap<String, Object> hm);
 }

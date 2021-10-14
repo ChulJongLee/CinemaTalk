@@ -17,7 +17,9 @@ body {
 	padding-top: 30px;
 }
 
-
+#homeBtn{
+	color: blue;
+}
 
 /* 최상단 배너 */
 .banner {

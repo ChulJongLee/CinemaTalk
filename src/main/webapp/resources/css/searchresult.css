@@ -4,7 +4,6 @@
 	margin:0;
 	padding:0;
 	box-sizing: border-box;
-	background-color: #212121;
 	
 }
 ul li{
@@ -19,8 +18,9 @@ ul li{
 }
 .resultCount{
 	font-size: 20px;
-    margin-top: 15px;
+    margin-top: 30px;
     margin-left: 15px;
+    margin-bottom: auto;
 }
 
 
@@ -31,7 +31,6 @@ ul li{
 
 .movieList{
 	margin-left: 20px;
-	margin-top: 10px;
 }
 
 .movieList>img, .movieList>div{

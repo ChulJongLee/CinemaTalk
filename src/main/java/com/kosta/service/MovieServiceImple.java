@@ -1,5 +1,6 @@
 package com.kosta.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,6 +111,19 @@ public class MovieServiceImple implements MovieService {
 	public List<KobisDTO> getMovieOpen() {
 		// TODO Auto-generated method stub
 		return mapper.getmovieopen();
+	}
+
+	@Override
+	public float getMovieRateOne(String movieCd, int user_no) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("movieCd", movieCd);
+		hm.put("user_no", user_no);
+		
+		float result=mapper.getmovierateone(hm);
+//		if(result==0)
+//			result=5;
+		return result;
 	}
 
 }

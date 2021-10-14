@@ -42,7 +42,7 @@ public class MovieController {
 		return "/view.jsp?page=movie/searchresult";
 	}
 
-	@GetMapping("/cinematalk")
+	@GetMapping("/")
 	public String RankSearchResult(Model model) throws OpenAPIFault, Exception {
 		List<KobisDTO> dailyList = movieService.getMovieRank();
 		model.addAttribute("dailyList", dailyList);
@@ -59,13 +59,19 @@ public class MovieController {
 		return "/view.jsp?page=movie/main";
 	}
 
-	@RequestMapping (value =  "/moviedetail/{movieCd}", method = {RequestMethod.GET, RequestMethod.POST})
-	public String MovieDetail(@PathVariable String movieCd, Model model) throws OpenAPIFault, Exception {
+	@RequestMapping (value =  "/moviedetail/{movieCd}")
+	public String MovieDetail(@PathVariable String movieCd, Model model, HttpSession session) throws OpenAPIFault, Exception {
 		KobisDTO detail = movieService.getMovieDetail(movieCd);
 		model.addAttribute("detail", detail);
 		List<PersonInfoDTO> personInfo=movieService.getPersonInfo(movieCd);
 		model.addAttribute("personInfo", personInfo);
 		
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		float rate=0;
+		if(user!=null) {
+			rate=movieService.getMovieRateOne(movieCd, user.getUser_no())*2;
+		}
+		model.addAttribute("rate", rate);
 		// 베스트 리뷰 2개
 		List<ReviewDTO> bestreviewlist = communityService.reviewList();
 		model.addAttribute("bestreviewlist", bestreviewlist);		

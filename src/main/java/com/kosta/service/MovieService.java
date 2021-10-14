@@ -21,4 +21,5 @@ public interface MovieService {
 	public List<PersonInfoDTO> getPersonInfo(String movieCd);
 	public List<KobisDTO> getMovieRate();
 	public List<KobisDTO> getMovieOpen();
+	public float getMovieRateOne(String movieCd, int user_no);
 }

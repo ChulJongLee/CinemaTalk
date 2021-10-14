@@ -24,6 +24,17 @@
 	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
 <link rel="stylesheet" href="/resources/css/main.css">
+<style>
+@font-face { 
+    font-family: 'EliceDigitalBaeum_Bold'; /* 엘리스디지털배움체B */
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Regular.woff') format('woff');
+
+}
+body{
+	font-family: 'EliceDigitalBaeum_Bold', cursive;
+}
+</style>
+</head>
 <body>
 	<!-- Swiper -->
 	<div class="swiper banner">
