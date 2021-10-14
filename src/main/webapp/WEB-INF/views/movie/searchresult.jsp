@@ -26,7 +26,7 @@ body{
 	<div id="boardWrap">
 		<p class="resultCount">검색 결과 : ${keyword } (${fn:length(list) }) </p>
 		<c:forEach var="item" items="${list}">
-			<div onclick="location.href='moviedetail/${item.movieCd }'">
+			<div onclick="location.href='/moviedetail/${item.movieCd }'">
 				
 				<div class="movieList">
 					<c:if test="${item.poster==''}"><img src="/resources/img/poster_noimg.png" alt="포스터" class="poster"></c:if>

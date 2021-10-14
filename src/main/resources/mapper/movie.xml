@@ -9,14 +9,14 @@
 		select movieCd, movieNm, plotText, genreNm, repNationNm, DATE_FORMAT(openDt, "%Y.%m.%d") as openDt, watchGradeNm, showTm, poster
 		from movie_info
 		where movieNm like CONCAT('%',#{keyword},'%')
-		order by openDt desc
+		order by openDt DESC
 		
 	</select>
 	<select id="getmoviegenrelist" resultType="com.kosta.dto.KobisDTO" parameterType="String">
 		select movieCd, movieNm, plotText, genreNm, repNationNm, DATE_FORMAT(openDt, "%Y.%m.%d") as openDt, watchGradeNm, showTm, poster
 		from movie_info
 		where genreNm like CONCAT('%',#{keyword},'%')
-		order by openDt desc
+		order by openDt DESC
 		
 	</select>
 	<select id="gettotalcount" resultType="int"  parameterType="String">
