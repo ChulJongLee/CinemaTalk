@@ -18,22 +18,22 @@
 	<%@ include file="../header.jsp" %>
 	
 	
-	<div id="mypage"><h1>마이 페이지</h1></div>
+	<div id="mypage"><h1><strong>마이 페이지</strong></h1></div>
 	
 	<div id="user_info">
 		<div class="p-wrapper"><p align="center"><b>나의 정보</b></p></div>
 		<div id="userinfolist">
-			<div>
+			<div id="person">
 				<div>사진</div>
-				<div>${userdto.user_id}님</div>
+				<div>${userdto.user_id} 님</div>
 				<div><a href="/mypage/modifyprofile">회원정보 수정</a></div>
 			</div>
-			<div>
-				<div>포인트이미지</div>
+			<div id="point">
+				<div><img src="/resources/img/point.png" width="50px"></div>
 				<div>${userdto.user_point}포인트</div>
 			</div>
-			<div>
-				<div>시계이미지</div>
+			<div id="hour">
+				<div><img src="/resources/img/time.png" width="50px"></div>
 				<div>${watchHour}시간</div>
 			</div>
 			<div>회원등급 사용하나..?</div>
