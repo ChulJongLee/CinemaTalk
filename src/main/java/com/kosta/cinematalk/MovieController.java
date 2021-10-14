@@ -34,14 +34,34 @@ public class MovieController {
 	private final MovieService movieService;
 	private final CommunityService communityService;
 	
-	@PostMapping("/searchresult")
+	@GetMapping("/searchresult")
 	public String MovieSearchResult(@RequestParam String keyword, Model model) throws OpenAPIFault, Exception {
 		List<KobisDTO> list = movieService.getMovieList(keyword);
+		int totalCount=movieService.getTotalCount(keyword);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("list", list);
 		return "/view.jsp?page=movie/searchresult";
 	}
 
+	@GetMapping("/genre/{genre}")
+	public String MovieGenreResult(@PathVariable String genre, Model model) throws OpenAPIFault, Exception {
+		String keyword="";
+		if(genre.equals("drama"))
+			keyword="드라마";
+		else if(genre.equals("comedy"))
+			keyword="코미디";
+		else if(genre.equals("horror"))
+			keyword="공포(호러)";
+		else if(genre.equals("romance"))
+			keyword="멜로/로멘스";
+		else if(genre.equals("thriller"))
+			keyword="스릴러";
+		List<KobisDTO> list = movieService.getMovieGenreList(keyword);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("list", list);
+		return "/view.jsp?page=movie/searchresult";
+	}
+	
 	@GetMapping("/")
 	public String RankSearchResult(Model model) throws OpenAPIFault, Exception {
 		List<KobisDTO> dailyList = movieService.getMovieRank();

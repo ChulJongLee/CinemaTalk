@@ -6,19 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
  <link rel="stylesheet" href="/resources/css/moviedetail.css">
- 
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <style>
-@font-face { 
-    font-family: 'EliceDigitalBaeum_Bold'; /* 엘리스디지털배움체B */
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Regular.woff') format('woff');
-}
-body{
-	font-family: 'EliceDigitalBaeum_Bold', cursive;
-}
-</style>
 </head>
 <body>
  <!-- ******** 영화 정보 ********* -->

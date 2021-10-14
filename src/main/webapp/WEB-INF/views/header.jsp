@@ -7,16 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/header.css">
-<style>
-@font-face { 
-    font-family: 'EliceDigitalBaeum_Bold'; /* 엘리스디지털배움체B */
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Regular.woff') format('woff');
-
-}
-body{
-	font-family: 'EliceDigitalBaeum_Bold', cursive;
-}
-</style>
 </head>
 <body>
 
@@ -29,24 +19,18 @@ body{
 			<div>
 				<a href="/" class="headerBtn" id="homeBtn">홈</a>
 			</div>
-			<div class="nav-item nav-item-dropdown">
-				<!-- <a href="#" class="headerBtn" id="categoryBtn">카테고리</a> -->
-				 <!-- Dropdown menu -->
-			          <a class="dropdown-trigger headerBtn" href="#">카테고리</a>
-			          <ul class="dropdown-menu">
-			            <li class="dropdown-menu-item">
-			              <a href="#">Dropdown Item 1</a>
-			            </li>
-			            <li class="dropdown-menu-item">
-			              <a href="#">Dropdown Item 2</a>
-			            </li>
-			            <li class="dropdown-menu-item">
-			              <a href="#">Dropdown Item 3</a>
-			            </li>
-			          </ul>
+			<div class="dropdown">
+			  <button class="btn btn-secondary dropdown-toggle headerBtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+			  	  카테고리
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+			    <li><a class="dropdown-item" href="/genre/drama">드라마</a></li>
+			    <li><a class="dropdown-item" href="/genre/comedy">코미디</a></li>
+			    <li><a class="dropdown-item" href="/genre/horror">공포(호러)</a></li>
+			    <li><a class="dropdown-item" href="/genre/romance">멜로/로멘스</a></li>
+			    <li><a class="dropdown-item" href="/genre/thriller">스릴러</a></li>
+			  </ul>
 			</div>
-			
-			
 			
 			
 			<div>
@@ -56,7 +40,7 @@ body{
 				
 			</div>
 			<div id="search">
-				<form method="post" action="/searchresult" id="searchBar">
+				<form method="get" action="/searchresult" id="searchBar">
 					<input type="text" id="header_keyword" name="keyword" placeholder="  영화명을 입력하세요.">
 					<img alt="검색" src="/resources/img/search.png" onclick="document.getElementById('searchBar').submit();" id="header_searchBtn">
 				</form>
@@ -74,7 +58,6 @@ body{
 			</div>
 		</div>
 	</header>
-
 
 
 </body>

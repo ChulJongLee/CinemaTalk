@@ -21,4 +21,6 @@ public interface MovieMapper {
 	public List<KobisDTO> getmovierate();
 	public List<KobisDTO> getmovieopen();
 	public float getmovierateone(HashMap<String, Object> hm);
+	public int gettotalcount(String keyword);
+	public List<KobisDTO> getmoviegenrelist(String keyword);
 }

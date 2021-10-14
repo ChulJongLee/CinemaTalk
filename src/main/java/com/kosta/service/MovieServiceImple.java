@@ -64,6 +64,12 @@ public class MovieServiceImple implements MovieService {
 	}
 	
 	@Override
+	public List<KobisDTO> getMovieGenreList(String keyword) {
+		// TODO Auto-generated method stub
+		return mapper.getmoviegenrelist(keyword);
+	}
+
+	@Override
 	public List<KobisDTO> getRandomList(){
 		// TODO Auto-generated method stub
 		return mapper.getrandomlist();
@@ -126,4 +132,11 @@ public class MovieServiceImple implements MovieService {
 		return result;
 	}
 
+	@Override
+	public int getTotalCount(String keyword) {
+		// TODO Auto-generated method stub
+		return mapper.gettotalcount(keyword);
+	}
+
+	
 }

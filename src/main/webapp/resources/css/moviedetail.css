@@ -156,63 +156,11 @@ ul.movieinfotop{
 h3{
 	font-weight: 600;
 }
-/* 
 
-아코디언
-.accordion-button::after {
-	display: none;
+.dropdown-toggle::after {
+	content: none;
 }
 
-.accordion-header{
-	width: 200px;
-    color: white;
-}
-
-.accordion-item{
+.dropdown>buttom{
 	background-color: #212121;
 }
-
-#accordionFlushExample{
-	position: relative;
-	margin-top: 15px;
-}
-#flush-headingOne{
-	position: absolute;
-	top: 10px;
-	left: 120px;
-}
-
-#flush-headingTwo{
-	position: absolute;
-	top: 10px;
-	left: 420px;
-}
-
-#flush-headingThree{
-	position: absolute;
-	top: 10px;
-	left: 720px;
-}
-#flush-headingFour{
-	position: absolute;
-	top: 10px;
-	left: 1020px;
-}
-
-#flush-collapseOne, #flush-collapseTwo, #flush-collapseThree, #flush-collapseFour {
-	position: absolute;
-	top: 70px;
-}
-
-button.accordion-button{
-	background-color: #212121;
-    color: white;
-    font-size: 20px;
-    font-weight: 700;
-    justify-content: center;
-}
-
-#endPoint{
-	position: relative;
-}
- */

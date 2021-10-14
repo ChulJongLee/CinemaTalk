@@ -22,4 +22,6 @@ public interface MovieService {
 	public List<KobisDTO> getMovieRate();
 	public List<KobisDTO> getMovieOpen();
 	public float getMovieRateOne(String movieCd, int user_no);
+	public int getTotalCount(String keyword);
+	public List<KobisDTO> getMovieGenreList(String keyword);
 }

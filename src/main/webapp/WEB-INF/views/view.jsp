@@ -6,14 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="icon" href="favicon.ico">
+
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
 <style>
 @font-face { 
     font-family: 'EliceDigitalBaeum_Bold'; /* 엘리스디지털배움체B */
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+
 }
 body{
 	font-family: 'EliceDigitalBaeum_Bold', cursive;
