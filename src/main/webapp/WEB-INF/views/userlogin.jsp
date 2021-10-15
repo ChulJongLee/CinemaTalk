@@ -24,7 +24,7 @@
 					<div class="input"><input type="password" name="user_pwd" id="user_pwd" maxLength="20" placeholder="비밀번호를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 입력하세요'"></div>
 				</li>
 				<li>
-					<div class="btn"><input type="button" class="button" value="로그인" onclick="CheckForm()"></div> 
+					<div class="loginbtn"><input type="button" class="button" value="로그인" onclick="CheckForm()"></div> 
 				</li>
 			</ul>
 		</form>

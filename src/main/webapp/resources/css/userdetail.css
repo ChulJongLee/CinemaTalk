@@ -23,12 +23,12 @@
 	/* margin-top: 20px; */
 }
 
-li{
+#user_info>form>ul>li{
 	list-style: none;
 	margin-top: 30px;
 }
 
-li>div{
+#user_info>form>ul>li>div{
 	display: inline-block;
 }
 
@@ -45,7 +45,7 @@ li>div{
 	margin-left: 20px;
 }
 
-input{
+.input>input{
 	color: white;
 	background-color: #212121;
 	box-shadow: none;
@@ -53,12 +53,12 @@ input{
 	padding: 5px;
 }
 
-.btn{
+.linkbtn{
 	margin-top: 10px;
 	margin-bottom: 30px;
 }
 
-btn{
+.linkbtn>btn{
 	padding: 0px 30px;
 	border: 0px;
 	outline: 0px;

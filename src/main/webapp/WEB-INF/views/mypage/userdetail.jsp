@@ -43,8 +43,8 @@ $().ready(function(){
 				</li>
 				<li>
 					<input type="hidden" name="user_no" value="${user.user_no}">
-					<div class="btn"><button type="button" id="usermodify"><b>회원 정보 수정</b></button></div> 
-					<div class="btn"><button type="button" id="userdel"><b>회원 탈퇴</b></button></div> 
+					<div class="linkbtn"><button type="button" id="usermodify"><b>회원 정보 수정</b></button></div> 
+					<div class="linkbtn"><button type="button" id="userdel"><b>회원 탈퇴</b></button></div> 
 				</li>
 			</ul>
 		</form>

@@ -129,7 +129,7 @@ public class UserController {
 		UserDTO dto = (UserDTO)session.getAttribute("user");
 		
 		if(dto != null) {
-			return "/view.jsp?page=mypage/modifyprofileform";
+			return "/view.jsp?page=mypage/usermodifyform";
 		} else {
 			return "redirect:/login";
 		}

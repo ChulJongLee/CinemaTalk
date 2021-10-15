@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link rel="stylesheet" href="/resources/css/modifyprofileform.css">
+<link rel="stylesheet" href="/resources/css/usermodifyform.css">
 <body>
 		
 	<div id="subtitle"><h1><strong>회원 정보 수정</strong></h1></div>
@@ -40,8 +40,8 @@
 				</li>
 				<li>
 					<input type="hidden" name="user_no" value="${user.user_no}">
-					<div class="btn"><input type="button" class="button" value="수정" onclick="CheckForm()"></div> 
-					<div class="btn"><input type="reset" class="button" value="취소"></div> 
+					<div class="modifybtn"><input type="button" class="button" value="수정" onclick="CheckForm()"></div> 
+					<div class="modifybtn"><input type="reset" class="button" value="취소"></div> 
 				</li>
 			</ul>
 		</form>

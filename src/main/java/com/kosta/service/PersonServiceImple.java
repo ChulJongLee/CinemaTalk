@@ -46,8 +46,12 @@ public class PersonServiceImple implements PersonService {
 	@Override
 	public PersonInfoDTO getPersonInfo(String peopleCd) {
 		PersonInfoDTO dto = mapper.getPersonInfo(peopleCd);
-		if(dto.getPerson_pic().equals("")) {
-			dto.setPerson_pic("/resources/img/person_noimg.png");
+		
+		if(dto != null) {
+			if(dto.getPerson_pic().equals("")) {
+				dto.setPerson_pic("/resources/img/person_noimg.png");
+			}
+			
 		}
 		return dto;
 	}
