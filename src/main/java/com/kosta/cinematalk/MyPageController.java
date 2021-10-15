@@ -70,7 +70,7 @@ public class MyPageController {
 			List<KobisDTO> nationlist = mypageService.getFavNation(user_no);
 			model.addAttribute("nationlist", nationlist);
 
-			return "/view.jsp?page=mypage/mypagemain";
+			return "/view.jsp?page=user/mypagemain";
 		}
 	}
 
@@ -93,7 +93,7 @@ public class MyPageController {
 			model.addAttribute("collectionlist", collectionlist);
 			model.addAttribute("page", page);
 
-			return "/view.jsp?page=mypage/mycollection";
+			return "/view.jsp?page=user/mycollection";
 		} 
 	}
 
@@ -116,7 +116,7 @@ public class MyPageController {
 			model.addAttribute("reviewlist", reviewlist);
 			model.addAttribute("page", page);
 
-			return "/view.jsp?page=mypage/myreview";
+			return "/view.jsp?page=user/myreview";
 		}
 	}
 

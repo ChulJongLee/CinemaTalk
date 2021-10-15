@@ -35,7 +35,7 @@ public class UserController {
 	@GetMapping("/userjoin")
 	public String goJoinForm() 
 	{	
-		return "/view.jsp?page=userjoin";
+		return "/view.jsp?page=user/userjoin";
 	}
 
 	//회원가입 기능
@@ -60,7 +60,7 @@ public class UserController {
 	@RequestMapping("/login")
 	public String userlogin() {
 
-		return "/view.jsp?page=userlogin";
+		return "/view.jsp?page=user/userlogin";
 	}
 
 
@@ -77,8 +77,11 @@ public class UserController {
 		if(userdto != null) {
 			session.setAttribute("user", userdto);
 			session.setMaxInactiveInterval(300);
-		} 
-		return "redirect:/";
+			return "redirect:/";
+		} else {
+			return "/view.jsp?page=user/userloginfail";
+		}
+		
 	}
 
 	//로그아웃기능
@@ -91,7 +94,7 @@ public class UserController {
 
 	//회원 정보
 	@GetMapping("/mypage/userinfo")
-	public String editUserInfo(HttpSession session) {
+	public String getUserDetail(HttpSession session) {
 		UserDTO dto = (UserDTO)session.getAttribute("user");
 		
 		if(dto == null)
@@ -106,11 +109,12 @@ public class UserController {
 				session.setAttribute("user", dto2);
 			}
 			
-			return "/view.jsp?page=mypage/userdetail";
+			return "/view.jsp?page=user/userdetail";
 		}
 
 	}
 
+	//회원 탈퇴
 	@GetMapping("/mypage/deleteuser")
 	public String deleteUser(HttpSession session, Model model) {
 		
@@ -121,21 +125,23 @@ public class UserController {
 		model.addAttribute("result", result);
 		session.invalidate();
 
-		return "/view.jsp?page=mypage/deleteuser";
+		return "/view.jsp?page=user/userdelete";
 	}
 
+	//회원 정보 수정
 	@GetMapping("/mypage/modifyprofileform")
 	public String editUserInfoForm(HttpSession session) {
 		UserDTO dto = (UserDTO)session.getAttribute("user");
 		
 		if(dto != null) {
-			return "/view.jsp?page=mypage/usermodifyform";
+			return "/view.jsp?page=user/usermodifyform";
 		} else {
 			return "redirect:/login";
 		}
 		
 	}
 
+	//회원 정보 수정 결과
 	@PostMapping("/modifyprofileresult")
 	public String modifyProfileResult(HttpSession session, @ModelAttribute UserDTO dto, Model model) {
 		UserDTO userdto = (UserDTO)session.getAttribute("user");
@@ -144,12 +150,10 @@ public class UserController {
 			int result = service.modifyProfile(dto);
 			model.addAttribute("result", result);
 
-			return "/view.jsp?page=mypage/modifyprofileresult";
+			return "/view.jsp?page=user/usermodifyresult";
 		} else {
 			return "redirect:/login";
 		}
 	}
-
-
 
 }

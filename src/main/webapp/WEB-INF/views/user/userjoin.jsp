@@ -6,15 +6,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<meta name="google-signin-scope" content="profile email">
+<!-- <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id" content="433638546150-no026cnkth0e3sgb3makpb1kdrhdb5qd.apps.googleusercontent.com"> 
-<!-- Kakao Login Js -->
+Kakao Login Js
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<!-- Google Login Js --> 
+Google Login Js 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<!-- Naver Login Js -->
+Naver Login Js
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
-<!--카카오 -->
+카카오
 <script>
 		window.Kakao.init("89b7b4570ff6898a5495c52960979021");
  //카카오 로그인
@@ -51,7 +51,7 @@
 			    }
 			  };
 	</script>
-	<!-- 구글 -->
+	구글
 	<script>
 	//구글 로그인
       function onSignIn(googleUser) {
@@ -142,10 +142,49 @@
 				}
 			}
 	</script>
-    
+   --> 
+<link rel="stylesheet" href="/resources/css/userjoin.css">   
 </head>
+
 <body>
-	<div class="container">
+	<div id="subtitle"><h1><strong>회원 가입</strong></h1></div>
+
+	<div id="userjoinform">
+		<form action="/logincheck" method="post" name="FormLogin" id="FormLogin">
+			<ul>
+				<li>
+					<div class="first label"><label for="user_id"><b>아이디</b></label></div>
+					<div class="first input"><input type="text" name="user_id" id="user_id" value="${user.user_id}" placeholder="아이디를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='아이디를 입력하세요'"></div>
+					<div class="first"><button type="button" id="check">중복 체크</button></div>
+				</li>
+				<li>
+					<div class="label"><label for="user_pwd"><b>패스워드</b></label></div> 
+					<div class="input"><input type="password" name="user_pwd" id="user_pwd" maxLength="20" placeholder="6자 이상 20자 미만 입력" onfocus="this.placeholder=''" onblur="this.placeholder='6자 이상 20자 미만 입력'"></div>
+				</li>
+				<li>
+					<div class="label"><label for="user_pwd2"><b>패스워드 확인</b></label></div> 
+					<div class="input"><input type="password" name="user_pwd2" id="user_pwd2" maxLength="20" placeholder="6자 이상 20자 미만 입력" onfocus="this.placeholder=''" onblur="this.placeholder='6자 이상 20자 미만 입력'"></div>
+				</li>
+				<li>
+					<div class="label"><label for="user_nickname"><b>닉네임</b></label></div> 
+					<div class="input"><input type="text" name="user_nickname" id="user_nickname" maxLength="20" placeholder="6자 이상 20자 미만 입력" onfocus="this.placeholder=''" onblur="this.placeholder='6자 이상 20자 미만 입력'"></div>
+				</li>
+				<li>
+					<div class="label"><label for="user_email"><b>이메일</b></label></div> 
+					<div class="input"><input type="text" name="user_email" id="user_email" maxLength="20" placeholder="6자 이상 20자 미만 입력" onfocus="this.placeholder=''" onblur="this.placeholder='6자 이상 20자 미만 입력'"></div>
+				</li>
+				<li>
+					<div class="label"><label for="user_bdate"><b>생년월일</b></label></div> 
+					<div class="input"><input type="text" name="user_bdate" id="user_bdate" maxLength="20" placeholder="6자 이상 20자 미만 입력" onfocus="this.placeholder=''" onblur="this.placeholder='6자 이상 20자 미만 입력'"></div>
+				</li>
+				<li>
+					<div class="loginbtn"><input type="button" class="button" value="회원 가입" onclick="CheckForm()"></div> 
+				</li>
+			</ul>
+		</form>
+	</div>
+
+<%-- 	<div class="container">
 		<form action="./userRegister" method="post">
 			<table class="table table-bordered table-hover" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
@@ -192,6 +231,6 @@
 			</table>
 		</form>
 	
-	</div>
+	</div> --%>
 </body>
 </html>
