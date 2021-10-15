@@ -50,7 +50,7 @@
             
         </div>
         
-    </div>
+   
 	<input type="hidden" value="${detail.movieCd }" id="movieCd">
     <hr>        	
     <div class="container">
@@ -59,8 +59,11 @@
 			  <!-- Nav tabs -->
 			  <ul class="nav nav-tabs" id="tablelist" role="tablist">
 			   <li role="presentation" class="active"><a href="#home2" aria-controls="home2" role="tab" data-toggle="tab">영화정보</a></li>
+			   <li class="blank_li"></li>
 			   <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">리뷰</a></li>
+			   <li class="blank_li"></li>
 			   <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">참여게시판</a></li>
+			   <li class="blank_li"></li>
 			   <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">자유게시판</a></li>
 			  </ul>
 		
@@ -77,54 +80,9 @@
 			 <div class="col-md-9" role="main">
 		 </div>
 	</div>
- 
-    
-	<!-- 아코디언 -->
-	<%-- <div class="accordion accordion-flush" id="accordionFlushExample">
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="flush-headingOne">
-	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-	        영화정보
-	      </button>
-	    </h2>
-	    <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-	      <div class="accordion-body"><%@ include file="movieinfo.jsp" %></div>
-	    </div>
-	  </div>
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="flush-headingTwo">
-	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-	        리뷰
-	      </button>
-	    </h2>
-	    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-	      <div class="accordion-body"><%@ include file="/WEB-INF/views/board/reviewmain.jsp" %></div>
-	    </div>
-	  </div>
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="flush-headingThree">
-	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-	        참여게시판
-	      </button>
-	    </h2>
-	    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-	      <div class="accordion-body"><%@ include file="/WEB-INF/views/board/bestscenemain.jsp" %></div>
-	    </div>
-	  </div>
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="flush-headingFour">
-	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-	        자유게시판
-	      </button>
-	    </h2>
-	    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-	      <div class="accordion-body"><%@ include file="/WEB-INF/views/board/userforumlist.jsp" %></div>
-	    </div>
-	  </div>
-	</div>
-    <div id="endPoint"></div> --%>
-    
+  </div>
+    <!-- 부트스트랩 버전이 달라서 지우면 안됨 -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>	
-<script src="/resources/js/moviedetail.js"></script>
+	<script src="/resources/js/moviedetail.js"></script>
 </body>
 </html>

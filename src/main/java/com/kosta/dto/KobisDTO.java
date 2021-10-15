@@ -43,6 +43,7 @@ public class KobisDTO {
     private String genreNm;
     
     private float rate;
+    private String movie_trailer;
  	
  	@Getter
  	@Setter

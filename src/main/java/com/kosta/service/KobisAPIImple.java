@@ -6,6 +6,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.kosta.dto.KmdbDTO.KmdbDTO2;
@@ -335,4 +340,11 @@ public class KobisAPIImple implements KobisAPI {
 		}
 		return list;
 	}
+	
+//	public void getTrailer(String movieNm) throws OpenAPIFault, Exception {
+//		String url = "https://www.youtube.com/results?search_query="+movieNm+"+트레일러";
+//		Connection conn = Jsoup.connect(url);
+//		Document doc = conn.post();
+//		Elements menu =  doc.select(".tbl_comm>tbody>tr");
+//	}
 }

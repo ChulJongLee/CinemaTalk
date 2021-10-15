@@ -23,7 +23,7 @@
 			<!-- 영화 트레일러 -->
 			<div id="trailer">
 	            <h3 class="title">트레일러</h3>
-	            <iframe src="https://www.youtube.com/embed/aGZPviLMo7I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	            <iframe src="https://www.youtube.com/embed/${detail.movie_trailer }" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	        </div>			
 		</div>
 
