@@ -144,6 +144,13 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.userforumdetail(contentno);
 	}
 
+	@Override
+	public void reviewmodify(HashMap<String, Object> hm) {
+		
+		int result = mapper.reviewmodify(hm);
+		
+	}
+
 
 
 

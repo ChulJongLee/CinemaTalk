@@ -84,19 +84,21 @@ $('.deletebtn').click(function(){
 
 $(document).ready(function(){
 	$('#staticBackdrop').on('shown.bs.modal', function(e){
-		
-		var contentno = $(this).val();
-		console.log("contentno:"+contentno);
-			
+	
 		  var recip=$(e.relatedTarget);
 		  console.log("recip:"+recip);
 		  
 		  var r=$(recip).parent().parent().siblings('.content').text();
 		  console.log("r:"+r);
 		  
+		  var no = $(recip).parent().parent().siblings('.contentnodistinct').attr('value');
+		  console.log("contentno:"+no);
+		  // 변수 순서도 중요하다. 아니 근데 var는 호이스팅이 되는거 아닌가?
+		  
 		  
 		 let m=$(this);
 		  m.find('#modaltext').val(r);
+		  m.find('#contentval').val(no);
 	});
 });
 	

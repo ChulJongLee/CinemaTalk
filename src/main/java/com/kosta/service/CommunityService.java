@@ -38,6 +38,8 @@ public interface CommunityService {
 
 	public ReviewDTO userforumdetail(int contentno);
 
+	public void reviewmodify(HashMap<String, Object> hm);
+
 	
 	
 

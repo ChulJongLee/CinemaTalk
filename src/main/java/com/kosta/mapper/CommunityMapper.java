@@ -44,6 +44,8 @@ public interface CommunityMapper {
 
 	public ReviewDTO userforumdetail(int contentno);
 
+	public int reviewmodify(HashMap<String, Object> hm);
+
 	
 
 	

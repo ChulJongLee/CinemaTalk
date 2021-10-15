@@ -84,6 +84,7 @@
          	<ul id="contentslist">
          		<c:forEach var="list" items="${generalreviewlist }">
 						<li id="contents">				
+							<input type="hidden" value="${list.contentno }" class="contentnodistinct">
 							<div id="id">${list.userid }, ${list.contentno }</div>
 							<div id="date">${list.writedate }</div>
 									
@@ -129,14 +130,10 @@
 							</div>
 							
 							<c:if test="${sessionScope.user.user_id==list.userid}">
-								<div id="contentedit">
-									<!-- <div id="modifycheck"><button class="modifycheckbtn"><i class="fas fa-check"></i></button></div>
-									<div id="modifyreturn"><button class="modifyreturnbtn"><i class="fas fa-undo"></i></button></div> -->
-									
-									
+								<div id="contentedit">						
 <%--  								<div id="modify"><button class="modifybtn" value="${list.contentno }" data-toggle="modal" data-target="#mymodal" data-whatever="t"><i class="fas fa-edit"></i></button></div>  --%>
 									<div id="modify">
-										<button type="button" class="modifybtn" value="${list.contentno }" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-whatever="t"> 
+										<button type="button" class="modifybtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-whatever="t"> 
 											<i class="fas fa-edit"></i>
 										</button>
 									</div>
@@ -180,15 +177,18 @@
 		        <h5 class="modal-title" id="staticBackdropLabel" style="color: black;">리뷰 수정</h5>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
-		      <div class="modal-body">
-		   	 	<input type="hidden" name="contentno">
+ 		      <form action="/moviedetail/${detail.movieCd }/reviewmodify" method="post">
+		      <div class="modal-body">	         
+ 		   	 	<input type="hidden" value="${sessionScope.user.user_no}" name="userno">
+		   	 	<input type="hidden" name="contentno" id="contentval">   	 	
 		    	<label for="modaltext">리뷰 수정</label>
-		    	<textarea id="modaltext" name="contents" rows="10" cols="55"></textarea>	
+		    	<textarea id="modaltext" name="contents" rows="10" cols="55"></textarea>			    	
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">취소</button>
-		        <button type="submit" class="btn btn-primary">수정하기</button>
+		        <button type="submit" class="btn btn-primary">수정하기</button>		        
 		      </div>
+		      </form>
 		    </div>
 		  </div>
 		</div>

@@ -175,6 +175,12 @@
 	insert into comm_board (user_no, content_content, content_date, board_distinct_no, content_like, content_hate)
 	values(#{userno}, #{contents}, now(), 1, 0, 0 )
 </insert>
+
+<update id="reviewmodify" parameterMap="hashmap">
+	update comm_board
+	set content_content = #{contents}
+	where content_no = #{contentno}
+</update>
   
   
 <!-- 리뷰 삭제 -->
