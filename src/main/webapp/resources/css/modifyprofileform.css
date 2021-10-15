@@ -37,7 +37,7 @@ li>div{
 }
 
 .label{
-	width: 60px;
+	width: 100px;
 	text-align: right;
 }
 
@@ -54,17 +54,13 @@ input{
 }
 
 .btn{
-	margin-top: 10px;
-	margin-bottom: 30px;
+	padding-bottom: 30px;
 }
 
-btn{
-	padding: 0px 30px;
-	border: 0px;
-	outline: 0px;
-}
+.button{
+	color: black;
+	background-color: white;
+ 	width: 60px;
+	height: 33px
 
-#usermodify, #userdel{
-	width: 110px;
-	height: 30px;
 }

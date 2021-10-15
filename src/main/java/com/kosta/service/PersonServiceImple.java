@@ -74,9 +74,19 @@ public class PersonServiceImple implements PersonService {
 	}
 
 	@Override
-	public List<KobisDTO> getFilmoList(String peopleCd) {
+	public List<KobisDTO> getFilmoList(String peopleCd, int startRow, int pageSize) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("peopleCd", peopleCd);
+		hm.put("startRow", startRow);
+		hm.put("pageSize", pageSize);
 		
-		return mapper.getFilmoList(peopleCd);
+		return mapper.getFilmoList(hm);
+	}
+
+	@Override
+	public int getFilmoNum(String peopleCd) {
+		
+		return mapper.getFilmoNum(peopleCd);
 	}
 
 

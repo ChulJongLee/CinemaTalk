@@ -12,7 +12,7 @@
 		<c:when test="${result >= 0}">
 			<script>
 				alert('회원 탈퇴 완료');
-				location.href = "/cinematalk";
+				location.href = "/";
 			</script>
 		</c:when>
 		<c:otherwise>

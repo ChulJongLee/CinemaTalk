@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosta.dto.KobisDTO;
+import com.kosta.dto.PageBlock;
 import com.kosta.dto.PersonInfoDTO;
 import com.kosta.service.PersonService;
 
@@ -21,31 +23,35 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PersonInfoController {
 	
-	private final PersonService personServiceAPI;
+	private final PersonService personService;
 	
 	@GetMapping("/personsrc")
 	public String srcPerson() {
-		return "personsearch";
+		return "/view.jsp?page=personsearch";
 	}
 	
 	@GetMapping("/personsrcresult")
 	public String srcPersonResult() throws OpenAPIFault, Exception {
 
 		String keyword = "";
-		personServiceAPI.insertPersonInfo(keyword);
+		personService.insertPersonInfo(keyword);
 
-		return "personsearchresult";
+		return "/view.jsp?page=personsearchresult";
 	}
 	
 	@GetMapping("/personinfo/{peopleCd}")
-	public String getpersonInfo(@PathVariable String peopleCd, Model model) {
+	public String getpersonInfo(@PathVariable String peopleCd, @RequestParam(required = false, defaultValue = "1") int currPage, Model model) {
 		
 		//인물 정보
-		PersonInfoDTO pidto = personServiceAPI.getPersonInfo(peopleCd);
+		PersonInfoDTO pidto = personService.getPersonInfo(peopleCd);
 		
 		//인물 필모그래피
-		//페이징처리해야됨.
-		List<KobisDTO> list = personServiceAPI.getFilmoList(peopleCd);
+		int totalCount = personService.getFilmoNum(peopleCd);
+		int pageSize = 20;
+		int blockSize = 5;
+		PageBlock page = new PageBlock(currPage, totalCount, pageSize, blockSize);
+		
+		List<KobisDTO> list = personService.getFilmoList(peopleCd, page.getStartRow() - 1, pageSize);
 		for(int i = 0; i < list.size(); i++) {
 			if(list.get(i).getPoster().equals("")) {
 				list.get(i).setPoster("/resources/img/poster_noimg.png");
@@ -53,16 +59,16 @@ public class PersonInfoController {
 		}
 		
 		//관련 인물
-		String[] movieCd = personServiceAPI.getPersonFilmo(peopleCd);
+		String[] movieCd = personService.getPersonFilmo(peopleCd);
 		ArrayList<PersonInfoDTO> list2 = new ArrayList<>();
 		for(String item : movieCd) {
 			Map<String, String> hm = new HashMap<String, String>();
 			hm.put("peopleCd", peopleCd);
 			hm.put("movieCd", item);
-			String[] personresult = personServiceAPI.getRealatedPerson(hm);
+			String[] personresult = personService.getRealatedPerson(hm);
 
 			for(int i = 0; i < personresult.length; i++) {
-				PersonInfoDTO pidto2 = personServiceAPI.getPersonInfo(personresult[i]);
+				PersonInfoDTO pidto2 = personService.getPersonInfo(personresult[i]);
 				list2.add(pidto2);
 			}			
 		}
@@ -79,6 +85,7 @@ public class PersonInfoController {
 		model.addAttribute("dto", pidto);
 		model.addAttribute("list", list);
 		model.addAttribute("list2", list2);
-		return "personinfo";
+		model.addAttribute("page", page);
+		return "/view.jsp?page=personinfo";
 	}
 }

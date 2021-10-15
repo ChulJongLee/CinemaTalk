@@ -23,8 +23,6 @@ public interface MypageMapper {
 
 	List<PersonInfoDTO> getFavActor(int user_no);
 
-	List<RateDTO> getRates(int user_no);
-
 	RateDTO getRateStatistic(int user_no);
 
 	List<PersonInfoDTO> getFavDirector(int user_no);
@@ -39,7 +37,7 @@ public interface MypageMapper {
 
 	int getRate(Map<String, Object> hm);
 
-	int getTotalHour(int user_no);
+	Integer getTotalHour(int user_no);
 
 	int collectionCount(int user_no);
 

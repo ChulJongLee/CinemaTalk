@@ -23,7 +23,9 @@ public interface PersonService {
 
 	public String[] getRealatedPerson(Map<String, String> hm);
 	
-	public List<KobisDTO> getFilmoList(String peopleCd);
+	public List<KobisDTO> getFilmoList(String peopleCd, int startRow, int pageSize);
+
+	public int getFilmoNum(String peopleCd);
 
 }
 

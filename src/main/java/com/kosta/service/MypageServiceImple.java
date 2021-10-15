@@ -30,10 +30,16 @@ public class MypageServiceImple implements MypageService {
 	@Override
 	public double getTotalHour(int user_no) {
 		
-		double totalHour = mapper.getTotalHour(user_no) / 60.0d;
-		double watchHour = Math.round(totalHour * 10)/10.0;
+		Integer result = mapper.getTotalHour(user_no);
+		if(result == null) {
+			return 0;
+		} else {
+			double totalHour = result / 60.0d;
+			double watchHour = Math.round(totalHour * 10)/10.0;
+			
+			return watchHour;
+		}
 		
-		return watchHour;
 	}
 	
 	@Override
@@ -56,7 +62,6 @@ public class MypageServiceImple implements MypageService {
 
 	@Override
 	public int[] getRates(int user_no) {
-//		List<RateDTO> ratelist = mapper.getRates(user_no);
 		Map<String, Object> hm = new HashMap<>();
 		hm.put("user_no", user_no);
 		int[] arr = new int[10];

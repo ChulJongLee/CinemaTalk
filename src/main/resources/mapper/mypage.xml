@@ -11,7 +11,7 @@
 		where user_no = #{user_no}
 	</select>
 
-	<select id="getTotalHour" parameterType="int" resultType="int">
+	<select id="getTotalHour" parameterType="int" resultType="Integer">
 		select sum(showTm)
 		from movie_info m inner join movie_rating r
 		on m.movieCd = r.movieCd
@@ -49,26 +49,12 @@
 		limit 0, 3
 	</select>
 
-	<resultMap type="com.kosta.dto.RateDTO" id="rates">
-		<result property="rate" column="rate" />
-		<result property="user_no" column="cnt" />
-	</resultMap>
-
-	<select id="getRates" parameterType="int" resultMap="rates">
-		select rate, count(rate) cnt
-		from movie_rating
-		where user_no = #{user_no}
-		group by rate
-		order by rate
-	</select>
-
 	<resultMap type="com.kosta.dto.RateDTO" id="rateStatistic">
 		<result property="rate" column="avg" />
 		<result property="user_no" column="cnt" />
 	</resultMap>
 
-	<select id="getRateStatistic" parameterType="int"
-		resultMap="rateStatistic">
+	<select id="getRateStatistic" parameterType="int" resultMap="rateStatistic">
 		select round(avg(rate), 2) avg, count(*) cnt
 		from movie_rating
 		where user_no = #{user_no};
@@ -139,7 +125,7 @@
 		limit 0, 3
 	</select>
 
-	<select id="getEveryCollection" resultMap="collection">
+	<select id="getEveryCollection" parameterType="java.util.HashMap" resultMap="collection">
 		select movieNm, poster, rate
 		from movie_info i inner join movie_rating r
 		on i.movieCd = r.movieCd
@@ -148,7 +134,7 @@
 		limit #{startRow}, #{pageSize}    
 	</select>
 
-	<select id="getEveryReview" resultMap="review">
+	<select id="getEveryReview" parameterType="java.util.HashMap" resultMap="review">
 		select movieNm, content_content
 		from comm_board c inner join movie_info m
 		on c.movieCd = m.movieCd
@@ -157,7 +143,7 @@
 		limit #{startRow}, #{pageSize}
 	</select>
 
-	<select id="getRate" resultType="int">
+	<select id="getRate" parameterType="java.util.HashMap" resultType="int">
 		select count(rate) cnt
 		from movie_rating
 		where user_no = #{user_no} and rate = #{rate}

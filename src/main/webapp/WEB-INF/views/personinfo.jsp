@@ -6,13 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <link rel="stylesheet" href="/resources/css/personinfo.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-	<!-- header -->
-	<%@ include file="header.jsp" %>
 	
 	<!-- maintop -->
 	<div id="personinfotop">
@@ -43,15 +40,48 @@
 			<c:forEach var="item" items="${list}">
 				<div class="posterandname">	
 				<ul>
-					<li><a href="/moviedetail/${item.movieCd}"><img src="${item.poster}" alt="${item.movieNm}포스터" width="115px"></a></li>
-					<li><span class="col-12">${item.movieNm}</span></li>
+					<li><a href="/moviedetail/${item.movieCd}"><img src="${item.poster}" alt="${item.movieNm}포스터" id="poster" width="115px"></a></li>
+					<li><span class="col-12" id="moviename">${item.movieNm}</span></li>
 				</ul>
 				</div>
 			</c:forEach>
 			
-			<div>
-				
-			</div>
+				<div id="pag">
+				<nav aria-label="..." id="paging">
+					<ul class="pagination">
+
+						<!-- 이전 버튼 -->
+						<c:if test="${page.prev==false}">
+							<li class="page-item disabled"><a class="page-link" href="/personinfo/${dto.peopleCd}?currPage=${page.startBlock-1}">&laquo;</a>
+							</li>
+						</c:if>
+						<c:if test="${page.prev==true}">
+							<li class="page-item"><a class="page-link" href="/personinfo/${dto.peopleCd}?currPage=${page.startBlock-1}">&laquo;</a>
+							</li>
+						</c:if>
+
+						<!-- 페이지 번호 -->
+						<c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock}">
+							<c:if test="${index==page.currPage}">
+								<li class="page-item active" aria-current="page"><a class="page-link"><c:out value="${index}" /></a></li>
+							</c:if>
+							<c:if test="${index!=page.currPage }">
+								<li class="page-item" aria-current="page"><a class="page-link" href="/personinfo/${dto.peopleCd}?currPage=${index}"><c:out value="${index}" /></a></li>
+							</c:if>
+						</c:forEach>
+
+						<!-- 다음 버튼 -->
+						<c:if test="${page.next == false}">
+							<li class="page-item disabled"><a class="page-link" href="/personinfo/${dto.peopleCd}?currPage=${page.endBlock+1}">&raquo;</a>
+							</li>
+						</c:if>
+						<c:if test="${page.next == true}">
+							<li class="page-item"><a class="page-link" href="/personinfo/${dto.peopleCd}?currPage=${page.endBlock+1}">&raquo;</a>
+							</li>
+						</c:if>
+					</ul>
+				</nav>
+				</div>
 		</div>
 		
 		<!-- related person -->
@@ -69,8 +99,5 @@
 		
 	</div>
 
-	<!-- footer -->
-	<%@ include file="footer.jsp" %>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>

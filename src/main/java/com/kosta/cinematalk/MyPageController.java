@@ -30,7 +30,7 @@ public class MyPageController {
 		UserDTO user = (UserDTO) session.getAttribute("user");
 		
 		if(user == null) {
-			return "redirect:./login";
+			return "redirect:/login";
 		} else {
 			int user_no = user.getUser_no();
 			
@@ -77,37 +77,47 @@ public class MyPageController {
 	@GetMapping("/mypage/mycollection")
 	public String myCollection(HttpSession session, @RequestParam(required = false, defaultValue = "1") int currPage, Model model) {
 		UserDTO user = (UserDTO) session.getAttribute("user");
-		int user_no = user.getUser_no();
-
-		int totalCount = mypageService.collectionCount(user_no); //전체 자료 수 확인
-		int pageSize = 20;
-		int blockSize = 5;
 		
-		PageBlock page = new PageBlock(currPage, totalCount, pageSize, blockSize);
-		
-		List<KobisDTO> collectionlist = mypageService.getEveryCollection(user_no, page.getStartRow() - 1, pageSize);
-		model.addAttribute("collectionlist", collectionlist);
-		model.addAttribute("page", page);
+		if(user == null) {
+			return "redirect:/login";
+		} else {
+			int user_no = user.getUser_no();
 
-		return "/view.jsp?page=mypage/mycollection";
+			int totalCount = mypageService.collectionCount(user_no); //전체 자료 수 확인
+			int pageSize = 20;
+			int blockSize = 5;
+
+			PageBlock page = new PageBlock(currPage, totalCount, pageSize, blockSize);
+
+			List<KobisDTO> collectionlist = mypageService.getEveryCollection(user_no, page.getStartRow() - 1, pageSize);
+			model.addAttribute("collectionlist", collectionlist);
+			model.addAttribute("page", page);
+
+			return "/view.jsp?page=mypage/mycollection";
+		} 
 	}
 
 	@GetMapping("/mypage/myreview")
 	public String myReview(HttpSession session, @RequestParam(required = false, defaultValue = "1") int currPage, Model model) {
 		UserDTO user = (UserDTO) session.getAttribute("user");
-		int user_no = user.getUser_no();
 		
-		int totalCount = mypageService.reviewCount(user_no); //전체 자료 수 확인
-		int pageSize = 20;
-		int blockSize = 5;
+		if(user == null) {
+			return "redirect:/login";
+		} else {
+			int user_no = user.getUser_no();
 
-		PageBlock page = new PageBlock(currPage, totalCount, pageSize, blockSize);
-		
-		List<ReviewDTO> reviewlist = mypageService.getEveryReview(user_no, page.getStartRow() - 1, pageSize);
-		model.addAttribute("reviewlist", reviewlist);
-		model.addAttribute("page", page);
-		
-		return "/view.jsp?page=mypage/myreview";
+			int totalCount = mypageService.reviewCount(user_no); //전체 자료 수 확인
+			int pageSize = 20;
+			int blockSize = 5;
+
+			PageBlock page = new PageBlock(currPage, totalCount, pageSize, blockSize);
+
+			List<ReviewDTO> reviewlist = mypageService.getEveryReview(user_no, page.getStartRow() - 1, pageSize);
+			model.addAttribute("reviewlist", reviewlist);
+			model.addAttribute("page", page);
+
+			return "/view.jsp?page=mypage/myreview";
+		}
 	}
 
 }

@@ -92,7 +92,7 @@ public class UserController {
 	public String editUserInfo(HttpSession session) {
 		UserDTO dto = (UserDTO)session.getAttribute("user");
 
-		if(dto!=null)
+		if(dto != null)
 		{
 			return "/view.jsp?page=mypage/userdetail";
 		}
@@ -117,17 +117,28 @@ public class UserController {
 
 	@GetMapping("/mypage/modifyprofileform")
 	public String editUserInfoForm(HttpSession session) {
+		UserDTO dto = (UserDTO)session.getAttribute("user");
 		
-		return "/view.jsp?page=mypage/modifyprofileform";
+		if(dto != null) {
+			return "/view.jsp?page=mypage/modifyprofileform";
+		} else {
+			return "redirect:/login";
+		}
+		
 	}
 
 	@PostMapping("/modifyprofileresult")
 	public String modifyProfileResult(HttpSession session, @ModelAttribute UserDTO dto, Model model) {
+		UserDTO userdto = (UserDTO)session.getAttribute("user");
+		
+		if(userdto != null) {
+			int result = service.modifyProfile(dto);
+			model.addAttribute("result", result);
 
-		int result = service.modifyProfile(dto);
-		model.addAttribute("result", result);
-
-		return "/view.jsp?page=mypage/modifyprofileresult";
+			return "/view.jsp?page=mypage/modifyprofileresult";
+		} else {
+			return "redirect:/login";
+		}
 	}
 
 

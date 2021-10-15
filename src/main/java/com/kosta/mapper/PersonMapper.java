@@ -1,5 +1,6 @@
 package com.kosta.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,9 @@ public interface PersonMapper {
 
 	public String[] getRelatedPerson(Map<String, String> hm);
 
-	public List<KobisDTO> getFilmoList(String peopleCd);
+	public List<KobisDTO> getFilmoList(HashMap<String, Object> hm);
+
+	public int getFilmoNum(String peopleCd);
 	
 
 

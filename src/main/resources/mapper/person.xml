@@ -59,12 +59,22 @@
   		<result property="poster" column="poster"/> 
   	</resultMap>
   	
-  	<select id="getFilmoList" resultMap="filmolist" parameterType="String">
+  	<select id="getFilmoList" resultMap="filmolist" parameterType="java.util.HashMap">
   		select p.movieCd as mov, movieNm, poster
   		from person_distinct p inner join movie_info m
   		on p.movieCd = m.movieCd
   		where p.peopleCd = #{peopleCd} 
-  		order by p.movieCd desc
+  		order by openDt DESC
+  		limit #{startRow}, #{pageSize}
+  	</select>
+  	
+  	<select id="getFilmoNum" parameterType="String" resultType="int">
+  		select count(m.movieCd)
+		from person_info p inner join person_distinct d
+		on p.peopleCd = d.peopleCd
+		inner join movie_info m
+		on d.movieCd = m.movieCd 
+		where p.peopleCd = #{peopleCd}
   	</select>
   	
   </mapper>
