@@ -60,12 +60,12 @@
 			<!-- 이전 버튼 -->		  
 			<c:if test="${page.prev == false}">		
 				<li class="page-item disabled">
-			      <a class="page-link" href="/searchresult?keyword=${keyword }?currPage=${page.startBlock-1}">&laquo;</a>
+			      <a class="page-link" href="/genre/${genre }?currPage=${page.startBlock-1}">&laquo;</a>
 			    </li>
 			</c:if>
 			<c:if test="${page.prev == true}">		
 				<li class="page-item">
-			      <a class="page-link" href="/searchresult?keyword=${keyword }&currPage=${page.startBlock-1}">&laquo;</a>
+			      <a class="page-link" href="/genre/${genre }?currPage=${page.startBlock-1}">&laquo;</a>
 			    </li>
 			</c:if>
 			
@@ -78,7 +78,7 @@
 				</c:if>
 				<c:if test="${index!=page.currPage }">
 					<li class="page-item" aria-current="page">
-				      <a class="page-link" href="/searchresult?keyword=${keyword }&currPage=${index}"><c:out value="${index}"/></a>
+				      <a class="page-link" href="/genre/${genre }?currPage=${index}"><c:out value="${index}"/></a>
 				    </li>
 				</c:if>
 			</c:forEach>
@@ -86,12 +86,12 @@
 			<!-- 다음 버튼 -->
 			<c:if test="${page.next == false}">
 				<li class="page-item disabled">
-			      <a class="page-link" href="/searchresult?keyword=${keyword }&currPage=${page.endBlock+1}">&raquo;</a>
+			      <a class="page-link" href="/genre/${genre }?currPage=${page.endBlock+1}">&raquo;</a>
 			    </li>
 			</c:if>
 			<c:if test="${page.next == true}">
 				<li class="page-item">
-			      <a class="page-link" href="/searchresult?keyword=${keyword }&currPage=${page.endBlock+1}">&raquo;</a>
+			      <a class="page-link" href="/genre/${genre }?currPage=${page.endBlock+1}">&raquo;</a>
 			    </li>
 			</c:if>		
 	  	</ul>

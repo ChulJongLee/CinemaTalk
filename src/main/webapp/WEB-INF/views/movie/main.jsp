@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Swiper demo</title>
+<title>시네마톡</title>
 
 <!-- Link Swiper's CSS -->
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -19,11 +19,11 @@
 		<div class="swiper-wrapper">
 			<div class="swiper-slide">
 				<img alt="배너1"
-					src="https://movie-phinf.pstatic.net/20210820_154/16294355415011sxk1_JPEG/movie_image.jpg?type=m665_443_2">
+					src="/resources/img/reviewEvent2.jpg">
 			</div>
 			<div class="swiper-slide">
 				<img alt="배너2"
-					src="https://movie-phinf.pstatic.net/20210924_2/1632449077013KE9W5_JPEG/movie_image.jpg?type=m665_443_2">
+					src="resources/img/reviewEvent.jpg">
 			</div>
 			<div class="swiper-slide">
 				<img alt="배너3"

@@ -34,13 +34,13 @@ public class MovieTest {
 		RequestDTO rdto=new RequestDTO();
 		movieService.insertRank(rdto);
 	}
-	@Test
-	public void getMovieList() {
-		String keyword="가나다";
-		List<KobisDTO> list=movieService.getMovieList(keyword);
-		System.out.println(list.size());
-		
-	}
+//	@Test
+//	public void getMovieList() {
+//		String keyword="가나다";
+//		List<KobisDTO> list=movieService.getMovieList(keyword);
+//		System.out.println(list.size());
+//		
+//	}
 	@Test
 	public void getMovieRank() {
 		List<KobisDTO> list=movieService.getMovieRank();

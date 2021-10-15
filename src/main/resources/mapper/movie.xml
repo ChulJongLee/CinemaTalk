@@ -5,18 +5,20 @@
   
   <mapper namespace="com.kosta.mapper.MovieMapper">
 	
-	<select id="getmovielist" resultType="com.kosta.dto.KobisDTO" parameterType="String">
+	<select id="getmovielist" resultType="com.kosta.dto.KobisDTO" parameterType="java.util.HashMap">
 		select movieCd, movieNm, plotText, genreNm, repNationNm, DATE_FORMAT(openDt, "%Y.%m.%d") as openDt, watchGradeNm, showTm, poster
 		from movie_info
 		where movieNm like CONCAT('%',#{keyword},'%')
 		order by openDt DESC
+		limit #{startRow}, #{pageSize}
 		
 	</select>
-	<select id="getmoviegenrelist" resultType="com.kosta.dto.KobisDTO" parameterType="String">
+	<select id="getmoviegenrelist" resultType="com.kosta.dto.KobisDTO" parameterType="java.util.HashMap">
 		select movieCd, movieNm, plotText, genreNm, repNationNm, DATE_FORMAT(openDt, "%Y.%m.%d") as openDt, watchGradeNm, showTm, poster
 		from movie_info
 		where genreNm like CONCAT('%',#{keyword},'%')
 		order by openDt DESC
+		limit #{startRow}, #{pageSize}
 		
 	</select>
 	<select id="gettotalcount" resultType="int"  parameterType="String">
@@ -24,7 +26,11 @@
 		from movie_info
 		where movieNm like CONCAT('%',#{keyword},'%')
 	</select>
-	
+	<select id="getgenrecount" resultType="int"  parameterType="String">
+		select count(*)
+		from movie_info
+		where genreNm like CONCAT('%',#{keyword},'%')
+	</select>
 	<select id="getmoviedetail" resultType="com.kosta.dto.KobisDTO" parameterType="String">
 		select i.movieCd, movieNm, plotText, genreNm, repNationNm, DATE_FORMAT(openDt, "%Y.%m.%d") as openDt, watchGradeNm, showTm, poster, avg(rate) as rate
 		from movie_info as i

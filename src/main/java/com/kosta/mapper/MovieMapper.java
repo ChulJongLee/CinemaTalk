@@ -10,7 +10,7 @@ import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
 @Mapper
 public interface MovieMapper {
-	public List<KobisDTO> getmovielist(String keyword);
+	public List<KobisDTO> getmovielist(HashMap<String, Object> hm);
 	public KobisDTO getmoviedetail(String movieCd);
 	public void insertmovie(List<KobisDTO> list);
 	public void insertrank(List<KobisDTO> list);
@@ -22,5 +22,6 @@ public interface MovieMapper {
 	public List<KobisDTO> getmovieopen();
 	public float getmovierateone(HashMap<String, Object> hm);
 	public int gettotalcount(String keyword);
-	public List<KobisDTO> getmoviegenrelist(String keyword);
+	public List<KobisDTO> getmoviegenrelist(HashMap<String, Object> hm);
+	public int getgenrecount(String keyword);
 }

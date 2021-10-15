@@ -4,7 +4,7 @@
  var swiper = new Swiper(".banner", {
         slidesPerView: "auto",
         centeredSlides: true,
-        spaceBetween: 5,
+        spaceBetween: 20,
         pagination: {
           el: ".swiper-pagination",
           clickable: true,

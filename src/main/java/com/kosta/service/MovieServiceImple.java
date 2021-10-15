@@ -58,15 +58,23 @@ public class MovieServiceImple implements MovieService {
 	}
 
 	@Override
-	public List<KobisDTO> getMovieList(String keyword) {
+	public List<KobisDTO> getMovieList(String keyword, int startRow, int pageSize) {
 		// TODO Auto-generated method stub
-		return mapper.getmovielist(keyword);
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("keyword", keyword);
+		hm.put("startRow", startRow);
+		hm.put("pageSize", pageSize);
+		return mapper.getmovielist(hm);
 	}
 	
 	@Override
-	public List<KobisDTO> getMovieGenreList(String keyword) {
+	public List<KobisDTO> getMovieGenreList(String keyword, int startRow, int pageSize) {
 		// TODO Auto-generated method stub
-		return mapper.getmoviegenrelist(keyword);
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("keyword", keyword);
+		hm.put("startRow", startRow);
+		hm.put("pageSize", pageSize);
+		return mapper.getmoviegenrelist(hm);
 	}
 
 	@Override
@@ -136,6 +144,12 @@ public class MovieServiceImple implements MovieService {
 	public int getTotalCount(String keyword) {
 		// TODO Auto-generated method stub
 		return mapper.gettotalcount(keyword);
+	}
+
+	@Override
+	public int getGenreCount(String keyword) {
+		// TODO Auto-generated method stub
+		return mapper.getgenrecount(keyword);
 	}
 
 	

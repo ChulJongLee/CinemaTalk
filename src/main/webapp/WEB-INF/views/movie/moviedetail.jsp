@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>영화정보</title>
  <link rel="stylesheet" href="/resources/css/moviedetail.css">
 </head>
 <body>

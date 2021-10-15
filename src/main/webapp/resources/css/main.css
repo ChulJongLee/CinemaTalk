@@ -24,7 +24,7 @@ body {
 /* 최상단 배너 */
 .banner {
 	width: 1250px;
-	height: 380px;
+	height: 400px;
 }
 
 .banner>.swiper-wrapper>.swiper-slide {
@@ -81,6 +81,7 @@ body {
 	-ms-flex-align: center;
 	-webkit-align-items: center;
 	align-items: center;
+	cursor: pointer;
 }
 
 .mySwiper>.swiper-wrapper>.swiper-slide img {

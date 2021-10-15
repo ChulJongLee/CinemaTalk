@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosta.dto.KobisDTO;
+import com.kosta.dto.PageBlock;
 import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
 import com.kosta.dto.ReviewDTO;
@@ -35,16 +36,25 @@ public class MovieController {
 	private final CommunityService communityService;
 	
 	@GetMapping("/searchresult")
-	public String MovieSearchResult(@RequestParam String keyword, Model model) throws OpenAPIFault, Exception {
-		List<KobisDTO> list = movieService.getMovieList(keyword);
+	public String MovieSearchResult(@RequestParam String keyword
+			, @RequestParam(required = false, defaultValue = "1") int currPage
+			, Model model) throws OpenAPIFault, Exception {
 		int totalCount=movieService.getTotalCount(keyword);
+		int pageSize = 10;
+		int blockSize = 5;
+		PageBlock page = new PageBlock(currPage, totalCount, pageSize, blockSize);
+		List<KobisDTO> list = movieService.getMovieList(keyword, page.getStartRow() - 1, pageSize);
+		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("list", list);
+		model.addAttribute("page", page);
 		return "/view.jsp?page=movie/searchresult";
 	}
 
 	@GetMapping("/genre/{genre}")
-	public String MovieGenreResult(@PathVariable String genre, Model model) throws OpenAPIFault, Exception {
+	public String MovieGenreResult(@PathVariable String genre
+			, @RequestParam(required = false, defaultValue = "1") int currPage
+			, Model model) throws OpenAPIFault, Exception {
 		String keyword="";
 		if(genre.equals("drama"))
 			keyword="드라마";
@@ -56,10 +66,17 @@ public class MovieController {
 			keyword="멜로/로멘스";
 		else if(genre.equals("thriller"))
 			keyword="스릴러";
-		List<KobisDTO> list = movieService.getMovieGenreList(keyword);
+		int totalCount=movieService.getGenreCount(keyword);
+		int pageSize = 10;
+		int blockSize = 5;
+		PageBlock page = new PageBlock(currPage, totalCount, pageSize, blockSize);
+		List<KobisDTO> list = movieService.getMovieGenreList(keyword, page.getStartRow() - 1, pageSize);
+		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("list", list);
-		return "/view.jsp?page=movie/searchresult";
+		model.addAttribute("page", page);
+		model.addAttribute("genre", genre);
+		return "/view.jsp?page=movie/searchgenre";
 	}
 	
 	@GetMapping("/")

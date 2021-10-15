@@ -13,7 +13,8 @@ import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
 public interface MovieService {	
 	public void insertMovie(RequestDTO rdto) throws OpenAPIFault, Exception;
 	public KobisDTO getMovieDetail(String movieCd);
-	public List<KobisDTO> getMovieList(String keyword);
+	public List<KobisDTO> getMovieList(String keyword, int startRow, int pageSize);
+	public List<KobisDTO> getMovieGenreList(String keyword, int startRow, int pageSize);
 	public void insertRank(RequestDTO rdto) throws OpenAPIFault, Exception;
 	public List<KobisDTO> getMovieRank();
 	public List<KobisDTO> getRandomList();
@@ -23,5 +24,5 @@ public interface MovieService {
 	public List<KobisDTO> getMovieOpen();
 	public float getMovieRateOne(String movieCd, int user_no);
 	public int getTotalCount(String keyword);
-	public List<KobisDTO> getMovieGenreList(String keyword);
+	public int getGenreCount(String keyword);
 }
