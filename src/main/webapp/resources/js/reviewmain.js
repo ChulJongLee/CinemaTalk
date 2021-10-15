@@ -2,6 +2,8 @@
  * 
  */
 
+
+// 좋아요 버튼
 $('.likebtn').click(function() {
 
 	var params = { contentno : $(this).attr('value') }
@@ -24,7 +26,7 @@ $('.likebtn').click(function() {
 	});
 });
 
-
+// 싫어요
 $('.dislikebtn').click(function() {
 
 	var params2 = { contentno : $(this).attr('value') }
@@ -44,7 +46,7 @@ $('.dislikebtn').click(function() {
 });
 
 
-
+// 삭제버튼
 $('.deletebtn').click(function(){	
 	let movieCd = $('#moviecd').val();
 	console.log("무비코드무비코드무비코드무비코드무비코드무비코드무비코드무비코드"+movieCd);
@@ -53,10 +55,52 @@ $('.deletebtn').click(function(){
 });
 
 
-$('.modifybtn').click(function(){
-//	$(this).attr('value').remove('#content');
-	
-	
-});
+//수정하기
+//$(document).ready(function(){
 
+//	  $('.modifybtn').on('click', function(){
+//	      $('#mymodal').modal('show');
+//	      
+//	      modal({backdrop: 'static', keyboard: false}).
+//	  });
+	  
+//	  $('#mymodal').on('shown.bs.modal', function(e){
+//		  
+//		  console.log('hello');
+//		  
+//		  var recip=$(e.relatedTarget);
+//		  let r=$(recip).parent().parent().siblings('.content').text();
+//		  console.log(r);
+//		  
+//		  
+//		 let m=$(this);
+//		  m.find('#modaltext').val(r);
+//		 
+//	  });
+//	 
+//});
+
+$(document).ready(function(){
+	$('.modifybtn').on('click', function(e){
+		
+		var contentno = $(this).val();
+		console.log(contentno);
+			
+		  var recip=$(e.relatedTarget);
+		  console.log(recip);
+		  
+		  var r=$(recip).parent().parent().siblings('.content').text();
+		  console.log(r);
+		  
+		  
+		 let m=$('.modal-body');
+		  m.find('#modaltext').val(r);	
+	});
+});
+	
+	  
+//	  $(".modifycheckbtn").click(function(){
+//	    $(".modal").fadeOut();
+//	  });
+//	  
 

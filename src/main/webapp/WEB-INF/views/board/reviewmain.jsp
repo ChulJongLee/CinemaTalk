@@ -182,7 +182,7 @@
 		      <div class="modal-body">
 		   	 	<input type="hidden" name="contentno">
 		    	<label for="modaltext">리뷰 수정</label>
-		    	<textarea id="modaltext" name="contents" rows="10" cols="80"></textarea>	
+		    	<textarea id="modaltext" name="contents" rows="10" cols="55"></textarea>	
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>

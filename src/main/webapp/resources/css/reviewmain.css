@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+body{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 /* 리뷰 게시판*/
 #bestreviewbtn{	/* 베스트 리뷰 버튼 */
@@ -12,13 +18,13 @@
 }
 #bestsection{	/* 베스트 리뷰 */
     border: 2px solid orange;
-    width: 1300px;
+    width: 1140px;
     margin: 0px auto;
     font-size: 18px;
 }
 #generalsection{	/* 일반 리뷰 */
     border: 2px solid red;
-    width: 1300px;
+    width: 1140px;
     margin: 0px auto;
     font-size: 18px;
 }
@@ -176,7 +182,7 @@
 /* 리뷰 쓰기 */
 #writereview{
     border: 2px solid red;
-    width: 1300px;
+    width: 1140px;
     margin: 0px auto;
     display: flex;
     flex-direction: row;
