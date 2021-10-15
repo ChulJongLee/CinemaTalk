@@ -134,9 +134,9 @@
 									<div id="modifyreturn"><button class="modifyreturnbtn"><i class="fas fa-undo"></i></button></div> -->
 									
 									
-<%-- 								<div id="modify"><button class="modifybtn" value="${list.contentno }" data-toggle="modal" data-target="#mymodal" data-whatever="t"><i class="fas fa-edit"></i></button></div> --%>
+<%--  								<div id="modify"><button class="modifybtn" value="${list.contentno }" data-toggle="modal" data-target="#mymodal" data-whatever="t"><i class="fas fa-edit"></i></button></div>  --%>
 									<div id="modify">
-										<button type="button" class="modifybtn" value="${list.contentno }" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+										<button type="button" class="modifybtn" value="${list.contentno }" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-whatever="t"> 
 											<i class="fas fa-edit"></i>
 										</button>
 									</div>
@@ -154,12 +154,13 @@
     </section>
     
     
-<!--  		<div class="modal" id="mymodal">
+<!--   		<div class="modal" id="mymodal">
 		  <div class="modal-dialog" role="document">
-			  <div class="modal_content"> -->
+			  <div class="modal_content">  -->
 <%-- 			    <form action="/moviedetail/${detail.movieCd }/reviewmodify" method="post">    
  --%>			  		
 <!--                      <input type="hidden" name="contentno">
+
 				    <label for="modaltext">리뷰 수정</label>
 				    <textarea id="modaltext" name="contents" rows="10" cols="80"></textarea>	
 				    <button class="modifycheckbtn">수정확인</button>
@@ -167,12 +168,12 @@
 			    </form>
 			  </div>
 		  </div>
-		</div> -->
+		</div>  -->
 		
 		
 
 		<!-- Modal -->
- 		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -185,8 +186,8 @@
 		    	<textarea id="modaltext" name="contents" rows="10" cols="55"></textarea>	
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-		        <button type="button" class="btn btn-primary">수정하기</button>
+		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">취소</button>
+		        <button type="submit" class="btn btn-primary">수정하기</button>
 		      </div>
 		    </div>
 		  </div>

@@ -26,6 +26,8 @@ $('.likebtn').click(function() {
 	});
 });
 
+
+
 // 싫어요
 $('.dislikebtn').click(function() {
 
@@ -81,20 +83,20 @@ $('.deletebtn').click(function(){
 //});
 
 $(document).ready(function(){
-	$('.modifybtn').on('click', function(e){
+	$('#staticBackdrop').on('shown.bs.modal', function(e){
 		
 		var contentno = $(this).val();
-		console.log(contentno);
+		console.log("contentno:"+contentno);
 			
 		  var recip=$(e.relatedTarget);
-		  console.log(recip);
+		  console.log("recip:"+recip);
 		  
 		  var r=$(recip).parent().parent().siblings('.content').text();
-		  console.log(r);
+		  console.log("r:"+r);
 		  
 		  
-		 let m=$('.modal-body');
-		  m.find('#modaltext').val(r);	
+		 let m=$(this);
+		  m.find('#modaltext').val(r);
 	});
 });
 	

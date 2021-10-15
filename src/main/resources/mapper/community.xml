@@ -176,6 +176,8 @@
 	values(#{userno}, #{contents}, now(), 1, 0, 0 )
 </insert>
   
+  
+<!-- 리뷰 삭제 -->
 <delete id="reviewdelete" parameterType="int">
 	delete from comm_board
 	where content_no = #{contentno}
