@@ -172,8 +172,8 @@
 
 <!-- 리뷰 등록 -->
 <insert id="reviewinsert" parameterMap="hashmap">
-	insert into comm_board (content_content, content_date, board_distinct_no, content_like, content_hate)
-	values( #{contents}, now(), 1, 0, 0 )
+	insert into comm_board (user_no, content_content, content_date, board_distinct_no, content_like, content_hate)
+	values(#{userno}, #{contents}, now(), 1, 0, 0 )
 </insert>
   
 <delete id="reviewdelete" parameterType="int">

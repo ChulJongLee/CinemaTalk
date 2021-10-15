@@ -73,6 +73,15 @@ public class CommunityController {
 		return "redirect:/moviedetail/{movieCd}";
 	}
 	
+	// 리뷰 수정
+	@RequestMapping("/moviedetail/{movieCd}/reviewmodify")
+	public String reviewmodify(@RequestParam HashMap<String, Object> hm) {
+		
+		service.reviewmodify(hm);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@  modify"+hm);
+		return "redirect:/moviedetail/{movieCd}";
+	}
+	
 	
 	
 	// 리뷰 전체 리스트
