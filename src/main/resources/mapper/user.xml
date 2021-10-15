@@ -36,7 +36,7 @@
   	where user_id=#{user_id} and user_pwd=#{user_pwd}
   </select>
   
-  <select id="userdetail" resultType="com.kosta.dto.UserDTO">
+  <select id="getUserDetail" resultType="com.kosta.dto.UserDTO">
   	select user_no, user_id, user_pwd, user_email, user_nickname, user_bdate, user_grade_no, user_point
   	from user_info
   	where user_no=#{user_no}

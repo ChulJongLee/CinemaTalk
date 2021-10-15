@@ -53,7 +53,7 @@ public class UserController {
 		{
 			System.out.println(e);
 		}
-		return "redirect:./login";   
+		return "redirect:./login";
 	}
 
 	//로그인 페이지
@@ -81,6 +81,7 @@ public class UserController {
 		return "redirect:/";
 	}
 
+	//로그아웃기능
 	@GetMapping("/logout")
 	public String logOut(HttpSession session) {	
 		session.invalidate();
@@ -88,16 +89,24 @@ public class UserController {
 		return "redirect:/";
 	}
 
-	@GetMapping("/mypage/modifyprofile")
+	//회원 정보
+	@GetMapping("/mypage/userinfo")
 	public String editUserInfo(HttpSession session) {
 		UserDTO dto = (UserDTO)session.getAttribute("user");
-
-		if(dto != null)
+		
+		if(dto == null)
 		{
-			return "/view.jsp?page=mypage/userdetail";
-		}
-		else {
 			return "redirect:/login";
+			
+		} else {
+			UserDTO dto2 = service.getUserDetail(dto.getUser_no());
+			
+			if(dto2 != null) {
+				session.removeAttribute("user");
+				session.setAttribute("user", dto2);
+			}
+			
+			return "/view.jsp?page=mypage/userdetail";
 		}
 
 	}

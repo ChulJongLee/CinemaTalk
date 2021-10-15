@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 <!-- chart.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="/resources/css/mypagemain.css">
 </head>
 <body>
@@ -21,7 +20,7 @@
 			<div id="person">
 				<div>사진</div>
 				<div>${userdto.user_id} 님</div>
-				<div id="modifyinfo"><a href="/mypage/modifyprofile">회원정보 수정</a></div>
+				<div id="modifyinfo"><a href="/mypage/userinfo">회원정보 수정</a></div>
 			</div>
 			<div id="point">
 				<div><img src="/resources/img/point.png" width="50px"></div>

@@ -32,9 +32,9 @@ public class UserServiceImple implements UserService {
 	}
 
 	@Override
-	public UserDTO userdetail(int user_no) {
+	public UserDTO getUserDetail(int user_no) {
 		// TODO Auto-generated method stub
-		return mapper.userdetail(user_no);
+		return mapper.getUserDetail(user_no);
 	}
 
 	@Override

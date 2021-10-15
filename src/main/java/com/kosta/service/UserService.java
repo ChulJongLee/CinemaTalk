@@ -9,9 +9,8 @@ public interface UserService {
 	public List<UserDTO> getlist();
 	//회원가입
 	public int insertuser(UserDTO dto);
-
 	//회원정보
-	public UserDTO userdetail(int userNo);
+	public UserDTO getUserDetail(int user_no);
 	//아이디 중복체크
 	public int idcheck(UserDTO dto);
 	//로그인

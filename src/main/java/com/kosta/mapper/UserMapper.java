@@ -13,7 +13,7 @@ public interface UserMapper {
 	
 	public int insertuser(UserDTO dto);
 	
-	public UserDTO userdetail(int userNo);
+	public UserDTO getUserDetail(int user_no);
 
 	public int idcheck(UserDTO dto);
 	
