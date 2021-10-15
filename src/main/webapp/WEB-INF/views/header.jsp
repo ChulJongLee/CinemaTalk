@@ -54,7 +54,10 @@
 			
 			<div id="header_login">
 				<c:if test="${user != null}"><a href="/logout" class="loginbtn">로그아웃</a></c:if>
-				<c:if test="${user == null}"><a href="/login" class="loginbtn">로그인</a></c:if>
+				<c:if test="${user == null}">
+					<a href="/login" class="loginbtn">로그인</a>
+					<a href="/userjoin" class="loginbtn">회원가입</a>
+				</c:if>
 			</div>
 		</div>
 	</header>

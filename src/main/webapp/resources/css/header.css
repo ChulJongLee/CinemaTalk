@@ -70,18 +70,6 @@ header{
 	color: blue;
 }
 
-
-/* #header_mypage{
-	border: 1px solid white;
-	background-color: white !important;
-	border-radius: 50%;
-	float: right;
-    margin-right: 30px;
-}
-#header_mypageimg{
-	width: 40px;
-} */
-
 #header_login{
     float: right;
     margin-right: 10px;
@@ -94,6 +82,7 @@ header{
     color: white;
     font-weight: 600;
     font-size: 15px;
+    margin-left: 10px;
 }
 .dropdown-menu{
 	background-color: #212121;
@@ -113,8 +102,9 @@ header{
     color: white;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 5px;
     box-shadow: none;
+    position: relative;
+    bottom: 4.5px;
 }
 
 .btn:focus{

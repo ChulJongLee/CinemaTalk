@@ -35,7 +35,7 @@ public class UserController {
 	@GetMapping("/userjoin")
 	public String goJoinForm() 
 	{	
-		return "userjoin";
+		return "/view.jsp?page=userjoin";
 	}
 
 	//회원가입 기능
@@ -60,7 +60,7 @@ public class UserController {
 	@RequestMapping("/login")
 	public String userlogin() {
 
-		return "userlogin";
+		return "/view.jsp?page=userlogin";
 	}
 
 

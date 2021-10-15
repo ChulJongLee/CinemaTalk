@@ -5,7 +5,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <title>Insert title here</title>
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id" content="433638546150-no026cnkth0e3sgb3makpb1kdrhdb5qd.apps.googleusercontent.com"> 
@@ -15,8 +14,6 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <!-- Naver Login Js -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 <!--카카오 -->
 <script>
 		window.Kakao.init("89b7b4570ff6898a5495c52960979021");
