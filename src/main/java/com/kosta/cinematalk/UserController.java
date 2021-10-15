@@ -53,7 +53,7 @@ public class UserController {
 		{
 			System.out.println(e);
 		}
-		return "redirect:./login";
+		return "redirect:./login";   
 	}
 
 	//로그인 페이지
