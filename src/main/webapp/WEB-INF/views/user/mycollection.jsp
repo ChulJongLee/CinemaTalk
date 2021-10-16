@@ -17,7 +17,7 @@
 	<div id="mycollection">
 		<div id="collection-wrap">
 			<c:forEach var="item" items="${collectionlist}">
-				<div class="collectionlist">
+				<div class="collectionlist" onclick="location.href='/moviedetail/${item.movieCd}'">
 					<div class="poster"><img src="${item.poster}" alt="${item.movieNm}포스터" width="213px" height="300px"></div>
 					<div class="moviename">${item.movieNm}</div>
 					<div class="rank"><img src="/resources/img/star1.png" alt="별" width="15px"> ${item.rank}</div>

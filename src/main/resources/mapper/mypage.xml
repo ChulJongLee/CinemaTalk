@@ -30,7 +30,7 @@
 		from movie_info i inner join movie_rating r
 		on i.movieCd = r.movieCd
 		where user_no = #{user_no}
-		order by ratingDate desc
+		order by ratingDate DESC
 		limit 0, 5
 	</select>
 
@@ -45,7 +45,7 @@
 		from comm_board c inner join movie_info m
 		on c.movieCd = m.movieCd
 		where user_no = #{user_no} and board_distinct_no = "1"
-		order by content_no desc
+		order by content_no DESC
 		limit 0, 3
 	</select>
 
@@ -77,7 +77,7 @@
 		on m.movieCd = r.movieCd
 		where user_no = #{user_no} and person_job='배우'
 		group by p.peopleNm
-		order by cnt desc
+		order by cnt DESC
 		limit 0, 3
 	</select>
 
@@ -91,7 +91,7 @@
 		on m.movieCd = r.movieCd
 		where user_no = #{user_no} and person_job='감독'
 		group by p.peopleNm
-		order by cnt desc
+		order by cnt DESC
 		limit 0, 3
 	</select>
 
@@ -106,7 +106,7 @@
 		on i.movieCd = r.movieCd
 		where user_no = #{user_no}
 		group by genreNm
-		order by cnt desc
+		order by cnt DESC
 		limit 0, 3
 	</select>
 
@@ -126,20 +126,20 @@
 	</select>
 
 	<select id="getEveryCollection" parameterType="java.util.HashMap" resultMap="collection">
-		select movieNm, poster, rate
+		select i.movieCd mov, movieNm, poster, rate
 		from movie_info i inner join movie_rating r
 		on i.movieCd = r.movieCd
 		where user_no = #{user_no}
-		order by ratingDate desc
+		order by ratingDate DESC
 		limit #{startRow}, #{pageSize}    
 	</select>
 
 	<select id="getEveryReview" parameterType="java.util.HashMap" resultMap="review">
-		select movieNm, content_content
+		select movieNm, content_content, content_no
 		from comm_board c inner join movie_info m
 		on c.movieCd = m.movieCd
 		where user_no = #{user_no} and board_distinct_no = 1
-		order by content_no desc
+		order by content_no DESC
 		limit #{startRow}, #{pageSize}
 	</select>
 

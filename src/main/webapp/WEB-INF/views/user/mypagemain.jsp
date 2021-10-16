@@ -65,7 +65,7 @@
 		<div class="p-wrapper"><p align="center"><a href="/mypage/mycollection"><b>나의 컬렉션</b></a></p></div>
 		<div id="collectionlist-wrapper">
 		<c:forEach var="item" items="${movielist}">
-			<div class="collectionlist" onclick="location.href='moviedetail/${item.movieCd}'">
+			<div class="collectionlist" onclick="location.href='/moviedetail/${item.movieCd}'">
 				<img src="${item.poster}" alt="${item.movieNm}포스터" width="213px" height="300px"><br> 
 				<div class="moviename">${item.movieNm}</div>
 				<div class="rank"><img src="/resources/img/star1.png" alt="별" width="15px"> ${item.rank}</div>
@@ -78,7 +78,7 @@
 		<div class="p-wrapper"><p align="center"><a href="/mypage/myreview"><b>나의 리뷰</b></a></p></div>
 		<div id="reviewlist-wrapper">
 		<c:forEach var="item" items="${reviewlist}">
-			<div class="reviewlist" onclick="location.href='reviewdetail/${item.contentno}'">
+			<div class="reviewlist" onclick="location.href='/reviewdetail/${item.contentno}'">
 					<div class="movtitle"><b>${item.title}</b></div>
 					<div class="revcontent">${item.contents}</div>
 			</div>

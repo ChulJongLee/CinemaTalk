@@ -15,17 +15,13 @@
 	text-align: center;	
 }
 
-#FormLogin>ul>li{
+#submitform>ul>li{
 	list-style: none;
 	margin-top: 30px;
 }
 
-#FormLogin>ul>li>div{
+#submitform>ul>li>div{
 	display: inline-block;
-}
-
-.first{
-	margin-top: 30px;	
 }
 
 .label{
@@ -37,6 +33,18 @@
 	margin-left: 20px;
 }
 
+.first{
+	margin-top: 40px;
+}
+
+div.first.label{
+	margin-left: 90px;
+}
+
+#check{
+	margin-left: 20px;
+}
+
 .input>input{
 	color: white;
 	background-color: #212121;
@@ -44,6 +52,22 @@
 	border: 0px;
 	padding: 5px;
 }
+
+/* 글씨색 */
+input::-webkit-datetime-edit{
+	color:gray;
+}
+
+input::-webkit-datetime-edit-day-field:focus, input::-webkit-datetime-edit-month-field:focus, input::-webkit-datetime-edit-year-field:focus{
+    background-color: white;
+    color: gray;
+    outline: none;
+}
+
+/* 아이콘 색 */
+input[type="date"]::-webkit-calendar-picker-indicator{ 
+ 	filter: invert(0.5);
+} 
 
 .loginbtn{
 	padding-bottom: 30px;

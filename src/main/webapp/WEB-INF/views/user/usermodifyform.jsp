@@ -36,7 +36,7 @@
 				</li>
 				<li>
 					<div class="label"><label for="user_bdate"><b>생년월일</b></label></div>  
-					<div class="input"><input type="date" name="user_bdate" id="user_bdate" value="${user.user_bdate}"></div> 
+					<div class="input"><input type="date" name="user_bdate" id="user_bdate" value="${user.user_bdate}" style="width:200px"></div> 
 				</li>
 				<li>
 					<input type="hidden" name="user_no" value="${user.user_no}">

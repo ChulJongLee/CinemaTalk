@@ -39,13 +39,12 @@ public class UserController {
 	}
 
 	//회원가입 기능
-	@PostMapping("/userRegister")
-	public String userRegister(UserDTO dto) 
-	{	
+	@PostMapping("/userregister")
+	public String userRegister(@ModelAttribute UserDTO dto) {	
 		int result= service.idcheck(dto);
 		try {
 			if (result == 1) {
-				return "userRegister";
+				return "userregister";
 			}else if(result == 0){
 				service.insertuser(dto);
 			}
