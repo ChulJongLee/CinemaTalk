@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<script>
+	alert('회원가입을 축하합니다.');
+	location.href = "/login";
+</script>
 </body>
 </html>

@@ -24,9 +24,9 @@ public class UserServiceImple implements UserService {
 	}
 
 	@Override
-	public int insertuser(UserDTO dto) {
-		// TODO Auto-generated method stub
-		int result=mapper.insertuser(dto);
+	public int insertUser(UserDTO dto) {
+
+		int result = mapper.insertUser(dto);
 
 		return result;
 	}
@@ -38,9 +38,9 @@ public class UserServiceImple implements UserService {
 	}
 
 	@Override
-	public int idcheck(UserDTO dto) {
-		// TODO Auto-generated method stub
-		return mapper.idcheck(dto);
+	public int idCheck(String user_id) {
+		
+		return mapper.idCheck(user_id);
 	}
 
 	@Override

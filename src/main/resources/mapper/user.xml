@@ -6,25 +6,13 @@
 <mapper namespace="com.kosta.mapper.UserMapper">
   
   <!-- 회원가입 -->
-  <insert id="insertuser" parameterType="com.kosta.dto.UserDTO">
-  	<selectKey keyProperty="user_no" resultType="int" order="AFTER">
-  		select user_no as user_no from user_info
-  		where user_id=#{user_id}
-  	</selectKey> 
-  	insert into user_info(user_id, user_pwd, user_email,
-  						  user_nickname, user_bdate, user_grade_no, user_point)
-  	values( #{user_id}
-  		, #{user_pwd}
-  		, #{user_email}
-  		, #{user_nickname}
-  		, #{user_bdate}
-  		, 1
-  		, 0)
-  		
+  <insert id="insertUser" parameterType="com.kosta.dto.UserDTO">
+  	insert into user_info(user_id, user_pwd, user_email, user_nickname, user_bdate, user_grade_no, user_point)
+  	values( #{user_id}, #{user_pwd}, #{user_email}, #{user_nickname}, #{user_bdate}, 1, 0)
   </insert>
   
   <!-- 아이디 중복체크 -->
-  <select id="idcheck" parameterType="com.kosta.dto.UserDTO" resultType="int">
+  <select id="idCheck" parameterType="String" resultType="int">
   	select count(*) from user_info
   	where user_id=#{user_id}
   </select>

@@ -1,5 +1,8 @@
 package com.kosta.cinematalk;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -24,35 +27,34 @@ public class UserController {
 	@Resource(name="userService")
 	private UserService service;
 
-	//아이디 중복 체크
-	@ResponseBody
-	@PostMapping("/idcheck")
-	public int idcheck(UserDTO dto) {
-		return service.idcheck(dto);
-	}
-
 	//회원가입 페이지
 	@GetMapping("/userjoin")
-	public String goJoinForm() 
-	{	
+	public String goJoinForm() {	
 		return "/view.jsp?page=user/userjoin";
 	}
 
+	//id중복체크
+	@ResponseBody
+	@PostMapping("/idCheck")
+	public Map<String, Object> findId(@RequestParam String user_id) {
+		
+		Map<String, Object> hm = new HashMap<>();
+		int count = service.idCheck(user_id);
+		hm.put("cnt", count);
+		return hm;
+	}
+	
 	//회원가입 기능
 	@PostMapping("/userregister")
 	public String userRegister(@ModelAttribute UserDTO dto) {	
-		int result= service.idcheck(dto);
-		try {
-			if (result == 1) {
-				return "userregister";
-			}else if(result == 0){
-				service.insertuser(dto);
-			}
-		}catch(Exception e)
-		{
-			System.out.println(e);
+
+		int result = service.insertUser(dto);
+
+		if(result > 0) {
+			return "/view.jsp?page=user/userregistered";
+		} else {
+			return "/";
 		}
-		return "redirect:./login";
 	}
 
 	//로그인 페이지

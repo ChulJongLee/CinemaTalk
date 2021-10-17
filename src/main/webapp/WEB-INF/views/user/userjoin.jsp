@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id" content="433638546150-no026cnkth0e3sgb3makpb1kdrhdb5qd.apps.googleusercontent.com"> 
 Kakao Login Js
@@ -154,17 +155,17 @@ Naver Login Js
 			<ul>
 				<li>
 					<div class="first label"><label for="user_id"><b>아이디</b></label></div>
-					<div class="first input"><input type="text" name="user_id" id="user_id" value="${user.user_id}" placeholder="아이디를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='아이디를 입력하세요'" onkeydown="inputIdCheck()"></div>
-					<div class="first"><button type="button" id="check" onclick="idCheck()">중복 체크</button></div>
+					<div class="first input"><input type="text" name="user_id" id="user_id" placeholder="4 ~ 12자의 영문, 숫자 입력" onfocus="this.placeholder=''" onblur="this.placeholder='4~12자의 영문, 숫자 입력'" onkeydown="inputIdCheck()"></div>
+					<div class="first"><button type="button" id="idCheck">중복 체크</button></div>
 					<div class="first"><input type="hidden" name="idDuplication" id="idDuplication" value="unChecked"></div>
 				</li>
 				<li>
-					<div class="label"><label for="user_pwd"><b>패스워드</b></label></div> 
-					<div class="input"><input type="password" name="user_pwd" id="user_pwd" maxLength="20" placeholder="6자 이상 20자 미만 입력" onfocus="this.placeholder=''" onblur="this.placeholder='6자 이상 20자 미만 입력'"></div>
+					<div class="label"><label for="user_pwd"><b>비밀번호</b></label></div> 
+					<div class="input"><input type="password" name="user_pwd" id="user_pwd" maxLength="20" placeholder="6 ~ 20자 입력" onfocus="this.placeholder=''" onblur="this.placeholder='6 ~ 20자 입력'"></div>
 				</li>
 				<li>
-					<div class="label"><label for="user_pwd2"><b>패스워드 확인</b></label></div> 
-					<div class="input"><input type="password" name="user_pwd2" id="user_pwd2" maxLength="20" placeholder="6자 이상 20자 미만 입력" onfocus="this.placeholder=''" onblur="this.placeholder='6자 이상 20자 미만 입력'"></div>
+					<div class="label"><label for="user_pwd2"><b>비밀번호 확인</b></label></div> 
+					<div class="input"><input type="password" name="user_pwd2" id="user_pwd2" maxLength="20" placeholder="6 ~ 20자 입력" onfocus="this.placeholder=''" onblur="this.placeholder='6 ~ 20자 입력'"></div>
 				</li>
 				<li>
 					<div class="label"><label for="user_nickname"><b>닉네임</b></label></div> 
@@ -185,55 +186,6 @@ Naver Login Js
 		</form>
 	</div>
 
-<%-- 	<div class="container">
-		<form action="./userRegister" method="post">
-			<table class="table table-bordered table-hover" style="text-align: center; border: 1px solid #dddddd">
-				<thead>
-					<tr>
-						<th colspan="3"><h4>회원 등록 양식</h4></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td style="width: 110px;"><h5>아이디</h5></td>
-						<td><input class="form-control" type="text" id="user_id" name="user_id" maxLength="20" placeholder="아이디를 입력하세요"></td>
-						<td style="width: 110px;"><button class="btn btn-primary" onclick="idcheck();" type="button" value="N">중복체크</button></td>
-					</tr>
-					<tr>
-						<td style="width: 110px;"><h5>패스워드</h5></td>
-						<td><input class="form-control" type="password" id="user_pwd" name="user_pwd" onkeyup="passwordCheckFunction();" maxLength="20" placeholder="비밀번호를를 입력하세요"></td>
-					</tr>
-					<tr>
-						<td style="width: 110px;"><h5>패스워드 확인</h5></td>
-						<td><input class="form-control" type="password" id="user_pwd2" name="user_pwd2" onkeyup="passwordCheckFunction();" maxLength="20" placeholder="동일한 비밀번호를 입력하세요"></td>
-					</tr>
-					<tr>
-						<td style="width: 110px;"><h5>닉네임</h5></td>
-						<td><input class="form-control" type="text" id="user_nickname" name="user_nickname" maxLength="20" placeholder="닉네임을 입력하세요"></td>
-					</tr>
-					<tr>
-						<td style="width: 110px;"><h5>이메일</h5></td>
-						<td><input class="form-control" type="email" id="user_email" name="user_email" maxLength="20" placeholder="이메일을 입력하세요"></td>
-					</tr>
-					<tr>
-						<td style="width: 110px;"><h5>생년월일</h5></td>
-						<td><input class="form-control" type="text" id="user_bdate" name="user_bdate" maxLength="20" placeholder="ex)2000-01-01"></td>
-					</tr>
-					<tr>
-						<td style="text-align: right" colspan="3"><h5 style="color:red;" id="passwordCheckMessage"></h5><input class="btn btn-primary pull-right" id="submit" type="submit" value="회원가입"></td>
-					</tr>
-					<tr>
-					<a href="javascript:kakaoLogin();"><img src="${pageContext.servletContext.contextPath }/resources/dist/img/kakao_login_medium_narrow.png"></a>
-					<a href="javascript:kakaoLogout();"><img src="${pageContext.servletContext.contextPath }/resources/dist/img/kakao_login_medium_narrow.png"></a>
-					<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-					<div class="g-signin2" data-onsuccess="signOut" data-theme="dark"></div>
-					</tr>
-				</tbody>
-			</table>
-		</form>
-	
-	</div> --%>
 <script src="/resources/js/userjoin.js"></script>
-<!-- <script></script>	 -->
 </body>
 </html>

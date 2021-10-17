@@ -11,11 +11,11 @@ public interface UserMapper {
 	 
 	public List<UserDTO> getlist();
 	
-	public int insertuser(UserDTO dto);
+	public int insertUser(UserDTO dto);
 	
 	public UserDTO getUserDetail(int user_no);
 
-	public int idcheck(UserDTO dto);
+	public int idCheck(String user_id);
 	
 	public UserDTO loginCheck(UserDTO dto);
 

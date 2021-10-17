@@ -8,11 +8,11 @@ public interface UserService {
 	
 	public List<UserDTO> getlist();
 	//회원가입
-	public int insertuser(UserDTO dto);
+	public int insertUser(UserDTO dto);
 	//회원정보
 	public UserDTO getUserDetail(int user_no);
 	//아이디 중복체크
-	public int idcheck(UserDTO dto);
+	public int idCheck(String user_id);
 	//로그인
 	public UserDTO loginCheck(UserDTO dto);
 	//회원 정보 수정
