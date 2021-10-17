@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-section{
+#ufsection{
     border: 2px solid orange;
     width: 1300px;
     margin: 0px auto;

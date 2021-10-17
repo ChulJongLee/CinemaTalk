@@ -14,7 +14,7 @@
 	
 	
 	<!-- ******* 전체 명대사 ******* -->
-	<section>
+	<section id="ufsection">
 		<div id="allreview">
 		 <c:if test="${allfamousline==null }">              		
 	        	자료가 없습니다.
