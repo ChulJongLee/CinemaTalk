@@ -51,6 +51,7 @@ public class MovieController {
 		return "/view.jsp?page=movie/searchresult";
 	}
 
+	
 	@GetMapping("/genre/{genre}")
 	public String MovieGenreResult(@PathVariable String genre
 			, @RequestParam(required = false, defaultValue = "1") int currPage
@@ -109,11 +110,13 @@ public class MovieController {
 			rate=movieService.getMovieRateOne(movieCd, user.getUser_no())*2;
 		}
 		model.addAttribute("rate", rate);
+		
+		
 		// 베스트 리뷰 2개
-		List<ReviewDTO> bestreviewlist = communityService.reviewList();
+		List<ReviewDTO> bestreviewlist = communityService.reviewList(movieCd);
 		model.addAttribute("bestreviewlist", bestreviewlist);		
 		// 일반 리뷰 4개
-		List<ReviewDTO> generalreviewlist = communityService.generalReviewList();
+		List<ReviewDTO> generalreviewlist = communityService.generalReviewList(movieCd);
 		model.addAttribute("generalreviewlist", generalreviewlist);
 		
 		return "/view.jsp?page=movie/moviedetail";

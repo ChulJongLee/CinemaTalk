@@ -3,6 +3,7 @@ package com.kosta.service;
 import java.util.HashMap;
 import java.util.List;
 
+import com.kosta.dto.ReportDTO;
 import com.kosta.dto.ReviewDTO;
 
 public interface CommunityService {
@@ -13,12 +14,12 @@ public interface CommunityService {
 	
 	public List<ReviewDTO> review();
 	
-	public List<ReviewDTO> reviewList();
+	public List<ReviewDTO> reviewList(String movieCd);
 
-	public List<ReviewDTO> generalReviewList();
+	public List<ReviewDTO> generalReviewList(String movieCd);
 
 //	public List<ReviewDTO> allReview();
-	public List<ReviewDTO> allReview(int startRow, int endRow);
+	public List<ReviewDTO> allReview(String movieCd, int startRow, int endRow);
 	
 	public List<ReviewDTO> famousLineList();
 	public List<ReviewDTO> allFamousLine(String search, String searchtxt, int startRow, int endRow);
@@ -39,6 +40,12 @@ public interface CommunityService {
 	public ReviewDTO userforumdetail(int contentno);
 
 	public void reviewmodify(HashMap<String, Object> hm);
+
+	public void reviewreport(HashMap<String, Object> hm);
+
+	public List<ReportDTO> reportsearch(HashMap<String, Object> hm);
+
+	public void reviewreportupdate(HashMap<String, Object> hm);
 
 	
 	

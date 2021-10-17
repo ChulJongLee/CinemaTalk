@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.kosta.dto.ReportDTO;
 import com.kosta.dto.ReviewDTO;
 
 @Mapper
@@ -16,9 +17,9 @@ public interface CommunityMapper {
 	
 	public List<ReviewDTO> list(HashMap<String, Object> hm);	
 	
-	public List<ReviewDTO> getgeneralreview();
+	public List<ReviewDTO> getgeneralreview(String movieCd);
 
-	public List<ReviewDTO> getreview();
+	public List<ReviewDTO> getreview(String movieCd);
 
 //	public List<ReviewDTO> getallreview();
 
@@ -45,6 +46,14 @@ public interface CommunityMapper {
 	public ReviewDTO userforumdetail(int contentno);
 
 	public int reviewmodify(HashMap<String, Object> hm);
+
+	public int reviewreport(HashMap<String, Object> hm);
+
+	public List<ReportDTO> reportsearch(HashMap<String, Object> hm);
+
+	public int reviewreportupdate(HashMap<String, Object> hm);
+
+	
 
 	
 

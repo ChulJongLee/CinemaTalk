@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.kosta.dto.ReportDTO;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.mapper.CommunityMapper;
 
@@ -19,15 +20,15 @@ public class CommunityServiceImple implements CommunityService {
 	
 	
 	@Override
-	public List<ReviewDTO> reviewList() {
+	public List<ReviewDTO> reviewList(String movieCd) {
 		
-		return mapper.getreview();
+		return mapper.getreview(movieCd);
 	}
 
 	@Override
-	public List<ReviewDTO> generalReviewList() {
+	public List<ReviewDTO> generalReviewList(String movieCd) {
 		
-		return mapper.getgeneralreview();
+		return mapper.getgeneralreview(movieCd);
 	}
 
 
@@ -50,12 +51,13 @@ public class CommunityServiceImple implements CommunityService {
 
 
 	@Override
-	public List<ReviewDTO> allReview(int startRow, int endRow) {
+	public List<ReviewDTO> allReview(String movieCd, int startRow, int endRow) {
 		HashMap<String, Object> hm = new HashMap<String, Object>();
 		
 
 		hm.put("startrow", startRow);
 		hm.put("endrow", endRow);
+		hm.put("movieCd", movieCd);
 	
 		return mapper.list(hm);
 	}
@@ -149,6 +151,24 @@ public class CommunityServiceImple implements CommunityService {
 		
 		int result = mapper.reviewmodify(hm);
 		
+	}
+
+	@Override
+	public void reviewreport(HashMap<String, Object> hm) {
+		
+		int result = mapper.reviewreport(hm);
+	}
+
+	@Override
+	public List<ReportDTO> reportsearch(HashMap<String, Object> hm) {
+		
+		return mapper.reportsearch(hm);
+	}
+
+	@Override
+	public void reviewreportupdate(HashMap<String, Object> hm) {
+		
+		int result = mapper.reviewreportupdate(hm);
 	}
 
 

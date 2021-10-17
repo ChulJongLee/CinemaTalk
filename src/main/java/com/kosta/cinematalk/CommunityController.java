@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosta.dto.PageBlock;
 import com.kosta.dto.RateDTO;
+import com.kosta.dto.ReportDTO;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.service.CommunityService;
 import com.kosta.service.MovieService;
@@ -68,7 +69,7 @@ public class CommunityController {
 	public String insertResult(@RequestParam HashMap<String, Object> hm) {
 		
 		service.reviewinsert(hm);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+hm);
+		System.out.println("@@@@@@@@@@*******************@@@@@@@@@@"+hm);
 				
 		return "redirect:/moviedetail/{movieCd}";
 	}
@@ -78,7 +79,28 @@ public class CommunityController {
 	public String reviewmodify(@RequestParam HashMap<String, Object> hm) {
 		
 		service.reviewmodify(hm);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@  modify"+hm);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  modify"+hm);
+		
+		return "redirect:/moviedetail/{movieCd}";
+	}
+	
+	
+	
+	
+	// 리뷰 신고
+	@RequestMapping("/moviedetail/{movieCd}/reviewreport")
+	public String reviewreport(@RequestParam HashMap<String, Object> hm) {
+
+		List<ReportDTO> reportlist = service.reportsearch(hm);
+		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%% reportsearch: "+reportlist);
+		
+		if(reportlist.isEmpty()) {
+			service.reviewreport(hm);
+			System.out.println("##################################### report:"+hm);
+		}else{
+			service.reviewreportupdate(hm);
+			System.out.println("************************** reportupdate: "+hm);			
+		}	
 		return "redirect:/moviedetail/{movieCd}";
 	}
 	
@@ -98,7 +120,7 @@ public class CommunityController {
 		
 		PageBlock page = new PageBlock(currPage, totalcount, pagesize, blocksize);
 		
-		List<ReviewDTO> allreview = service.allReview(page.getStartRow(), page.getEndRow());
+		List<ReviewDTO> allreview = service.allReview(movieCd, page.getStartRow(), page.getEndRow());
 		
 		model.addAttribute("movieCd", movieCd);
 		model.addAttribute("allreview", allreview);
