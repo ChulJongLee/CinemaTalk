@@ -8,23 +8,28 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosta.dto.PageBlock;
-import com.kosta.dto.RateDTO;
 import com.kosta.dto.ReportDTO;
 import com.kosta.dto.ReviewDTO;
+import com.kosta.dto.UserDTO;
+import com.kosta.dto.UserforumDTO;
 import com.kosta.service.CommunityService;
+import com.kosta.service.ImageService;
 import com.kosta.service.MovieService;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @Controller
 //@RequiredArgsConstructor
@@ -35,7 +40,8 @@ public class CommunityController {
 	private CommunityService service;
 	@Resource
 	private MovieService movieService;
-	
+	@Resource
+	private ImageService imageService;
 
 	
 	// 영화 정보 메인 페이지                   
@@ -49,18 +55,18 @@ public class CommunityController {
 	
 	// 리뷰 메인 페이지
 //	@RequestMapping("/moviedetail/{movieCd}/reviewmain")
-	@RequestMapping("/reviewmain")
-	public String reviewMain(Model model) {
-		
-		// 베스트 리뷰 2개
-		List<ReviewDTO> bestreviewlist = service.reviewList();
-		model.addAttribute("bestreviewlist", bestreviewlist);
-		// 일반 리뷰 4개
-		List<ReviewDTO> generalreviewlist = service.generalReviewList();
-		model.addAttribute("generalreviewlist", generalreviewlist);
-		
-		return "/view.jsp?page=board/reviewmain";
-	}
+//	@RequestMapping("/reviewmain")
+//	public String reviewMain(Model model) {
+//		
+//		// 베스트 리뷰 2개
+//		List<ReviewDTO> bestreviewlist = service.reviewList();
+//		model.addAttribute("bestreviewlist", bestreviewlist);
+//		// 일반 리뷰 4개
+//		List<ReviewDTO> generalreviewlist = service.generalReviewList();
+//		model.addAttribute("generalreviewlist", generalreviewlist);
+//		
+//		return "/view.jsp?page=board/reviewmain";
+//	}
 	
 	
 	
@@ -235,19 +241,19 @@ public class CommunityController {
 	
 	
 	// 자유 게시판 리스트 페이지(메인)
-//	@RequestMapping("/moviedetail/{movieCd}/userforumlist")
-	@RequestMapping("/userforumlist")
-	public String userForumList(@RequestParam(required = false, defaultValue = "1") int currPage
+	@RequestMapping("/moviedetail/{movieCd}/userforumlist")
+	public String userForumList(@PathVariable String movieCd
+								, @RequestParam(required = false, defaultValue = "1") int currPage
 								, @RequestParam(required = false, defaultValue = "5") int boardno
 								, Model model) {
 		
 		int totalcount = service.totalCount2(boardno);
-		int pagesize=10;
-		int blocksize=5;
+		int pageSize=10;
+		int blockSize=5;
 		
-		PageBlock page = new PageBlock(currPage, totalcount, pagesize, blocksize);
+		PageBlock page = new PageBlock(currPage, totalcount, pageSize, blockSize);
 		
-		List<ReviewDTO> alluserforum = service.allUserForum(page.getStartRow(), page.getEndRow());
+		List<UserforumDTO> alluserforum = service.allUserForum(movieCd, page.getStartRow() - 1, pageSize);
 
 		
 		model.addAttribute("alluserforum", alluserforum);
@@ -262,7 +268,7 @@ public class CommunityController {
 	@RequestMapping("/userforumdetail/{contentno}")
 	public String userForumDetail(@PathVariable int contentno, Model model) {
 		
-		ReviewDTO userforumdetail = service.userforumdetail(contentno);
+		UserforumDTO userforumdetail = service.userforumdetail(contentno);
 //		System.out.println("@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!"+userforumdetail);	// 값받아짐.
 		model.addAttribute("userforumdetail", userforumdetail);
 		
@@ -271,20 +277,66 @@ public class CommunityController {
 	
 	
 	// 자유게시판 글쓰기
-	@RequestMapping("/userforuminsert")
-	public String userforuminsert() {
-		
-		return "/view.jsp?page=board/userforuminsert";
-	}
+		@RequestMapping("/moviedetail/{movieCd}/userforuminsert")
+		public String userforuminsert() {
+			
+			return "/view.jsp?page=board/userforuminsert";
+		}
 	
 	
 	// 자유게시판 글쓰기 result
-	@RequestMapping("/userforuminsertresult")
-	public String userforuminsertresult() {
-				
-		return "redirect:/userforumlist";
-	}
+	@RequestMapping("/moviedetail/{movieCd}/userforuminsertresult")
+	public String userforuminsertresult(@PathVariable String movieCd
+			, Model model
+			, HttpSession session
+			, HttpServletRequest request, HttpServletResponse response) {
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		if(user==null){
+			return "/view.jsp?page=userlogin";
+		}
+		else {
+
+			String imagePath = "";
+			String imageName = "";
+			@SuppressWarnings("deprecation")
+			String uploadPath = request.getRealPath("/resources/upload");
+			System.out.println(uploadPath);
+			UserforumDTO dto = new UserforumDTO();
+			try {
+				MultipartRequest multi = new MultipartRequest( // MultipartRequest 인스턴스 생성(cos.jar의 라이브러리)
+						request, uploadPath, // 파일을 저장할 디렉토리 지정
+						10 * 1024 * 1024, // 첨부파일 최대 용량 설정(bite)
+						"utf-8", // 인코딩 방식 지정
+						new DefaultFileRenamePolicy()); // 중복 파일 처리(동일한 파일명이 업로드되면 뒤에 숫자 등을 붙여 중복 회피)
 	
+				imagePath = multi.getFilesystemName("file1"); // name=file1의 업로드된 시스템 파일명을 구함(중복된 파일이 있으면, 중복 처리 후 파일 이름)
+				imageName = multi.getOriginalFileName("file1"); // name=file1의 업로드된 원본파일 이름을 구함(중복 처리 전 이름)
+			
+				String content_title = multi.getParameter("content_title");
+				String content_content = multi.getParameter("content_content");
+				dto.setUser_no(user.getUser_no());
+				dto.setUser_id(user.getUser_id());
+				dto.setMovieCd(movieCd);
+				dto.setContent_title(content_title);
+				dto.setContent_content(content_content);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			service.userforumInsert(dto);
+			dto.setImageName("");
+			if(imageName!=null && !imageName.equals("")) { //사진 넣었을 경우
+				dto.setImageName(imageName);
+				dto.setImagePath(imagePath);
+				imageService.insertImg(dto);
+			}
+			model.addAttribute("userforumdetail", dto);
+//		service.userforumInsert(movieCd, hm);
+		
+		return "/view.jsp?page=board/userforumdetail";
+		}
+	}
 		
 	// 리뷰 좋아요
 	@PostMapping("/like")

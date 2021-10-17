@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.kosta.dto.ReportDTO;
 import com.kosta.dto.ReviewDTO;
+import com.kosta.dto.UserforumDTO;
 import com.kosta.mapper.CommunityMapper;
 
 @Service("reviewservice")
@@ -90,12 +90,7 @@ public class CommunityServiceImple implements CommunityService {
 	}
 
 
-	@Override
-	public List<ReviewDTO> allUserForum() {
-		
-		return mapper.getalluserforum();
-	}
-
+	
 
 //	@Override
 //	public ReviewDTO reviewdetail(int contentno) {
@@ -105,11 +100,18 @@ public class CommunityServiceImple implements CommunityService {
 
 
 	@Override
-	public List<ReviewDTO> allUserForum(int startRow, int endRow) {
+	public List<UserforumDTO> allUserForum() {
+		
+		return mapper.getalluserforum();
+	}
+	
+	@Override
+	public List<UserforumDTO> allUserForum(String movieCd, int startRow, int pageSize) {
 		
 		HashMap<String, Object> hm = new HashMap<String, Object>();
-		hm.put("startrow", startRow);
-		hm.put("endrow", endRow);
+		hm.put("movieCd", movieCd);
+		hm.put("startRow", startRow);
+		hm.put("pageSize", pageSize);
 		
 		return mapper.allUserForum(hm);
 	}
@@ -124,7 +126,18 @@ public class CommunityServiceImple implements CommunityService {
 		mapper.reviewdislike(contentno);	
 	}
 	
-	
+	@Override
+	public UserforumDTO userforumdetail(int contentno) {
+		
+		
+		return mapper.userforumdetail(contentno);
+	}
+
+	@Override
+	public int userforumInsert(UserforumDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.userforuminsert(dto);
+	}
 
 	@Override
 	public void reviewinsert(HashMap<String, Object> hm) {
@@ -139,12 +152,6 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.reviewdelete(no);
 	}
 
-	@Override
-	public ReviewDTO userforumdetail(int contentno) {
-		
-		
-		return mapper.userforumdetail(contentno);
-	}
 
 	@Override
 	public void reviewmodify(HashMap<String, Object> hm) {

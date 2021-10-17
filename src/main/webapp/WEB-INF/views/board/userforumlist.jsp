@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <link rel="stylesheet" href="resources/css/userforumlist.css">
+ <link rel="stylesheet" href="/resources/css/userforumlist.css">
 </head>
 <body>
 	
@@ -18,22 +18,25 @@
 			<ul id="userforumboard">
 				<c:forEach var="list" items="${alluserforum }">
 					<li id="userforumlist">
-						<div id="number">${list.contentno }</div>
+						<div id="number">${list.content_no }</div>
 						
-						<div id="title"><a href="/userforumdetail/${list.contentno }">${list.title }</a></div>
+						<div id="title"><a href="/userforumdetail/${list.content_no }">${list.content_title }</a></div>
 						
-						<div id="id">${list.userid }</div>
-						<div id="writedate">${list.writedate }</div>
-						<div id="like">${list.like }</div>
-						<div id="dislike">${list.dislike }</div>					
+						<div id="id">${list.user_id }</div>
+						<div id="writedate">${list.content_date }</div>
+						<div id="like">${list.content_like }</div>
+						<div id="dislike">${list.content_dislike }</div>					
 					</li>
 				</c:forEach>			
 			</ul>		
 		</div>
 		<div id="writebtn">
-			<button type="button" class="btn btn-outline-primary" id="userforuminsert">글쓰기</button>
+				<c:if test="${user != null}"><a href="${detail.movieCd }/userforuminsert" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
+				<c:if test="${user == null}"><a href="/login" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
 		</div>
-
+		<div id="userforumallbtn">
+        	<a href="/moviedetail/${detail.movieCd }/userforumlist">모든 게시글 보기</a>
+        </div>
 
 	<!-- 페이징  -->
 	<nav aria-label="..." id="paging">

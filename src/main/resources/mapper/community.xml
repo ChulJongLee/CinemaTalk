@@ -18,14 +18,6 @@
   	<result column="content_hate" property="dislike" /> 	
   </resultMap>
   
-  <resultMap type="com.kosta.dto.ReportDTO" id="reportdto">
-  	<result column="report_no" property="reportno" /> 
-  	<result column="content_no" property="contentno" /> 
-  	<result column="reply_no" property="reply" /> 
-  	<result column="report_content" property="reportreason" /> 
-  	<result column="reply_count" property="reportsize" />   
-  </resultMap>
-  
 
 <select id="totalCount" parameterMap="hashmap" resultType="int">
 	select count(*)
@@ -53,20 +45,15 @@
 	where board_distinct_no = #{boardno}
 </select>
 
-
 <!-- 리뷰 페이지 모든 리뷰 -->
 <select id="list" parameterMap="hashmap" resultMap="reviewdto">
 	select A.*
 	from (select S.*, @rownum:=@rownum+1 as rn
-	  	  from (select content_no, user_id, e1.user_no, e1.movieCd, board_distinct_no, content_date, content_content, content_like, content_hate
+	  	  from (select content_no, user_id, e1.user_no, board_distinct_no, content_date, content_content, content_like, content_hate
 			    from comm_board e1 left join user_info e2
-			    on e1.user_no=e2.user_no
-			    
-			    left join movie_info e3
-			    on e1.movieCd=e3.movieCd, (select @rownum:=0)R
-			    
+			    on e1.user_no=e2.user_no, (select @rownum:=0)R
                 where 1=1) S
-                where board_distinct_no = 1 and movieCd = #{movieCd}
+                where board_distinct_no = 1
 				order by content_date DESC ) A
 			<where>
 				<![CDATA[
@@ -75,114 +62,50 @@
 			</where>
 </select>
 
- 
+
+  
 <!-- 리뷰 페이지 베스트 리뷰 -->
 <select id="getreview" resultMap="reviewdto">
-	select content_no, user_id, e1.user_no, e1.movieCd, content_date, content_content, content_like, content_hate
+	select content_no, user_id, e1.user_no, content_date, content_content, content_like, content_hate
 	from comm_board e1 left join user_info e2
     on e1.user_no=e2.user_no
-    
-    left join movie_info e3
-	on e1.movieCd=e3.movieCd
-	
-	where board_distinct_no = 1 and e1.movieCd = #{movieCd}
+	where board_distinct_no = 1
 	order by content_like DESC, content_date DESC
 	limit 2
 </select>
 
 <!-- 리뷰 페이지 일반 리뷰 -->
 <select id="getgeneralreview" resultMap="reviewdto">
-	select content_no, user_id, e1.user_no, e1.movieCd, content_date, content_content, content_like, content_hate
+	select content_no, user_id, e1.user_no, content_date, content_content, content_like, content_hate
 	from comm_board e1 left join user_info e2
     on e1.user_no=e2.user_no
-    
-    left join movie_info e3
-	on e1.movieCd=e3.movieCd
-	
-	where board_distinct_no = 1 and e1.movieCd = #{movieCd}
+	where board_distinct_no = 1
 	order by content_date DESC
 	limit 4
 </select>
 
-<!-- 리뷰 좋아요 -->
-<update id="reviewlike" parameterType="int">
-	update comm_board
-	set content_like = content_like+1
-	where content_no = #{contentno}
-</update>
-<!-- <insert id="reviewlike" >
-	insert into comm_likehate (content_no, user_no, like, hate)
-	values( #{contentno}, #{userno}, 1, 0)
-
-</insert> -->
-
-
-
-<!-- 리뷰 싫어요 -->
-<update id="reviewdislike" parameterType="int">
-	update comm_board
-	set content_hate = content_hate+1
-	where content_no = #{contentno}
-</update>
-
-<!-- 리뷰 등록 -->
-<insert id="reviewinsert" parameterMap="hashmap">
-	insert into comm_board (movieCd, user_no, content_content, content_date, board_distinct_no, content_like, content_hate)
-	values(#{movieCd}, #{userno}, #{contents}, now(), 1, 0, 0 )
-</insert>
-<!-- <insert id="reviewinsert" parameterMap="hashmap">
-	insert into comm_likehate (user_no, like, hate)
-	values(#{userno}, 0, 0)
-</insert> -->
-
-<!-- 리뷰  수정 -->
-<update id="reviewmodify" parameterMap="hashmap">
-	update comm_board
-	set content_content = #{contents}
-	where content_no = #{contentno}
-</update>
-  
-<!-- 리뷰 삭제 -->
-<delete id="reviewdelete" parameterType="int">
-	delete from comm_board
-	where content_no = #{contentno}
-</delete>
-  
-  
-  
-  
-<!-- 리뷰 신고 -->
-<select id="reportsearch" parameterMap="hashmap" resultMap="reportdto">
-	select content_no, report_content
-	from report
-	where content_no = #{contentno} and report_content = #{reportreason}
-</select>
-
-<insert id="reviewreport" parameterMap="hashmap">
-	insert into report (content_no, report_content, report_count)
-	values(#{contentno}, #{reportreason}, 1)
-</insert>
-
-<update id="reviewreportupdate" parameterMap="hashmap">
-	update report
-	set report_count = report_count+1
-	where content_no = #{contentno} and report_content = #{reportreason}
-</update>
-
-
+<!-- 리뷰 페이지 모든 리뷰 -->
+<!-- <select id="getallreview" resultMap="reviewdto">
+	select content_no, user_id, e1.user_no, content_date, content_content, content_like, content_hate
+	from comm_board e1 inner join user_info e2
+    on e1.user_no=e2.user_no
+	where board_distinct_no = 1
+	order by content_date DESC
+</select> -->
 
 
 <!-- 참여 게시판 메인 명대사 -->
-<!-- <select id="getfamousline" resultMap="reviewdto">
+<select id="getfamousline" resultMap="reviewdto">
 	select content_no, user_no, content_date, content_content, content_like, content_hate
 	from comm_board
 	where board_distinct_no = 2
 	order by content_date DESC
 	limit 4
-</select> -->
+</select>
+
 
 <!-- 참여 게시판 모든 명대사 -->
-<!-- <select id="getallfamousline" parameterMap="hashmap" resultMap="reviewdto">
+<select id="getallfamousline" parameterMap="hashmap" resultMap="reviewdto">
 	select A.*
 	from (select S.*, @rownum:=@rownum+1 as rn
 	  	  from (select user_no, board_distinct_no, content_date, content_content, content_like, content_hate
@@ -195,14 +118,41 @@
 					rn>=#{startrow} and rn<=#{endrow}
 				]]>	
 			</where>
-</select> -->
+</select>
 
 
 
+
+  
+  
+<!-- 리뷰 좋아요 -->
+<update id="reviewlike" parameterType="int">
+	update comm_board
+	set content_like = content_like+1
+	where content_no = #{contentno}
+</update>
+<!-- 리뷰 싫어요 -->
+<update id="reviewdislike" parameterType="int">
+	update comm_board
+	set content_hate = content_hate+1
+	where content_no = #{contentno}
+</update>
+
+
+<!-- 리뷰 등록 -->
+<insert id="reviewinsert" parameterMap="hashmap">
+	insert into comm_board (user_no, content_content, content_date, board_distinct_no, content_like, content_hate)
+	values(#{userno}, #{contents}, now(), 1, 0, 0 )
+</insert>
+  
+<delete id="reviewdelete" parameterType="int">
+	delete from comm_board
+	where content_no = #{contentno}
+</delete>
 
 
 <!-- 자유게시판 리스트 -->
-<select id="getalluserforum" resultMap="reviewdto">
+<select id="getalluserforum" resultType="com.kosta.dto.UserforumDTO">
 	select content_no, user_id, e1.user_no, content_date, content_title, content_content, content_like, content_hate
 	from comm_board e1 left join user_info e2
 	on e1.user_no=e2.user_no
@@ -210,37 +160,40 @@
 	order by content_date DESC
 </select>
 
-<select id="allUserForum" parameterType="hashmap" resultMap="reviewdto">
-	select A.*
-	from (select S.*, @rownum:=@rownum+1 as rn
-	  	  from (select content_no, user_id, e1.user_no, board_distinct_no, content_title, content_content, content_date, content_like, content_hate
-			    from comm_board e1 left join user_info e2 
-			    on e1.user_no=e2.user_no, (select @rownum:=0)R
-                where 1=1) S
-                where board_distinct_no = 5
-				order by content_date DESC ) A
-			<where>
-				<![CDATA[
-					rn>=#{startrow} and rn<=#{endrow}
-				]]>	
-			</where>
-</select>  
-
-
-
-<!-- 자유게시판 디테일 -->
-<select id="userforumdetail" parameterType="int" resultMap="reviewdto">
-	select content_no, user_id, e1.user_no, board_distinct_no, content_title, content_content, content_date, content_like, content_hate
+<select id="allUserForum" parameterType="hashmap" resultType="com.kosta.dto.UserforumDTO">
+	select e1.content_no, user_id, e1.user_no, board_distinct_no
+	, content_title, content_content, content_date
+	, content_like, content_hate
+	, imageNum, imagePath, imageName
 	from comm_board e1 left join user_info e2 
 	on e1.user_no=e2.user_no
-	where content_no = #{contentno}
+	left join board_image i
+	on e1.content_no=i.content_no
+	where movieCd = #{movieCd} and board_distinct_no = 5
+	order by content_date DESC
+	limit #{startRow}, #{pageSize}
+</select>  
+
+<!-- 자유게시판 디테일 -->
+<select id="userforumdetail" parameterType="int" resultType="com.kosta.dto.UserforumDTO">
+	select e1.content_no, user_id, e1.user_no, board_distinct_no
+	, content_title, content_content, content_date
+	, content_like, content_hate
+	, imageNum, imagePath, imageName
+	from comm_board e1 left join user_info e2 
+	on e1.user_no=e2.user_no
+	left join board_image i
+	on e1.content_no=i.content_no
+	where e1.content_no = #{contentno}
 </select>
 
-
-  
-  
-
-  
-  
-  
+<!-- 자유게시판 등록 -->  
+<insert id="userforuminsert" parameterType="com.kosta.dto.UserforumDTO">
+	insert into comm_board (user_no, movieCd, content_title, content_content, content_date, board_distinct_no, content_like, content_hate)
+	values(#{user_no}, #{movieCd}, #{content_title}, #{content_content}, now(), 5, 0, 0 )
+	<selectKey keyProperty="content_no" resultType="Integer" order="AFTER">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
+</insert>
+ 
 </mapper>

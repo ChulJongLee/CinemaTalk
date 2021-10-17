@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.kosta.dto.ReportDTO;
 import com.kosta.dto.ReviewDTO;
+import com.kosta.dto.UserforumDTO;
 
 public interface CommunityService {
 	
@@ -26,10 +27,6 @@ public interface CommunityService {
 	
 //	public ReviewDTO reviewdetail(int contentno);
 	
-	public List<ReviewDTO> allUserForum();
-	public List<ReviewDTO> allUserForum(int startRow, int endRow);
-
-	
 	public void reviewLike(int contentno);
 	public void reviewDisLike(int contentno);
 
@@ -37,7 +34,6 @@ public interface CommunityService {
 
 	public int reviewdelete(int no);
 
-	public ReviewDTO userforumdetail(int contentno);
 
 	public void reviewmodify(HashMap<String, Object> hm);
 
@@ -47,7 +43,10 @@ public interface CommunityService {
 
 	public void reviewreportupdate(HashMap<String, Object> hm);
 
-	
+	public List<UserforumDTO> allUserForum();
+	public List<UserforumDTO> allUserForum(String movieCd, int startRow, int pageSize);
+	public UserforumDTO userforumdetail(int contentno);
+	public int userforumInsert(UserforumDTO dto);
 	
 
 }

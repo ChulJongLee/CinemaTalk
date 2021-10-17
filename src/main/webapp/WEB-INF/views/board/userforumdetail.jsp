@@ -13,18 +13,21 @@
 	<section>
 		<article>
 			<div id="head">
-				<h3 id="title">${userforumdetail.title }</h3>
-				<p id="id"> ${userforumdetail.userid }</p>
-				<p id="date"> ${userforumdetail.writedate }</p>
+				<h3 id="title">${userforumdetail.content_title }</h3>
+				<p id="id"> ${userforumdetail.user_id }</p>
+				<p id="date"> ${userforumdetail.content_date }</p>
 			</div>
 			
 			<div id="body">
-				<pre id="content">${userforumdetail.contents }</pre>
+				<c:if test="${userforumdetail.imageName!='' }">
+					<img alt="이미지" src="/resources/upload/${userforumdetail.imagePath }">
+				</c:if>
+				<pre id="content">${userforumdetail.content_content }</pre>
 			</div>
 			
 			<div id="thumb">
-				<p id="like"><i class="fas fa-thumbs-up fa-lg"></i> ${userforumdetail.like }</p>
-				<p id="dislike"><i class="fas fa-thumbs-down fa-lg"></i> ${userforumdetail.dislike }</p>
+				<p id="like"><i class="fas fa-thumbs-up fa-lg"></i> ${userforumdetail.content_like }</p>
+				<p id="dislike"><i class="fas fa-thumbs-down fa-lg"></i> ${userforumdetail.content_dislike }</p>
 			</div>	
 			
 			<div id="edit">
