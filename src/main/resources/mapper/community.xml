@@ -18,6 +18,14 @@
   	<result column="content_hate" property="dislike" /> 	
   </resultMap>
   
+  <resultMap type="com.kosta.dto.ReportDTO" id="reportdto">
+ 	<result column="report_no" property="reportno" /> 
+ 	<result column="content_no" property="contentno" /> 
+ 	<result column="reply_no" property="reply" /> 
+ 	<result column="report_content" property="reportreason" /> 
+ 	<result column="reply_count" property="reportsize" />   
+  </resultMap>
+  
 
 <select id="totalCount" parameterMap="hashmap" resultType="int">
 	select count(*)
@@ -49,11 +57,15 @@
 <select id="list" parameterMap="hashmap" resultMap="reviewdto">
 	select A.*
 	from (select S.*, @rownum:=@rownum+1 as rn
-	  	  from (select content_no, user_id, e1.user_no, board_distinct_no, content_date, content_content, content_like, content_hate
+ from (select content_no, user_id, e1.user_no, e1.movieCd, board_distinct_no, content_date, content_content, content_like, content_hate
 			    from comm_board e1 left join user_info e2
-			    on e1.user_no=e2.user_no, (select @rownum:=0)R
+ 				on e1.user_no=e2.user_no
+
+			    left join movie_info e3
+			    on e1.movieCd=e3.movieCd, (select @rownum:=0)R
+			    
                 where 1=1) S
-                where board_distinct_no = 1
+                where board_distinct_no = 1 and movieCd = #{movieCd}
 				order by content_date DESC ) A
 			<where>
 				<![CDATA[
@@ -66,20 +78,28 @@
   
 <!-- 리뷰 페이지 베스트 리뷰 -->
 <select id="getreview" resultMap="reviewdto">
-	select content_no, user_id, e1.user_no, content_date, content_content, content_like, content_hate
+	select content_no, user_id, e1.user_no, e1.movieCd, content_date, content_content, content_like, content_hate
 	from comm_board e1 left join user_info e2
     on e1.user_no=e2.user_no
-	where board_distinct_no = 1
+    
+    left join movie_info e3
+	on e1.movieCd=e3.movieCd
+
+	where board_distinct_no = 1 and e1.movieCd = #{movieCd}   
 	order by content_like DESC, content_date DESC
 	limit 2
 </select>
 
 <!-- 리뷰 페이지 일반 리뷰 -->
 <select id="getgeneralreview" resultMap="reviewdto">
-	select content_no, user_id, e1.user_no, content_date, content_content, content_like, content_hate
+	select content_no, user_id, e1.user_no, e1.movieCd, content_date, content_content, content_like, content_hate
 	from comm_board e1 left join user_info e2
     on e1.user_no=e2.user_no
-	where board_distinct_no = 1
+	
+	left join movie_info e3
+	on e1.movieCd=e3.movieCd
+
+	where board_distinct_no = 1 and e1.movieCd = #{movieCd}	
 	order by content_date DESC
 	limit 4
 </select>
@@ -141,14 +161,40 @@
 
 <!-- 리뷰 등록 -->
 <insert id="reviewinsert" parameterMap="hashmap">
-	insert into comm_board (user_no, content_content, content_date, board_distinct_no, content_like, content_hate)
-	values(#{userno}, #{contents}, now(), 1, 0, 0 )
+	insert into comm_board (movieCd, user_no, content_content, content_date, board_distinct_no, content_like, content_hate)
+	values(#{movieCd}, #{userno}, #{contents}, now(), 1, 0, 0 )
 </insert>
+
+<!-- 리뷰  수정 -->
+<update id="reviewmodify" parameterMap="hashmap">
+	update comm_board
+	set content_content = #{contents}
+	where content_no = #{contentno}
+</update>
   
+<!-- 리뷰 삭제 -->
 <delete id="reviewdelete" parameterType="int">
 	delete from comm_board
 	where content_no = #{contentno}
 </delete>
+
+<!-- 리뷰 신고 -->
+<select id="reportsearch" parameterMap="hashmap" resultMap="reportdto">
+	select content_no, report_content
+	from report
+	where content_no = #{contentno} and report_content = #{reportreason}
+</select>
+
+<insert id="reviewreport" parameterMap="hashmap">
+	insert into report (content_no, report_content, report_count)
+	values(#{contentno}, #{reportreason}, 1)
+</insert>
+
+<update id="reviewreportupdate" parameterMap="hashmap">
+	update report
+	set report_count = report_count+1
+	where content_no = #{contentno} and report_content = #{reportreason}
+</update>
 
 
 <!-- 자유게시판 리스트 -->

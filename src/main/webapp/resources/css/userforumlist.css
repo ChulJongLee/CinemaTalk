@@ -70,19 +70,19 @@ section{
 	text-align: center;
 	margin: 8px 0px;
 }
-#number{
+#ufnumber{
 /* 	border: 1px solid yellow;
  */	width: 5%;	
 }
-#title{
+#uftitle{
 /* 	border: 1px solid yellow;
  */	width: 45%;
 }
-#id, #writedate{
+#ufid, #ufwritedate{
 /* 	border: 1px solid yellow;
  */	width: 15%;
 }
-#like, #dislike{
+#uflike, #ufdislike{
 /* 	border: 1px solid yellow;
  */	width: 10%;
 }
