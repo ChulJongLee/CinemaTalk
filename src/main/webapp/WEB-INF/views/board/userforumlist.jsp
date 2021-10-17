@@ -20,7 +20,7 @@
 					<li id="userforumlist">
 						<div id="number">${list.content_no }</div>
 						
-						<div id="title"><a href="/userforumdetail/${list.content_no }">${list.content_title }</a></div>
+						<div id="title"><a href="userforumdetail/${list.content_no }">${list.content_title }</a></div>
 						
 						<div id="id">${list.user_id }</div>
 						<div id="writedate">${list.content_date }</div>

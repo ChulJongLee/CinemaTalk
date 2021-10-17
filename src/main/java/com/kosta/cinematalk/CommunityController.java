@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,21 +26,16 @@ import com.kosta.dto.UserDTO;
 import com.kosta.dto.UserforumDTO;
 import com.kosta.service.CommunityService;
 import com.kosta.service.ImageService;
-import com.kosta.service.MovieService;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-@Controller
-//@RequiredArgsConstructor
-public class CommunityController {
+import lombok.RequiredArgsConstructor;
 
-	
-	@Resource(name = "reviewservice")
-	private CommunityService service;
-	@Resource
-	private MovieService movieService;
-	@Resource
-	private ImageService imageService;
+@Controller
+@RequiredArgsConstructor
+public class CommunityController {
+	private final CommunityService service;
+	private final ImageService imageService;
 
 	
 	// 영화 정보 메인 페이지                   
@@ -264,12 +258,12 @@ public class CommunityController {
 	
 	
 	// 자유 게시판 디테일 페이지
-//	@RequestMapping("/moviedetail/{movieCd}/userforumdetail")
-	@RequestMapping("/userforumdetail/{contentno}")
-	public String userForumDetail(@PathVariable int contentno, Model model) {
+	@RequestMapping("/moviedetail/{movieCd}/userforumdetail/{contentno}")
+	public String userForumDetail(@PathVariable String movieCd, @PathVariable int contentno, Model model) {
 		
 		UserforumDTO userforumdetail = service.userforumdetail(contentno);
 //		System.out.println("@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!"+userforumdetail);	// 값받아짐.
+		model.addAttribute("movieCd", movieCd);
 		model.addAttribute("userforumdetail", userforumdetail);
 		
 		return "/view.jsp?page=board/userforumdetail";
@@ -337,7 +331,16 @@ public class CommunityController {
 		return "/view.jsp?page=board/userforumdetail";
 		}
 	}
+	
+	//자유게시판 삭제
+	@RequestMapping("/moviedetail/{movieCd}/userforumdelete/{contentno}")
+	public String userforumDelete(@PathVariable String movieCd ,@PathVariable(name = "contentno") int no, Model model) {
+		service.reviewdelete(no);
+//		model.addAttribute("result", result);
 		
+		return "redirect:/moviedetail/{movieCd}";
+	}
+	
 	// 리뷰 좋아요
 	@PostMapping("/like")
     @ResponseBody

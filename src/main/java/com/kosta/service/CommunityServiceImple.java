@@ -11,7 +11,7 @@ import com.kosta.dto.ReviewDTO;
 import com.kosta.dto.UserforumDTO;
 import com.kosta.mapper.CommunityMapper;
 
-@Service("reviewservice")
+@Service
 public class CommunityServiceImple implements CommunityService {
 
 	

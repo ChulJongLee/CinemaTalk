@@ -31,7 +31,7 @@
 			</div>	
 			
 			<div id="edit">
-				<input type="button" value="수정" id="modify">
+				<input type="button" value="수정" id="modify" onclick="href='/moviedetail/${movieCd}/userforumdelete/${userforumdetail.content_no }'">
 				<input type="button" value="삭제" id="delete">
 			</div>
 			
