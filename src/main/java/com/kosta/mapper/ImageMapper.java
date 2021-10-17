@@ -15,4 +15,6 @@ public interface ImageMapper {
 
 	public UserforumDTO getimg(int content_no);
 
+	public void modifyimg(UserforumDTO dto);
+
 }

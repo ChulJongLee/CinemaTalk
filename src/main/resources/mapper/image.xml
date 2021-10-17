@@ -10,16 +10,22 @@
 		from board_image
 		where imageName=#{imageName} and imagePath=#{imagePath}
 	</select>
- 	<select id="getimg" parameterType="int" resultType="com.kosta.dto.ImageDTO">
+ 	<select id="getimg" parameterType="int" resultType="com.kosta.dto.UserforumDTO">
 		select imageNum, imageName, imagePath
 		from board_image
 		where content_no=#{content_no}
 	</select>
-  	<insert id="insertimg" parameterType="com.kosta.dto.ImageDTO">
+  	<insert id="insertimg" parameterType="com.kosta.dto.UserforumDTO">
 		insert into board_image (imageNum, imagePath, imageName, content_no)
 		values(#{imageNum}, #{imagePath}, #{imageName}, #{content_no})
 		<selectKey keyProperty="imageNum" resultType="Integer">
 	        SELECT LAST_INSERT_ID()
 	    </selectKey>
 	</insert>
+	<update id="modifyimg" parameterType="com.kosta.dto.UserforumDTO">
+		update board_image
+		set imagePath=#{imagePath}
+		, imageName=#{imageName}
+		where content_no = #{content_no}
+	</update>
   </mapper>

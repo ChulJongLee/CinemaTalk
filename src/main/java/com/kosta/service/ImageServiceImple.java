@@ -49,4 +49,10 @@ public class ImageServiceImple implements ImageService {
 
 	}
 
+	@Override
+	public void modifyImg(UserforumDTO dto) {
+		// TODO Auto-generated method stub
+		mapper.modifyimg(dto);
+	}
+
 }

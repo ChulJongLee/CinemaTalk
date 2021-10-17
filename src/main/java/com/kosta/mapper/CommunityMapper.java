@@ -53,6 +53,8 @@ public interface CommunityMapper {
 	public List<UserforumDTO> allUserForum(HashMap<String, Object> hm);
 	public UserforumDTO userforumdetail(int contentno);
 	public int userforuminsert(UserforumDTO dto);
+
+	public void userforummodify(UserforumDTO dto);
 	
 
 	

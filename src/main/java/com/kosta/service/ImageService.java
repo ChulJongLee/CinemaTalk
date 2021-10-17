@@ -8,5 +8,6 @@ public interface ImageService {
 	public int insertImg(UserforumDTO dto);
 	public void modify(UserforumDTO dto);
 	public void delete(int imgNum);
+	public void modifyImg(UserforumDTO dto);
 	
 }

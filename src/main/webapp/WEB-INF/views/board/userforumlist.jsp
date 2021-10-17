@@ -31,11 +31,11 @@
 			</ul>		
 		</div>
 		<div id="writebtn">
-				<c:if test="${user != null}"><a href="${detail.movieCd }/userforuminsert" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
+				<c:if test="${user != null}"><a href="/moviedetail/${movieCd }/userforuminsert" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
 				<c:if test="${user == null}"><a href="/login" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
 		</div>
 		<div id="userforumallbtn">
-        	<a href="/moviedetail/${detail.movieCd }/userforumlist">모든 게시글 보기</a>
+        	<a href="/moviedetail/${movieCd }/userforumlist">모든 게시글 보기</a>
         </div>
 
 	<!-- 페이징  -->

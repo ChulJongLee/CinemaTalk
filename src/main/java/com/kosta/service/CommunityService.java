@@ -47,6 +47,9 @@ public interface CommunityService {
 	public List<UserforumDTO> allUserForum(String movieCd, int startRow, int pageSize);
 	public UserforumDTO userforumdetail(int contentno);
 	public int userforumInsert(UserforumDTO dto);
+
+	public void userforumModify(UserforumDTO dto);
+
 	
 
 }

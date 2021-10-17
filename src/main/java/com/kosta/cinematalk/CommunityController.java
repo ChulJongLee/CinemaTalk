@@ -251,6 +251,7 @@ public class CommunityController {
 
 		
 		model.addAttribute("alluserforum", alluserforum);
+		model.addAttribute("movieCd", movieCd);
 		model.addAttribute("page", page);
 						
 		return "/view.jsp?page=board/userforumlist";
@@ -262,7 +263,6 @@ public class CommunityController {
 	public String userForumDetail(@PathVariable String movieCd, @PathVariable int contentno, Model model) {
 		
 		UserforumDTO userforumdetail = service.userforumdetail(contentno);
-//		System.out.println("@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!"+userforumdetail);	// 값받아짐.
 		model.addAttribute("movieCd", movieCd);
 		model.addAttribute("userforumdetail", userforumdetail);
 		
@@ -294,7 +294,6 @@ public class CommunityController {
 			String imageName = "";
 			@SuppressWarnings("deprecation")
 			String uploadPath = request.getRealPath("/resources/upload");
-			System.out.println(uploadPath);
 			UserforumDTO dto = new UserforumDTO();
 			try {
 				MultipartRequest multi = new MultipartRequest( // MultipartRequest 인스턴스 생성(cos.jar의 라이브러리)
@@ -326,7 +325,6 @@ public class CommunityController {
 				imageService.insertImg(dto);
 			}
 			model.addAttribute("userforumdetail", dto);
-//		service.userforumInsert(movieCd, hm);
 		
 		return "/view.jsp?page=board/userforumdetail";
 		}
@@ -341,6 +339,66 @@ public class CommunityController {
 		return "redirect:/moviedetail/{movieCd}";
 	}
 	
+	//자유게시판 수정
+	@RequestMapping("/moviedetail/{movieCd}/userforummodify/{contentno}")
+	public String userforumModify(@PathVariable String movieCd ,@PathVariable int contentno, Model model) {
+		UserforumDTO userforumdetail = service.userforumdetail(contentno);
+		model.addAttribute("movieCd", movieCd);
+		model.addAttribute("userforumdetail", userforumdetail);
+		return "/view.jsp?page=board/userforumModify";
+	}
+	
+	//자유게시판 수정 Result
+	@RequestMapping("/moviedetail/{movieCd}/userforummodifyresult/{contentno}")
+	public String userforumModifyResult(@PathVariable String movieCd
+			, Model model
+			, HttpSession session
+			, HttpServletRequest request, HttpServletResponse response) {
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		if(user==null){
+			return "/view.jsp?page=userlogin";
+		}
+		else {
+
+			String imagePath = "";
+			String imageName = "";
+			@SuppressWarnings("deprecation")
+			String uploadPath = request.getRealPath("/resources/upload");
+			UserforumDTO dto = new UserforumDTO();
+			try {
+				MultipartRequest multi = new MultipartRequest( // MultipartRequest 인스턴스 생성(cos.jar의 라이브러리)
+						request, uploadPath, // 파일을 저장할 디렉토리 지정
+						10 * 1024 * 1024, // 첨부파일 최대 용량 설정(bite)
+						"utf-8", // 인코딩 방식 지정
+						new DefaultFileRenamePolicy()); // 중복 파일 처리(동일한 파일명이 업로드되면 뒤에 숫자 등을 붙여 중복 회피)
+	
+				imagePath = multi.getFilesystemName("file1"); // name=file1의 업로드된 시스템 파일명을 구함(중복된 파일이 있으면, 중복 처리 후 파일 이름)
+				imageName = multi.getOriginalFileName("file1"); // name=file1의 업로드된 원본파일 이름을 구함(중복 처리 전 이름)
+			
+				String content_title = multi.getParameter("content_title");
+				String content_content = multi.getParameter("content_content");
+				dto.setUser_no(user.getUser_no());
+				dto.setUser_id(user.getUser_id());
+				dto.setMovieCd(movieCd);
+				dto.setContent_title(content_title);
+				dto.setContent_content(content_content);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			service.userforumModify(dto);
+			dto.setImageName("");
+			if(imageName!=null && !imageName.equals("")) { //사진 넣었을 경우
+				dto.setImageName(imageName);
+				dto.setImagePath(imagePath);
+				imageService.modifyImg(dto);
+			}
+			model.addAttribute("userforumdetail", dto);
+		
+		return "/view.jsp?page=board/userforumdetail";
+		}
+	}
 	// 리뷰 좋아요
 	@PostMapping("/like")
     @ResponseBody

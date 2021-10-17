@@ -242,4 +242,10 @@
     </selectKey>
 </insert>
  
+<update id="userforummodify" parameterType="com.kosta.dto.UserforumDTO">
+		update comm_board
+		set content_title = #{content_title}
+		, content_content=#{content_content}
+		where content_no = #{content_no}
+</update>
 </mapper>

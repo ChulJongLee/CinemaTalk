@@ -178,6 +178,12 @@ public class CommunityServiceImple implements CommunityService {
 		int result = mapper.reviewreportupdate(hm);
 	}
 
+	@Override
+	public void userforumModify(UserforumDTO dto) {
+		// TODO Auto-generated method stub
+		mapper.userforummodify(dto);
+	}
+
 
 
 

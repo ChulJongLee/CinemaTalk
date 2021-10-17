@@ -101,6 +101,7 @@ public class MovieController {
 	public String MovieDetail(@PathVariable String movieCd, Model model, HttpSession session) throws OpenAPIFault, Exception {
 		KobisDTO detail = movieService.getMovieDetail(movieCd);
 		model.addAttribute("detail", detail);
+		model.addAttribute("movieCd", movieCd);
 		List<PersonInfoDTO> personInfo=movieService.getPersonInfo(movieCd);
 		model.addAttribute("personInfo", personInfo);
 		
