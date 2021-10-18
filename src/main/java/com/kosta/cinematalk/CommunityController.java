@@ -46,24 +46,6 @@ public class CommunityController {
 	}	
 	
 	
-	
-	// 리뷰 메인 페이지
-//	@RequestMapping("/moviedetail/{movieCd}/reviewmain")
-//	@RequestMapping("/reviewmain")
-//	public String reviewMain(Model model) {
-//		
-//		// 베스트 리뷰 2개
-//		List<ReviewDTO> bestreviewlist = service.reviewList();
-//		model.addAttribute("bestreviewlist", bestreviewlist);
-//		// 일반 리뷰 4개
-//		List<ReviewDTO> generalreviewlist = service.generalReviewList();
-//		model.addAttribute("generalreviewlist", generalreviewlist);
-//		
-//		return "/view.jsp?page=board/reviewmain";
-//	}
-	
-	
-	
 	// 리뷰 쓰기
 	@RequestMapping("/moviedetail/{movieCd}/reviewinsertresult")
 	public String insertResult(@RequestParam HashMap<String, Object> hm) {
@@ -130,7 +112,6 @@ public class CommunityController {
 	}
 	
 	// 리뷰 삭제
-//	@RequestMapping("/reviewdelete/{contentno}")
 	@RequestMapping("/moviedetail/{movieCd}/reviewdelete/{contentno}")
 	public String reviewdelete(@PathVariable String movieCd ,@PathVariable(name = "contentno") int no, Model model) {
 		
@@ -139,23 +120,7 @@ public class CommunityController {
 		
 		return "redirect:/moviedetail/{movieCd}";
 	}
-	
-	
-	
-	// 리뷰 디테일 페이지
-//	@RequestMapping(value = "/moviedetail/{movieCd}/reviewdetail/{contentno}", method = RequestMethod.GET)
-//	@RequestMapping(value = "/reviewdetail", method = RequestMethod.GET)
-//	public String reviewDetail(@PathVariable int contentno, Model model) {
-//		
-//		ReviewDTO dto = service.reviewdetail(contentno);
-//		model.addAttribute("revdetail", dto);
-//		
-//		
-//		return "/view.jsp?page=board/reviewdetail";		
-//	}
-	
-	
-	
+
 	// 참여 게시판 메인 페이지
 //	@RequestMapping("/moviedetail/{movieCd}/bestscenemain")
 	@RequestMapping("/bestscenemain")

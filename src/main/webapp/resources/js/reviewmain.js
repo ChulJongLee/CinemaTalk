@@ -4,38 +4,17 @@
 
 
 // 좋아요 버튼
-
-
-
 $('.likebtn').click(function() {
-	
-	
-//	var recip=$(e.relatedTarget);
-//	console.log("recip:"+recip);
-	
-//	var r=$(recip).parent().parent().siblings('.content').text();
-//	console.log("r:"+r);
-	
 	
 	var params = { contentno : $(this).attr('value') }
 	console.log("params: "+params);
-	
-//	var params = { contentno : $('.contentnodistinct').val() }
-//	console.log("params1: "+params);
-	
-//	var contentnumber = ${list.contentno};
-//	console.log("contentnumber: "+contentnumber);
 	
 	$.ajax({
 		type : "POST",
 		url : "/like",
 		data : params,
 		success : function(res) {
-//			alert(res.result);
-//			$('#contentslist').load("reviewmain #contentslist");
-//			$('.likebtn').attr('value').load("/reviewmain .likebtn");
-//			$('.likebtn').load("/moviedetail/{movieCd} .likebtn");
-//			$('#like').load(location.href+"#like");
+
 			location.reload();	
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -58,7 +37,7 @@ $('.dislikebtn').click(function() {
 		data : params2,
 		success : function(res) {
 
-//			location.reload(res.result);	
+			location.reload(res.result);	
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			alert("로그인이 필요한 서비스 입니다.");
@@ -104,49 +83,12 @@ $(document).ready(function(){
 		
 		  var recip=$(e.relatedTarget);
 		  console.log("recip:"+recip);
-		  
-	//	  var r=$(recip).parent().parent().siblings('.content').text();
-	//	  console.log("r:"+r);
-		  
+ 
 		  var no = $(recip).parent().siblings('.contentnodistinct').attr('value');
 		  console.log("contentno:"+no);
-		  // 변수 순서도 중요하다. 아니 근데 var는 호이스팅이 되는거 아닌가?
-		  
-		  
+  
 		 let m=$(this);
-	//	  m.find('#modaltext').val(r);
 		  m.find('.contentval').val(no);
 	});
 });	
 	  
-//	  $(".modifycheckbtn").click(function(){
-//	    $(".modal").fadeOut();
-//	  });
-//	  
-
-
-//수정하기
-//$(document).ready(function(){
-
-//	  $('.modifybtn').on('click', function(){
-//	      $('#mymodal').modal('show');
-//	      
-//	      modal({backdrop: 'static', keyboard: false}).
-//	  });
-	  
-//	  $('#mymodal').on('shown.bs.modal', function(e){
-//		  
-//		  console.log('hello');
-//		  
-//		  var recip=$(e.relatedTarget);
-//		  let r=$(recip).parent().parent().siblings('.content').text();
-//		  console.log(r);
-//		  
-//		  
-//		 let m=$(this);
-//		  m.find('#modaltext').val(r);
-//		 
-//	  });
-//	 
-//});
-
