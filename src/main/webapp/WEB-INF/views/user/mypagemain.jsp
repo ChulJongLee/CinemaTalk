@@ -18,7 +18,6 @@
 		<div class="p-wrapper"><p align="center"><b>나의 정보</b></p></div>
 		<div id="userinfolist">
 			<div id="person">
-				<div>사진</div>
 				<div>${userdto.user_id} 님</div>
 				<div id="modifyinfo"><a href="/mypage/userinfo">회원정보 수정</a></div>
 			</div>
@@ -51,7 +50,7 @@
 		<div class="p-wrapper"><p align="center"><a href="/mypage/myreview"><b>나의 리뷰</b></a></p></div>
 		<div id="reviewlist-wrapper">
 		<c:forEach var="item" items="${reviewlist}">
-			<div class="reviewlist" onclick="location.href='/reviewdetail/${item.contentno}'">
+			<div class="reviewlist">
 					<div class="movtitle"><b>${item.title}</b></div>
 					<div class="revcontent">${item.contents}</div>
 			</div>

@@ -19,7 +19,7 @@
 				<li>
 					<div class="first label"><label for="user_id"><b>아이디</b></label></div>
 					<div class="first input"><input type="text" name="user_id" id="user_id" placeholder="4 ~ 12자의 영문, 숫자 입력" onfocus="this.placeholder=''" onblur="this.placeholder='4~12자의 영문, 숫자 입력'" onkeydown="inputIdCheck()"></div>
-					<div class="first"><button type="button" id="idCheck">중복 체크</button></div>
+					<div class="first"><button type="button" id="idCheck" style="font-weight:bold;">중복 체크</button></div>
 					<div class="first"><input type="hidden" name="idDuplication" id="idDuplication" value="unChecked"></div>
 				</li>
 				<li>
@@ -43,7 +43,7 @@
 					<div class="input"><input type="date" name="user_bdate" id="user_bdate" style="width:200px" min="1900-01-01" max="2021-13-13"></div>
 				</li>
 				<li>
-					<div class="loginbtn"><input type="button" class="button" value="회원 가입" onclick="checkForm()"></div> 
+					<div class="loginbtn"><input type="button" class="button" value="회원 가입" onclick="checkForm()" style="font-weight:bold;"></div> 
 				</li>
 			</ul>
 		</form>

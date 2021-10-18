@@ -40,8 +40,8 @@
 				</li>
 				<li>
 					<input type="hidden" name="user_no" value="${user.user_no}">
-					<div class="modifybtn"><input type="button" class="button" value="수정" onclick="CheckForm()"></div> 
-					<div class="modifybtn"><input type="reset" class="button" value="취소"></div> 
+					<div class="modifybtn"><input type="button" class="button" value="수정" onclick="CheckForm()" style="font-weight:bold;"></div> 
+					<div class="modifybtn"><input type="reset" class="button" value="취소" style="font-weight:bold;"></div> 
 				</li>
 			</ul>
 		</form>

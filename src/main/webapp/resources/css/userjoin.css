@@ -38,11 +38,12 @@
 }
 
 div.first.label{
-	margin-left: 90px;
+	margin-left: 97px;
 }
 
 #idCheck{
 	margin-left: 20px;
+	width: 70px;
 }
 
 .input>input{

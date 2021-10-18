@@ -59,6 +59,10 @@
 	text-decoration: none;
 }
 
+.collectionlist:hover, .actorlist:hover, .directorlist:hover{
+	cursor: pointer;
+}
+
 .moviename{
 	margin-top: 5px;
 	max-width: 213px;
