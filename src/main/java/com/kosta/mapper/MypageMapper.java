@@ -44,5 +44,4 @@ public interface MypageMapper {
 	int reviewCount(int user_no);
 	
 
-	
 }

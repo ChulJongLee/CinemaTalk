@@ -1,12 +1,11 @@
 @charset "UTF-8";
 
 #personinfotop{
-	border: 2px solid red;
     width: 1300px;
-    margin: 0px auto;
+    margin: 50px auto;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     background-color: #212121;
     color: white;
 }
@@ -22,12 +21,26 @@
 }
 
 #personpic{
-	margin: 15px 0px 15px 230px;
+	margin: 15px 0px;
+	margin-left: 150px;
 }
 
+.pinfo{
+	font-size: large;
+	font-weight: 500;
+}
+
+.pname{
+	font-size: x-large;
+	font-weight: 600;
+}
+
+hr{
+	color: lightgray; 
+	margin: 0px auto;
+}
 
 #personinfobottom{
-	border: 2px solid red;
     width: 1300px;
     margin: 0px auto;
     display: flex;
@@ -38,9 +51,19 @@
 }
 
 #personfilmo{
-	border: 2px solid orange;
     width: 800px;
 }
+
+.subtitle2{
+	margin-top: 50px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.subtitle2>h5{
+	display: inline-block;
+}
+
 #personfilmo>.posterandname{
 	margin: 20px 0px;
 	display: inline-block;
@@ -52,7 +75,6 @@
 }
 
 #relatedperson{
-	border: 2px solid yellow;
     width: 480px;
 }
 

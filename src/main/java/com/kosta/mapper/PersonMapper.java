@@ -27,9 +27,5 @@ public interface PersonMapper {
 	public List<KobisDTO> getFilmoList(HashMap<String, Object> hm);
 
 	public int getFilmoNum(String peopleCd);
-	
-
-
-
 
 }

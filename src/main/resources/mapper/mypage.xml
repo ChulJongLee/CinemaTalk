@@ -38,6 +38,10 @@
 		<result property="title" column="movieNm" />
 		<result property="contents" column="content_content" />
 		<result property="contentno" column="content_no"/>
+		<result property="writedate" column="content_date"/>
+		<result property="like" column="content_like"/>
+		<result property="dislike" column="content_hate"/>
+		<result property="userid" column="user_id" />
 	</resultMap>
 
 	<select id="getMyReview" parameterType="int" resultMap="review">
@@ -135,10 +139,12 @@
 	</select>
 
 	<select id="getEveryReview" parameterType="java.util.HashMap" resultMap="review">
-		select movieNm, content_content, content_no
+		select movieNm, content_content, content_no, content_date, content_like, content_hate, user_id
 		from comm_board c inner join movie_info m
 		on c.movieCd = m.movieCd
-		where user_no = #{user_no} and board_distinct_no = 1
+		inner join user_info u
+		on c.user_no = u.user_no
+		where c.user_no = #{user_no} and board_distinct_no = 1
 		order by content_no DESC
 		limit #{startRow}, #{pageSize}
 	</select>

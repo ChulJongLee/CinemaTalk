@@ -34,7 +34,7 @@ public class MyPageController {
 		} else {
 			int user_no = user.getUser_no();
 			
-			//개인정보 이거는 회원등급?테이블이랑 조인해야될것같음
+			//개인정보
 			UserDTO userdto = mypageService.getUserInfo(user_no);
 			model.addAttribute("userdto", userdto);
 			double watchHour = mypageService.getTotalHour(user_no);
@@ -83,7 +83,8 @@ public class MyPageController {
 		} else {
 			int user_no = user.getUser_no();
 
-			int totalCount = mypageService.collectionCount(user_no); //전체 자료 수 확인
+			//전체 자료 수 확인
+			int totalCount = mypageService.collectionCount(user_no); 
 			int pageSize = 20;
 			int blockSize = 5;
 
@@ -106,7 +107,8 @@ public class MyPageController {
 		} else {
 			int user_no = user.getUser_no();
 
-			int totalCount = mypageService.reviewCount(user_no); //전체 자료 수 확인
+			//전체 자료 수 확인
+			int totalCount = mypageService.reviewCount(user_no); 
 			int pageSize = 20;
 			int blockSize = 5;
 

@@ -115,6 +115,14 @@ public class CommunityController {
 	}
 
 
+	// 마이페이지 리뷰 삭제
+	@RequestMapping("/mypage/reviewdelete/{contentno}")
+	public String mypagereviewdelete(@PathVariable(name = "contentno") int no, Model model) {
+		
+		service.reviewdelete(no);
+		
+		return "redirect:/mypage/myreview";
+	}
 	
 	
 	// 자유 게시판 리스트 페이지(메인)

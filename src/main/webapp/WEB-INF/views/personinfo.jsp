@@ -13,30 +13,32 @@
 	
 	<!-- maintop -->
 	<div id="personinfotop">
-		<div id="personinfo">
-			<ul>
-				<li>
-					<span>${dto.peopleNm} ${dto.peopleNmEn}</span>
-				</li>
-				<li>
-					<span>${dto.nationality}</span>
-				</li>
-				<li>
-					<span>${dto.person_bdate}</span>
-				</li>
-			</ul>
-		</div>
 		<div id="personpic">
 			<img src="${dto.person_pic}" alt="${dto.peopleNm}사진" width="200px">
 		</div>
+		
+		<div id="personinfo">
+			<ul>
+				<li>
+					<span class="pinfo pname">${dto.peopleNm} ${dto.peopleNmEn}</span>
+				</li>
+				<li>
+					<span class="pinfo">${dto.nationality}</span>
+				</li>
+				<li>
+					<span class="pinfo">${dto.person_bdate}</span>
+				</li>
+			</ul>
+		</div>
 	</div>
 	
+	<hr style="width:85%;height:2px;border:none;align:center;"> 
 	<!-- mainbottom -->
 	<div id="personinfobottom">
 	
 		<!-- personfilmo -->
 		<div id="personfilmo">
-			<p>필모그래피</p>
+			<div class="subtitle2"><h5><strong>인물 필모그래피</strong></h5></div>
 			<c:forEach var="item" items="${list}">
 				<div class="posterandname">	
 				<ul>
@@ -86,8 +88,8 @@
 		
 		<!-- related person -->
 		<div id="relatedperson">
-			<p>관련 인물</p>
-			<c:forEach var="item" items="${list2}">		
+			<div class="subtitle2"><h5><strong>연관 배우</strong></h5></div>
+			<c:forEach var="item" items="${list2}" begin="0" end="14">		
 					<div class="pictureandname">
 						<ul>
 							<li><a href="/personinfo/${item.peopleCd}"><img src="${item.person_pic}" alt="${item.peopleNm}사진" width="113px"></a></li>

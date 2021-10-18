@@ -34,10 +34,11 @@
 	</select>
 	
 	<select id="getPersonFilmo" resultType="String">
-		select movieCd
-		from person_distinct
+		select d.movieCd
+		from person_distinct d inner join movie_info m
+		on d.movieCd = m.movieCd 
 		where peopleCd = #{peopleCd}
-		order by movieCd desc
+		order by openDt DESC
 	</select>
   
   	<select id="getMovieFilmo" resultType="com.kosta.dto.KobisDTO">
@@ -76,5 +77,6 @@
 		on d.movieCd = m.movieCd 
 		where p.peopleCd = #{peopleCd}
   	</select>
+  	
   	
   </mapper>
