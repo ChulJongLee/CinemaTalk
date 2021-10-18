@@ -1,13 +1,14 @@
 @charset "UTF-8";
 
 section{
-    border: 2px solid orange;
+    /* border: 2px solid orange; */
     width: 1300px;
     margin: 0px auto;
+    padding-top: 50px;
 }
 
 #allreview{
-	border: 2px solid red;
+	/* border: 2px solid red; */
 /*     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -16,7 +17,7 @@ section{
 }
 
 #contentslist{
-	border: 2px solid green;
+	/* border: 2px solid green; */
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -25,7 +26,7 @@ section{
 	padding-left: 0;
 }
 #contents{
-	border: 2px solid blue;
+	border: 2px solid orange;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -36,7 +37,7 @@ section{
 }
 
 #id, #date, .content, #like, #dislike, #report{
-	border: 2px solid yellow;
+	/* border: 2px solid yellow; */
 }
 
 /* #content{
@@ -52,6 +53,8 @@ section{
 	margin: 10px 0px;
 	padding-right: 10px;
 	white-space: pre-wrap;
+	border-bottom: 2px solid orange;
+	border-top: 2px solid orange;
 }
 .content::-webkit-scrollbar {
 	width: 10px;
