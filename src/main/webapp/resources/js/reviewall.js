@@ -2,7 +2,7 @@
  * 
  */
 
-// 좋아요 버튼
+// 좋아요
 $('.likebtn').click(function() {
 	
 	var params = { contentno : $(this).attr('value') }
@@ -54,6 +54,7 @@ $('.deletebtn').click(function(){
 });
 
 
+// 수정하기 
 $(document).ready(function(){
 	$('#staticBackdrop').on('shown.bs.modal', function(e){
 	
@@ -72,7 +73,7 @@ $(document).ready(function(){
 	});
 });
 
-
+// 신고하기
 $(document).ready(function(){
 	$('#staticBackdrop1').on('shown.bs.modal', function(e){
 		

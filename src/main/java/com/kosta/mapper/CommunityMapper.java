@@ -22,15 +22,11 @@ public interface CommunityMapper {
 
 	public List<ReviewDTO> getreview(String movieCd);
 
-//	public List<ReviewDTO> getallreview();
-
 	public List<ReviewDTO> getfamousline();
 
 	public List<ReviewDTO> getallfamousline();
 
 	public List<ReviewDTO> getallfamousline(HashMap<String, Object> hm);
-
-//	public ReviewDTO reviewdetail(int contentno);
 
 	public void reviewlike(int contentno);
 	public void reviewdislike(int contentno);

@@ -15,7 +15,7 @@ import com.kosta.mapper.CommunityMapper;
 public class CommunityServiceImple implements CommunityService {
 
 	
-	@Autowired // @Qualifier("communityMapper")
+	@Autowired
 	private CommunityMapper mapper;
 	
 	
@@ -90,15 +90,6 @@ public class CommunityServiceImple implements CommunityService {
 	}
 
 
-	
-
-//	@Override
-//	public ReviewDTO reviewdetail(int contentno) {
-//
-//		return mapper.reviewdetail(contentno);
-//	}
-
-
 	@Override
 	public List<UserforumDTO> allUserForum() {
 		
@@ -135,14 +126,14 @@ public class CommunityServiceImple implements CommunityService {
 
 	@Override
 	public int userforumInsert(UserforumDTO dto) {
-		// TODO Auto-generated method stub
+
 		return mapper.userforuminsert(dto);
 	}
 
 	@Override
 	public void reviewinsert(HashMap<String, Object> hm) {
 
-		int result = mapper.reviewinsert(hm);
+		mapper.reviewinsert(hm);
 	}
 
 	@Override
@@ -156,14 +147,14 @@ public class CommunityServiceImple implements CommunityService {
 	@Override
 	public void reviewmodify(HashMap<String, Object> hm) {
 		
-		int result = mapper.reviewmodify(hm);
+		mapper.reviewmodify(hm);
 		
 	}
 
 	@Override
 	public void reviewreport(HashMap<String, Object> hm) {
 		
-		int result = mapper.reviewreport(hm);
+		mapper.reviewreport(hm);
 	}
 
 	@Override
@@ -175,12 +166,12 @@ public class CommunityServiceImple implements CommunityService {
 	@Override
 	public void reviewreportupdate(HashMap<String, Object> hm) {
 		
-		int result = mapper.reviewreportupdate(hm);
+		mapper.reviewreportupdate(hm);
 	}
 
 	@Override
 	public void userforumModify(UserforumDTO dto) {
-		// TODO Auto-generated method stub
+
 		mapper.userforummodify(dto);
 	}
 

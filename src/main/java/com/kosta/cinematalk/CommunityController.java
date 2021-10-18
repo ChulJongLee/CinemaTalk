@@ -51,7 +51,6 @@ public class CommunityController {
 	public String insertResult(@RequestParam HashMap<String, Object> hm) {
 		
 		service.reviewinsert(hm);
-		System.out.println("@@@@@@@@@@*******************@@@@@@@@@@"+hm);
 				
 		return "redirect:/moviedetail/{movieCd}";
 	}
@@ -61,7 +60,6 @@ public class CommunityController {
 	public String reviewmodify(@RequestParam HashMap<String, Object> hm) {
 		
 		service.reviewmodify(hm);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  modify"+hm);
 		
 		return "redirect:/moviedetail/{movieCd}";
 	}
@@ -74,14 +72,11 @@ public class CommunityController {
 	public String reviewreport(@PathVariable String movieCd, @RequestParam HashMap<String, Object> hm) {
 
 		List<ReportDTO> reportlist = service.reportsearch(hm);
-		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%% reportsearch: "+reportlist);
 		
 		if(reportlist.isEmpty()) {
 			service.reviewreport(hm);
-			System.out.println("##################################### report:"+hm);
 		}else{
-			service.reviewreportupdate(hm);
-			System.out.println("************************** reportupdate: "+hm);			
+			service.reviewreportupdate(hm);		
 		}	
 		return "redirect:/moviedetail/{movieCd}";
 	}
@@ -90,7 +85,6 @@ public class CommunityController {
 	
 	// 리뷰 전체 리스트
 	@RequestMapping("/moviedetail/{movieCd}/reviewall")
-//	@RequestMapping("/reviewall")
 	public String reviewAll(@PathVariable String movieCd
 							, @RequestParam(required = false, defaultValue = "1") int currPage
 							, @RequestParam(required = false, defaultValue = "1") int boardno
@@ -116,87 +110,11 @@ public class CommunityController {
 	public String reviewdelete(@PathVariable String movieCd ,@PathVariable(name = "contentno") int no, Model model) {
 		
 		service.reviewdelete(no);
-//		model.addAttribute("result", result);
 		
 		return "redirect:/moviedetail/{movieCd}";
 	}
 
-	// 참여 게시판 메인 페이지
-//	@RequestMapping("/moviedetail/{movieCd}/bestscenemain")
-	@RequestMapping("/bestscenemain")
-	public String bestSceneMain(Model model) {		
-		
-		// 명대사 4개
-		List<ReviewDTO> famouslinelist = service.famousLineList();
-		model.addAttribute("famouslinelist", famouslinelist);
-		
-		return "/view.jsp?page=board/bestscenemain";
-	}
-	
-	// 최고장면,최악장면 리스트
-	@RequestMapping("/bestscenelist")
-	public String bestSceneList() {
-		
-		
-		return "/view.jsp?page=board/bestscenelist";
-	}
-	
-	// 최고장면,최악장면 디테일
-//	@RequestMapping("/moviedetail/{movieCd}/bestscenedetail")
-	@RequestMapping("/bestscenedetail")
-	public String bestSceneDetail() {
-		
-		return "/view.jsp?page=board/bestscenedetail";
-	}
-	
-	// 명대사 리스트
-//	@RequestMapping("/moviedetail/{movieCd}/famouslinelist")
-	@RequestMapping("/famouslinelist")
-	public String famousLineList(@RequestParam(required = false, defaultValue = "1") int currPage
-								, @RequestParam(required = false, defaultValue = "") String search
-								, @RequestParam(required = false, defaultValue = "") String searchtxt
-								, Model model) {
-		
-		Pattern p = Pattern.compile("([0-9]*$)");	// 012345111
-		if(search=="userno" || search.equals("userno") || search=="like" || search.equals("like")) {
-			
-			Matcher m = p.matcher(searchtxt);
-			if(m.find()) {
-				model.addAttribute("searchtxt", searchtxt);
-			}else {
-				model.addAttribute("searchtxt", "");
-			}
-		}
 
-		int totalcount = service.totalCount(search, searchtxt); // 전체 자료수
-		int pagesize=10;
-		int blocksize=5;
-		
-
-		PageBlock page = new PageBlock(currPage, totalcount, pagesize, blocksize);
-
-		List<ReviewDTO> allfamousline = service.allFamousLine(search, searchtxt, page.getStartRow(), page.getEndRow());
-		System.out.println("!!!!!!!!!!!!!!!allfamousline"+allfamousline);
-		
-		
-		model.addAttribute("page", page);
-		model.addAttribute("allfamousline", allfamousline);
-		model.addAttribute("search", search);
-		model.addAttribute("searchtxt", searchtxt);
-		
-		return "/view.jsp?page=board/famouslinelist";
-	}
-	
-	
-	// 명대사 디테일
-//	@RequestMapping("/moviedetail/{movieCd}/famouslinedetail")
-	@RequestMapping("/famouslinedetail")
-	public String famouslinedetail() {
-		
-		return "/view.jsp?page=board/famouslinedetail";
-	}
-	
-	
 	
 	
 	// 자유 게시판 리스트 페이지(메인)
@@ -364,6 +282,9 @@ public class CommunityController {
 		return "/view.jsp?page=board/userforumdetail";
 		}
 	}
+	
+	
+	
 	// 리뷰 좋아요
 	@PostMapping("/like")
     @ResponseBody
@@ -371,12 +292,7 @@ public class CommunityController {
         
         Map<String, Object> result = new HashMap<String, Object>();
         service.reviewLike(like.getContentno());
-                
-        System.out.println("숫자가 몇 나왔니?"+like.getContentno());
 
-        // 응답 데이터 셋팅
-        result.put("result", "좋아용~~~~~~~~~~~~~~~~~~~~");
-        
         return result;       
     }
 	
@@ -388,11 +304,7 @@ public class CommunityController {
         
         Map<String, Object> result = new HashMap<String, Object>();
         service.reviewDisLike(dislike.getContentno());
-        
-        System.out.println("숫자가 몇 나왔니?"+dislike.getContentno());
-        
-        // 응답 데이터 셋팅
-        result.put("result", "좋아용~~~~~~~~~~~~~~~~~~~~");
+
         
         return result;       
     }

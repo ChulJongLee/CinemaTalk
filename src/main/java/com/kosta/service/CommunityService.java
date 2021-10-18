@@ -19,13 +19,11 @@ public interface CommunityService {
 
 	public List<ReviewDTO> generalReviewList(String movieCd);
 
-//	public List<ReviewDTO> allReview();
 	public List<ReviewDTO> allReview(String movieCd, int startRow, int endRow);
 	
 	public List<ReviewDTO> famousLineList();
 	public List<ReviewDTO> allFamousLine(String search, String searchtxt, int startRow, int endRow);
 	
-//	public ReviewDTO reviewdetail(int contentno);
 	
 	public void reviewLike(int contentno);
 	public void reviewDisLike(int contentno);

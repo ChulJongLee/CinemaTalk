@@ -238,6 +238,10 @@
 	    <div id="writereview">
 	 	   <form action="/moviedetail/${detail.movieCd }/reviewinsertresult" method="post">
 	 	   <div id="writereview2">   	   		   
+	 	      <!-- <div class="form-check form-switch" id="form-switch">	      	   
+		           <label class="form-check-label" for="flexSwitchCheckDefault">스포일러 여부</label>
+		           <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">	                      
+	      	  </div> -->
 	 	 	  <div class="mb-3">
 	 	 	  	  <label for="contentsbox" class="form-label">리뷰등록</label> 			  
 				  <textarea class="form-control" id="contentsbox" name="contents" rows="5" cols="100" placeholder="리뷰를 작성해 주세요." required="required"></textarea>
