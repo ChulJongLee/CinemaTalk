@@ -17,16 +17,6 @@
 
 
 	<div id="myreview">
-<%-- 		<div id="review-wrap">
-			<c:forEach var="item" items="${reviewlist}">
-				<div class="reviewlist">
-					<div class="moviename">
-						<b>${item.title}</b>
-					</div>
-					<div class="content">${item.contents}</div>
-				</div>
-			</c:forEach>
-		</div> --%>
 		
 		 <c:if test="${reviewlist==null}">              		
 	        	자료가 없습니다.

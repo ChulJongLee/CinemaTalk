@@ -1,7 +1,5 @@
 package com.kosta.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -16,13 +14,6 @@ public class UserServiceImple implements UserService {
 	@Autowired @Qualifier("userMapper")
 	private UserMapper mapper;
 
-
-	@Override
-	public List<UserDTO> getlist() {
-		// TODO Auto-generated method stub
-		return mapper.getlist();
-	}
-
 	@Override
 	public int insertUser(UserDTO dto) {
 
@@ -33,7 +24,7 @@ public class UserServiceImple implements UserService {
 
 	@Override
 	public UserDTO getUserDetail(int user_no) {
-		// TODO Auto-generated method stub
+		
 		return mapper.getUserDetail(user_no);
 	}
 

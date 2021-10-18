@@ -30,6 +30,7 @@ public class PersonServiceImple implements PersonService {
 	@Autowired
 	private PersonMapper mapper;
 	
+	//인물 입력
 	@Override
 	public void insertPersonInfo(String keyword) throws OpenAPIFault, Exception {
 		RequestDTO rdto = new RequestDTO();
@@ -43,6 +44,7 @@ public class PersonServiceImple implements PersonService {
 		
 	}
 
+	//인물 정보 출력
 	@Override
 	public PersonInfoDTO getPersonInfo(String peopleCd) {
 		PersonInfoDTO dto = mapper.getPersonInfo(peopleCd);
@@ -56,12 +58,14 @@ public class PersonServiceImple implements PersonService {
 		return dto;
 	}
 
+	//인물 필모 영화코드 출력
 	@Override
 	public String[] getPersonFilmo(String peopleCd) {
 		
 		return mapper.getPersonFilmo(peopleCd);
 	}
 
+	//영화 정보 출력
 	@Override
 	public KobisDTO getMovieFilmo(String movieCd) {
 		KobisDTO dto = mapper.getMovieFilmo(movieCd);
@@ -71,12 +75,14 @@ public class PersonServiceImple implements PersonService {
 		return dto;
 	}
 
+	//연관인물 출력
 	@Override
 	public String[] getRealatedPerson(Map<String, String> hm) {
 		
 		return mapper.getRelatedPerson(hm);
 	}
 
+	//인물 필모 출력
 	@Override
 	public List<KobisDTO> getFilmoList(String peopleCd, int startRow, int pageSize) {
 		HashMap<String, Object> hm = new HashMap<>();
@@ -87,6 +93,7 @@ public class PersonServiceImple implements PersonService {
 		return mapper.getFilmoList(hm);
 	}
 
+	//인물 필모 수 출력
 	@Override
 	public int getFilmoNum(String peopleCd) {
 		

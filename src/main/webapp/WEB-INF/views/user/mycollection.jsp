@@ -24,23 +24,6 @@
 				</div>
 			</c:forEach>
 		</div>
-
-<%-- 		<div id="paging">
-			<c:if test="${page.prev}">
-				<a href="/mypage/mycollection?currPage=${page.startBlock-1}">이전</a>
-			</c:if>
-			<c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock}">
-				<c:if test="${index == page.currPage}">
-					<c:out value="${index}" />
-				</c:if>
-				<c:if test="${index != page.currPage}">
-					<a href="/mypage/mycollection?currPage=${index}"><c:out value="${index}" /></a>
-				</c:if>
-			</c:forEach>
-			<c:if test="${page.next}">
-				<a href="/mypage/mycollection?currPage=${page.endBlock+1}">다음</a>
-			</c:if>
-		</div> --%>
 		
 		<nav aria-label="..." id="paging">
 		<ul class="pagination">	

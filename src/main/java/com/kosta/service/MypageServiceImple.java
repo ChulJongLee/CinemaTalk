@@ -1,6 +1,5 @@
 package com.kosta.service;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,12 +20,14 @@ public class MypageServiceImple implements MypageService {
 	@Autowired
 	private MypageMapper mapper;
 
+	//회원정보 출력
 	@Override
 	public UserDTO getUserInfo(int user_no) {
 		
 		return mapper.getUserInfo(user_no);
 	}
 
+	//영화 총 감상시간
 	@Override
 	public double getTotalHour(int user_no) {
 		
@@ -42,6 +43,7 @@ public class MypageServiceImple implements MypageService {
 		
 	}
 	
+	//나의 콜렉션
 	@Override
 	public List<KobisDTO> getMyCollection(int user_no) {
 		
@@ -54,16 +56,19 @@ public class MypageServiceImple implements MypageService {
 		return movielist;
 	}
 
+	//나의 리뷰
 	@Override
 	public List<ReviewDTO> getMyReview(int user_no) {
 		 
 		return mapper.getMyReview(user_no);		
 	}
 
+	//평점 개수 출력
 	@Override
 	public int[] getRates(int user_no) {
 		Map<String, Object> hm = new HashMap<>();
 		hm.put("user_no", user_no);
+		
 		int[] arr = new int[10];
 		int cnt = 0;
 		for(double i = 0.5; i <= 5; i +=0.5) {
@@ -75,12 +80,14 @@ public class MypageServiceImple implements MypageService {
 		return arr;
 	}
 
+	//평점 평균
 	@Override
 	public RateDTO getRateStatistic(int user_no) {
 		
 		return mapper.getRateStatistic(user_no);
 	}
 
+	//선호 배우
 	@Override
 	public List<PersonInfoDTO> getFavActor(int user_no) {
 		
@@ -93,6 +100,7 @@ public class MypageServiceImple implements MypageService {
 		return actorinfolist;
 	}
 
+	//선호 감독
 	@Override
 	public List<PersonInfoDTO> getFavDirector(int user_no) {
 		
@@ -105,18 +113,21 @@ public class MypageServiceImple implements MypageService {
 		return directorinfolist;
 	}
 
+	//선호 장르
 	@Override
 	public List<KobisDTO> getFavGenre(int user_no) {
 		
 		return mapper.getFavGenre(user_no);
 	}
 
+	//선호 국가
 	@Override
 	public List<KobisDTO> getFavNation(int user_no) {
 		
 		return mapper.getFavNation(user_no);
 	}
 
+	//마이 컬렉션 리스트
 	@Override
 	public List<KobisDTO> getEveryCollection(int user_no, int startRow, int pageSize) {
 		
@@ -134,6 +145,7 @@ public class MypageServiceImple implements MypageService {
 		return collectionlist;
 	}
 
+	//마이 리뷰 리스트
 	@Override
 	public List<ReviewDTO> getEveryReview(int user_no, int startRow, int pageSize) {
 		
@@ -145,12 +157,14 @@ public class MypageServiceImple implements MypageService {
 		return mapper.getEveryReview(hm);
 	}
 
+	//마이 컬렉션 수 
 	@Override
 	public int collectionCount(int user_no) {
 		
 		return mapper.collectionCount(user_no);
 	}
 
+	//마이 리뷰 수
 	@Override
 	public int reviewCount(int user_no) {
 		

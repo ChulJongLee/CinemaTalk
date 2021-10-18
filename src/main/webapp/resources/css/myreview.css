@@ -16,7 +16,6 @@
 	margin: 0px auto;
 	margin-top: 80px;
 	color: white;
-/* 	align-items: center; */
 }
 
 
@@ -47,11 +46,13 @@
 	width: 70%;
 	padding-left: 10px;
 }
+
 #date{
 	width: 30%;
 	text-align: right;
 	padding-right: 10px;
 }
+
 .content{
 	width: 100%;
 	height: 200px;
@@ -60,13 +61,16 @@
 	padding: 10px;
 	white-space: pre-wrap;
 }
+
 .content::-webkit-scrollbar {
 	width: 10px;
 }
+
 .content::-webkit-scrollbar-thumb{
 	background-color: darkolivegreen;
 	border-radius: 10px;
 }
+
 .content::-webkit-scrollbar-track{
 	background-color: #212121;
 }
@@ -76,6 +80,7 @@
 	text-align: center;
 
 }
+
 .likebtn, .dislikebtn{
 	border: none;
 	background-color: #212121;
@@ -85,22 +90,27 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
+
 #likebtn2:hover{
 	color: #3498db;
 }
+
 #dislikebtn2:hover{
 	color: #f1c40f;
 }
+
 #report{
 	width: 60%;
 	text-align: right;
 }
+
 .reportbtn{
 	border: none;
 	background-color: #212121;
 	color: white;
 	font-size: small;
 }
+
 #reportbtn2:hover{
 	color: red;
 }
@@ -111,14 +121,14 @@
 	flex-direction: row;
 	width: 100%;
 }
+
 #modifycheck{
 	width: 7%;
-	/* border: 1px solid red; */
 	text-align: center;
 }
+
 #modifyreturn{
 	width: 7%;
-	/* border: 1px solid red; */
 	text-align: center;
 }
 
@@ -126,14 +136,14 @@
 	width: 93%;
 	margin: 0px;
 	text-align: right;
-	/* border: 1px solid red; */
 }
+
 #delete{
 	width: 7%;
 	text-align: center;
-	/* border: 1px solid red; */
 	margin: 0px;
 }
+
 .modifycheckbtn, .modifyreturnbtn, .modifybtn, .deletebtn{
 	background-color: #212121;
 	height: 3px;
@@ -141,7 +151,6 @@
 }
 
 #form-switch{
-	/* border: 2px solid green; */
 	width: 40%;	
 }
 #submitbtn{

@@ -26,7 +26,7 @@ public class CrawlPersonInfoImple implements CrawlPersonInfo {
 		Document doc = conn.post();	
 
 		int totalCount = Integer.parseInt(doc.select("em.fwb").get(0).text().replace(",", ""));
-		System.out.println("totalcount...."+totalCount);
+
 		try {
 
 			//totalCount로 페이지 수 계산(totalCount / 10) + 1

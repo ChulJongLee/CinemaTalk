@@ -30,35 +30,8 @@
 				<div><img src="/resources/img/time.png" width="50px"></div>
 				<div>${watchHour}시간</div>
 			</div>
-			<!-- <div>회원등급 사용하나..?</div> -->
-		</div>
-<%-- 		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>${userdto.user_id}</th>
-					<th>${userdto.user_grade_no}</th>
-					<th>${user_no}</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td rowspan="2">프로필 사진</td>
-					<td>이름</td>
-					<td>등급이미지</td>
-					<td>포인트이미지</td>
-					<td>영화시청시간</td>
-				</tr>
-				<tr>
+	</div>
 
-					<td><a href="/mypage/modifyprofile">회원정보 수정</a></td>
-					<td>영화의 신</td>
-					<td>${userdto.user_point}포인트</td>
-					<td>${user.user_id}시간</td>
-				</tr>
-			</tbody>
-		</table> --%>
 	</div>
 	
 	<div id="myCollection">
@@ -187,6 +160,5 @@
         		}
         	});
 </script>       
-<script src="/resources/js/main.js"></script>
 </body>
 </html>

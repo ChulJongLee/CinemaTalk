@@ -272,7 +272,7 @@ public class KobisAPIImple implements KobisAPI {
 	@Override
 	public List<PersonInfoDTO> requestPersonList(RequestDTO rdto) throws OpenAPIFault, Exception {
 		List<PersonInfoDTO> result = new ArrayList<>();
-		//******여기 수정하면 됨!!!
+		//입력 구간
 		int a = 780;
 		for(int i = 751 ; i < a+1 ; i++) {
 			rdto.setCurPage(String.valueOf(i));
@@ -281,7 +281,7 @@ public class KobisAPIImple implements KobisAPI {
 			for(PersonInfoDTO item : list) {
 				result.add(item);
 			}
-			System.out.println("result...."+result.size());
+//			System.out.println("result...."+result.size());
 		}
 
 		return result;
@@ -292,21 +292,21 @@ public class KobisAPIImple implements KobisAPI {
 		KobisOpenAPIRestService kobisService = new KobisOpenAPIRestService(rdto.getKobiskey());
 
 		String peoplelistresult = kobisService.getPeopleList(true, rdto.getCurPage(), rdto.getItemPerPage(), rdto.getPeopleNm(), "");
-		//		System.out.println(peoplelistresult);
+		
 
 		Gson gson = new Gson();
 		JsonObject obj = gson.fromJson(peoplelistresult, JsonObject.class);
 		PersonResponseDTO dto = gson.fromJson(obj.getAsJsonObject("peopleListResult").toString(), PersonResponseDTO.class);
 
 		List<PersonInfoDTO> list = dto.getPeopleList();
-		//		System.out.println("제거전..."+list.size());
+		
 		for(int i = 0 ; i < list.size() ; i++) {
 			if(!list.get(i).getRepRoleNm().equals("배우") && !list.get(i).getRepRoleNm().equals("감독")) {
 				list.remove(i);
 				i--;
 			}		
 		}
-		//		System.out.println("제거후..."+list.size());
+		
 		return list;
 	}
 

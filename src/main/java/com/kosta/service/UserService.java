@@ -6,7 +6,6 @@ import com.kosta.dto.UserDTO;
  
 public interface UserService {
 	
-	public List<UserDTO> getlist();
 	//회원가입
 	public int insertUser(UserDTO dto);
 	//회원정보

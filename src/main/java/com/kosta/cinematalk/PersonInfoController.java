@@ -27,7 +27,7 @@ public class PersonInfoController {
 	
 	@GetMapping("/personsrc")
 	public String srcPerson() {
-		return "/view.jsp?page=personsearch";
+		return "/view.jsp?page=movie/personsearch";
 	}
 	
 	@GetMapping("/personsrcresult")
@@ -36,7 +36,7 @@ public class PersonInfoController {
 		String keyword = "";
 		personService.insertPersonInfo(keyword);
 
-		return "/view.jsp?page=personsearchresult";
+		return "/view.jsp?page=movie/personsearchresult";
 	}
 	
 	@GetMapping("/personinfo/{peopleCd}")
@@ -86,6 +86,6 @@ public class PersonInfoController {
 		model.addAttribute("list", list);
 		model.addAttribute("list2", list2);
 		model.addAttribute("page", page);
-		return "/view.jsp?page=personinfo";
+		return "/view.jsp?page=movie/personinfo";
 	}
 }

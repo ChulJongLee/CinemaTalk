@@ -38,7 +38,4 @@ public interface MypageService {
 
 	public int reviewCount(int user_no);
 
-
-
-
 }
