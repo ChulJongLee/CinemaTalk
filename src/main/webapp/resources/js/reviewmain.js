@@ -56,7 +56,7 @@ $('.deletebtn').click(function(){
 });
 
 
-
+// 수정하기
 $(document).ready(function(){
 	$('#staticBackdrop').on('shown.bs.modal', function(e){
 	
@@ -68,7 +68,6 @@ $(document).ready(function(){
 		  
 		  var no = $(recip).parent().parent().siblings('.contentnodistinct').attr('value');
 		  console.log("contentno:"+no);
-		  // 변수 순서도 중요하다. 아니 근데 var는 호이스팅이 되는거 아닌가?
 		  
 		  
 		 let m=$(this);
@@ -77,7 +76,7 @@ $(document).ready(function(){
 	});
 });
 
-
+// 신고하기
 $(document).ready(function(){
 	$('#staticBackdrop1').on('shown.bs.modal', function(e){
 		

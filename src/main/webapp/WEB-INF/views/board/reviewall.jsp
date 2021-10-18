@@ -20,9 +20,11 @@
 		 	<ul id="contentslist">
 				<c:forEach var="list" items="${allreview }">
 					<li id="contents">
+						<input type="hidden" value="${list.contentno }" class="contentnodistinct">
 						<div id="id">${list.userid }</div>
 						<div id="date">${list.writedate }</div>
-						<div id="content">${list.contents }</div>
+						
+						<div class="content">${list.contents }</div>
 
 
 						<c:if test="${sessionScope.user.user_id!=null}">
@@ -92,12 +94,12 @@
 		        <h5 class="modal-title" id="staticBackdropLabel" style="color: black;">리뷰 수정</h5>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
- 		      <form action="/moviedetail/${detail.movieCd }/reviewmodify" method="post">
+ 		      <form action="/moviedetail/${movieCd}/reviewmodify" method="post">
 		      <div class="modal-body">	         
  		   	 	<input type="hidden" value="${sessionScope.user.user_no}" name="userno">
 		   	 	<input type="hidden" name="contentno"  class="contentval">   	 	
 		    	<label for="modaltext">리뷰</label>
-		    	<textarea id="modaltext" name="contents" rows="10" cols="56"></textarea>			    	
+		    	<textarea id="modaltext" name="contents" rows="10" cols="50"></textarea>			    	
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">취소</button>
@@ -117,7 +119,7 @@
 		        <h5 class="modal-title" id="staticBackdropLabel" style="color: black;">신고하기</h5>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
- 		      <form action="/moviedetail/${detail.movieCd }/reviewreport" method="post">
+ 		      <form action="/moviedetail/${movieCd}/reviewreport" method="post">
 		      <div class="modal-body">	         
 		   	 	<input type="hidden" name="contentno" class="contentval">   	 	
 		   	 	

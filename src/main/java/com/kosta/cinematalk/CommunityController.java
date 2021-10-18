@@ -71,7 +71,7 @@ public class CommunityController {
 	
 	// 리뷰 신고
 	@RequestMapping("/moviedetail/{movieCd}/reviewreport")
-	public String reviewreport(@RequestParam HashMap<String, Object> hm) {
+	public String reviewreport(@PathVariable String movieCd, @RequestParam HashMap<String, Object> hm) {
 
 		List<ReportDTO> reportlist = service.reportsearch(hm);
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%% reportsearch: "+reportlist);

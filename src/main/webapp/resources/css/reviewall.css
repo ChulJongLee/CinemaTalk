@@ -35,7 +35,7 @@ section{
 	font-size: 18px;
 }
 
-#id, #date, #content, #like, #dislike, #report{
+#id, #date, .content, #like, #dislike, #report{
 	border: 2px solid yellow;
 }
 
@@ -45,7 +45,7 @@ section{
 	overflow: hidden;
 	margin: 10px 0px;
 } */
-#content{
+.content{
 	width: 100%;
 	height: 200px;
 	overflow-y: scroll;
@@ -53,14 +53,14 @@ section{
 	padding-right: 10px;
 	white-space: pre-wrap;
 }
-#content::-webkit-scrollbar {
+.content::-webkit-scrollbar {
 	width: 10px;
 }
-#content::-webkit-scrollbar-thumb{
+.content::-webkit-scrollbar-thumb{
 	background-color: darkolivegreen;
 	border-radius: 10px;
 }
-#content::-webkit-scrollbar-track{
+.#content::-webkit-scrollbar-track{
 	background-color: #212121;
 }
 #id{
@@ -122,7 +122,7 @@ section{
 }
 
 #modify{
-	width: 79%;
+	width: 93%;
 	margin: 0px;
 	text-align: right;
 	border: 1px solid red;
