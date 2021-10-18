@@ -91,9 +91,14 @@ public class CommunityServiceImple implements CommunityService {
 
 
 	@Override
-	public List<UserforumDTO> allUserForum() {
+	public List<UserforumDTO> getBestUserforms(String movieCd) {
 		
-		return mapper.getalluserforum();
+		return mapper.getbestuserforms(movieCd);
+	}
+	@Override
+	public List<UserforumDTO> getWorstUserforms(String movieCd) {
+		
+		return mapper.getworstuserforms(movieCd);
 	}
 	
 	@Override

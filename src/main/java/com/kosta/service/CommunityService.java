@@ -41,7 +41,8 @@ public interface CommunityService {
 
 	public void reviewreportupdate(HashMap<String, Object> hm);
 
-	public List<UserforumDTO> allUserForum();
+	public List<UserforumDTO> getWorstUserforms(String movieCd);
+	public List<UserforumDTO> getBestUserforms(String movieCd);
 	public List<UserforumDTO> allUserForum(String movieCd, int startRow, int pageSize);
 	public UserforumDTO userforumdetail(int contentno);
 	public int userforumInsert(UserforumDTO dto);

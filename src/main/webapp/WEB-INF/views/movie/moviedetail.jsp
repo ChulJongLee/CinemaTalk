@@ -62,8 +62,8 @@
 			   <li class="blank_li"></li>
 			   <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">리뷰</a></li>
 			   <li class="blank_li"></li>
-			   <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">참여게시판</a></li>
-			   <li class="blank_li"></li>
+			  <!--  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">참여게시판</a></li>
+			   <li class="blank_li"></li> -->
 			   <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">자유게시판</a></li>
 			  </ul>
 		
@@ -71,8 +71,8 @@
 			  <div class="tab-content">
 			   <div role="tabpanel" class="tab-pane active" id="home2"><%@ include file="movieinfo.jsp" %></div>
 			   <div role="tabpanel" class="tab-pane" id="profile"><%@ include file="/WEB-INF/views/board/reviewmain.jsp" %></div>
-			   <div role="tabpanel" class="tab-pane" id="messages"><%@ include file="/WEB-INF/views/board/bestscenemain.jsp" %></div>
-			   <div role="tabpanel" class="tab-pane" id="settings"><%@ include file="/WEB-INF/views/board/userforumlist.jsp" %></div>
+			   <%-- <div role="tabpanel" class="tab-pane" id="messages"><%@ include file="/WEB-INF/views/board/bestscenemain.jsp" %></div> --%>
+			   <div role="tabpanel" class="tab-pane" id="settings"><%@ include file="/WEB-INF/views/board/userforumMain.jsp" %></div>
 			  
 			  </div>
 			

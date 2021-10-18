@@ -45,7 +45,8 @@ public interface CommunityMapper {
 	public int reviewreportupdate(HashMap<String, Object> hm);
 
 	
-	public List<UserforumDTO> getalluserforum();
+	public List<UserforumDTO> getworstuserforms(String movieCd);
+	public List<UserforumDTO> getbestuserforms(String movieCd);
 	public List<UserforumDTO> allUserForum(HashMap<String, Object> hm);
 	public UserforumDTO userforumdetail(int contentno);
 	public int userforuminsert(UserforumDTO dto);

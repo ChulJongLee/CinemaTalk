@@ -23,6 +23,7 @@ import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.dto.UserDTO;
+import com.kosta.dto.UserforumDTO;
 import com.kosta.service.CommunityService;
 import com.kosta.service.MovieService;
 
@@ -119,7 +120,13 @@ public class MovieController {
 		// 일반 리뷰 4개
 		List<ReviewDTO> generalreviewlist = communityService.generalReviewList(movieCd);
 		model.addAttribute("generalreviewlist", generalreviewlist);
-		
+		// 베스트 게시글
+		List<UserforumDTO> bestUserforumList = communityService.getBestUserforms(movieCd);
+		model.addAttribute("bestUserforumList", bestUserforumList);
+		// 워스트 게시글
+		List<UserforumDTO> worstUserforumList = communityService.getWorstUserforms(movieCd);
+		model.addAttribute("worstUserforumList", worstUserforumList);
+				
 		return "/view.jsp?page=movie/moviedetail";
 	}
 	

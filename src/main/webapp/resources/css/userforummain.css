@@ -1,0 +1,189 @@
+@charset "UTF-8";
+
+body{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* 리뷰 게시판*/
+#bestforumbtn{	/* 베스트 리뷰 버튼 */
+	margin: 20px 50px;
+	color: white;
+}
+#bestNworst{	/* 베스트 리뷰 */
+    /* border: 2px solid orange; */
+    margin: 0px auto;
+    font-size: 18px;
+    display: flex;
+}
+
+/* 리뷰 테이블 정렬 */
+.forumList{
+	/* border: 2px solid purple; */
+    display: inline-block;
+    color: white;
+    width: 460px;
+    margin: 0px auto;
+}
+
+#forum_contentslist{
+	/* border: 2px solid green; */
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	list-style: none;
+	padding-left: 0;
+	width: 450px;
+}
+
+.forum_contents{
+	/* border: 2px solid blue; */
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	width: 400px;
+	margin: 20px 0px;
+}
+.forumImg{
+	width:380px;
+	height: 200px;
+}
+.title{
+	width: 100%;
+    font-weight: 600;
+    font-size: 20px;
+}
+.user_id, .content_date{
+	display: inline-block;
+}
+
+.user_id{
+	width: 70%;
+}
+.content_date{
+	width: 30%;
+	text-align: right;
+}
+.forum_content{
+	width: 100%;
+    height: 100px;
+	margin: 10px 0px;
+	padding-right: 10px;
+	white-space: pre-wrap;
+}
+.content::-webkit-scrollbar {
+	width: 10px;
+}
+.content::-webkit-scrollbar-thumb{
+	background-color: darkolivegreen;
+	border-radius: 10px;
+}
+.content::-webkit-scrollbar-track{
+	background-color: #212121;
+}
+
+#like, #dislike{
+	width: 20%;
+	text-align: center;
+
+}
+.likebtn, .dislikebtn{
+	border: none;
+	background-color: #212121;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+#likebtn2:hover{
+	color: #3498db;
+}
+#dislikebtn2:hover{
+	color: #f1c40f;
+}
+#report{
+	width: 60%;
+	text-align: right;
+}
+.reportbtn{
+	border: none;
+	background-color: #212121;
+	color: white;
+	font-size: small;
+}
+#reportbtn2:hover{
+	color: red;
+}
+
+#contentedit{
+	border: 2px solid green;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+#modifycheck{
+	width: 7%;
+	border: 1px solid red;
+	text-align: center;
+}
+#modifyreturn{
+	width: 7%;
+	border: 1px solid red;
+	text-align: center;
+}
+
+#modify{
+	width: 93%;
+	margin: 0px;
+	text-align: right;
+	border: 1px solid red;
+}
+#delete{
+	width: 7%;
+	text-align: center;
+	border: 1px solid red;
+	margin: 0px;
+}
+.modifycheckbtn, .modifyreturnbtn, .modifybtn, .deletebtn{
+	background-color: #212121;
+	height: 3px;
+	color: black;
+}
+
+
+/* 모든 리뷰 보기 버튼*/
+#userforumallbtn{
+	display: flex;
+	justify-content: center;
+	font-size: 20px;
+	margin-bottom: 30px;
+}
+
+.form-label{
+    border: 2px solid yellow;
+}
+#form-switch{
+	border: 2px solid green;
+	width: 40%;	
+}
+#submitbtn{
+	height: 40px;
+	font-size: 18px;
+}
+#modaltext{
+	color: black;
+}
+#writebtn{
+    display: flex;
+    justify-content: end;
+}
+.updown {
+    	border: 0.1px dotted white;
+        width: 0.1px;
+}
+
