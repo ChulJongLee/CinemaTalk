@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -144,12 +142,6 @@ public class MovieController {
 		movieRateData.setUser_no(user.getUser_no());
 		Map<String, Object> result = new HashMap<String, Object>();
         movieService.movieRate(movieRateData);
-        
-        
-//        System.out.println(movieRateData.getMovieCd());
-//        System.out.println(movieRateData.getRate());
-//      System.out.println(testVo.getUser_no());
-
         // 응답 데이터 셋팅
         result.put("result", "평점 주기 완료");
         

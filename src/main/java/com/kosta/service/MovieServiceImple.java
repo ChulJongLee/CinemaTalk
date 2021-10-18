@@ -43,10 +43,10 @@ public class MovieServiceImple implements MovieService {
 		KobisAPI kobisAPI = new KobisAPIImple();
 		List<KobisDTO> list = kobisAPI.requestMovieList(rdto);
 		if (list.size() != 0) {
-			System.out.println("size...." + list.size());
+//			System.out.println("size...." + list.size());
 			mapper.insertmovie(list);
 		} else {
-			System.out.println("에러발생");
+//			System.out.println("에러발생");
 		}
 	}
 

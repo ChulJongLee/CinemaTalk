@@ -36,7 +36,7 @@ public class KobisAPIImple implements KobisAPI {
 		}
 		Gson gson = new Gson();
 		JsonObject obj = gson.fromJson(listResponse, JsonObject.class);
-		System.out.println("getMovieList obj" + obj);
+//		System.out.println("getMovieList obj" + obj);
 		KobisResponseDTO dto = gson.fromJson(obj.getAsJsonObject("movieListResult").toString(), KobisResponseDTO.class);
 		List<KobisDTO> list = dto.getMovieList();
 		return list;
@@ -63,7 +63,7 @@ public class KobisAPIImple implements KobisAPI {
 			rdto.setMovieCd(kobis.getMovieCd());
 			KobisDTO detail = getMovieDetail(rdto);
 			if (detail == null) {
-				System.out.println("detail은 null입니다.");
+//				System.out.println("detail은 null입니다.");
 				break;
 			}else {
 

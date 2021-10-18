@@ -7,14 +7,12 @@
 $('.forum_likebtn').click(function() {
 	
 	var params = { content_no : $(this).attr('value') }
-	console.log("params: "+params);
 	
 	$.ajax({
 		type : "POST",
 		url : "/forumlike",
 		data : params,
 		success : function(res) {
-
 			location.reload();	
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -29,14 +27,12 @@ $('.forum_likebtn').click(function() {
 $('.forum_dislikebtn').click(function() {
 
 	var params2 = { content_no : $(this).attr('value') }
-	console.log("params12: "+params2);
 	
 	$.ajax({
 		type : "POST",
 		url : "/forumdislike",
 		data : params2,
 		success : function(res) {
-
 			location.reload(res.result);	
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -47,15 +43,9 @@ $('.forum_dislikebtn').click(function() {
 
 $(document).ready(function(){
 	$('#staticBackdrop2').on('shown.bs.modal', function(e){
-		
-		  var recip=$(e.relatedTarget);
-		  console.log("recip:"+recip);
- 
-		  var no = $(recip).parent().siblings('.contentnodistinct').attr('value');
-		  console.log("contentno:"+no);
-  
+		 var recip=$(e.relatedTarget);
+		 var no = $(recip).parent().siblings('.contentnodistinct').attr('value');
 		 let m=$(this);
-		  m.find('.contentval').val(no);
+		 m.find('.contentval').val(no);
 	});
 });	
-	  

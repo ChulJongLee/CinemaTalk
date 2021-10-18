@@ -1,19 +1,18 @@
 @charset "UTF-8";
 
 #ufsection{
-    border: 2px solid orange;
+    /* border: 2px solid orange; */
     width: 1300px;
     margin: 0px auto;
 }
 
 #userforumwrap{
-	border: 2px solid blue;
+	/* border: 2px solid blue; */
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: center;
 	margin: 0px auto;
-	width: 80%;
+	width: 60%;
 	color: white;
 }
 
@@ -60,15 +59,14 @@
 	width: 100%;
 	padding-left: 0;
 }
+
 #userforumlist{
-/* 	border: 1px solid white;
- */	display: flex;
+	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: center;
 	width: 100%;
-	text-align: center;
 	margin: 8px 0px;
+	margin-bottom: 30px;
 }
 #ufnumber{
 /* 	border: 1px solid yellow;
@@ -90,7 +88,7 @@
 
 /* 글쓰기 버튼 */
 #writebtn{
-	border: 1px solid green;
+	/* border: 1px solid green; */
 	display: flex;
 	justify-content: flex-end;
 	width: 80%;
@@ -102,4 +100,47 @@
 	display: flex;
 	justify-content: center;
 }
- 
+.forum_list_img{
+    width: 100px;
+    height: 80px;
+    cursor: pointer;
+}
+
+/* 좋아요, 싫어요, 신고 버튼  */
+ #forum_like, #forum_dislike{
+	width: 20%;
+	text-align: center;
+
+}
+#forum_likebtn2:hover{
+	color: #3498db;
+}
+#forum_dislikebtn2:hover{
+	color: #f1c40f;
+}
+
+.forum_likebtn, .forum_dislikebtn, .forum_reportbtn{
+	border: none;
+	background-color: #212121;
+	color: white;
+	font-size: small;
+    height: 30px;
+    width: 60px;
+}
+#forum_reportbtn2:hover{
+	color: red;
+}
+.fucntionBtn{
+	border: none;
+	background-color: #212121;
+	color: white;
+	display: flex;
+	flex-direction: row;
+    flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	
+	/* 수정해야함 */
+    position: relative;
+    left: 200px;
+}

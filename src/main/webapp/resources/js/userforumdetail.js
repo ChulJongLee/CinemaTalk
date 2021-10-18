@@ -3,10 +3,6 @@
  */
 
 
-$('#userforuminsert').click(function(){
-    location.href="userforuminsert";		
-});
-
 // 좋아요 버튼
 $('.forum_likebtn').click(function() {
 	
@@ -46,7 +42,7 @@ $('.forum_dislikebtn').click(function() {
 });
 
 $(document).ready(function(){
-	$('#staticBackdrop3').on('shown.bs.modal', function(e){
+	$('#staticBackdrop4').on('shown.bs.modal', function(e){
 		 var recip=$(e.relatedTarget);
 		 var no = $(recip).parent().siblings('.contentnodistinct').attr('value');
 		 let m=$(this);
