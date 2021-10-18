@@ -64,7 +64,14 @@ public class CommunityController {
 		return "redirect:/moviedetail/{movieCd}";
 	}
 	
-	
+	// 마이페이지 리뷰 수정
+	@RequestMapping("/mypage/reviewmodify/{movieCd}")
+	public String mypagereviewmodify(@RequestParam HashMap<String, Object> hm) {
+		
+		service.reviewmodify(hm);
+		
+		return "redirect:/mypage/myreview";
+	}
 	
 	
 	// 리뷰 신고
@@ -81,7 +88,19 @@ public class CommunityController {
 		return "redirect:/moviedetail/{movieCd}";
 	}
 	
-	
+	// 마이페지리뷰 신고
+	@RequestMapping("/mypage/reviewreport/{movieCd}")
+	public String mypagereviewreport(@PathVariable String movieCd, @RequestParam HashMap<String, Object> hm) {
+
+		List<ReportDTO> reportlist = service.reportsearch(hm);
+		
+		if(reportlist.isEmpty()) {
+			service.reviewreport(hm);
+		}else{
+			service.reviewreportupdate(hm);		
+		}	
+		return "redirect:/mypage/myreview";
+	}
 	
 	// 리뷰 전체 리스트
 	@RequestMapping("/moviedetail/{movieCd}/reviewall")

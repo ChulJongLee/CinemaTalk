@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <!-- chart.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 <link rel="stylesheet" href="/resources/css/mypagemain.css">
 </head>
 <body>
@@ -48,16 +49,111 @@
 	
 	<div id="myReview">
 		<div class="p-wrapper"><p align="center"><a href="/mypage/myreview"><b>나의 리뷰</b></a></p></div>
-		<div id="reviewlist-wrapper">
-		<c:forEach var="item" items="${reviewlist}">
-			<div class="reviewlist">
-					<div class="movtitle"><b>${item.title}</b></div>
-					<div class="revcontent">${item.contents}</div>
-			</div>
-		</c:forEach>
+		<ul id="reviewlist">
+		<c:forEach var="list" items="${reviewlist}">
+			<!-- <div class="reviewlist"> -->
+					<%-- <div class="movtitle"><b>${item.title}</b></div>
+					<div class="revcontent">${item.contents}</div> --%>
+					
+					<li id="contents">
+						<input type="hidden" value="${list.contentno}" class="contentnodistinct">
+						<div id="id">${list.title}</div>
+						<div id="date">${list.writedate}</div>
+						
+						<div class="content">${list.contents}</div>
+
+						<div id="like">
+							<button class="likebtn" value="${list.contentno}">
+								<div>
+									<i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i>
+								</div>
+								<div>${list.like}</div>
+							</button>
+						</div>
+						<div id="dislike">
+							<button class="dislikebtn" value="${list.contentno}">
+								<div>
+									<i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i>
+								</div>
+								<div>${list.dislike}</div>
+							</button>
+						</div>
+						<div id="report">
+							<button type="button" class="reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" data-bs-whatever="t">
+								<i class="fas fa-flag" id="reportbtn2"></i> 신고
+							</button>
+						</div>
+						<div id="contentedit">
+							<div id="modify">
+								<button type="button" class="modifybtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-whatever="t">
+									<i class="fas fa-edit"></i>
+								</button>
+							</div>
+							<div id="delete">
+								<button class="deletebtn" value="${list.contentno}"> <i class="fas fa-times"></i></button>
+							</div>
+						</div>
+					</li>		
+			<!-- </div> -->
+						<!-- 리뷰 수정 Modal -->
+  		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="staticBackdropLabel" style="color: black;">리뷰 수정</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+ 		      <form action="/mypage/reviewmodify/{movieCd}" method="post">
+		      <div class="modal-body">	         
+ 		   	 	<input type="hidden" value="${sessionScope.user.user_no}" name="userno">
+		   	 	<input type="hidden" name="contentno"  class="contentval">   	 	
+		    	<label for="modaltext">리뷰</label>
+		    	<textarea id="modaltext" name="contents" rows="10" cols="50"></textarea>			    	
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">취소</button>
+		        <button type="submit" class="btn btn-primary">수정하기</button>		        
+		      </div>
+		      </form>
+		    </div>
+		  </div>
 		</div>
+		
+		
+		<!-- 리뷰 신고 Modal -->
+  		<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="staticBackdropLabel" style="color: black;">신고하기</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+ 		      <form action="/mypage/reviewreport/{movieCd}" method="post">
+		      <div class="modal-body">	         
+		   	 	<input type="hidden" name="contentno" class="contentval">   	 	
+		   	 	
+		    	<input type="radio" name="reportreason" id="f1" value="ad">
+	            <label for="f1" style="color: black">광고 및 도배</label><br>
+	            <input type="radio" name="reportreason" id="f2" value="curse">
+	            <label for="f2" style="color: black">욕설</label><br>
+	            <input type="radio" name="reportreason" id="f3" value="spoiler">
+	            <label for="f3" style="color: black">스포일러 노출</label><br>		    	
+	            
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">취소</button>
+		        <button type="submit" class="btn btn-primary">신고하기</button>		        
+		      </div>
+		      </form>
+		    </div>
+		  </div>
+		</div>
+		</c:forEach>
+		</ul>
 	</div>
 	
+
+		
 	<div id="rate_statistics">
 		<div class="p-wrapper"><p align="center"><b>별점 분포</b></p></div>
 		<div id="canvas-wrapper"><canvas id="myChart" width="900px" height="300px"></canvas></div>
@@ -158,6 +254,7 @@
         			},
         		}
         	});
-</script>       
+</script>  
+<script src="/resources/js/mypagemain.js"></script>     
 </body>
 </html>

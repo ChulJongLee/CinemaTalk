@@ -35,7 +35,7 @@
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	width: 40%;
-	margin: 20px 0px;
+	margin-top: 60px;
 }
 
 #id, #date, .content, #like, #dislike, #report{
@@ -162,10 +162,12 @@
 }
 
 #pag{
-	margin: 50px auto;
+	margin: 0px auto;
+	margin-top: 50px;
 	text-align: center;
 }
 
 #paging{
 	display: inline-block;
+	margin-bottom: 50px;
 }

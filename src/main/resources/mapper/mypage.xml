@@ -42,15 +42,18 @@
 		<result property="like" column="content_like"/>
 		<result property="dislike" column="content_hate"/>
 		<result property="userid" column="user_id" />
+		<result property="movieCd" column="movieCd" />
 	</resultMap>
 
 	<select id="getMyReview" parameterType="int" resultMap="review">
-		select movieNm, content_content, content_no
+		select movieNm, content_content, content_no, content_date, content_like, content_hate, user_id, c.movieCd movieCd
 		from comm_board c inner join movie_info m
 		on c.movieCd = m.movieCd
-		where user_no = #{user_no} and board_distinct_no = "1"
+		inner join user_info u
+		on c.user_no = u.user_no
+		where c.user_no = #{user_no} and board_distinct_no = 1
 		order by content_no DESC
-		limit 0, 3
+		limit 0, 2
 	</select>
 
 	<resultMap type="com.kosta.dto.RateDTO" id="rateStatistic">
@@ -139,7 +142,7 @@
 	</select>
 
 	<select id="getEveryReview" parameterType="java.util.HashMap" resultMap="review">
-		select movieNm, content_content, content_no, content_date, content_like, content_hate, user_id
+		select movieNm, content_content, content_no, content_date, content_like, content_hate, user_id, c.movieCd movieCd
 		from comm_board c inner join movie_info m
 		on c.movieCd = m.movieCd
 		inner join user_info u
