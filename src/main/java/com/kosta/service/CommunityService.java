@@ -38,6 +38,7 @@ public interface CommunityService {
 	public void reviewreport(HashMap<String, Object> hm);
 
 	public List<ReportDTO> reportsearch(HashMap<String, Object> hm);
+	public List<ReportDTO> getReportList(int startRow, int pageSize);
 
 	public void reviewreportupdate(HashMap<String, Object> hm);
 
@@ -48,6 +49,9 @@ public interface CommunityService {
 	public int userforumInsert(UserforumDTO dto);
 
 	public void userforumModify(UserforumDTO dto);
+
+	public int getReportCount();
+
 
 	
 

@@ -184,7 +184,19 @@
 	from report
 	where content_no = #{contentno} and report_content = #{reportreason}
 </select>
+<!-- 신고 전체 조회 -->
+<select id="getreportlist" parameterMap="hashmap" resultMap="reportdto">
+	select report_no, content_no, report_content, report_count
+	from report
+	order by report_no DESC
+	limit #{startRow}, #{pageSize}
+</select>
 
+<!-- 신고 갯수 조회-->
+<select id="getreportcount" resultType="int">
+	select count(*)
+	from report
+</select>
 <insert id="reviewreport" parameterMap="hashmap">
 	insert into report (content_no, report_content, report_count)
 	values(#{contentno}, #{reportreason}, 1)

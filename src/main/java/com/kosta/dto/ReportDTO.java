@@ -1,5 +1,9 @@
 package com.kosta.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter @Getter
 public class ReportDTO {
 	
 	private int reportno;

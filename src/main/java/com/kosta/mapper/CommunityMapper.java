@@ -41,6 +41,7 @@ public interface CommunityMapper {
 	public int reviewreport(HashMap<String, Object> hm);
 
 	public List<ReportDTO> reportsearch(HashMap<String, Object> hm);
+	public List<ReportDTO> getreportlist(HashMap<String, Object> hm);
 
 	public int reviewreportupdate(HashMap<String, Object> hm);
 
@@ -52,6 +53,9 @@ public interface CommunityMapper {
 	public int userforuminsert(UserforumDTO dto);
 
 	public void userforummodify(UserforumDTO dto);
+
+	public int getreportcount();
+
 	
 
 	

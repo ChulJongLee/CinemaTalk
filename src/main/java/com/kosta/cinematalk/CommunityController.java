@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kosta.dto.KobisDTO;
 import com.kosta.dto.PageBlock;
+import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.ReportDTO;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.dto.UserDTO;
@@ -27,6 +29,7 @@ import com.kosta.service.ImageService;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -369,5 +372,26 @@ public class CommunityController {
 				service.reviewreportupdate(hm);		
 			}	
 			return "redirect:/moviedetail/{movieCd}";
+		}
+		
+		//신고게시판 조회
+		@RequestMapping ("/report")
+		public String ReportList(@RequestParam(required = false, defaultValue = "1") int currPage, 
+				Model model, HttpSession session) {
+			UserDTO user = (UserDTO) session.getAttribute("user");
+			if(user!=null && user.getUser_no()==1) {
+				int totalCount=service.getReportCount();
+				int pageSize = 10;
+				int blockSize = 5;
+				PageBlock page = new PageBlock(currPage, totalCount, pageSize, blockSize);
+				
+				List<ReportDTO> reportList = service.getReportList(page.getStartRow() - 1, pageSize);
+				model.addAttribute("reportList", reportList);
+				return "/view.jsp?page=board/reportlist";
+			}else {
+				return "redirect:/";
+			}
+					
+			
 		}
 }

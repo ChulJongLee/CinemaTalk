@@ -167,6 +167,15 @@ public class CommunityServiceImple implements CommunityService {
 		
 		return mapper.reportsearch(hm);
 	}
+	
+	@Override
+	public List<ReportDTO> getReportList(int startRow, int pageSize) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("startRow", startRow);
+		hm.put("pageSize", pageSize);
+		return mapper.getreportlist(hm);
+	}
 
 	@Override
 	public void reviewreportupdate(HashMap<String, Object> hm) {
@@ -180,6 +189,13 @@ public class CommunityServiceImple implements CommunityService {
 		mapper.userforummodify(dto);
 	}
 
+	@Override
+	public int getReportCount() {
+		// TODO Auto-generated method stub
+		return mapper.getreportcount();
+	}
+
+	
 
 
 
