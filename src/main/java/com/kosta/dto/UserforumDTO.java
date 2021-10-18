@@ -19,7 +19,7 @@ public class UserforumDTO {
 	private Date content_date;
 	private String content_content;
 	private int content_like;
-	private int content_dislike;
+	private int content_hate;
 	private int imageNum;
 	private String imageName;
 	private String imagePath;

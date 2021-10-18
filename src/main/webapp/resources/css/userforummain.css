@@ -51,6 +51,7 @@ body{
 .forumImg{
 	width:380px;
 	height: 200px;
+	cursor: pointer;
 }
 .title{
 	width: 100%;
@@ -75,7 +76,7 @@ body{
 	padding-right: 10px;
 	white-space: pre-wrap;
 }
-.content::-webkit-scrollbar {
+/* .content::-webkit-scrollbar {
 	width: 10px;
 }
 .content::-webkit-scrollbar-thumb{
@@ -84,14 +85,14 @@ body{
 }
 .content::-webkit-scrollbar-track{
 	background-color: #212121;
-}
+} */
 
-#like, #dislike{
+#forum_like, #forum_dislike{
 	width: 20%;
 	text-align: center;
 
 }
-.likebtn, .dislikebtn{
+.forum_likebtn, .forum_dislikebtn{
 	border: none;
 	background-color: #212121;
 	color: white;
@@ -100,61 +101,25 @@ body{
 	flex-wrap: wrap;
 	justify-content: center;
 }
-#likebtn2:hover{
+#forum_likebtn2:hover{
 	color: #3498db;
 }
-#dislikebtn2:hover{
+#forum_dislikebtn2:hover{
 	color: #f1c40f;
 }
-#report{
+#forum_report{
 	width: 60%;
 	text-align: right;
 }
-.reportbtn{
+.forum_reportbtn{
 	border: none;
 	background-color: #212121;
 	color: white;
 	font-size: small;
 }
-#reportbtn2:hover{
+#forum_reportbtn2:hover{
 	color: red;
 }
-
-#contentedit{
-	border: 2px solid green;
-	display: flex;
-	flex-direction: row;
-	width: 100%;
-}
-#modifycheck{
-	width: 7%;
-	border: 1px solid red;
-	text-align: center;
-}
-#modifyreturn{
-	width: 7%;
-	border: 1px solid red;
-	text-align: center;
-}
-
-#modify{
-	width: 93%;
-	margin: 0px;
-	text-align: right;
-	border: 1px solid red;
-}
-#delete{
-	width: 7%;
-	text-align: center;
-	border: 1px solid red;
-	margin: 0px;
-}
-.modifycheckbtn, .modifyreturnbtn, .modifybtn, .deletebtn{
-	background-color: #212121;
-	height: 3px;
-	color: black;
-}
-
 
 /* 모든 리뷰 보기 버튼*/
 #userforumallbtn{
@@ -164,20 +129,6 @@ body{
 	margin-bottom: 30px;
 }
 
-.form-label{
-    border: 2px solid yellow;
-}
-#form-switch{
-	border: 2px solid green;
-	width: 40%;	
-}
-#submitbtn{
-	height: 40px;
-	font-size: 18px;
-}
-#modaltext{
-	color: black;
-}
 #writebtn{
     display: flex;
     justify-content: end;

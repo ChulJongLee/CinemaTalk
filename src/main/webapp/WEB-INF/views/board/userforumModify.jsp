@@ -11,7 +11,7 @@
 <body>
 
 <section>
-	<form action="/moviedetail/${movieCd }/userforumdetail/${userforumdetail.content_no}" method="post" enctype="multipart/form-data"  onsubmit="return writeSubmit();">
+	<form action="/moviedetail/${movieCd }/userforummodifyresult/${userforumdetail.content_no}" method="post" enctype="multipart/form-data"  onsubmit="return writeSubmit();">
 	
 		<div id="title">
 			<label for="content_title"></label>

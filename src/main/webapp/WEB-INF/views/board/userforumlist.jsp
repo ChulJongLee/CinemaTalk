@@ -25,7 +25,7 @@
 						<div id="id">${list.user_id }</div>
 						<div id="writedate">${list.content_date }</div>
 						<div id="like">${list.content_like }</div>
-						<div id="dislike">${list.content_dislike }</div>					
+						<div id="dislike">${list.content_hate }</div>					
 					</li>
 				</c:forEach>			
 			</ul>		

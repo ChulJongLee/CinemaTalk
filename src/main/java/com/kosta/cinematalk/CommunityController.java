@@ -241,7 +241,7 @@ public class CommunityController {
 	
 	//자유게시판 수정 Result
 	@RequestMapping("/moviedetail/{movieCd}/userforummodifyresult/{contentno}")
-	public String userforumModifyResult(@PathVariable String movieCd
+	public String userforumModifyResult(@PathVariable String movieCd, @PathVariable int contentno
 			, Model model
 			, HttpSession session
 			, HttpServletRequest request, HttpServletResponse response) {
@@ -250,12 +250,11 @@ public class CommunityController {
 			return "/view.jsp?page=userlogin";
 		}
 		else {
-
 			String imagePath = "";
 			String imageName = "";
 			@SuppressWarnings("deprecation")
 			String uploadPath = request.getRealPath("/resources/upload");
-			UserforumDTO dto = new UserforumDTO();
+			UserforumDTO dto = service.userforumdetail(contentno);
 			try {
 				MultipartRequest multi = new MultipartRequest( // MultipartRequest 인스턴스 생성(cos.jar의 라이브러리)
 						request, uploadPath, // 파일을 저장할 디렉토리 지정
@@ -273,13 +272,11 @@ public class CommunityController {
 				dto.setMovieCd(movieCd);
 				dto.setContent_title(content_title);
 				dto.setContent_content(content_content);
-				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
 			service.userforumModify(dto);
-			dto.setImageName("");
 			if(imageName!=null && !imageName.equals("")) { //사진 넣었을 경우
 				dto.setImageName(imageName);
 				dto.setImagePath(imagePath);
@@ -317,6 +314,43 @@ public class CommunityController {
         return result;       
     }
 	
-	
-	
+	// 자유게시판 좋아요
+		@PostMapping("/forumlike")
+	    @ResponseBody
+	    public Map<String, Object> forumlikeAjax(UserforumDTO dto, HttpSession session){
+			UserDTO user = (UserDTO) session.getAttribute("user");
+			user.getUser_no();
+			Map<String, Object> result = new HashMap<String, Object>();
+			service.reviewLike(dto.getContent_no());
+			
+			return result;      
+			
+	        
+	    }
+		
+		
+		// 자유게시판 싫어요
+		@PostMapping("/forumdislike")
+	    @ResponseBody
+	    public Map<String, Object> forumdislikeAjax(UserforumDTO dto, HttpSession session){
+			UserDTO user = (UserDTO) session.getAttribute("user");
+			user.getUser_no();
+			Map<String, Object> result = new HashMap<String, Object>();
+			service.reviewDisLike(dto.getContent_no());
+			
+			
+			return result;      
+			  
+	    }
+		// 자유게시판 신고
+		@RequestMapping("/moviedetail/{movieCd}/forumreport")
+		public String forumreport(@PathVariable String movieCd, @RequestParam HashMap<String, Object> hm, HttpSession session) {
+			List<ReportDTO> reportlist = service.reportsearch(hm);
+			if(reportlist.isEmpty()) {
+				service.reviewreport(hm);
+			}else{
+				service.reviewreportupdate(hm);		
+			}	
+			return "redirect:/moviedetail/{movieCd}";
+		}
 }

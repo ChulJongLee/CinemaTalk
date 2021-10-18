@@ -27,7 +27,7 @@
 			
 			<div id="thumb">
 				<p id="like"><i class="fas fa-thumbs-up fa-lg"></i> ${userforumdetail.content_like }</p>
-				<p id="dislike"><i class="fas fa-thumbs-down fa-lg"></i> ${userforumdetail.content_dislike }</p>
+				<p id="dislike"><i class="fas fa-thumbs-down fa-lg"></i> ${userforumdetail.content_hate }</p>
 			</div>	
 							
 							
@@ -38,10 +38,10 @@
 					<input type="button" value="삭제" id="delete" onClick="location.href='/moviedetail/${movieCd}/userforumdelete/${userforumdetail.content_no }'">
 				</div>
 			</c:if>
-			<div id="reply">
+			<!-- <div id="reply">
 				<i class="fas fa-comment-dots fa-5x"></i>
 				댓글 기능을 구현하여 넣으시오.....
-			</div>
+			</div> -->
 		
 		</article>
 	</section>
