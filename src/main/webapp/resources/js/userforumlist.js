@@ -17,10 +17,9 @@ $('.forum_likebtn').click(function() {
 		url : "/forumlike",
 		data : params,
 		success : function(res) {
-			location.reload();	
+			alert(res.result);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("로그인이 필요한 서비스 입니다.");
 		}
 	});
 });
@@ -37,10 +36,9 @@ $('.forum_dislikebtn').click(function() {
 		url : "/forumdislike",
 		data : params2,
 		success : function(res) {
-			location.reload(res.result);	
+			alert(res.result);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("로그인이 필요한 서비스 입니다.");
 		}
 	});
 });

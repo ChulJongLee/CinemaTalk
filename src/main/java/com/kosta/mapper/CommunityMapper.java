@@ -31,18 +31,23 @@ public interface CommunityMapper {
 	public void reviewlike(int contentno);
 	public void reviewdislike(int contentno);
 
+	// 리뷰쓰기 mapper
 	public int reviewinsert(HashMap<String, Object> hm);
 
+	// 리뷰 삭제 mapper
 	public int reviewdelete(int no);
 
-
+	// 리뷰 수정 mapper
 	public int reviewmodify(HashMap<String, Object> hm);
 
+	// 리뷰 신고(최초신고)
 	public int reviewreport(HashMap<String, Object> hm);
-
+	
+	// 신고 리뷰 체크 mapper
 	public List<ReportDTO> reportsearch(HashMap<String, Object> hm);
 	public List<ReportDTO> getreportlist(HashMap<String, Object> hm);
 
+	// 리뷰 신고(중복)
 	public int reviewreportupdate(HashMap<String, Object> hm);
 
 	

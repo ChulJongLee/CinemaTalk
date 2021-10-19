@@ -127,23 +127,31 @@ public class MovieController {
 				
 		return "/view.jsp?page=movie/moviedetail";
 	}
-	
-	@GetMapping("/test")
-	public String Test() {
+// 별점 평점 받아오기 Ajax
+	@PostMapping("/movieAvgRate")
+    @ResponseBody
+    public float movieAvgRate(RateDTO movieRateData, HttpSession session){
 		
-		return "/view.jsp?page=movie/test";
-	}
+		
+        return 0;
+		
+    }
 	
-//	Ajax
+//	별점 주기 Ajax
 	@PostMapping("/movieRate")
     @ResponseBody
-    public Map<String, Object> testAjax(RateDTO movieRateData, HttpSession session){
-		UserDTO user = (UserDTO) session.getAttribute("user");
-		movieRateData.setUser_no(user.getUser_no());
+    public Map<String, Object> movieRate(RateDTO movieRateData, HttpSession session){
 		Map<String, Object> result = new HashMap<String, Object>();
-        movieService.movieRate(movieRateData);
-        // 응답 데이터 셋팅
-        result.put("result", "평점 주기 완료");
+		try {
+			UserDTO user = (UserDTO) session.getAttribute("user");
+			movieRateData.setUser_no(user.getUser_no());
+	        movieService.movieRate(movieRateData);
+	        // 응답 데이터 셋팅
+	        result.put("result", "평점 주기 완료");
+		}catch(NullPointerException e){
+			result.put("result", "로그인이 필요한 서비스입니다.");
+		}
+		
         
         return result;
 		

@@ -28,18 +28,23 @@ public interface CommunityService {
 	public void reviewLike(int contentno);
 	public void reviewDisLike(int contentno);
 
+	// 리뷰 쓰기 service
 	public void reviewinsert(HashMap<String, Object> hm);
-
+	
+	// 리뷰 삭제 service
 	public int reviewdelete(int no);
 
-
+	// 리뷰 수정 service
 	public void reviewmodify(HashMap<String, Object> hm);
 
+	// 리뷰 신고(최초신고)
 	public void reviewreport(HashMap<String, Object> hm);
-
+	
+	// 신고 리뷰 체크 service
 	public List<ReportDTO> reportsearch(HashMap<String, Object> hm);
 	public List<ReportDTO> getReportList(int startRow, int pageSize);
 
+	// 리뷰 신고(중복)
 	public void reviewreportupdate(HashMap<String, Object> hm);
 
 	public List<UserforumDTO> getWorstUserforms(String movieCd);

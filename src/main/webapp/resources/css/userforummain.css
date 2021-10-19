@@ -9,7 +9,7 @@ body{
 
 /* 리뷰 게시판*/
 #bestforumbtn{	/* 베스트 리뷰 버튼 */
-	margin: 20px 50px;
+	margin: 20px 10px;
 	color: white;
 }
 #bestNworst{	/* 베스트 리뷰 */
@@ -136,5 +136,7 @@ body{
 .updown {
     	border: 0.1px dotted white;
         width: 0.1px;
+    	opacity: 0.2;
+        
 }
 
