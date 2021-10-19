@@ -14,10 +14,18 @@
 	<section>
 		<div id="userforumwrap">
 			<h3>자유게시판</h3>
+			<div id="writebtn">
+				<c:if test="${user != null}"><a href="/moviedetail/${movieCd }/userforuminsert" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
+				<c:if test="${user == null}"><a href="/login" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
+			</div>
 			<ul id="userforumboard">
 				<c:forEach var="list" items="${alluserforum }">
 					<input type="hidden" value="${list.content_no }" class="contentnodistinct">
-					<div id="number">${list.content_no }</div>
+					<div id="listhead">
+						<div id="number">${list.content_no }</div>
+						<div id="writedate">${list.content_date }</div>
+						<div id="user_id">${list.user_id }</div>
+					</div>
 					<hr id="under_title" style="margin: 5px 0;">
 					<li id="userforumlist">
 						<div>
@@ -30,47 +38,46 @@
 								onClick="location.href='/moviedetail/${movieCd }/userforumdetail/${list.content_no }'">
 							</c:if>
 						</div>
-						
-						<div id="title"><a href="userforumdetail/${list.content_no }">${list.content_title }</a></div>
-						
-						<div id="id">${list.user_id }</div>
-						<div id="writedate">${list.content_date }</div>
-						<div class="fucntionBtn">
-							<button class="forum_likebtn" value="${list.content_no }">
-								<div>
-									<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>${list.content_like }
-								</div>
-							</button>				
+						<div id="titleNcontent" onClick="location.href='/moviedetail/${movieCd }/userforumdetail/${list.content_no }'">
+							<div id="title">${list.content_title }</div>
+							<div id="content">${list.content_content }</div>
 						</div>
-						<div class="fucntionBtn">
-							<button class="forum_dislikebtn" value="${list.content_no }">
-								<div>
-									<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>${list.content_hate }
-								</div>
-							</button>
-						</div>
-						<div class="fucntionBtn">
-							<c:if test="${sessionScope.user.user_id!=null}">
-								<button type="button" class="forum_reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" data-bs-whatever="t">
-									<i class="fas fa-flag" id="forum_reportbtn2"></i>
-									신고
+						<div id="functionBtns">
+							<div class="fucntionBtn">
+								<button class="forum_likebtn" value="${list.content_no }">
+									<div>
+										<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>${list.content_like }
+									</div>
+								</button>				
+							</div>
+							<div class="fucntionBtn">
+								<button class="forum_dislikebtn" value="${list.content_no }">
+									<div>
+										<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>${list.content_hate }
+									</div>
 								</button>
-							</c:if>
-							<c:if test="${sessionScope.user.user_id==null}">
-								<button class="forum_reportbtn" value="${list.content_no }" disabled="disabled">
-									<i class="fas fa-flag" id="reportbtn2"></i>
-									신고
-								</button>
-							</c:if>
-						</div>						
+							</div>
+							<div class="fucntionBtn">
+								<c:if test="${sessionScope.user.user_id!=null}">
+									<button type="button" class="forum_reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" data-bs-whatever="t">
+										<i class="fas fa-flag" id="forum_reportbtn2"></i>
+										신고
+									</button>
+								</c:if>
+								<c:if test="${sessionScope.user.user_id==null}">
+									<button class="forum_reportbtn" value="${list.content_no }" disabled="disabled">
+										<i class="fas fa-flag" id="forum_reportbtn2"></i>
+										신고
+									</button>
+								</c:if>
+							</div>		
+						</div>				
 					</li>
+					<hr id="under_title" style="margin: 5px 0;">
 				</c:forEach>			
 			</ul>		
 		</div>
-		<div id="writebtn">
-				<c:if test="${user != null}"><a href="/moviedetail/${movieCd }/userforuminsert" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
-				<c:if test="${user == null}"><a href="/login" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
-		</div>
+		
 
 	<!-- 페이징  -->
 	<nav aria-label="..." id="paging">

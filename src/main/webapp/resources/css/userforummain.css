@@ -47,6 +47,10 @@ body{
 	justify-content: flex-start;
 	width: 400px;
 	margin: 20px 0px;
+	border-radius : 20px;
+   	background-color: #2f2f2f;
+    padding: 0px 15px;
+   
 }
 .forumImg{
 	width:380px;
@@ -75,6 +79,7 @@ body{
 	margin: 10px 0px;
 	padding-right: 10px;
 	white-space: pre-wrap;
+    border: 2px solid #434343;
 }
 /* .content::-webkit-scrollbar {
 	width: 10px;
@@ -94,17 +99,17 @@ body{
 }
 .forum_likebtn, .forum_dislikebtn{
 	border: none;
-	background-color: #212121;
+	background-color: #2f2f2f;
 	color: white;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
 }
-#forum_likebtn2:hover{
+#forum_likebtn2{
 	color: #3498db;
 }
-#forum_dislikebtn2:hover{
+#forum_dislikebtn2{
 	color: #f1c40f;
 }
 #forum_report{
@@ -113,25 +118,46 @@ body{
 }
 .forum_reportbtn{
 	border: none;
-	background-color: #212121;
+	background-color: #2f2f2f;
 	color: white;
 	font-size: small;
 }
-#forum_reportbtn2:hover{
+#forum_reportbtn2{
 	color: red;
 }
 
 /* 모든 리뷰 보기 버튼*/
+#userforumall{
+   display: flex;
+   justify-content: center;
+   font-size: 20px;
+   margin-bottom: 30px;
+}
 #userforumallbtn{
-	display: flex;
-	justify-content: center;
-	font-size: 20px;
-	margin-bottom: 30px;
+    position: relative;
+    top: 15px;
+	text-decoration: none;
+	border-radius : 10px;
+	padding: 5px;
+	border: 2px solid #ff0558;
+	color: #ff0558;
 }
 
 #writebtn{
     display: flex;
     justify-content: end;
+}
+
+#writebtn a{
+	background-color: #212121;
+    color: #ff0558;
+    font-weight: 600;
+    font-size: 18px;
+    width: 80px;
+    margin: 3px;
+    border-radius: 10px;
+    border: 1px solid white;
+    opacity: 0.8;
 }
 .updown {
     	border: 0.1px dotted white;

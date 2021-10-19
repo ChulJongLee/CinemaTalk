@@ -1,37 +1,43 @@
 @charset "UTF-8";
 
 #modifyform{
+	width: 40%;
+    margin: 0px auto;
+    color: white;
+}
+
+.modify_title{
+    width: 500px;
+}
+#modify_title label, #modify_content label{
+	font-size: 23px;
+}
+.modify_content{
+	width: 500px;
+	height: 400px;
+}
+
+#submitBtn{
+	/* border: 2px solid red; */
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	margin: 0px auto;
-	width: 60%;
+	justify-content: flex-end;
 }
 
-
-#modify_title{
-    width: 500px;
-    height: 40px;
-}
-#modify_content{
-	width: 100%;
-    height: 500px;
+.submitBtn{
+	background-color: #212121;
+    color: #ff0558;
+    font-weight: 600;
+    font-size: 20px;
+    width: 80px;
+    margin: 3px;
+    border-radius: 10px;
+    border: 1px solid white;
+    opacity: 0.8;
 }
 
 #modify_img{
-	width: 400px;
-	height: 300px;
-    margin: 20px;
-}
-
-.fucntionBtn{
-	border: none;
-	background-color: #212121;
-	color: white;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.content_part{
-	width: 800px;
+	width:380px;
+	height: 200px;
 }

@@ -12,6 +12,10 @@
 </head>
 <body>
 	<input type="hidden" value="${detail.movieCd }" id="moviecd">
+	<div id="writebtn">
+		<c:if test="${user != null}"><a href="/moviedetail/${movieCd }/userforuminsert" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
+		<c:if test="${user == null}"><a href="/login" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
+	</div>
     <section id="bestNworst">
        <div class="forumList">
        		<h3 id="bestforumbtn">베스트 게시글</h3>
@@ -166,12 +170,8 @@
 		  </div>
 		</div>
 		
-   	<div id="writebtn">
-				<c:if test="${user != null}"><a href="/moviedetail/${movieCd }/userforuminsert" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
-				<c:if test="${user == null}"><a href="/login" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
-	</div>
-    <div id="userforumallbtn">
-        <a href="/moviedetail/${movieCd }/userforumlist">모든 게시글 보기</a>
+    <div id="userforumall">
+        <a href="/moviedetail/${movieCd }/userforumlist" id="userforumallbtn">모든 게시글 보기</a>
     </div>
     
 		

@@ -17,6 +17,7 @@
 		
 			<div id="head">
 				<h3 id="title">${userforumdetail.content_title }</h3>
+				<hr id="titleUnderbar">
 				<div id="edit">
 					<input type="button" value="목록" class="boardBtn" onClick="location.href='/moviedetail/${movieCd }/userforumlist'">
 					<c:if test="${user != null}">
@@ -24,46 +25,48 @@
 						<input type="button" value="삭제" class="boardBtn" onClick="location.href='/moviedetail/${movieCd}/userforumdelete/${userforumdetail.content_no }'">
 					</c:if>
 				</div>
-				<p id="id"> ${userforumdetail.user_id }</p>
-				<p id="date"> ${userforumdetail.content_date }</p>
+				<p id="id"> ${userforumdetail.user_id }   ${userforumdetail.content_date }</p>
 			</div>
 			
 			<div id="body">
-				<c:if test="${userforumdetail.imageName!=null && userforumdetail.imageName!='' }">
-					<img alt="이미지" src="/resources/upload/${userforumdetail.imagePath }" class="detail_img">
-				</c:if>
+				<div class="forumImg">
+					<c:if test="${userforumdetail.imageName!=null && userforumdetail.imageName!='' }">
+						<img alt="이미지" src="/resources/upload/${userforumdetail.imagePath }" class="detail_img">
+					</c:if>
+				</div>
 				<pre id="content">${userforumdetail.content_content }</pre>
-			</div>
-			
-			<div class="fucntionBtn">
-				<button class="forum_likebtn" value="${userforumdetail.content_no }">
-					<div>
-						<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>${userforumdetail.content_like }
+				<div id="fucntionBtn">
+					<div class="fucntionBtn">
+						<button class="forum_likebtn" value="${userforumdetail.content_no }">
+							<div>
+								<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>${userforumdetail.content_like }
+							</div>
+						</button>				
 					</div>
-				</button>				
-			</div>
-			<div class="fucntionBtn">
-				<button class="forum_dislikebtn" value="${userforumdetail.content_no }">
-					<div>
-						<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>${userforumdetail.content_hate }
+					<div class="fucntionBtn">
+						<button class="forum_dislikebtn" value="${userforumdetail.content_no }">
+							<div>
+								<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>${userforumdetail.content_hate }
+							</div>
+						</button>
 					</div>
-				</button>
+					<div class="fucntionBtn">
+						<c:if test="${sessionScope.user.user_id!=null}">
+							<button type="button" class="forum_reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop4" data-bs-whatever="t">
+								<i class="fas fa-flag" id="forum_reportbtn2"></i>
+								신고
+							</button>
+						</c:if>
+						<c:if test="${sessionScope.user.user_id==null}">
+							<button class="forum_reportbtn" value="${userforumdetail.content_no }" disabled="disabled">
+								<i class="fas fa-flag" id="reportbtn2"></i>
+								신고
+							</button>
+						</c:if>
+					</div>		
+				</div>		
 			</div>
-			<div class="fucntionBtn">
-				<c:if test="${sessionScope.user.user_id!=null}">
-					<button type="button" class="forum_reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop4" data-bs-whatever="t">
-						<i class="fas fa-flag" id="forum_reportbtn2"></i>
-						신고
-					</button>
-				</c:if>
-				<c:if test="${sessionScope.user.user_id==null}">
-					<button class="forum_reportbtn" value="${userforumdetail.content_no }" disabled="disabled">
-						<i class="fas fa-flag" id="reportbtn2"></i>
-						신고
-					</button>
-				</c:if>
-			</div>		
-							
+					
 			
 				
 			
@@ -102,8 +105,6 @@
 		    </div>
 		  </div>
 		</div>
-	
+	<script src="/resources/js/userforumdetail.js"></script>
 </body>
-<script src="/resources/js/userforumdetail.js"></script>
-
 </html>

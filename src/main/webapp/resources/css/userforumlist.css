@@ -18,40 +18,23 @@
 
 /* 게시판 헤더 */
 #listhead{
-/* 	border: 1px solid green;
- */	width: 100%;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	text-align: center;
-	margin: 8px;
+	margin-top: 30px;
 }
-#headno{
-/* 	border: 1px solid skyblue;
- */	width: 5%;
+#listhead div{
+	display: inline-block;
 }
-#headtitle{
-/* 	border: 1px solid skyblue;
- */	width: 45%;
-}
-#headid{
-/* 	border: 1px solid skyblue;
- */	width: 15%;
-}
-#headdate{
-/* 	border: 1px solid skyblue;
- */	width: 15%;
-}
-#headlike{
-/* 	border: 1px solid skyblue;
- */	width: 10%;
-}
-#headdislike{
-/* 	border: 1px solid skyblue;
- */	width: 10%;
+#titleNcontent{
+	width: 65%;
 }
 
+#writedate{
+	float: right;
+}
+#user_id{
+	float: right;
+    position: relative;
+    right: 10px;
+}
 
 /* 게시판 게시물 */
 #userforumboard{
@@ -68,31 +51,23 @@
 	margin: 8px 0px;
 	margin-bottom: 30px;
 }
-#ufnumber{
-/* 	border: 1px solid yellow;
- */	width: 5%;	
-}
-#uftitle{
-/* 	border: 1px solid yellow;
- */	width: 45%;
-}
-#ufid, #ufwritedate{
-/* 	border: 1px solid yellow;
- */	width: 15%;
-}
-#uflike, #ufdislike{
-/* 	border: 1px solid yellow;
- */	width: 10%;
-}
-
 
 /* 글쓰기 버튼 */
 #writebtn{
-	/* border: 1px solid green; */
-	display: flex;
-	justify-content: flex-end;
-	width: 80%;
-	margin: 0px auto;
+    position: relative;
+    left: 600px;
+}
+
+#writebtn a{
+	background-color: #212121;
+    color: #ff0558;
+    font-weight: 600;
+    font-size: 18px;
+    width: 80px;
+    margin: 3px;
+    border-radius: 10px;
+    border: 1px solid white;
+    opacity: 0.8;
 }
 
 /* 페이징 */
@@ -112,10 +87,10 @@
 	text-align: center;
 
 }
-#forum_likebtn2:hover{
+#forum_likebtn2{
 	color: #3498db;
 }
-#forum_dislikebtn2:hover{
+#forum_dislikebtn2{
 	color: #f1c40f;
 }
 
@@ -127,20 +102,17 @@
     height: 30px;
     width: 60px;
 }
-#forum_reportbtn2:hover{
+#forum_reportbtn2{
 	color: red;
 }
 .fucntionBtn{
 	border: none;
 	background-color: #212121;
 	color: white;
+	display: inline-block;
+}
+
+#functionBtns{
 	display: flex;
-	flex-direction: row;
-    flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: flex-end;
-	
-	/* 수정해야함 */
-    position: relative;
-    left: 200px;
+    place-items: flex-end;
 }
