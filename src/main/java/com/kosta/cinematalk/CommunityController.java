@@ -52,7 +52,7 @@ public class CommunityController {
 	public String insertResult(@RequestParam HashMap<String, Object> hm) {
 		
 		service.reviewinsert(hm);
-				
+			
 		return "redirect:/moviedetail/{movieCd}";
 	}
 	

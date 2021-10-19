@@ -15,7 +15,8 @@
   	<result column="content_date" property="writedate" />
   	<result column="content_content" property="contents" />
   	<result column="content_like" property="like" />
-  	<result column="content_hate" property="dislike" /> 	
+  	<result column="content_hate" property="dislike" />
+  	<result column="spoiler_tf" property="spoiler" />  	
   </resultMap>
   
   <resultMap type="com.kosta.dto.ReportDTO" id="reportdto">
@@ -23,7 +24,7 @@
  	<result column="content_no" property="contentno" /> 
  	<result column="reply_no" property="reply" /> 
  	<result column="report_content" property="reportreason" /> 
- 	<result column="reply_count" property="reportsize" />   
+ 	<result column="report_count" property="reportsize" />   
   </resultMap>
   
 
@@ -57,7 +58,7 @@
 <select id="list" parameterMap="hashmap" resultMap="reviewdto">
 	select A.*
 	from (select S.*, @rownum:=@rownum+1 as rn
- from (select content_no, user_id, e1.user_no, e1.movieCd, board_distinct_no, content_date, content_content, content_like, content_hate
+ from (select content_no, user_id, e1.user_no, e1.movieCd, board_distinct_no, content_date, content_content, content_like, content_hate, spoiler_tf
 			    from comm_board e1 left join user_info e2
  				on e1.user_no=e2.user_no
 
@@ -78,7 +79,7 @@
   
 <!-- 리뷰 페이지 베스트 리뷰 -->
 <select id="getreview" resultMap="reviewdto">
-	select content_no, user_id, e1.user_no, e1.movieCd, content_date, content_content, content_like, content_hate
+	select content_no, user_id, e1.user_no, e1.movieCd, content_date, content_content, content_like, content_hate, spoiler_tf
 	from comm_board e1 left join user_info e2
     on e1.user_no=e2.user_no
     
@@ -92,7 +93,7 @@
 
 <!-- 리뷰 페이지 일반 리뷰 -->
 <select id="getgeneralreview" resultMap="reviewdto">
-	select content_no, user_id, e1.user_no, e1.movieCd, content_date, content_content, content_like, content_hate
+	select content_no, user_id, e1.user_no, e1.movieCd, content_date, content_content, content_like, content_hate, spoiler_tf
 	from comm_board e1 left join user_info e2
     on e1.user_no=e2.user_no
 	
@@ -163,8 +164,8 @@
 <!-- 리뷰 등록 -->
 <insert id="reviewinsert" parameterMap="hashmap">
 	insert into comm_board (movieCd, user_no, content_content, 
-							content_date, board_distinct_no, content_like, content_hate)	
-	values(#{movieCd}, #{userno}, #{contents}, now(), 1, 0, 0 )
+							content_date, board_distinct_no, content_like, content_hate, spoiler_tf)	
+	values(#{movieCd}, #{userno}, #{contents}, now(), 1, 0, 0, #{spoiler} )
 </insert>
 
 <!-- 리뷰  수정 -->
@@ -186,6 +187,8 @@
 	from report
 	where content_no = #{contentno} and report_content = #{reportreason}
 </select>
+
+
 <!-- 신고 전체 조회 -->
 <select id="getreportlist" parameterMap="hashmap" resultMap="reportdto">
 	select report_no, content_no, report_content, report_count

@@ -110,8 +110,16 @@
 							<div id="id">${list.userid }, ${list.contentno }</div>
 							<div id="date">${list.writedate }</div>
 									
-														
+							<!-- 스포일러 체크X -->		
+							<c:if test="${list.spoiler==0 }">							
 							<div class="content">${list.contents }</div>
+							</c:if>
+							<!-- 스포일러 체크O -->
+							<c:if test="${list.spoiler==1 }">
+							<input type="hidden" value="${list.contents }" class="spoilercontent">
+							<div class="content2"><button type="button" class="spoilerbtn">스포일러 주의</button></div>
+							<div class="content3" style="display:none"></div>
+							</c:if>
 							
 							
 							<c:if test="${sessionScope.user.user_id!=null}">
@@ -238,12 +246,16 @@
 	    <div id="writereview">
 	 	   <form action="/moviedetail/${detail.movieCd }/reviewinsertresult" method="post">
 	 	   <div id="writereview2">   	   		   
-	 	      <!-- <div class="form-check form-switch" id="form-switch">	      	   
+	 	      <div class="form-check form-switch" id="form-switch">	  
+	 	      	<div id="reviewinserttitle">
+	 	      		<label for="contentsbox" class="form-label">리뷰등록</label>
+	 	      	</div>
+	 	      	<div id="reviewtextarea">   	   
 		           <label class="form-check-label" for="flexSwitchCheckDefault">스포일러 여부</label>
-		           <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">	                      
-	      	  </div> -->
-	 	 	  <div class="mb-3">
-	 	 	  	  <label for="contentsbox" class="form-label">리뷰등록</label> 			  
+		           <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="spoiler">	 
+		      	</div>                            
+	      	  </div>
+	 	 	  <div class="mb-3">	 	 	  	  			  
 				  <textarea class="form-control" id="contentsbox" name="contents" rows="5" cols="100" placeholder="리뷰를 작성해 주세요." required="required"></textarea>
 		      	  <input type="hidden" value="${sessionScope.user.user_no}" name="userno">
 		      	  <input type="hidden" value="${detail.movieCd }" name="movieCd">

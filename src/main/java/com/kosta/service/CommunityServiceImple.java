@@ -137,6 +137,12 @@ public class CommunityServiceImple implements CommunityService {
 
 	@Override
 	public void reviewinsert(HashMap<String, Object> hm) {
+		
+		if(hm.get("spoiler")==null) {
+			hm.put("spoiler", 0);
+		}else {
+			hm.put("spoiler",1);
+		}
 
 		mapper.reviewinsert(hm);
 	}

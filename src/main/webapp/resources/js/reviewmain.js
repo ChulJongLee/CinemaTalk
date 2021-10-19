@@ -59,18 +59,14 @@ $('.deletebtn').click(function(){
 $(document).ready(function(){
 	$('#staticBackdrop').on('shown.bs.modal', function(e){
 	
-		  var recip=$(e.relatedTarget);
-		  console.log("recip:"+recip);
-		  
+		  var recip=$(e.relatedTarget);	  
 		  var r=$(recip).parent().parent().siblings('.content').text();
-		  console.log("r:"+r);
-		  
+		  var r2=$(recip).parent().parent().siblings('.content3').text();
 		  var no = $(recip).parent().parent().siblings('.contentnodistinct').attr('value');
-		  console.log("contentno:"+no);
-		  
-		  
+
 		 let m=$(this);
 		  m.find('#modaltext').val(r);
+		  m.find('#modaltext').val(r2);
 		  m.find('.contentval').val(no);
 	});
 });
@@ -85,8 +81,28 @@ $(document).ready(function(){
 		  var no = $(recip).parent().siblings('.contentnodistinct').attr('value');
 		  console.log("contentno:"+no);
   
-		 let m=$(this);
+		  let m=$(this);
 		  m.find('.contentval').val(no);
+	});
+});	
+
+
+
+// 스포일러
+$(document).ready(function(){
+	$('.spoilerbtn').click(function(event){
+		
+		var recip=$(event.currentTarget);
+		console.log("recip:"+recip);		
+		
+		var no = $(recip).parent().siblings('.spoilercontent').attr('value');
+		  console.log("contentno:"+no);
+		
+		$(recip).parent('.content2').attr("style", "display:none");
+		$(this).hide();
+		$(recip).parent().siblings('.content3').removeAttr('style');
+		$(recip).parent().siblings('.content3').text(no);
+		
 	});
 });	
 	  

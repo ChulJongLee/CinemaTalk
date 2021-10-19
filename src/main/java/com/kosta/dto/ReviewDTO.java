@@ -21,5 +21,6 @@ public class ReviewDTO {
 	private int like;
 	private int dislike;
 	private String movieCd;
+	private int spoiler;
 
 }
