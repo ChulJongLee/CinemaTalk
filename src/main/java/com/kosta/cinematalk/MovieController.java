@@ -127,15 +127,6 @@ public class MovieController {
 				
 		return "/view.jsp?page=movie/moviedetail";
 	}
-// 별점 평점 받아오기 Ajax
-	@PostMapping("/movieAvgRate")
-    @ResponseBody
-    public float movieAvgRate(RateDTO movieRateData, HttpSession session){
-		
-		
-        return 0;
-		
-    }
 	
 //	별점 주기 Ajax
 	@PostMapping("/movieRate")

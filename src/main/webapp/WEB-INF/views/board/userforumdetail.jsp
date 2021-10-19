@@ -34,7 +34,7 @@
 						<img alt="이미지" src="/resources/upload/${userforumdetail.imagePath }" class="detail_img">
 					</c:if>
 				</div>
-				<pre id="content">${userforumdetail.content_content }</pre>
+				<div id="content">${userforumdetail.content_content }</div>
 				<div id="fucntionBtn">
 					<div class="fucntionBtn">
 						<button class="forum_likebtn" value="${userforumdetail.content_no }">

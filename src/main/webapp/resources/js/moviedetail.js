@@ -38,18 +38,3 @@ $('.starRating span').click(function(){
 	          }
 	      });
 	});
-
-	// 게시글 추천수
-    function recCount() {
-		$.ajax({
-			url: "/movieAvgRate",
-            type: "POST",
-            data: {
-                no: ${content.board_no}
-            },
-            success: function (count) {
-            	$(".rec_count").html(count);
-            },
-		})
-    };
-    recCount(); // 처음 시작했을 때 실행되도록 해당 함수 호출
