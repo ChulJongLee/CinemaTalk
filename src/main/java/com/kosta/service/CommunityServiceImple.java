@@ -141,21 +141,21 @@ public class CommunityServiceImple implements CommunityService {
 		mapper.reviewinsert(hm);
 	}
 
+	// 리뷰 삭제 serviceimple
 	@Override
 	public int reviewdelete(int no) {
-		
-		
 		return mapper.reviewdelete(no);
 	}
 
-
+	
+	// 리뷰 수정 serviceimple
 	@Override
 	public void reviewmodify(HashMap<String, Object> hm) {
 		
-		mapper.reviewmodify(hm);
-		
+		mapper.reviewmodify(hm);	
 	}
 
+	// 리뷰 신고(최초신고)
 	@Override
 	public void reviewreport(HashMap<String, Object> hm) {
 		
@@ -176,7 +176,8 @@ public class CommunityServiceImple implements CommunityService {
 		hm.put("pageSize", pageSize);
 		return mapper.getreportlist(hm);
 	}
-
+	
+	// 리뷰 신고(중복)
 	@Override
 	public void reviewreportupdate(HashMap<String, Object> hm) {
 		
