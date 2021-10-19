@@ -109,7 +109,7 @@ public class MyPageController {
 
 			//전체 자료 수 확인
 			int totalCount = mypageService.reviewCount(user_no); 
-			int pageSize = 20;
+			int pageSize = 10;
 			int blockSize = 5;
 
 			PageBlock page = new PageBlock(currPage, totalCount, pageSize, blockSize);

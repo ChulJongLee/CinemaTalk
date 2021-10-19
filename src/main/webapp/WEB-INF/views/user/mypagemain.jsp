@@ -19,16 +19,16 @@
 		<div class="p-wrapper"><p align="center"><b>나의 정보</b></p></div>
 		<div id="userinfolist">
 			<div id="person">
-				<div>${userdto.user_id} 님</div>
-				<div id="modifyinfo"><a href="/mypage/userinfo">회원정보 수정</a></div>
+				<div id="personid">${userdto.user_id} 님</div>
+				<div id="modifyinfo"><a href="/mypage/userinfo">회원 정보 보기</a></div>
 			</div>
-			<div id="point">
+<%-- 			<div id="point">
 				<div><img src="/resources/img/point.png" width="50px"></div>
 				<div>${userdto.user_point}포인트</div>
-			</div>
+			</div> --%>
 			<div id="hour">
 				<div><img src="/resources/img/time.png" width="50px"></div>
-				<div>${watchHour}시간</div>
+				<div>${watchHour}시간 감상</div>
 			</div>
 	</div>
 

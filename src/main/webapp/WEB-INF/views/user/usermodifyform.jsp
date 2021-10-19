@@ -19,11 +19,11 @@
 					<div class="first input"><input type="text" name="user_id" value="${user.user_id}" readonly></div>
 				</li>
 				<li>
-					<div class="label"><label for="user_pwd"><b>패스워드</b></label></div> 
+					<div class="label"><label for="user_pwd"><b>비밀번호</b></label></div> 
 					<div class="input"><input type="password" name="user_pwd" id="user_pwd" maxLength="20" placeholder="비밀번호를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 입력하세요'"></div>
 				</li>
 				<li>
-					<div class="label"><label for="user_pwd2"><b>패스워드 확인</b></label></div> 
+					<div class="label"><label for="user_pwd2"><b>비밀번호 확인</b></label></div> 
 					<div class="input"><input type="password" name="user_pwd2" id="user_pwd2" maxLength="20" placeholder="비밀번호를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 입력하세요'"></div>
 				</li>
 				<li>

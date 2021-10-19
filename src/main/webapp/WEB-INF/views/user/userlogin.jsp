@@ -20,7 +20,7 @@
 					<div class="first input"><input type="text" name="user_id" id="user_id" value="${user.user_id}" placeholder="아이디를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='아이디를 입력하세요'"></div>
 				</li>
 				<li>
-					<div class="label"><label for="user_pwd"><b>패스워드</b></label></div> 
+					<div class="label"><label for="user_pwd"><b>비밀번호</b></label></div> 
 					<div class="input"><input type="password" name="user_pwd" id="user_pwd" maxLength="20" placeholder="비밀번호를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 입력하세요'"></div>
 				</li>
 				<li>
