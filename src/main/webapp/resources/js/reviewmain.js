@@ -47,16 +47,15 @@ $('.dislikebtn').click(function() {
 
 
 
-// 삭제버튼
+// 삭제버튼 js
 $('.deletebtn').click(function(){	
 	let movieCd = $('#moviecd').val();
-	console.log("무비코드무비코드무비코드무비코드무비코드무비코드무비코드무비코드"+movieCd);
 	let no=$(this).attr('value');
 	location.href="/moviedetail/"+movieCd+"/reviewdelete/"+no;
 });
 
 
-// 수정하기
+// 수정하기 js
 $(document).ready(function(){
 	$('#staticBackdrop').on('shown.bs.modal', function(e){
 	

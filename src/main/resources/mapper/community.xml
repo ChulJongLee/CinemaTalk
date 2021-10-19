@@ -104,6 +104,7 @@
 	limit 4
 </select>
 
+
 <!-- 리뷰 페이지 모든 리뷰 -->
 <!-- <select id="getallreview" resultMap="reviewdto">
 	select content_no, user_id, e1.user_no, content_date, content_content, content_like, content_hate
@@ -161,7 +162,8 @@
 
 <!-- 리뷰 등록 -->
 <insert id="reviewinsert" parameterMap="hashmap">
-	insert into comm_board (movieCd, user_no, content_content, content_date, board_distinct_no, content_like, content_hate)
+	insert into comm_board (movieCd, user_no, content_content, 
+							content_date, board_distinct_no, content_like, content_hate)	
 	values(#{movieCd}, #{userno}, #{contents}, now(), 1, 0, 0 )
 </insert>
 

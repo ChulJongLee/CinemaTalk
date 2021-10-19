@@ -18,7 +18,7 @@
 	<div class="swiper banner">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide">
-				<img alt="배너1"
+				<img alt="배너1" 
 					src="/resources/img/reviewEvent2.jpg">
 			</div>
 			<div class="swiper-slide">

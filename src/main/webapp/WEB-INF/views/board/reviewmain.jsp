@@ -172,14 +172,15 @@
 			</ul>	
          	</c:if>                            
         </div>
-        <div id="reviewallbtn">
-        	<a href="/moviedetail/${detail.movieCd }/reviewall">모든 리뷰 보기</a>
+        <div id="reviewall">
+        	<a href="/moviedetail/${detail.movieCd }/reviewall" id="reviewallbtn">모든 리뷰 보기</a>
         </div>
     </section>
     
 
 		<!-- 리뷰 수정 Modal -->
-  		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" 
+  			tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">  		
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -204,7 +205,8 @@
 		
 		
 		<!-- 리뷰 신고 Modal -->
-  		<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  		<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" 
+  			tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -213,15 +215,13 @@
 		      </div>
  		      <form action="/moviedetail/${detail.movieCd }/reviewreport" method="post">
 		      <div class="modal-body">	         
-		   	 	<input type="hidden" name="contentno" class="contentval">   	 	
-		   	 	
+		   	 	<input type="hidden" name="contentno" class="contentval">   	 			   	 	
 		    	<input type="radio" name="reportreason" id="f1" value="ad">
 	            <label for="f1" style="color: black">광고 및 도배</label><br>
 	            <input type="radio" name="reportreason" id="f2" value="curse">
 	            <label for="f2" style="color: black">욕설</label><br>
 	            <input type="radio" name="reportreason" id="f3" value="spoiler">
-	            <label for="f3" style="color: black">스포일러 노출</label><br>		    	
-	            
+	            <label for="f3" style="color: black">스포일러 노출</label><br>		    		            
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">취소</button>

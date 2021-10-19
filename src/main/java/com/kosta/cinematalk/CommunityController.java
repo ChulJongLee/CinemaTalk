@@ -55,9 +55,9 @@ public class CommunityController {
 	
 	// 리뷰 수정
 	@RequestMapping("/moviedetail/{movieCd}/reviewmodify")
-	public String reviewmodify(@RequestParam HashMap<String, Object> hm) {
+	public String reviewmodify(@RequestParam HashMap<String, Object> hm) {		
 		
-		service.reviewmodify(hm);
+		service.reviewmodify(hm);	
 		
 		return "redirect:/moviedetail/{movieCd}";
 	}
@@ -124,7 +124,8 @@ public class CommunityController {
 	
 	// 리뷰 삭제
 	@RequestMapping("/moviedetail/{movieCd}/reviewdelete/{contentno}")
-	public String reviewdelete(@PathVariable String movieCd ,@PathVariable(name = "contentno") int no, Model model) {
+	public String reviewdelete(@PathVariable String movieCd 
+								,@PathVariable(name = "contentno") int no, Model model) {
 		
 		service.reviewdelete(no);
 		
