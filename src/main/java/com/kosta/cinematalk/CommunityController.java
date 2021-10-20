@@ -4,6 +4,8 @@ package com.kosta.cinematalk;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -151,20 +153,32 @@ public class CommunityController {
 	public String userForumList(@PathVariable String movieCd
 								, @RequestParam(required = false, defaultValue = "1") int currPage
 								, @RequestParam(required = false, defaultValue = "5") int boardno
+								, @RequestParam(required = false, defaultValue = "") String search
+								, @RequestParam(required = false, defaultValue = "") String searchtxt
 								, Model model) {
-		
-		int totalcount = service.totalCount2(movieCd, boardno);
+		Pattern p=Pattern.compile("(^[0-9]*$)");	//0~9으로 이루어진 값을 사용 가능, ^는 시작, $는 끝이라는 뜻, option에서 id를 선택했을때 숫자만 받아야하므로
+		if(search=="employee_id"||search.equals("employee_id")
+				||search=="department_id"||search.equals("department_id")) {
+			Matcher m=p.matcher(searchtxt);
+			if(m.find()) {	//위의 패턴을 만족하면 true값이 나옴
+				
+			}else {
+				searchtxt="";
+			}
+		}
+		int totalcount = service.getTotalCount(movieCd, boardno, search, searchtxt);
 		int pageSize=10;
 		int blockSize=5;
 		
 		PageBlock page = new PageBlock(currPage, totalcount, pageSize, blockSize);
 		
-		List<UserforumDTO> alluserforum = service.allUserForum(movieCd, page.getStartRow() - 1, pageSize);
-
 		
-		model.addAttribute("alluserforum", alluserforum);
+		List<UserforumDTO> userforumList = service.userforumList(movieCd, boardno, search, searchtxt, page.getStartRow() - 1, pageSize);
+		model.addAttribute("userforumList", userforumList);
 		model.addAttribute("movieCd", movieCd);
 		model.addAttribute("page", page);
+		model.addAttribute("search", search);
+		model.addAttribute("searchtxt", searchtxt);
 						
 		return "/view.jsp?page=board/userforumlist";
 	}

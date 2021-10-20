@@ -29,12 +29,12 @@
          		<c:forEach var="list" items="${bestUserforumList }">
 					<li class="forum_contents">
 						<input type="hidden" value="${list.content_no }" class="contentnodistinct">
-						<div class="title">${list.content_title }</div>
+						<div class="title" onClick="location.href='/moviedetail/${detail.movieCd }/userforumdetail/${list.content_no }'">${list.content_title }</div>
 						<div class="user_id">${list.user_id }</div>
 						<div class="content_date">${list.content_date }</div>
 						<c:if test="${list.imageName!=null && list.imageName!='' }">
 							<div class="img_div">
-								<img alt="이미지" src="/resources/upload/${list.imagePath }" class="forumImg"  onClick="location.href='/moviedetail/${detail.movieCd }/userforumdetail/${list.content_no }'">
+								<img alt="이미지" src="/resources/upload/${list.imagePath }" class="forumImg" onClick="location.href='/moviedetail/${detail.movieCd }/userforumdetail/${list.content_no }'">
 							</div>
 						</c:if>
 						<div class="forum_content">${list.content_content }</div>

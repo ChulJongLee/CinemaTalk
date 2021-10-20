@@ -198,7 +198,7 @@
 
 
 <!-- 자유게시판 리스트 -->
-<select id="allUserForum" parameterType="hashmap" resultType="com.kosta.dto.UserforumDTO">
+<select id="userforumlist" parameterType="hashmap" resultType="com.kosta.dto.UserforumDTO">
 	select e1.content_no, user_id, e1.user_no, board_distinct_no
 	, content_title, content_content, content_date
 	, content_like, content_hate
@@ -207,7 +207,19 @@
 	on e1.user_no=e2.user_no
 	left join board_image i
 	on e1.content_no=i.content_no
-	where movieCd = #{movieCd} and board_distinct_no = 5
+	<where>
+      <if test="searchtxt!=null and searchtxt!='' and !searchtxt.equals('') ">
+         <choose>
+            <when test="search=='content_title'">
+               and content_title like CONCAT('%',#{searchtxt},'%')          
+            </when>
+            <when test="search=='user_id'">
+               and e2.user_id like CONCAT('%',#{searchtxt},'%')             
+            </when>
+         </choose>   
+      </if>  
+      and movieCd = #{movieCd} and board_distinct_no = #{board_distinct_no}
+   </where>
 	order by content_date DESC
 	limit #{startRow}, #{pageSize}
 </select>  
@@ -269,8 +281,24 @@
 		where content_no = #{content_no}
 </update>
 
-
-
+<select id="gettotalcount" resultType="int" parameterMap="hashmap">
+	select count(*)
+	from comm_board e1 left join user_info e2 
+	on e1.user_no=e2.user_no
+	 <where>
+      <if test="searchtxt!=null and searchtxt!='' and !searchtxt.equals('') ">
+         <choose>
+            <when test="search=='content_title'">
+               and content_title like CONCAT('%',#{searchtxt},'%')          
+            </when>
+            <when test="search=='user_id'">
+               and e2.user_id like CONCAT('%',#{searchtxt},'%')             
+            </when>
+         </choose>   
+      </if>  
+      and board_distinct_no = #{boardno} and movieCd = #{movieCd}
+   </where>
+</select>
 
 
 </mapper>

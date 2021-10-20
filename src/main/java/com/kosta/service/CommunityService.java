@@ -49,13 +49,16 @@ public interface CommunityService {
 
 	public List<UserforumDTO> getWorstUserforms(String movieCd);
 	public List<UserforumDTO> getBestUserforms(String movieCd);
-	public List<UserforumDTO> allUserForum(String movieCd, int startRow, int pageSize);
 	public UserforumDTO userforumdetail(int contentno);
 	public int userforumInsert(UserforumDTO dto);
 
 	public void userforumModify(UserforumDTO dto);
 
 	public int getReportCount();
+
+	public int getTotalCount(String movieCd, int boardno, String search, String searchtxt);
+
+	public List<UserforumDTO> userforumList(String movieCd, int board_distinct_no, String search, String searchtxt, int i, int pageSize);
 
 
 	

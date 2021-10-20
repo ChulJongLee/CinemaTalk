@@ -54,13 +54,16 @@ public interface CommunityMapper {
 	
 	public List<UserforumDTO> getworstuserforms(String movieCd);
 	public List<UserforumDTO> getbestuserforms(String movieCd);
-	public List<UserforumDTO> allUserForum(HashMap<String, Object> hm);
 	public UserforumDTO userforumdetail(int contentno);
 	public int userforuminsert(UserforumDTO dto);
 
 	public void userforummodify(UserforumDTO dto);
 
 	public int getreportcount();
+
+	public int gettotalcount(HashMap<String, Object> hm);
+
+	public List<UserforumDTO> userforumlist(HashMap<String, Object> hm);
 
 	
 

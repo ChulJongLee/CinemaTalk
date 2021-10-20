@@ -19,7 +19,7 @@
 				<c:if test="${user == null}"><a href="/login" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
 			</div>
 			<ul id="userforumboard">
-				<c:forEach var="list" items="${alluserforum }">
+				<c:forEach var="list" items="${userforumList }">
 					<input type="hidden" value="${list.content_no }" class="contentnodistinct">
 					<div id="listhead">
 						<div id="number">${list.content_no }</div>
@@ -28,7 +28,7 @@
 					</div>
 					<hr id="under_title" style="margin: 5px 0;">
 					<li id="userforumlist">
-						<div>
+						<div id="img_section">
 							<c:if test="${list.imageName!=null && list.imageName!='' }">
 								<img alt="이미지" src="/resources/upload/${list.imagePath }" class="forum_list_img"
 								onClick="location.href='/moviedetail/${movieCd }/userforumdetail/${list.content_no }'">
@@ -76,8 +76,18 @@
 					<hr id="under_title" style="margin: 5px 0;">
 				</c:forEach>			
 			</ul>		
+			<div id="findBar"> <!-- 검색창 -->
+			<form method="get" action="/moviedetail/${movieCd }/userforumlist">
+				<select id="search" name="search">
+					<option value="content_title">제목</option>
+					<option value="user_id">아이디</option>
+				</select>
+				<input type="text" name="searchtxt">
+				<input type="submit" value="검색" id="btn1">
+			</form>
+		</div>	
 		</div>
-		
+	
 
 	<!-- 페이징  -->
 	<nav aria-label="..." id="paging">
@@ -86,12 +96,12 @@
 			<!-- 이전 버튼 -->		  
 			<c:if test="${page.prev == false}">		
 				<li class="page-item disabled">
-			      <a class="page-link" href="userforumlist?currPage=${page.startBlock-1 }">&laquo;</a>
+			      <a class="page-link" href="userforumlist?currPage=${page.startBlock-1 }&search=${search }&searchtxt=${searchtxt }">&laquo;</a>
 			    </li>
 			</c:if>
 			<c:if test="${page.prev == true}">		
 				<li class="page-item">
-			      <a class="page-link" href="userforumlist?currPage=${page.startBlock-1 }">&laquo;</a>
+			      <a class="page-link" href="userforumlist?currPage=${page.startBlock-1 }&search=${search }&searchtxt=${searchtxt }">&laquo;</a>
 			    </li>
 			</c:if>
 			
@@ -104,7 +114,7 @@
 				</c:if>
 				<c:if test="${index!=page.currPage }">
 					<li class="page-item" aria-current="page">
-				      <a class="page-link" href="userforumlist?currPage=${index }"><c:out value="${index }"/></a>
+				      <a class="page-link" href="userforumlist?currPage=${index }&search=${search }&searchtxt=${searchtxt }"><c:out value="${index }"/></a>
 				    </li>
 				</c:if>
 			</c:forEach>
@@ -112,12 +122,12 @@
 			<!-- 다음 버튼 -->
 			<c:if test="${page.next == false}">
 				<li class="page-item disabled">
-			      <a class="page-link" href="userforumlist?currPage=${page.endBlock+1 }">&raquo;</a>
+			      <a class="page-link" href="userforumlist?currPage=${page.endBlock+1 }&search=${search }&searchtxt=${searchtxt }">&raquo;</a>
 			    </li>
 			</c:if>
 			<c:if test="${page.next == true}">
 				<li class="page-item">
-			      <a class="page-link" href="userforumlist?currPage=${page.endBlock+1 }">&raquo;</a>
+			      <a class="page-link" href="userforumlist?currPage=${page.endBlock+1 }&search=${search }&searchtxt=${searchtxt }">&raquo;</a>
 			    </li>
 			</c:if>		
 	  	</ul>

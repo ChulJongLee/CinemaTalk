@@ -31,6 +31,11 @@
 	font-weight: 600;
     font-size: 18px;
 }
+#content{
+    height: 100px;
+    overflow: hidden;
+    white-space: pre-wrap;
+}
 #writedate{
 	float: right;
 }
@@ -54,12 +59,13 @@
 	width: 100%;
 	margin: 8px 0px;
 	margin-bottom: 30px;
+    cursor: pointer;
 }
 
 /* 글쓰기 버튼 */
 #writebtn{
-    position: relative;
-    left: 600px;
+    width: 100%;
+    text-align: end;
 }
 
 #writebtn a{
@@ -79,7 +85,7 @@
 	display: flex;
 	justify-content: center;
 }
-.forum_list_img{
+.forum_list_img, #img_section{
     width: 150px;
     height: 120px;
     cursor: pointer;
@@ -119,4 +125,10 @@
 #functionBtns{
     position: relative;
     left: 630px;
+}
+#findBar{
+	width: 100%;
+	text-align: end;
+    margin-bottom: 20px;
+	
 }

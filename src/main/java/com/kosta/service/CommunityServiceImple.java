@@ -99,18 +99,6 @@ public class CommunityServiceImple implements CommunityService {
 		
 		return mapper.getworstuserforms(movieCd);
 	}
-	
-	@Override
-	public List<UserforumDTO> allUserForum(String movieCd, int startRow, int pageSize) {
-		
-		HashMap<String, Object> hm = new HashMap<String, Object>();
-		hm.put("movieCd", movieCd);
-		hm.put("startRow", startRow);
-		hm.put("pageSize", pageSize);
-		
-		return mapper.allUserForum(hm);
-	}
-
 
 	@Override
 	public void reviewLike(int contentno) {
@@ -199,6 +187,31 @@ public class CommunityServiceImple implements CommunityService {
 	public int getReportCount() {
 		// TODO Auto-generated method stub
 		return mapper.getreportcount();
+	}
+
+	@Override
+	public int getTotalCount(String movieCd, int boardno, String search, String searchtxt) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("movieCd", movieCd);
+		hm.put("boardno", boardno);
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		return mapper.gettotalcount(hm);
+	}
+
+	@Override
+	public List<UserforumDTO> userforumList(String movieCd, int board_distinct_no, String search, String searchtxt, int startRow, int pageSize) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("movieCd", movieCd);
+		hm.put("board_distinct_no", board_distinct_no);
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("startRow", startRow);
+		hm.put("pageSize", pageSize);
+		
+		return mapper.userforumlist(hm);
 	}
 
 	
