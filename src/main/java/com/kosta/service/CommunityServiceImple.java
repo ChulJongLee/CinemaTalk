@@ -51,12 +51,12 @@ public class CommunityServiceImple implements CommunityService {
 
 
 	@Override
-	public List<ReviewDTO> allReview(String movieCd, int startRow, int endRow) {
+	public List<ReviewDTO> allReview(String movieCd, int startRow, int pageSize) {
 		HashMap<String, Object> hm = new HashMap<String, Object>();
 		
 
-		hm.put("startrow", startRow);
-		hm.put("endrow", endRow);
+		hm.put("startRow", startRow);
+		hm.put("pageSize", pageSize);
 		hm.put("movieCd", movieCd);
 	
 		return mapper.list(hm);
@@ -71,10 +71,9 @@ public class CommunityServiceImple implements CommunityService {
 
 	
 	@Override
-	public int totalCount2(int boardno) {
+	public int totalCount2(String movieCd, int boardno) {
 		
-		int result = boardno;
-		return mapper.totalCount2(result);
+		return mapper.totalCount2(movieCd, boardno);
 	}
 
 

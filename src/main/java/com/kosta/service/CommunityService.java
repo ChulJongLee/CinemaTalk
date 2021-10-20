@@ -11,7 +11,7 @@ public interface CommunityService {
 	
 	public int totalCount(String search, String searchtxt);
 	
-	public int totalCount2(int boardno);
+	public int totalCount2(String movieCd, int boardno);
 	
 	public List<ReviewDTO> review();
 	
@@ -19,7 +19,7 @@ public interface CommunityService {
 
 	public List<ReviewDTO> generalReviewList(String movieCd);
 
-	public List<ReviewDTO> allReview(String movieCd, int startRow, int endRow);
+	public List<ReviewDTO> allReview(String movieCd, int startRow, int pageSize);
 	
 	public List<ReviewDTO> famousLineList();
 	public List<ReviewDTO> allFamousLine(String search, String searchtxt, int startRow, int endRow);

@@ -28,7 +28,7 @@
   </resultMap>
   
 
-<select id="totalCount" parameterMap="hashmap" resultType="int">
+<!-- <select id="totalCount" parameterMap="hashmap" resultType="int">
 	select count(*)
 	from comm_board
 	<where>
@@ -46,33 +46,27 @@
 			</choose>	
 		</if>		
 	</where>
-</select>
+</select> -->
 
 <select id="totalCount2" resultType="int">
 	select count(*)
 	from comm_board
-	where board_distinct_no = #{boardno}
+	where board_distinct_no = #{boardno} and movieCd = #{movieCd}
 </select>
 
 <!-- 리뷰 페이지 모든 리뷰 -->
 <select id="list" parameterMap="hashmap" resultMap="reviewdto">
-	select A.*
-	from (select S.*, @rownum:=@rownum+1 as rn
- from (select content_no, user_id, e1.user_no, e1.movieCd, board_distinct_no, content_date, content_content, content_like, content_hate, spoiler_tf
-			    from comm_board e1 left join user_info e2
- 				on e1.user_no=e2.user_no
+	select content_no, user_id, e1.user_no, e1.movieCd, board_distinct_no, content_date, content_content, content_like, content_hate, spoiler_tf
+    from comm_board e1 left join user_info e2
+	on e1.user_no=e2.user_no
 
-			    left join movie_info e3
-			    on e1.movieCd=e3.movieCd, (select @rownum:=0)R
-			    
-                where 1=1) S
-                where board_distinct_no = 1 and movieCd = #{movieCd}
-				order by content_date DESC ) A
-			<where>
-				<![CDATA[
-					rn>=#{startrow} and rn<=#{endrow}
-				]]>	
-			</where>
+    left join movie_info e3
+    on e1.movieCd=e3.movieCd
+    
+    where board_distinct_no = 1 and e1.movieCd = #{movieCd}
+	order by content_date DESC
+	limit #{startRow}, #{pageSize}
+
 </select>
 
 
@@ -105,17 +99,6 @@
 	limit 4
 </select>
 
-
-<!-- 리뷰 페이지 모든 리뷰 -->
-<!-- <select id="getallreview" resultMap="reviewdto">
-	select content_no, user_id, e1.user_no, content_date, content_content, content_like, content_hate
-	from comm_board e1 inner join user_info e2
-    on e1.user_no=e2.user_no
-	where board_distinct_no = 1
-	order by content_date DESC
-</select> -->
-
-
 <!-- 참여 게시판 메인 명대사 -->
 <select id="getfamousline" resultMap="reviewdto">
 	select content_no, user_no, content_date, content_content, content_like, content_hate
@@ -127,7 +110,7 @@
 
 
 <!-- 참여 게시판 모든 명대사 -->
-<select id="getallfamousline" parameterMap="hashmap" resultMap="reviewdto">
+<!-- <select id="getallfamousline" parameterMap="hashmap" resultMap="reviewdto">
 	select A.*
 	from (select S.*, @rownum:=@rownum+1 as rn
 	  	  from (select user_no, board_distinct_no, content_date, content_content, content_like, content_hate
@@ -140,7 +123,7 @@
 					rn>=#{startrow} and rn<=#{endrow}
 				]]>	
 			</where>
-</select>
+</select> -->
 
 
 

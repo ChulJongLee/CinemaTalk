@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.kosta.dto.ReportDTO;
 import com.kosta.dto.ReviewDTO;
@@ -14,7 +15,7 @@ public interface CommunityMapper {
 	
 	public int totalCount(HashMap<String, Object> hm);
 	
-	public int totalCount2(int result);
+	public int totalCount2(@Param("movieCd") String movieCd, @Param("boardno") int boardno);
 	
 	public List<ReviewDTO> list(HashMap<String, Object> hm);	
 	

@@ -110,13 +110,13 @@ public class CommunityController {
 							, @RequestParam(required = false, defaultValue = "1") int boardno
 							, Model model) {
 		
-		int totalcount = service.totalCount2(boardno); // 전체 자료수
+		int totalcount = service.totalCount2(movieCd, boardno); // 전체 자료수
 		int pagesize=10;
 		int blocksize=5;
 		
 		PageBlock page = new PageBlock(currPage, totalcount, pagesize, blocksize);
 		
-		List<ReviewDTO> allreview = service.allReview(movieCd, page.getStartRow(), page.getEndRow());
+		List<ReviewDTO> allreview = service.allReview(movieCd, page.getStartRow() - 1, pagesize);
 		
 		model.addAttribute("movieCd", movieCd);
 		model.addAttribute("allreview", allreview);
@@ -153,7 +153,7 @@ public class CommunityController {
 								, @RequestParam(required = false, defaultValue = "5") int boardno
 								, Model model) {
 		
-		int totalcount = service.totalCount2(boardno);
+		int totalcount = service.totalCount2(movieCd, boardno);
 		int pageSize=10;
 		int blockSize=5;
 		
