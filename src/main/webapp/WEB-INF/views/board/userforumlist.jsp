@@ -80,6 +80,7 @@
 			<form method="get" action="/moviedetail/${movieCd }/userforumlist">
 				<select id="search" name="search">
 					<option value="content_title">제목</option>
+					<option value="content_content">내용</option>
 					<option value="user_id">아이디</option>
 				</select>
 				<input type="text" name="searchtxt">

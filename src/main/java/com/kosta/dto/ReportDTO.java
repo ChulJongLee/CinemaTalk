@@ -11,5 +11,6 @@ public class ReportDTO {
 	private int reply;
 	private String reportreason;
 	private int reportsize;
-
+	private String content_content;
+	private String movieCd;
 }

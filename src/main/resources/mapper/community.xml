@@ -174,8 +174,10 @@
 
 <!-- 신고 전체 조회 -->
 <select id="getreportlist" parameterMap="hashmap" resultMap="reportdto">
-	select report_no, content_no, report_content, report_count
-	from report
+	select report_no, r.content_no, report_content, report_count, content_content, movieCd
+	from report as r
+	left join comm_board as b
+	on r.content_no = b.content_no
 	order by report_no DESC
 	limit #{startRow}, #{pageSize}
 </select>
@@ -212,6 +214,9 @@
          <choose>
             <when test="search=='content_title'">
                and content_title like CONCAT('%',#{searchtxt},'%')          
+            </when>
+            <when test="search=='content_content'">
+               and content_content like CONCAT('%',#{searchtxt},'%')          
             </when>
             <when test="search=='user_id'">
                and e2.user_id like CONCAT('%',#{searchtxt},'%')             
@@ -290,6 +295,9 @@
          <choose>
             <when test="search=='content_title'">
                and content_title like CONCAT('%',#{searchtxt},'%')          
+            </when>
+            <when test="search=='content_content'">
+               and content_content like CONCAT('%',#{searchtxt},'%')          
             </when>
             <when test="search=='user_id'">
                and e2.user_id like CONCAT('%',#{searchtxt},'%')             
