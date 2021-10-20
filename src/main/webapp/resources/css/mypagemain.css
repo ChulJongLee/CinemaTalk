@@ -10,7 +10,7 @@
 	color: white;
 }
 
-#user_info, #myCollection, #myReview, #rate_statistics, #fav_actor, #fav_director, #fav_genre, #fav_nations{
+#user_info, #myCollection, #myReview, #myContents, #rate_statistics, #fav_actor, #fav_director, #fav_genre, #fav_nations{
 	background-color: #151515;
 	width: 1300px;
 	margin: 0px auto;
@@ -18,18 +18,18 @@
 	color: white;
 }
 
-#user_info>div, #myCollection>div, #myReview>div, #rate, #fav_actor>div, #fav_director>div, #fav_genre>div, #fav_nations>div{
+#user_info>div, #myCollection>div, #myReview>div, #myContents>div, #rate, #fav_actor>div, #fav_director>div, #fav_genre>div, #fav_nations>div{
 	display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-#user_info>.p-wrapper>p, #myCollection>.p-wrapper>p, #myReview>.p-wrapper>p, #rate_statistics>.p-wrapper>p, #fav_actor>.p-wrapper>p, #fav_director>.p-wrapper>p, #fav_genre>.p-wrapper>p, #fav_nations>.p-wrapper>p{
+#user_info>.p-wrapper>p, #myCollection>.p-wrapper>p, #myReview>.p-wrapper>p, #myContents>.p-wrapper>p, #rate_statistics>.p-wrapper>p, #fav_actor>.p-wrapper>p, #fav_director>.p-wrapper>p, #fav_genre>.p-wrapper>p, #fav_nations>.p-wrapper>p{
 	display: inline-block;
 	margin: 15px;
 }
 
-#user_info>.p-wrapper>p, #myCollection>.p-wrapper>p>a, #myReview>.p-wrapper>p>a, #rate_statistics>.p-wrapper, #fav_actor>.p-wrapper, #fav_director>.p-wrapper, #fav_genre>.p-wrapper, #fav_nations>.p-wrapper{
+#user_info>.p-wrapper>p, #myCollection>.p-wrapper>p>a, #myReview>.p-wrapper>p>a, #myContents>.p-wrapper>p, #rate_statistics>.p-wrapper, #fav_actor>.p-wrapper, #fav_director>.p-wrapper, #fav_genre>.p-wrapper, #fav_nations>.p-wrapper{
 	text-align: center;
 	font-size: 30px;
 	color: white;
@@ -98,6 +98,12 @@
     overflow: hidden;
     -webkit-line-clamp: 7;
     height: 140px;
+}
+
+#mycontentlist-wrapper>a{
+	margin-bottom: 30px;
+	color: white;
+	text-decoration: none;
 }
 
 #canvas-wrapper{

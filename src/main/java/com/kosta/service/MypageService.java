@@ -7,6 +7,7 @@ import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.dto.UserDTO;
+import com.kosta.dto.UserforumDTO;
 
 public interface MypageService {
 
@@ -37,5 +38,9 @@ public interface MypageService {
 	public int collectionCount(int user_no);
 
 	public int reviewCount(int user_no);
+
+	public int myContentCount(String user_id);
+
+	public List<UserforumDTO> getEveryContent(String user_id, int startRow, int pageSize);
 
 }

@@ -11,6 +11,7 @@ import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.dto.UserDTO;
+import com.kosta.dto.UserforumDTO;
 
 @Mapper
 public interface MypageMapper {
@@ -42,6 +43,10 @@ public interface MypageMapper {
 	int collectionCount(int user_no);
 
 	int reviewCount(int user_no);
+
+	int myContentCount(String user_id);
+
+	List<UserforumDTO> getEveryContent(HashMap<String, Object> hm);
 	
 
 }

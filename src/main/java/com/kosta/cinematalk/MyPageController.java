@@ -15,6 +15,7 @@ import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.dto.UserDTO;
+import com.kosta.dto.UserforumDTO;
 import com.kosta.service.MypageService;
 
 import lombok.RequiredArgsConstructor;
@@ -47,7 +48,7 @@ public class MyPageController {
 			//나의리뷰
 			List<ReviewDTO> reviewlist = mypageService.getMyReview(user_no);
 			model.addAttribute("reviewlist", reviewlist);
-
+			
 			//별점분포
 			int[] arr = mypageService.getRates(user_no);
 			model.addAttribute("arr", arr);
@@ -119,6 +120,30 @@ public class MyPageController {
 			model.addAttribute("page", page);
 
 			return "/view.jsp?page=user/myreview";
+		}
+	}
+	
+	@GetMapping("/mypage/mycontent")
+	public String myContent(HttpSession session, @RequestParam(required = false, defaultValue = "1") int currPage, @RequestParam(required = false, defaultValue = "") String user_id, Model model) {
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		
+		if(user == null) {
+			return "redirect:/login";
+		} else {
+			int user_no = user.getUser_no();
+
+			//전체 자료 수 확인
+			int totalcount = mypageService.myContentCount(user_id);
+			int pageSize=10;
+			int blockSize=5;
+			
+			PageBlock page = new PageBlock(currPage, totalcount, pageSize, blockSize);
+
+			List<UserforumDTO> userforumList = mypageService.getEveryContent(user_id, page.getStartRow() - 1, pageSize);
+			model.addAttribute("userforumList", userforumList);
+			model.addAttribute("page", page);
+
+			return "/view.jsp?page=user/mycontent";
 		}
 	}
 

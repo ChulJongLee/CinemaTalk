@@ -12,6 +12,7 @@ import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.RateDTO;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.dto.UserDTO;
+import com.kosta.dto.UserforumDTO;
 import com.kosta.mapper.MypageMapper;
 
 @Service
@@ -169,6 +170,25 @@ public class MypageServiceImple implements MypageService {
 	public int reviewCount(int user_no) {
 		
 		return mapper.reviewCount(user_no);
+	}
+
+	//게시글 수
+	@Override
+	public int myContentCount(String user_id) {
+	
+		return mapper.myContentCount(user_id);
+	}
+
+	//나의 게시글 리스트
+	@Override
+	public List<UserforumDTO> getEveryContent(String user_id, int startRow, int pageSize) {
+
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("user_id", user_id);
+		hm.put("startRow", startRow);
+		hm.put("pageSize", pageSize);
+		
+		return mapper.getEveryContent(hm);
 	}
 
 

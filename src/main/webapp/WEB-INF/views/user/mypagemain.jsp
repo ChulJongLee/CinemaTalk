@@ -119,7 +119,6 @@
 		  </div>
 		</div>
 		
-		
 		<!-- 리뷰 신고 Modal -->
   		<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		  <div class="modal-dialog">
@@ -152,7 +151,10 @@
 		</ul>
 	</div>
 	
-
+	<div id="myContents">
+		<div class="p-wrapper"><p align="center"><b>나의 게시글</b></p></div>
+		<div id="mycontentlist-wrapper"><a href="/mypage/mycontent?user_id=${userdto.user_id}">내가 쓴 게시글 보러 가기</a></div>
+	</div>
 		
 	<div id="rate_statistics">
 		<div class="p-wrapper"><p align="center"><b>별점 분포</b></p></div>

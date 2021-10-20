@@ -170,6 +170,24 @@
 		where user_no = #{user_no} and board_distinct_no = 1
 	</select> 
 
+	<select id="myContentCount" parameterType="String" resultType="int">
+		select count(*)
+		from comm_board c inner join user_info u
+		on c.user_no = u.user_no
+		where user_id = #{user_id} and board_distinct_no = 5
+	</select>
+
+	<select id="getEveryContent" parameterType="java.util.HashMap" resultType="com.kosta.dto.UserforumDTO">
+		select c.content_no, user_id, c.user_no, movieCd, board_distinct_no, content_title, content_content, content_date, content_like, content_hate, imageNum, imagePath, imageName
+		from comm_board c left join user_info u 
+		on c.user_no = u.user_no
+		left join board_image i
+		on c.content_no = i.content_no
+		where user_id = #{user_id} and board_distinct_no = 5
+		order by content_date DESC
+		limit #{startRow}, #{pageSize}
+	</select>
+
 </mapper>
   
   
