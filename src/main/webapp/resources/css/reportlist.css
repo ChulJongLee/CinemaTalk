@@ -1,100 +1,25 @@
 @charset "UTF-8";
 
-section{
-    border: 2px solid orange;
-    width: 1300px;
+#repotrwrap{
+	display: flex;
+	justify-content: center;
     margin: 0px auto;
+    color: white;
+}
+#repotrwrap table{
+	margin-top: 30px;
+}
+th, td{
+    border: 1px solid;
+    padding: 3px 35px;
 }
 
-#userforumwrap{
-	border: 2px solid blue;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin: 0px auto;
-	width: 80%;
-	color: white;
+th{
+	color: gold;
 }
 
-/* 게시판 헤더 */
-#listhead{
-/* 	border: 1px solid green;
- */	width: 100%;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	text-align: center;
-	margin: 8px;
-}
-#headno{
-/* 	border: 1px solid skyblue;
- */	width: 5%;
-}
-#headtitle{
-/* 	border: 1px solid skyblue;
- */	width: 45%;
-}
-#headid{
-/* 	border: 1px solid skyblue;
- */	width: 15%;
-}
-#headdate{
-/* 	border: 1px solid skyblue;
- */	width: 15%;
-}
-#headlike{
-/* 	border: 1px solid skyblue;
- */	width: 10%;
-}
-#headdislike{
-/* 	border: 1px solid skyblue;
- */	width: 10%;
-}
-
-
-/* 게시판 게시물 */
-#userforumboard{
-	list-style: none;
-	width: 100%;
-	padding-left: 0;
-}
-#userforumlist{
-/* 	border: 1px solid white;
- */	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	width: 100%;
-	text-align: center;
-	margin: 8px 0px;
-}
-#number{
-/* 	border: 1px solid yellow;
- */	width: 5%;	
-}
-#title{
-/* 	border: 1px solid yellow;
- */	width: 45%;
-}
-#id, #writedate{
-/* 	border: 1px solid yellow;
- */	width: 15%;
-}
-#like, #dislike{
-/* 	border: 1px solid yellow;
- */	width: 10%;
-}
-
-
-/* 글쓰기 버튼 */
-#writebtn{
-	border: 1px solid green;
-	display: flex;
-	justify-content: flex-end;
-	width: 80%;
-	margin: 0px auto;
+.reportno, .contentno, .reportsize{
+    text-align: center;
 }
 
 /* 페이징 */

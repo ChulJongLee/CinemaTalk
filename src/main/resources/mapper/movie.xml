@@ -32,7 +32,7 @@
 		where genreNm like CONCAT('%',#{keyword},'%')
 	</select>
 	<select id="getmoviedetail" resultType="com.kosta.dto.KobisDTO" parameterType="String">
-		select i.movieCd, movieNm, plotText, genreNm, repNationNm, DATE_FORMAT(openDt, "%Y.%m.%d") as openDt, watchGradeNm, showTm, poster, movie_trailer, avg(rate) as rate
+		select i.movieCd, movieNm, plotText, genreNm, repNationNm, DATE_FORMAT(openDt, "%Y.%m.%d") as openDt, watchGradeNm, showTm, poster, movie_trailer, round(avg(rate),2) as rate
 		from movie_info as i
 			left outer join movie_rating as r
 			on i.movieCd=r.movieCd
@@ -123,7 +123,7 @@
 	</select>
   
    <select id="getmovierate" resultType="com.kosta.dto.KobisDTO">
-		select avg(rate) as rate, i.movieCd, movieNm, poster
+		select round(avg(rate),2) as rate, i.movieCd, movieNm, poster
 		from movie_rating as r
 			inner join movie_info as i
 			on r.movieCd=i.movieCd

@@ -10,28 +10,27 @@
 </head>
 <body>
 	
-	<section>
-		<div id="userforumwrap">
-			<table>
-				<thead>
+	<section id="repotrwrap">
+		<table>
+			<thead>
+				<tr>
+					<th>신고번호</th><th>게시글(댓글)번호</th><th>신고 사유</th><th>신고 유저</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="list" items="${reportList }">
 					<tr>
-						<th>신고번호</th><th>게시글(댓글)번호</th><th>신고 사유</th><th>신고횟수</th>
+						<td class="reportno">${list.reportno }</td>
+						<c:if test="${list.reply !=0}"><td class="contentno">${list.reply }</td></c:if>
+						<c:if test="${list.contentno !=0}"><td class="contentno">${list.contentno }</td></c:if>
+						<td>${list.reportreason }</td>
+						<td class="reportsize">${list.reportsize }</td>
 					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="list" items="${reportList }">
-						<tr>
-							<td>${list.reportno }</td>
-							<c:if test="${list.reply !=0}"><td>${list.reply }</td></c:if>
-							<c:if test="${list.contentno !=0}"><td>${list.contentno }</td></c:if>
-							<td>${list.reportreason }</td>
-							<td>${list.reportsize }</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>	
-		</div>
+				</c:forEach>
+			</tbody>
+		</table>	
 
+	</section>
 	<!-- 페이징  -->
 	<nav aria-label="..." id="paging">
 		<ul class="pagination">	
@@ -76,7 +75,6 @@
 	  	</ul>
 	</nav>		
 	
-</section>
 
 </body>
 </html>

@@ -198,7 +198,7 @@ public class CommunityController {
 			, HttpServletRequest request, HttpServletResponse response) {
 		UserDTO user = (UserDTO) session.getAttribute("user");
 		if(user==null){
-			return "/view.jsp?page=userlogin";
+			return "/view.jsp?page=user/userlogin";
 		}
 		else {
 
@@ -253,11 +253,26 @@ public class CommunityController {
 	
 	//자유게시판 수정
 	@RequestMapping("/moviedetail/{movieCd}/userforummodify/{contentno}")
-	public String userforumModify(@PathVariable String movieCd ,@PathVariable int contentno, Model model) {
-		UserforumDTO userforumdetail = service.userforumdetail(contentno);
-		model.addAttribute("movieCd", movieCd);
-		model.addAttribute("userforumdetail", userforumdetail);
-		return "/view.jsp?page=board/userforumModify";
+	public String userforumModify(@PathVariable String movieCd ,@PathVariable int contentno, Model model
+			, HttpSession session) {
+		String result="";
+		try {
+			UserDTO user = (UserDTO) session.getAttribute("user");
+			int user_no=user.getUser_no();
+			
+			UserforumDTO userforumdetail = service.userforumdetail(contentno);
+			if(user_no==userforumdetail.getUser_no()) {
+				model.addAttribute("movieCd", movieCd);
+				model.addAttribute("userforumdetail", userforumdetail);
+				result="/view.jsp?page=board/userforumModify";
+			}else
+				result="/view.jsp?page=user/userlogin";
+			
+		}catch(NullPointerException e){
+			result="/view.jsp?page=user/userlogin";
+		}
+		
+		return result;
 	}
 	
 	//자유게시판 수정 Result
@@ -268,7 +283,7 @@ public class CommunityController {
 			, HttpServletRequest request, HttpServletResponse response) {
 		UserDTO user = (UserDTO) session.getAttribute("user");
 		if(user==null){
-			return "/view.jsp?page=userlogin";
+			return "/view.jsp?page=user/userlogin";
 		}
 		else {
 			String imagePath = "";
@@ -308,9 +323,9 @@ public class CommunityController {
 		return "/view.jsp?page=board/userforumdetail";
 		}
 	}
-	
-	
-	
+		
+		
+		
 	// 리뷰 좋아요
 	@PostMapping("/like")
     @ResponseBody

@@ -12,6 +12,7 @@
 #modify_title label, #modify_content label{
 	font-size: 23px;
 }
+
 .modify_content{
 	width: 500px;
 	height: 400px;
@@ -19,6 +20,7 @@
 
 #submitBtn{
 	/* border: 2px solid red; */
+	margin-top: 20px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -40,4 +42,6 @@
 #modify_img{
 	width:380px;
 	height: 200px;
+    position: relative;
+    top: 10px;
 }
