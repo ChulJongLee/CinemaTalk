@@ -11,25 +11,39 @@
 <body>
 	
 	<section id="repotrwrap">
-		<table>
-			<thead>
-				<tr>
-					<th>신고번호</th><th>게시글(댓글)번호</th><th>신고 사유</th><th>신고 유저</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="list" items="${reportList }">
-					<tr>
-						<td class="reportno">${list.reportno }</td>
-						<c:if test="${list.reply !=0}"><td class="contentno">${list.reply }</td></c:if>
-						<c:if test="${list.contentno !=0}"><td class="contentno">${list.contentno }</td></c:if>
-						<td>${list.reportreason }</td>
-						<td class="reportsize">${list.reportsize }</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>	
-
+		<div class="container">
+		    <table class="table table-condensed"  id="myTable">
+			    <thead>
+			        <tr>
+			            <th>신고번호</th>
+			            <th>게시글(댓글)번호</th>
+			            <th>신고 사유</th>
+			            <th>신고 횟수</th>
+			            <th id="headT"></th>
+			        </tr>
+			    </thead>
+			    <tbody class="panel">
+			    	<c:forEach var="list" items="${reportList }" varStatus="status">
+				        <tr data-bs-toggle="collapse" data-bs-target="#demo${status.index}" data-parent="#myTable" class="reportContent">
+				           <td class="reportno">${list.reportno }</td>
+								<c:if test="${list.reply !=0}"><td class="contentno">${list.reply }</td></c:if>
+								<c:if test="${list.contentno !=0}"><td class="contentno">${list.contentno }</td></c:if>
+								<td>${list.reportreason }</td>
+								<td class="reportsize">${list.reportsize }</td>
+				        </tr>
+			       
+				        <tr id="demo${status.index}" class="collapse">
+				        	<td id="blankT"></td>
+				            <td colspan="3" class="hiddenRow"><div>${list.content_content }</div> </td>
+				            <td id="btnT">		            
+				            <input type="button" value="삭제" class="deleteBtn" onClick="location.href='/moviedetail/${list.movieCd}/userforumdelete/${list.contentno }'">
+				            </td>
+				            
+				        </tr>
+			        </c:forEach>
+			    </tbody>
+			</table>
+		</div>
 	</section>
 	<!-- 페이징  -->
 	<nav aria-label="..." id="paging">

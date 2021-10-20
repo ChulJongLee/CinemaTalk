@@ -6,6 +6,9 @@
     margin: 0px auto;
     color: white;
 }
+.container{
+	width: 60%;
+}
 #repotrwrap table{
 	margin-top: 30px;
 }
@@ -16,15 +19,49 @@ th, td{
 
 th{
 	color: gold;
+	text-align: center;
+}
+
+td{
+	color: white;
 }
 
 .reportno, .contentno, .reportsize{
     text-align: center;
+}
+.reportContent{
+	cursor: pointer;
 }
 
 /* 페이징 */
 #paging{
 	display: flex;
 	justify-content: center;
+    margin-top: 20px;
+}
+
+#blankT{
+	border-left: none;
+}
+
+#btnT{
+	border-top: none;
+	border-right: none;
+	border-bottom: none;
+    width: 50px;
+}
+
+#headT{
+	border-top: none;
+	border-right: none;
+	border-bottom: none;
+	width: 50px;
+}
+.deleteBtn{
+	background-color: #212121;
+	border: none;
+	color: white;
+    font-size: 17px;
+    font-weight: 600;
 }
  
