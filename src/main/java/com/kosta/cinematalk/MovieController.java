@@ -147,6 +147,15 @@ public class MovieController {
         return result;
 		
     }
+	//평점 Ajax
+	@PostMapping("/movieAvgRate")
+    @ResponseBody
+    public float movieAvgRate(String movieCd){
+		float rate=movieService.getMovieRateOne(movieCd);
+		
+        return rate;
+		
+    }
 
 
 }

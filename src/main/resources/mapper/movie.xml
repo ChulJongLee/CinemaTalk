@@ -145,5 +145,9 @@
   
   </select>
   
+  <select id="getmovierateajax" resultType="float" parameterType="String">
+ 	select round(avg(rate),2) as rate from movie_rating where movieCd=#{movieCd};
+  
+  </select>
   
   </mapper>

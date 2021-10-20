@@ -152,5 +152,11 @@ public class MovieServiceImple implements MovieService {
 		return mapper.getgenrecount(keyword);
 	}
 
+	@Override
+	public float getMovieRateOne(String movieCd) {
+		// TODO Auto-generated method stub
+		return mapper.getmovierateajax(movieCd);
+	}
+
 	
 }

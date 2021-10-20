@@ -25,4 +25,5 @@ public interface MovieService {
 	public float getMovieRateOne(String movieCd, int user_no);
 	public int getTotalCount(String keyword);
 	public int getGenreCount(String keyword);
+	public float getMovieRateOne(String movieCd);
 }

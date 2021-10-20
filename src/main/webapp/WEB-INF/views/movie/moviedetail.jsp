@@ -18,7 +18,10 @@
 	        </div>
 	        
             <ul class="movieinfotop">
-                <li class="info"><span id="movieNm">${detail.movieNm}   </span><span><img src="/resources/img/star1.png" alt="별" id="star1">${detail.rate }</span></li>
+                <li class="info"><span id="movieNm">${detail.movieNm}   </span>
+                	<span><img src="/resources/img/star1.png" alt="별" id="star1"></span>
+                	<span class="avg_rate"></span>
+                </li>
                 <li class="info">
 	                <span>${detail.openDt}<c:if test="${detail.openDt!=null && detail.watchGradeNm!='' }"> | </c:if></span>
 	                <span>${detail.watchGradeNm}<c:if test="${detail.watchGradeNm!=''}">세 | </c:if></span>
