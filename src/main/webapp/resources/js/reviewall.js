@@ -27,13 +27,13 @@ $('.likebtn').click(function() {
 // 싫어요
 $('.dislikebtn').click(function() {
 
-	var params2 = { contentno : $(this).attr('value') }
-	console.log("params12: "+params2);
+	var params = { contentno : $(this).attr('value') }
+	console.log("params12: "+params);
 	
 	$.ajax({
 		type : "POST",
 		url : "/dislike",
-		data : params2,
+		data : params,
 		success : function(res) {
 
 			location.reload(res.result);	
@@ -45,30 +45,37 @@ $('.dislikebtn').click(function() {
 });
 
 
-//삭제버튼
+//삭제버튼 js
 $('.deletebtn').click(function(){	
 	let movieCd = $('#moviecd').val();
-	console.log("무비코드무비코드무비코드무비코드무비코드무비코드무비코드무비코드"+movieCd);
 	let no=$(this).attr('value');
 	location.href="/moviedetail/"+movieCd+"/reviewdelete/"+no;
 });
 
 
-// 수정하기 
+//수정하기 js
 $(document).ready(function(){
 	$('#staticBackdrop').on('shown.bs.modal', function(e){
 	
-		  var recip=$(e.relatedTarget);
-		  console.log("recip:"+recip);
+		  var recip=$(e.relatedTarget);	  
+		  console.log("recip: "+recip);
 		  
 		  var r=$(recip).parent().parent().siblings('.content').text();
-		  console.log("r:"+r);
+		  console.log("r: "+r);
+		  
+		  var r2=$(recip).parent().parent().siblings('.content3').text();
+		  console.log("r2: "+r2);
 		  
 		  var no = $(recip).parent().parent().siblings('.contentnodistinct').attr('value');
-		  console.log("contentno:"+no);
-		  		  
-		 let m=$(this);
-		  m.find('#modaltext').val(r);
+		  console.log("no: "+no);
+		  
+		  
+		  let m=$(this);		  
+		  if(r==""){
+			  m.find('#modaltext').val(r2);
+		  }else{
+			  m.find('#modaltext').val(r);
+		  }
 		  m.find('.contentval').val(no);
 	});
 });
@@ -88,3 +95,21 @@ $(document).ready(function(){
 	});
 });	
 
+
+//스포일러
+$(document).ready(function(){
+	$('.spoilerbtn').click(function(event){
+		
+		var recip=$(event.currentTarget);
+		console.log("recip:"+recip);		
+		
+		var no = $(recip).parent().siblings('.spoilercontent').attr('value');
+		  console.log("contentno:"+no);
+		
+		$(recip).parent('.content2').attr("style", "display:none");
+		$(this).hide();
+		$(recip).parent().siblings('.content3').removeAttr('style');
+		$(recip).parent().siblings('.content3').text(no);
+		
+	});
+});	

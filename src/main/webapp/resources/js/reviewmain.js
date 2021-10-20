@@ -28,13 +28,13 @@ $('.likebtn').click(function() {
 // 싫어요
 $('.dislikebtn').click(function() {
 
-	var params2 = { contentno : $(this).attr('value') }
-	console.log("params12: "+params2);
+	var params = { contentno : $(this).attr('value') }
+	console.log("params12: "+params);
 	
 	$.ajax({
 		type : "POST",
 		url : "/dislike",
-		data : params2,
+		data : params,
 		success : function(res) {
 
 			location.reload(res.result);	
@@ -60,13 +60,25 @@ $(document).ready(function(){
 	$('#staticBackdrop').on('shown.bs.modal', function(e){
 	
 		  var recip=$(e.relatedTarget);	  
+		  console.log("recip: "+recip);
+		  
 		  var r=$(recip).parent().parent().siblings('.content').text();
+		  console.log("r: "+r);
+		  
 		  var r2=$(recip).parent().parent().siblings('.content3').text();
+		  console.log("r2: "+r2);
+		  
 		  var no = $(recip).parent().parent().siblings('.contentnodistinct').attr('value');
+		  console.log("no: "+no);
 
-		 let m=$(this);
-		  m.find('#modaltext').val(r);
-		  m.find('#modaltext').val(r2);
+		  
+		  let m=$(this);		  
+		  if(r==""){
+			  m.find('#modaltext').val(r2);
+		  }else{
+			  m.find('#modaltext').val(r);
+		  }
+		  
 		  m.find('.contentval').val(no);
 	});
 });
@@ -85,7 +97,6 @@ $(document).ready(function(){
 		  m.find('.contentval').val(no);
 	});
 });	
-
 
 
 // 스포일러

@@ -24,7 +24,17 @@
 						<div id="id">${list.userid }</div>
 						<div id="date">${list.writedate }</div>
 						
+						
+						<!-- 스포일러 체크X -->		
+						<c:if test="${list.spoiler==0 }">							
 						<div class="content">${list.contents }</div>
+						</c:if>
+						<!-- 스포일러 체크O -->
+						<c:if test="${list.spoiler==1 }">
+						<input type="hidden" value="${list.contents }" class="spoilercontent">
+						<div class="content2"><button type="button" class="spoilerbtn">스포일러 포함</button></div>
+						<div class="content3" style="display:none"></div>
+						</c:if>
 
 
 						<c:if test="${sessionScope.user.user_id!=null}">
