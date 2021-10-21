@@ -23,5 +23,5 @@ public class UserforumDTO {
 	private int imageNum;
 	private String imageName;
 	private String imagePath;
-
+	private String movieNm;
 }

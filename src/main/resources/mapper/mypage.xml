@@ -178,11 +178,13 @@
 	</select>
 
 	<select id="getEveryContent" parameterType="java.util.HashMap" resultType="com.kosta.dto.UserforumDTO">
-		select c.content_no, user_id, c.user_no, movieCd, board_distinct_no, content_title, content_content, content_date, content_like, content_hate, imageNum, imagePath, imageName
+		select c.content_no, user_id, c.user_no, c.movieCd, movieNm, board_distinct_no, content_title, content_content, content_date, content_like, content_hate, imageNum, imagePath, imageName
 		from comm_board c left join user_info u 
 		on c.user_no = u.user_no
 		left join board_image i
 		on c.content_no = i.content_no
+		left join movie_info m
+		on c.movieCd = m.movieCd
 		where user_id = #{user_id} and board_distinct_no = 5
 		order by content_date DESC
 		limit #{startRow}, #{pageSize}

@@ -25,6 +25,7 @@
 			</c:forEach>
 		</div>
 		
+		<div id="page-wrap">
 		<nav aria-label="..." id="paging">
 		<ul class="pagination">	
 		
@@ -67,6 +68,7 @@
 			</c:if>		
 	  	</ul>
 		</nav>
+		</div>
 	</div>
 
 </body>

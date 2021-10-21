@@ -16,6 +16,10 @@
 	margin: 0px auto;
 	margin-top: 80px;
 	color: white;
+
+}
+
+#collection-wrap{
 	display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -51,6 +55,13 @@
 	margin-bottom: 20px;
 }
 
+#page-wrap{
+	margin: 0px auto;	
+	text-align: center;
+}
+
 #paging{
 	margin: 50px auto;
+	display: inline-block;
+	
 }

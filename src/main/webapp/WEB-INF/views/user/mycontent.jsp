@@ -23,7 +23,7 @@
 					<input type="hidden" value="${list.content_no}"
 						class="contentnodistinct">
 					<div id="listhead">
-						<div id="number">${list.content_no}</div>
+						<div id="number">${list.movieNm}</div>
 						<div id="writedate">${list.content_date}</div>
 						<div id="user_id">${list.user_id}</div>
 					</div>
