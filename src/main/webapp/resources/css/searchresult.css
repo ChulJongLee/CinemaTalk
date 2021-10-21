@@ -11,16 +11,20 @@ ul li{
 }
 
 #boardWrap {
-	width: 50%;
+	width: 60%;
     margin: 0px auto;
     text-align: left;
     color: white;
+}
+.listsection{
+	cursor: pointer;
 }
 .resultCount{
 	font-size: 20px;
     margin-top: 30px;
     margin-left: 15px;
     margin-bottom: auto;
+    font-weight: 600;
 }
 
 .totalCount{
@@ -56,7 +60,7 @@ ul li{
     font-weight: 600;
 }
 hr{
-	width: 1000px;
+	width: 100%;
 	align-self: center;
 }
 #paging{

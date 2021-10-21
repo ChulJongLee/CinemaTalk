@@ -47,6 +47,8 @@ $(document).ready(function(){
 	$('#staticBackdrop3').on('shown.bs.modal', function(e){
 		 var recip=$(e.relatedTarget);
 		 var no = $(recip).parent().siblings('.contentnodistinct').attr('value');
+		  console.log("contentno:"+no);
+
 		 let m=$(this);
 		 m.find('.contentval').val(no);
 	});

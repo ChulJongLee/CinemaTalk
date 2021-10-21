@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,11 +25,11 @@
 				</div>
 	       		<h3 class="forum_title">Best</h3>
         	</div>
-       		<c:if test="${bestUserforumList==null }">
-         		자료가 없습니다.
+        	<c:if test="${fn:length(bestUserforumList) == 0}">
+         		<h5>자료가 없습니다.</h5>
          	</c:if>
          	
-         	<c:if test="${bestUserforumList!=null }">
+         	<c:if test="${fn:length(bestUserforumList) != 0}">
          	<ul id="forum_contentslist">
          		<c:forEach var="list" items="${bestUserforumList }">
 					<li class="forum_contents">
@@ -91,12 +92,11 @@
 	       		 <h3 class="forum_title">Worst</h3>
         	</div>
            
-        
-       		<c:if test="${worstUserforumList==null }">
-         		자료가 없습니다.
+        	<c:if test="${fn:length(worstUserforumList) == 0}">
+         		<h5>자료가 없습니다.</h5>
          	</c:if>
          	
-         	<c:if test="${worstUserforumList!=null }">
+         	<c:if test="${fn:length(worstUserforumList) != 0}">
          	<ul id="forum_contentslist">
          		<c:forEach var="list" items="${worstUserforumList }">
 					<li class="forum_contents">

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,64 +19,71 @@
 				<c:if test="${user != null}"><a href="/moviedetail/${movieCd }/userforuminsert" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
 				<c:if test="${user == null}"><a href="/login" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
 			</div>
-			<ul id="userforumboard">
-				<c:forEach var="list" items="${userforumList }">
-					<input type="hidden" value="${list.content_no }" class="contentnodistinct">
-					<div id="listhead">
-						<div id="number">${list.content_no }</div>
-						<div id="writedate">${list.content_date }</div>
-						<div id="user_id">${list.user_id }</div>
-					</div>
-					<hr id="under_title" style="margin: 5px 0;">
-					<li id="userforumlist">
-						<div id="img_section">
-							<c:if test="${list.imageName!=null && list.imageName!='' }">
-								<img alt="이미지" src="/resources/upload/${list.imagePath }" class="forum_list_img"
-								onClick="location.href='/moviedetail/${movieCd }/userforumdetail/${list.content_no }'">
-							</c:if>
-							<c:if test="${list.imageName==null }">
-								<img alt="이미지" src="/resources/img/poster_noimg.png" class="forum_list_img"
-								onClick="location.href='/moviedetail/${movieCd }/userforumdetail/${list.content_no }'">
-							</c:if>
+			<c:if test="${fn:length(userforumList) == 0}">
+         		<h5>자료가 없습니다.</h5>
+         	</c:if>
+         	
+         	<c:if test="${fn:length(userforumList) != 0}">
+				<ul id="userforumboard">
+					<c:forEach var="list" items="${userforumList }">
+						<div id="listhead">
+							<div id="number">${list.content_no }</div>
+							<div id="writedate">${list.content_date }</div>
+							<div id="user_id">${list.user_id }</div>
 						</div>
-						<div id="titleNcontent" onClick="location.href='/moviedetail/${movieCd }/userforumdetail/${list.content_no }'">
-							<div id="title">${list.content_title }</div>
-							<div id="content">${list.content_content }</div>
-						</div>
-						<div id="functionBtns">
-							<div class="fucntionBtn">
-								<button class="forum_likebtn" value="${list.content_no }">
-									<div>
-										<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>${list.content_like }
-									</div>
-								</button>				
-							</div>
-							<div class="fucntionBtn">
-								<button class="forum_dislikebtn" value="${list.content_no }">
-									<div>
-										<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>${list.content_hate }
-									</div>
-								</button>
-							</div>
-							<div class="fucntionBtn">
-								<c:if test="${sessionScope.user.user_id!=null}">
-									<button type="button" class="forum_reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" data-bs-whatever="t">
-										<i class="fas fa-flag" id="forum_reportbtn2"></i>
-										신고
-									</button>
+						<hr id="under_title" style="margin: 5px 0;">
+						<li id="userforumlist">
+							<div id="img_section">
+								<c:if test="${list.imageName!=null && list.imageName!='' }">
+									<img alt="이미지" src="/resources/upload/${list.imagePath }" class="forum_list_img"
+									onClick="location.href='/moviedetail/${movieCd }/userforumdetail/${list.content_no }'">
 								</c:if>
-								<c:if test="${sessionScope.user.user_id==null}">
-									<button class="forum_reportbtn" value="${list.content_no }" disabled="disabled">
-										<i class="fas fa-flag" id="forum_reportbtn2"></i>
-										신고
-									</button>
+								<c:if test="${list.imageName==null }">
+									<img alt="이미지" src="/resources/img/poster_noimg.png" class="forum_list_img"
+									onClick="location.href='/moviedetail/${movieCd }/userforumdetail/${list.content_no }'">
 								</c:if>
-							</div>		
-						</div>				
-					</li>
-					<hr id="under_title" style="margin: 5px 0;">
-				</c:forEach>			
-			</ul>		
+							</div>
+							<div id="titleNcontent" onClick="location.href='/moviedetail/${movieCd }/userforumdetail/${list.content_no }'">
+								<div id="title">${list.content_title }</div>
+								<div id="content">${list.content_content }</div>
+							</div>
+							<div id="functionBtns">
+								<input type="hidden" value="${list.content_no }" class="contentnodistinct">
+							
+								<div class="fucntionBtn">
+									<button class="forum_likebtn" value="${list.content_no }">
+										<div>
+											<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>${list.content_like }
+										</div>
+									</button>				
+								</div>
+								<div class="fucntionBtn">
+									<button class="forum_dislikebtn" value="${list.content_no }">
+										<div>
+											<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>${list.content_hate }
+										</div>
+									</button>
+								</div>
+								<div class="fucntionBtn">
+									<c:if test="${sessionScope.user.user_id!=null}">
+										<button type="button" class="forum_reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" data-bs-whatever="t">
+											<i class="fas fa-flag" id="forum_reportbtn2"></i>
+											신고
+										</button>
+									</c:if>
+									<c:if test="${sessionScope.user.user_id==null}">
+										<button class="forum_reportbtn" value="${list.content_no }" disabled="disabled">
+											<i class="fas fa-flag" id="forum_reportbtn2"></i>
+											신고
+										</button>
+									</c:if>
+								</div>		
+							</div>				
+						</li>
+						<hr id="under_title" style="margin: 5px 0;">
+					</c:forEach>			
+				</ul>		
+			</c:if>
 			<div id="findBar"> <!-- 검색창 -->
 			<form method="get" action="/moviedetail/${movieCd }/userforumlist">
 				<select id="search" name="search">

@@ -13,7 +13,6 @@
 
 	<section>
 		<article>
-			<input type="hidden" value="${userforumdetail.content_no }" class="contentnodistinct">
 		
 			<div id="head">
 				<h3 id="title">${userforumdetail.content_title }</h3>
@@ -36,6 +35,8 @@
 				</div>
 				<div id="content">${userforumdetail.content_content }</div>
 				<div id="fucntionBtn">
+					<input type="hidden" value="${userforumdetail.content_no }" class="contentnodistinct">
+				
 					<div class="fucntionBtn">
 						<button class="forum_likebtn" value="${userforumdetail.content_no }">
 							<div>
@@ -59,7 +60,7 @@
 						</c:if>
 						<c:if test="${sessionScope.user.user_id==null}">
 							<button class="forum_reportbtn" value="${userforumdetail.content_no }" disabled="disabled">
-								<i class="fas fa-flag" id="reportbtn2"></i>
+								<i class="fas fa-flag" id="forum_reportbtn2"></i>
 								신고
 							</button>
 						</c:if>

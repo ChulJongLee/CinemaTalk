@@ -63,7 +63,7 @@ public class MovieController {
 		else if(genre.equals("horror"))
 			keyword="공포(호러)";
 		else if(genre.equals("romance"))
-			keyword="멜로/로멘스";
+			keyword="멜로";
 		else if(genre.equals("thriller"))
 			keyword="스릴러";
 		int totalCount=movieService.getGenreCount(keyword);
