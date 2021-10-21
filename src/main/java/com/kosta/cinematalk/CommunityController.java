@@ -425,6 +425,7 @@ public class CommunityController {
 				PageBlock page = new PageBlock(currPage, totalCount, pageSize, blockSize);
 				
 				List<ReportDTO> reportList = service.getReportList(page.getStartRow() - 1, pageSize);
+				model.addAttribute("page", page);
 				model.addAttribute("reportList", reportList);
 				return "/view.jsp?page=board/reportlist";
 			}else {

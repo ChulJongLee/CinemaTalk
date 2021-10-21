@@ -52,12 +52,12 @@
 			<!-- 이전 버튼 -->		  
 			<c:if test="${page.prev == false}">		
 				<li class="page-item disabled">
-			      <a class="page-link" href="userforumlist?currPage=${page.startBlock-1 }">&laquo;</a>
+			      <a class="page-link" href="/report?currPage=${page.startBlock-1 }">&laquo;</a>
 			    </li>
 			</c:if>
 			<c:if test="${page.prev == true}">		
 				<li class="page-item">
-			      <a class="page-link" href="userforumlist?currPage=${page.startBlock-1 }">&laquo;</a>
+			      <a class="page-link" href="/report?currPage=${page.startBlock-1 }">&laquo;</a>
 			    </li>
 			</c:if>
 			
@@ -70,7 +70,7 @@
 				</c:if>
 				<c:if test="${index!=page.currPage }">
 					<li class="page-item" aria-current="page">
-				      <a class="page-link" href="userforumlist?currPage=${index }"><c:out value="${index }"/></a>
+				      <a class="page-link" href="/report?currPage=${index }"><c:out value="${index }"/></a>
 				    </li>
 				</c:if>
 			</c:forEach>
@@ -78,12 +78,12 @@
 			<!-- 다음 버튼 -->
 			<c:if test="${page.next == false}">
 				<li class="page-item disabled">
-			      <a class="page-link" href="userforumlist?currPage=${page.endBlock+1 }">&raquo;</a>
+			      <a class="page-link" href="/report?currPage=${page.endBlock+1 }">&raquo;</a>
 			    </li>
 			</c:if>
 			<c:if test="${page.next == true}">
 				<li class="page-item">
-			      <a class="page-link" href="userforumlist?currPage=${page.endBlock+1 }">&raquo;</a>
+			      <a class="page-link" href="/report?currPage=${page.endBlock+1 }">&raquo;</a>
 			    </li>
 			</c:if>		
 	  	</ul>
