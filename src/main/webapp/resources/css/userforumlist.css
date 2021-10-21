@@ -123,8 +123,8 @@
 }
 
 #functionBtns{
-    position: relative;
-    left: 630px;
+    width: 100%;
+    text-align: end;
 }
 #findBar{
 	width: 100%;

@@ -8,7 +8,7 @@ body{
 }
 
 /* 리뷰 게시판*/
-#bestforumbtn{	/* 베스트 리뷰 버튼 */
+.forum_title{	/* 베스트 리뷰 버튼 */
 	margin: 20px 10px;
 	color: white;
 }
@@ -52,6 +52,9 @@ body{
     padding: 0px 15px;
    
 }
+.forum_title_section div, .forum_title_section h3{
+	display: inline-block;
+}
 .forumImg{
 	width:380px;
 	height: 200px;
@@ -62,7 +65,19 @@ body{
     font-weight: 600;
     font-size: 20px;
     cursor: pointer;
+    height: 35px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
+.forum_head_thumbs_up{
+	color: #3498db;
+}
+.forum_head_thumbs_down{
+	color: red;
+}
+
 .user_id, .content_date{
 	display: inline-block;
 }
@@ -82,7 +97,9 @@ body{
 	white-space: pre-wrap;
     border: 2px solid #434343;
     overflow: hidden;
-    white-space: pre-wrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 /* .content::-webkit-scrollbar {
 	width: 10px;

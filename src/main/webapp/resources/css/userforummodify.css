@@ -1,9 +1,14 @@
 @charset "UTF-8";
 
+label{
+	display: block;
+}
 #modifyform{
 	width: 40%;
     margin: 0px auto;
     color: white;
+    display: flex;
+    justify-content: center;
 }
 
 .modify_title{

@@ -18,8 +18,12 @@
 	</div>
     <section id="bestNworst">
        <div class="forumList">
-       		<h3 id="bestforumbtn">베스트 게시글</h3>
-        
+       		<div class="forum_title_section">
+	       		<div>
+					<i class="fas fa-thumbs-up forum_head_thumbs_up fa-2x"></i>
+				</div>
+	       		<h3 class="forum_title">Best</h3>
+        	</div>
        		<c:if test="${bestUserforumList==null }">
          		자료가 없습니다.
          	</c:if>
@@ -80,7 +84,13 @@
         </div>
         <div class="updown"></div>
         <div class="forumList">
-            <h3 id="bestforumbtn">워스트 게시글</h3>
+     	   <div class="forum_title_section">
+	       		<div>
+					<i class="fas fa-thumbs-down forum_head_thumbs_down fa-2x"></i>
+				</div>
+	       		 <h3 class="forum_title">Worst</h3>
+        	</div>
+           
         
        		<c:if test="${worstUserforumList==null }">
          		자료가 없습니다.

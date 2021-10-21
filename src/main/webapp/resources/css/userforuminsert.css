@@ -1,11 +1,15 @@
 @charset "UTF-8";
 
-
+label{
+	display: block;
+}
 section{
     /* border: 2px solid orange; */
     width: 40%;
     margin: 0px auto;
     color: white;
+    display: flex;
+    justify-content: center;
 }
 .title{
     width: 500px;
@@ -14,10 +18,6 @@ section{
 	font-size: 23px;
 }
 
-#content label{
-    position: relative;
-    bottom: 380px;
-}
 .content{
 	width: 500px;
 	height: 400px;
@@ -42,8 +42,4 @@ section{
     border-radius: 10px;
     border: 1px solid white;
     opacity: 0.8;
-}
-#photo input{
-    position: relative;
-    left: 45px;
 }
