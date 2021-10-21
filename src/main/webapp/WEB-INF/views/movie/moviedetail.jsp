@@ -34,7 +34,6 @@
 										${item.peopleNm }<c:if test="${not status.last }">, </c:if>
 									</c:if>
 								</c:forEach></span></li>
-                <!-- <li><span><button type="button" class="btn btn-primary btn-sm">감상링크</button> <button type="button" class="btn btn-secondary btn-sm">관심목록+</button></span></li> -->
                 <li class="info">
 	                <div class="starRating movieinfotop">
 	 				<input type="hidden" id="rate" name="rate" />
@@ -46,11 +45,9 @@
 	 						<c:if test="${cnt%2==1 }"><span class="starR1"></span></c:if>
 	 						<c:if test="${cnt%2==0 }"><span class="starR2"></span></c:if>
 	 					</c:forEach>
-		 						  
 	       		 	</div>
 	       		 </li>
             </ul>
-            
         </div>
         
    
@@ -74,16 +71,12 @@
 			  <div class="tab-content">
 			   <div role="tabpanel" class="tab-pane active" id="home2"><%@ include file="movieinfo.jsp" %></div>
 			   <div role="tabpanel" class="tab-pane" id="profile"><%@ include file="/WEB-INF/views/board/reviewmain.jsp" %></div>
-			   <%-- <div role="tabpanel" class="tab-pane" id="messages"><%@ include file="/WEB-INF/views/board/bestscenemain.jsp" %></div> --%>
 			   <div role="tabpanel" class="tab-pane" id="settings"><%@ include file="/WEB-INF/views/board/userforumMain.jsp" %></div>
-			  
 			  </div>
-			
 			 </div>
-			 <div class="col-md-9" role="main">
-		 </div>
-	</div>
-  </div>
+			 <div class="col-md-9" role="main"></div>
+		</div>
+  	</div>
     <!-- 부트스트랩 버전이 달라서 지우면 안됨 -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>	
 	<script src="/resources/js/moviedetail.js"></script>

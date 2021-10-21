@@ -15,30 +15,30 @@
 		    <table class="table table-condensed"  id="myTable">
 			    <thead>
 			        <tr>
-			            <th>신고번호</th>
-			            <th>게시글(댓글)번호</th>
-			            <th>신고 사유</th>
-			            <th>신고 횟수</th>
+			            <th id="headT1">신고번호</th>
+			            <th id="headT2">게시글(댓글)번호</th>
+			            <th id="headT3">신고 사유</th>
+			            <th id="headT4">신고 횟수</th>
 			            <th id="headT"></th>
 			        </tr>
 			    </thead>
 			    <tbody class="panel">
 			    	<c:forEach var="list" items="${reportList }" varStatus="status">
-				        <tr data-bs-toggle="collapse" data-bs-target="#demo${status.index}" data-parent="#myTable" class="reportContent">
+				        <tr data-bs-toggle="collapse" data-bs-target="#demo${status.index}" 
+				        data-parent="#myTable" class="reportContent">
 				           <td class="reportno">${list.reportno }</td>
 								<c:if test="${list.reply !=0}"><td class="contentno">${list.reply }</td></c:if>
 								<c:if test="${list.contentno !=0}"><td class="contentno">${list.contentno }</td></c:if>
 								<td>${list.reportreason }</td>
 								<td class="reportsize">${list.reportsize }</td>
 				        </tr>
-			       
 				        <tr id="demo${status.index}" class="collapse">
 				        	<td id="blankT"></td>
 				            <td colspan="3" class="hiddenRow"><div>${list.content_content }</div> </td>
 				            <td id="btnT">		            
-				            <input type="button" value="삭제" class="deleteBtn" onClick="location.href='/moviedetail/${list.movieCd}/userforumdelete/${list.contentno }'">
+				            <input type="button" value="삭제" class="deleteBtn" 
+				            onClick="location.href='/moviedetail/${list.movieCd}/userforumdelete/${list.contentno }'">
 				            </td>
-				            
 				        </tr>
 			        </c:forEach>
 			    </tbody>

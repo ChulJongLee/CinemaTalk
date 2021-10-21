@@ -21,7 +21,18 @@ th{
 	color: gold;
 	text-align: center;
 }
-
+#headT1{
+    width: 100px;
+}
+#headT2{
+    width: 200px;
+}
+#headT3{
+    width: 250px;
+}
+#headT4{
+    width: 150px;
+}
 td{
 	color: white;
 }
