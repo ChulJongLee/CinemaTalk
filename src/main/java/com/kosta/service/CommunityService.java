@@ -22,31 +22,26 @@ public interface CommunityService {
 
 	public List<ReviewDTO> allReview(String movieCd, int startRow, int pageSize);
 	
-	public List<ReviewDTO> famousLineList();
-	public List<ReviewDTO> allFamousLine(String search, String searchtxt, int startRow, int endRow);
 	
 	// 리뷰 좋아요 
 	public LikeDTO reviewLike(int content_no, int user_no);
 	
 	// 리뷰 좋아요 추가
 	public void insertlike(int content_no, int user_no);
-	// 리뷰 좋아요 취소
+	// 리뷰 좋아요 수정
 	public void updatelike(LikeDTO likeresult);
+	// 좋아요 토탈
 	public int getlike(int content_no);
 	
-	
-	// 리뷰 싫어요
-//	public LikeDTO reviewDislike(int content_no, int user_no);
-	
+	// 리뷰 싫어요 추가
 	public void insertdislike(int content_no, int user_no);
-	
+	// 리뷰 싫어요 수정
 	public void updatedislike(LikeDTO likeresult);
+	// 리뷰 싫어요 토탈
 	public int getdislike(int content_no);
 	
-	
-	
-	
 
+	
 	// 리뷰 쓰기 service
 	public void reviewinsert(HashMap<String, Object> hm);
 	

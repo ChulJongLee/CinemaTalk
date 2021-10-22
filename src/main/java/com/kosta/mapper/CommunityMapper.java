@@ -24,11 +24,6 @@ public interface CommunityMapper {
 
 	public List<ReviewDTO> getreview(String movieCd);
 
-	public List<ReviewDTO> getfamousline();
-
-	public List<ReviewDTO> getallfamousline();
-
-	public List<ReviewDTO> getallfamousline(HashMap<String, Object> hm);
 
 	// 리뷰 좋아요 싫어요 검색
 	public LikeDTO reviewlike(@Param("content_no") int content_no, @Param("user_no") int user_no);

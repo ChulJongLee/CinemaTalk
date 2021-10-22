@@ -28,26 +28,6 @@
   </resultMap>
   
 
-<!-- <select id="totalCount" parameterMap="hashmap" resultType="int">
-	select count(*)
-	from comm_board
-	<where>
-		<if test="searchtxt!=null and searchtxt!='' and !searchtxt.equals('') ">
-			<choose>
-				<when test="search=='userno'">
-					and user_no=#{searchtxt}				
-				</when>
-				<when test="search=='dislike'">
-					and upper(content_hate) like '%'|| upper(#{searchtxt})||'%'				
-				</when>
-				<when test="search=='like'">
-					and content_like=#{searchtxt}				
-				</when>
-			</choose>	
-		</if>		
-	</where>
-</select> -->
-
 <select id="totalCount2" resultType="int">
 	select count(*)
 	from comm_board
@@ -101,7 +81,7 @@
 
 
   
-<!-- 리뷰 좋아요 -->
+<!-- 리뷰 좋아요/싫어요 -->
 <!-- 좋아요 검색 -->
 <select id="reviewlike" parameterType="int" resultType="com.kosta.dto.LikeDTO">
 	select content_no, user_no, likecheck, hatecheck
@@ -114,6 +94,7 @@
 	insert into comm_likehate(content_no, user_no, likecheck, hatecheck)
 	values( #{content_no}, #{user_no}, 1, 0 )
 </insert>
+<!-- 좋아요 수정 -->
 <update id="updatelike" parameterMap="hashmap">
 	update comm_likehate
 	<if test="likecheck==0">
@@ -124,6 +105,7 @@
 	</if>
 		where content_no = #{content_no} and user_no = #{user_no}	
 </update>
+<!-- 좋아요 토탈 -->
 <select id="likeresult" resultType="int">
 	select ifnull(sum(likecheck),0)
 	from comm_likehate
@@ -135,6 +117,7 @@
 	insert into comm_likehate(content_no, user_no, likecheck, hatecheck)
 	values( #{content_no}, #{user_no}, 0, 1 )
 </insert>
+<!-- 싫어요 수정 -->
 <update id="updatedislike" parameterMap="hashmap">
 	update comm_likehate
 	<if test="hatecheck==0">
@@ -145,22 +128,13 @@
 	</if>
 		where content_no = #{content_no} and user_no = #{user_no}	
 </update>
+<!-- 싫어요 토탈 -->
 <select id="dislikeresult" resultType="int">
 	select ifnull(sum(hatecheck),0)
 	from comm_likehate
 	where content_no = #{content_no}
 </select>
 
-
-
-
-
-<!-- 리뷰 싫어요 -->
-<update id="reviewdislike" parameterType="int">
-	update comm_board
-	set content_hate = content_hate+1
-	where content_no = #{contentno}
-</update>
 
 
 <!-- 리뷰 등록 -->

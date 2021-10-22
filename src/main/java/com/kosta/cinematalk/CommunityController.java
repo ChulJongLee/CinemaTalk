@@ -352,14 +352,12 @@ public class CommunityController {
 			
 			LikeDTO likeresult = service.reviewLike(like.getContent_no(), like.getUser_no());
 	    	
-			System.out.println("%$%$%$%$@!@#@!@!@!@likeresult: "+likeresult);
-//	    	System.out.println("@@@@@@@@@@@@@@like.getUser_no(): "+like.getUser_no());
-//	    	System.out.println("@@@@@@@@@@@@@@like.getLikecheck(): "+like.getLikecheck());
 			
 	    	if(likeresult==null) {
 	    		// 좋아요 입력
 	        	service.insertlike(like.getContent_no(), like.getUser_no());
 	        }else {
+	        	// 좋아요 수정
 	        	service.updatelike(likeresult);
 	        }
     	 	
@@ -377,7 +375,6 @@ public class CommunityController {
 	public int likeresult(int content_no) {
 		
 		int like = service.getlike(content_no);
-		System.out.println("##################like: "+like);
 		
 		return like;		
 	}
@@ -394,14 +391,12 @@ public class CommunityController {
 			dislike.setUser_no(user.getUser_no());
 			
 			LikeDTO likeresult = service.reviewLike(dislike.getContent_no(), dislike.getUser_no());
-	    	
-//			System.out.println("%$%$%$%$@!@#@!@!@!@likeresult: "+likeresult);
-//	    	System.out.println("@@@@@@@@@@@@@@like.getUser_no(): "+like.getUser_no());
 			
 	    	if(likeresult==null) {
-	    		// 좋아요 입력
+	    		// 싫어요 입력
 	        	service.insertlike(dislike.getContent_no(), dislike.getUser_no());
 	        }else {
+	        	// 싫어요 수정
 	        	service.updatedislike(likeresult);
 	        }
     	 	

@@ -65,30 +65,12 @@ public class CommunityServiceImple implements CommunityService {
 
 
 	@Override
-	public List<ReviewDTO> famousLineList() {
-		
-		return mapper.getfamousline();
-	}
-
-	
-	@Override
 	public int totalCount2(String movieCd, int boardno) {
 		
 		return mapper.totalCount2(movieCd, boardno);
 	}
-
-
-	@Override
-	public List<ReviewDTO> allFamousLine(String search, String searchtxt, int startRow, int endRow) {
-		HashMap<String, Object> hm = new HashMap<String, Object>();
-		hm.put("search", search);
-		hm.put("searchtxt", searchtxt);
-		hm.put("startrow", startRow);
-		hm.put("endrow", endRow);	
-		
-		return mapper.getallfamousline(hm);
-	}
-
+	
+	
 
 	@Override
 	public List<UserforumDTO> getBestUserforms(String movieCd) {
@@ -156,9 +138,7 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.dislikeresult(content_no);
 	}
 	
-	
-	
-	
+
 	@Override
 	public UserforumDTO userforumdetail(int contentno) {
 		
@@ -264,22 +244,4 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.userforumlist(hm);
 	}
 
-
-
-
-
-
-
-
-	
-
-
-	
-
-
-
-
-
-
-	
 }
