@@ -49,9 +49,7 @@
 									<div>
 										<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>
 									</div>
-									<div>
-										${list.content_like }
-									</div>
+									<div class="likeresult"></div>
 								</button>				
 							</div>
 							<div id="forum_dislike">
@@ -59,9 +57,7 @@
 									<div>
 										<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>
 									</div>
-									<div>
-										${list.content_hate }
-									</div>
+									<div class="dislikeresult"></div>
 								</button>
 							</div>
 							<div id="forum_report">
@@ -116,9 +112,7 @@
 								<div>
 									<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>
 								</div>
-								<div>
-									${list.content_like }
-								</div>
+								<div class="likeresult"></div>
 							</button>				
 						</div>
 						<div id="forum_dislike">
@@ -126,9 +120,7 @@
 								<div>
 									<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>
 								</div>
-								<div>
-									${list.content_hate }
-								</div>
+								<div class="dislikeresult"></div>
 							</button>
 						</div>
 						<div id="forum_report">

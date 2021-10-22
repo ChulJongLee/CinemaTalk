@@ -3,42 +3,110 @@
  */
 
 
+// 좋아요, 싫어요 로드
+$(".contentnodistinct").each( function likeNhateresult() {
+    	var contentno = $(this).attr('value');
+    	let y= this;
+		$.ajax({
+	        type: "POST",
+			url: "/likeresult",
+	        data: {
+	        	content_no: $(y).attr('value')
+	        }
+		    , dataType:"text"
+	        , success: function (likeresult) {
+	        	$(y).siblings('#forum_like').find('.likeresult').html(likeresult);	
+	        },
+		});
+		
+		$.ajax({
+	        type: "POST",
+			url: "/dislikeresult",
+	        data: {
+	        	content_no: $(y).attr('value')
+	        }
+		    , dataType:"text"
+	        , success: function (dislikeresult) {
+	        	$(y).siblings('#forum_dislike').find('.dislikeresult').html(dislikeresult);	
+	        },
+		});
+		
+	});
+
+
 // 좋아요 버튼
-$('.forum_likebtn').click(function() {
+$(function(){
+	$('.forum_likebtn').click(function(event){
+		var recip=$(event.currentTarget);
+		var content_no = $(recip).attr('value');
+		let th=this;
+		    $.ajax({
+		          type : "POST",            // HTTP method type(GET, POST) 형식이다.
+		          url : "/like",      // 컨트롤러에서 대기중인 URL 주소이다.
+		          data : { content_no : $(recip).attr('value') },            // Json 형식의 데이터이다.
+		          success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
+		              // 응답코드 > 0000
+		              alert(res.result);
+		              likeresult(content_no, th);
+		          },
+		          error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+		          }
+		      });
+		  
+		});
+
+	function likeresult(content_no, loc) {
+		var contentno=content_no;
+		$.ajax({
+	        type: "POST",
+			url: "/likeresult",
+	        data: {
+	        	content_no: contentno
+	        },
+	        success: function (likeresult) {
+	        	$(loc).children('.likeresult').text(likeresult);
+	        },
+		});
+	};
 	
-	var params = { content_no : $(this).attr('value') }
-	
-	$.ajax({
-		type : "POST",
-		url : "/forumlike",
-		data : params,
-		success : function(res) {
-			alert(res.result);
-		},
-		error : function(XMLHttpRequest, textStatus, errorThrown) {
-		}
-	});
 });
 
+// 싫어요 버튼
+$(function(){
+	$('.forum_dislikebtn').click(function(event){
+		var recip=$(event.currentTarget);
+		var content_no = $(recip).attr('value');
+		let th=this;
+	    $.ajax({
+	          type : "POST",            // HTTP method type(GET, POST) 형식이다.
+	          url : "/dislike",      // 컨트롤러에서 대기중인 URL 주소이다.
+	          data : { content_no : $(recip).attr('value') },            // Json 형식의 데이터이다.
+	          success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
+	              // 응답코드 > 0000
+	              alert(res.result);
+	              dislikeresult(content_no, th);
+	          },
+	          error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+	          }
+	      });
+		});
 
-
-// 싫어요
-$('.forum_dislikebtn').click(function() {
-
-	var params2 = { content_no : $(this).attr('value') }
-	
-	$.ajax({
-		type : "POST",
-		url : "/forumdislike",
-		data : params2,
-		success : function(res) {
-			alert(res.result);
-		},
-		error : function(XMLHttpRequest, textStatus, errorThrown) {
-		}
-	});
+	function dislikeresult(content_no, loc) {
+		var contentno=content_no;
+		$.ajax({
+	        type: "POST",
+			url: "/dislikeresult",
+	        data: {
+	        	content_no: contentno
+	        },
+	        success: function (dislikeresult) {
+	        	$(loc).children('.dislikeresult').text(dislikeresult);
+	        },
+		});
+	};
 });
 
+//신고버튼
 $(document).ready(function(){
 	$('#staticBackdrop2').on('shown.bs.modal', function(e){
 		 var recip=$(e.relatedTarget);

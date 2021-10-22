@@ -152,5 +152,9 @@ article{
 	border: none;
 	background-color: #212121;
 	color: white;
-	
+    width: 45px;
+}
+
+.fucntionBtn button{
+	display: flex;
 }

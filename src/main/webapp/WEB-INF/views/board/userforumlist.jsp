@@ -52,16 +52,14 @@
 							
 								<div class="fucntionBtn">
 									<button class="forum_likebtn" value="${list.content_no }">
-										<div>
-											<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>${list.content_like }
-										</div>
+										<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>
+										<div class="likeresult"></div>
 									</button>				
 								</div>
 								<div class="fucntionBtn">
 									<button class="forum_dislikebtn" value="${list.content_no }">
-										<div>
-											<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>${list.content_hate }
-										</div>
+										<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>
+										<div class="dislikeresult"></div>
 									</button>
 								</div>
 								<div class="fucntionBtn">

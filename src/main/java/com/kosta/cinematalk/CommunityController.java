@@ -356,9 +356,14 @@ public class CommunityController {
 	    	if(likeresult==null) {
 	    		// 좋아요 입력
 	        	service.insertlike(like.getContent_no(), like.getUser_no());
+	        	result.put("result", "종아요 완료");
 	        }else {
 	        	// 좋아요 수정
 	        	service.updatelike(likeresult);
+	        	if(likeresult.getLikecheck()==1)
+	        		result.put("result", "종아요 취소");
+	        	else
+		        	result.put("result", "종아요 완료");
 	        }
     	 	
         }catch(NullPointerException e) {
@@ -395,9 +400,15 @@ public class CommunityController {
 	    	if(likeresult==null) {
 	    		// 싫어요 입력
 	        	service.insertlike(dislike.getContent_no(), dislike.getUser_no());
+	        	result.put("result", "싫어요 완료");
 	        }else {
 	        	// 싫어요 수정
 	        	service.updatedislike(likeresult);
+	        	if(likeresult.getHatecheck()==1)
+	        		result.put("result", "싫어요 취소");
+	        	else
+		        	result.put("result", "싫어요 완료");
+	        	
 	        }
     	 	
         }catch(NullPointerException e) {
@@ -413,7 +424,6 @@ public class CommunityController {
 	public int dislikeresult(int content_no) {
 		
 		int like = service.getdislike(content_no);
-		System.out.println("##################like: "+like);
 		
 		return like;		
 	}
