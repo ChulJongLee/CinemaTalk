@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kosta.dto.LikeDTO;
 import com.kosta.dto.ReportDTO;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.dto.UserforumDTO;
@@ -99,15 +100,64 @@ public class CommunityServiceImple implements CommunityService {
 		
 		return mapper.getworstuserforms(movieCd);
 	}
+	
+	// 리뷰 좋아요.
+	@Override
+	public LikeDTO reviewLike(int content_no, int user_no) {
+
+		return mapper.reviewlike(content_no, user_no);	
+	}
+	
+	// 리뷰 좋아요 추가
+	@Override
+	public void insertlike(int content_no, int user_no) {
+		
+		mapper.insertlike(content_no, user_no);
+	}	
+	// 리뷰 좋아요 취소
+	@Override
+	public void updatelike(LikeDTO likeresult) {
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("content_no", likeresult.getContent_no());
+		hm.put("user_no", likeresult.getUser_no());
+		hm.put("likecheck", likeresult.getLikecheck());
+		hm.put("hatecheck", likeresult.getHatecheck());
+			
+		mapper.updatelike(hm);
+	}
+	// 리뷰 좋아요 전체
+	@Override
+	public int getlike(int content_no) {
+		
+		return mapper.likeresult(content_no);
+	}
+	
 
 	@Override
-	public void reviewLike(int contentno) {
-		mapper.reviewlike(contentno);	
+	public void insertdislike(int content_no, int user_no) {
+		
+		mapper.insertdislike(content_no, user_no);
 	}
+
 	@Override
-	public void reviewDisLike(int contentno) {
-		mapper.reviewdislike(contentno);	
+	public void updatedislike(LikeDTO likeresult) {
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("content_no", likeresult.getContent_no());
+		hm.put("user_no", likeresult.getUser_no());
+		hm.put("likecheck", likeresult.getLikecheck());
+		hm.put("hatecheck", likeresult.getHatecheck());
+			
+		mapper.updatedislike(hm);
 	}
+	
+	@Override
+	public int getdislike(int content_no) {
+		
+		return mapper.dislikeresult(content_no);
+	}
+	
+	
+	
 	
 	@Override
 	public UserforumDTO userforumdetail(int contentno) {
@@ -213,6 +263,16 @@ public class CommunityServiceImple implements CommunityService {
 		
 		return mapper.userforumlist(hm);
 	}
+
+
+
+
+
+
+
+
+	
+
 
 	
 

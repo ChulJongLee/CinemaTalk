@@ -99,43 +99,62 @@
 	limit 4
 </select>
 
-<!-- 참여 게시판 메인 명대사 -->
-<select id="getfamousline" resultMap="reviewdto">
-	select content_no, user_no, content_date, content_content, content_like, content_hate
-	from comm_board
-	where board_distinct_no = 2
-	order by content_date DESC
-	limit 4
+
+  
+<!-- 리뷰 좋아요 -->
+<!-- 좋아요 검색 -->
+<select id="reviewlike" parameterType="int" resultType="com.kosta.dto.LikeDTO">
+	select content_no, user_no, likecheck, hatecheck
+	from comm_likehate
+	where content_no = #{content_no} and user_no = #{user_no}
+</select>
+
+<!-- 좋아요 추가 -->
+<insert id="insertlike" parameterType="int">
+	insert into comm_likehate(content_no, user_no, likecheck, hatecheck)
+	values( #{content_no}, #{user_no}, 1, 0 )
+</insert>
+<update id="updatelike" parameterMap="hashmap">
+	update comm_likehate
+	<if test="likecheck==0">
+		set likecheck = 1
+	</if>
+	<if test="likecheck==1">
+		set likecheck = 0
+	</if>
+		where content_no = #{content_no} and user_no = #{user_no}	
+</update>
+<select id="likeresult" resultType="int">
+	select ifnull(sum(likecheck),0)
+	from comm_likehate
+	where content_no = #{content_no}
+</select>
+
+<!-- 싫어요 추가 -->
+<insert id="insertdislike" parameterType="int">
+	insert into comm_likehate(content_no, user_no, likecheck, hatecheck)
+	values( #{content_no}, #{user_no}, 0, 1 )
+</insert>
+<update id="updatedislike" parameterMap="hashmap">
+	update comm_likehate
+	<if test="hatecheck==0">
+		set hatecheck = 1
+	</if>
+	<if test="hatecheck==1">
+		set hatecheck = 0
+	</if>
+		where content_no = #{content_no} and user_no = #{user_no}	
+</update>
+<select id="dislikeresult" resultType="int">
+	select ifnull(sum(hatecheck),0)
+	from comm_likehate
+	where content_no = #{content_no}
 </select>
 
 
-<!-- 참여 게시판 모든 명대사 -->
-<!-- <select id="getallfamousline" parameterMap="hashmap" resultMap="reviewdto">
-	select A.*
-	from (select S.*, @rownum:=@rownum+1 as rn
-	  	  from (select user_no, board_distinct_no, content_date, content_content, content_like, content_hate
-			    from comm_board, (select @rownum:=0)R
-                where 1=1) S
-                where board_distinct_no = 2
-				order by content_date DESC ) A
-			<where>
-				<![CDATA[
-					rn>=#{startrow} and rn<=#{endrow}
-				]]>	
-			</where>
-</select> -->
 
 
 
-
-  
-  
-<!-- 리뷰 좋아요 -->
-<update id="reviewlike" parameterType="int">
-	update comm_board
-	set content_like = content_like+1
-	where content_no = #{contentno}
-</update>
 <!-- 리뷰 싫어요 -->
 <update id="reviewdislike" parameterType="int">
 	update comm_board

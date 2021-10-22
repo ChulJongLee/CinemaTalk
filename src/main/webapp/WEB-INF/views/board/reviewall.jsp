@@ -38,15 +38,15 @@
 
 
 						<c:if test="${sessionScope.user.user_id!=null}">
-								<div id="like">															
+								<div id="like">									
 									<button class="likebtn" value="${list.contentno }">
-										<div><i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i></div>
+										<div><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div>
 										<div>${list.like }</div>
-									</button>																			
+									</button>		
 								</div>
 								<div id="dislike">
 									<button class="dislikebtn" value="${list.contentno }">
-										<div><i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
+										<div><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
 										<div>${list.dislike }</div>
 									</button>
 								</div>
@@ -61,13 +61,13 @@
 							<c:if test="${sessionScope.user.user_id==null}">						
 								<div id="like">									
 									<button class="likebtn" value="${list.contentno }" disabled="disabled">
-										<div><i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i></div>
+										<div><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div>
 										<div>${list.like }</div>
 									</button>		
 								</div>
 								<div id="dislike">
 									<button class="dislikebtn" value="${list.contentno }" disabled="disabled">
-										<div><i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
+										<div><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
 										<div>${list.dislike }</div>
 									</button>
 								</div>

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosta.dto.KobisDTO;
+import com.kosta.dto.LikeDTO;
 import com.kosta.dto.PageBlock;
 import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.ReportDTO;
@@ -337,33 +338,92 @@ public class CommunityController {
 		return "/view.jsp?page=board/userforumdetail";
 		}
 	}
-		
-		
-		
+
 	// 리뷰 좋아요
 	@PostMapping("/like")
     @ResponseBody
-    public Map<String, Object> likeAjax(ReviewDTO like){
+    public Map<String, Object> likeAjax(LikeDTO like, HttpSession session) {
         
         Map<String, Object> result = new HashMap<String, Object>();
-        service.reviewLike(like.getContentno());
+
+        try {
+	        UserDTO user = (UserDTO) session.getAttribute("user");			
+			like.setUser_no(user.getUser_no());
+			
+			LikeDTO likeresult = service.reviewLike(like.getContent_no(), like.getUser_no());
+	    	
+			System.out.println("%$%$%$%$@!@#@!@!@!@likeresult: "+likeresult);
+//	    	System.out.println("@@@@@@@@@@@@@@like.getUser_no(): "+like.getUser_no());
+//	    	System.out.println("@@@@@@@@@@@@@@like.getLikecheck(): "+like.getLikecheck());
+			
+	    	if(likeresult==null) {
+	    		// 좋아요 입력
+	        	service.insertlike(like.getContent_no(), like.getUser_no());
+	        }else {
+	        	service.updatelike(likeresult);
+	        }
+    	 	
+        }catch(NullPointerException e) {
+        	result.put("result", "로그인이 필요한 서비스 입니다.");
+        }
+        
 
         return result;       
     }
 	
+	// 리뷰 좋아요 토탈
+	@PostMapping("/likeresult")
+	@ResponseBody
+	public int likeresult(int content_no) {
+		
+		int like = service.getlike(content_no);
+		System.out.println("##################like: "+like);
+		
+		return like;		
+	}
 	
 	// 리뷰 싫어요
 	@PostMapping("/dislike")
     @ResponseBody
-    public Map<String, Object> dislikeAjax(ReviewDTO dislike){
-        
+    public Map<String, Object> dislikeAjax(LikeDTO dislike, HttpSession session) {
+		
         Map<String, Object> result = new HashMap<String, Object>();
-        service.reviewDisLike(dislike.getContentno());
-
+        
+        try {
+	        UserDTO user = (UserDTO) session.getAttribute("user");			
+			dislike.setUser_no(user.getUser_no());
+			
+			LikeDTO likeresult = service.reviewLike(dislike.getContent_no(), dislike.getUser_no());
+	    	
+//			System.out.println("%$%$%$%$@!@#@!@!@!@likeresult: "+likeresult);
+//	    	System.out.println("@@@@@@@@@@@@@@like.getUser_no(): "+like.getUser_no());
+			
+	    	if(likeresult==null) {
+	    		// 좋아요 입력
+	        	service.insertlike(dislike.getContent_no(), dislike.getUser_no());
+	        }else {
+	        	service.updatedislike(likeresult);
+	        }
+    	 	
+        }catch(NullPointerException e) {
+        	result.put("result", "로그인이 필요한 서비스 입니다.");
+        }
         
         return result;       
     }
 	
+	// 리뷰 싫어요 토탈
+	@PostMapping("/dislikeresult")
+	@ResponseBody
+	public int dislikeresult(int content_no) {
+		
+		int like = service.getdislike(content_no);
+		System.out.println("##################like: "+like);
+		
+		return like;		
+	}
+	
+
 	// 자유게시판 좋아요
 		@PostMapping("/forumlike")
 	    @ResponseBody
@@ -372,15 +432,20 @@ public class CommunityController {
 			try {
 				UserDTO user = (UserDTO) session.getAttribute("user");
 				user.getUser_no();
-				service.reviewLike(dto.getContent_no());
+				
+				
+				
+//				service.reviewLike(dto.getContent_no());
+				
+				
+				
+				
 				result.put("result", "좋아요 완료");
 			}catch(NullPointerException e){
 				result.put("result", "로그인이 필요한 서비스입니다.");
-			}
-			
+			}			
 			return result;      
-			
-	        
+
 	    }
 		
 		
@@ -392,7 +457,14 @@ public class CommunityController {
 			try {
 				UserDTO user = (UserDTO) session.getAttribute("user");
 				user.getUser_no();
-				service.reviewDisLike(dto.getContent_no());
+				
+				
+				
+//				service.reviewDisLike(dto.getContent_no());
+				
+				
+				
+				
 				result.put("result", "싫어요 완료");
 			}catch(NullPointerException e){
 				result.put("result", "로그인이 필요한 서비스입니다.");

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.kosta.dto.LikeDTO;
 import com.kosta.dto.ReportDTO;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.dto.UserforumDTO;
@@ -29,8 +30,24 @@ public interface CommunityMapper {
 
 	public List<ReviewDTO> getallfamousline(HashMap<String, Object> hm);
 
-	public void reviewlike(int contentno);
-	public void reviewdislike(int contentno);
+	// 리뷰 좋아요 싫어요 검색
+	public LikeDTO reviewlike(@Param("content_no") int content_no, @Param("user_no") int user_no);
+	
+	// 리뷰 좋아요 추가
+	public void insertlike(@Param("content_no") int content_no, @Param("user_no") int user_no);
+	// 리뷰 좋아요 취소
+	public void updatelike(HashMap<String, Object> hm);
+	// 리뷰 좋아요 전체
+	public int likeresult(int content_no);
+	
+
+	// 리뷰 싫어요 추가
+	public void insertdislike(@Param("content_no") int content_no, @Param("user_no") int user_no);
+	// 리뷰 싫어요 취소
+	public void updatedislike(HashMap<String, Object> hm);
+	// 리뷰 싫어요 전체
+	public int dislikeresult(int content_no);
+	
 
 	// 리뷰쓰기 mapper
 	public int reviewinsert(HashMap<String, Object> hm);
@@ -65,21 +82,5 @@ public interface CommunityMapper {
 
 	public List<UserforumDTO> userforumlist(HashMap<String, Object> hm);
 
-	
 
-	
-
-	
-
-
-
-
-
-
-
-
-
-	
-	
-	
 }

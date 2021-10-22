@@ -3,6 +3,7 @@ package com.kosta.service;
 import java.util.HashMap;
 import java.util.List;
 
+import com.kosta.dto.LikeDTO;
 import com.kosta.dto.ReportDTO;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.dto.UserforumDTO;
@@ -24,9 +25,27 @@ public interface CommunityService {
 	public List<ReviewDTO> famousLineList();
 	public List<ReviewDTO> allFamousLine(String search, String searchtxt, int startRow, int endRow);
 	
+	// 리뷰 좋아요 
+	public LikeDTO reviewLike(int content_no, int user_no);
 	
-	public void reviewLike(int contentno);
-	public void reviewDisLike(int contentno);
+	// 리뷰 좋아요 추가
+	public void insertlike(int content_no, int user_no);
+	// 리뷰 좋아요 취소
+	public void updatelike(LikeDTO likeresult);
+	public int getlike(int content_no);
+	
+	
+	// 리뷰 싫어요
+//	public LikeDTO reviewDislike(int content_no, int user_no);
+	
+	public void insertdislike(int content_no, int user_no);
+	
+	public void updatedislike(LikeDTO likeresult);
+	public int getdislike(int content_no);
+	
+	
+	
+	
 
 	// 리뷰 쓰기 service
 	public void reviewinsert(HashMap<String, Object> hm);
@@ -61,6 +80,18 @@ public interface CommunityService {
 	public List<UserforumDTO> userforumList(String movieCd, int board_distinct_no, String search, String searchtxt, int i, int pageSize);
 
 
+
+
+
+
+
+
 	
+
+
+
+
+
+
 
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,16 +19,17 @@
     <section id="bestsection">
         <h1 id="bestreviewbtn">베스트 리뷰</h1>
         <div class="bestreview">
-       		<c:if test="${bestreviewlist==null }">
-         		자료가 없습니다.
-         	</c:if>
+         	<c:if test="${fn:length(bestreviewlist) == 0}">
+               <h5>자료가 없습니다.</h5>
+            </c:if>
+            
+            <c:if test="${fn:length(bestreviewlist) != 0}">
          	
-         	<c:if test="${bestreviewlist!=null }">
          	<ul id="contentslist">
          		<c:forEach var="list" items="${bestreviewlist }">        			
 					<li id="contents">
 						<input type="hidden" value="${list.contentno }" class="contentnodistinct">
-						<div id="id">${list.userid }</div>
+						<div id="id">${list.userid } ${list.contentno }</div>
 						<div id="date">${list.writedate }</div>
 						
 						
@@ -43,40 +45,28 @@
 						</c:if>
 						
 						
-							<c:if test="${sessionScope.user.user_id!=null}">
+
 								<div id="like">															
 									<button class="likebtn" value="${list.contentno }">
-										<div><i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i></div>
-										<div>${list.like }</div>
+										<div><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div>
+										<div class="likeresult"></div>
 									</button>																			
 								</div>
 								<div id="dislike">
 									<button class="dislikebtn" value="${list.contentno }">
-										<div><i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
-										<div>${list.dislike }</div>
+										<div><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
+										<div class="dislikeresult"></div>
 									</button>
 								</div>
+								<c:if test="${sessionScope.user.user_id!=null}">
 								<div id="report">
 									<button type="button" class="reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" data-bs-whatever="t">
 										<i class="fas fa-flag" id="reportbtn2"></i>
 										신고
 									</button>
 								</div>
-							</c:if>
-							
-							<c:if test="${sessionScope.user.user_id==null}">						
-								<div id="like">									
-									<button class="likebtn" value="${list.contentno }" disabled="disabled">
-										<div><i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i></div>
-										<div>${list.like }</div>
-									</button>		
-								</div>
-								<div id="dislike">
-									<button class="dislikebtn" value="${list.contentno }" disabled="disabled">
-										<div><i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
-										<div>${list.dislike }</div>
-									</button>
-								</div>
+								</c:if>
+							<c:if test="${sessionScope.user.user_id==null}">
 								<div id="report">
 									<button class="reportbtn" value="${list.contentno }" disabled="disabled">
 										<i class="fas fa-flag" id="reportbtn2"></i>
@@ -84,8 +74,6 @@
 									</button>
 								</div>
 							</c:if>
-							
-							
 							<c:if test="${sessionScope.user.user_id==list.userid}">
 								<div id="contentedit">						
 									<div id="modify">
@@ -102,70 +90,66 @@
          	</c:if>                            
         </div>
     </section>
+    
+    
+    
+    
 
     <!-- ******** 일반 리뷰 ******** -->
     <section id="generalsection">
         <h1 id="generalreviewbtn">일반 리뷰</h1>
         <div class="generalreview">
-       		<c:if test="${generalreviewlist==null }">              		
+<%--        		<c:if test="${generalreviewlist==null }">              		
          		자료가 없습니다.
-         	</c:if>
+         	</c:if> --%>
+         	<c:if test="${fn:length(generalreviewlist) == 0}">
+               <h5>자료가 없습니다.</h5>
+            </c:if>
          	
-         	<c:if test="${generalreviewlist!=null }">
+         	<c:if test="${fn:length(generalreviewlist) != 0}">
+         	<%-- <c:if test="${generalreviewlist!=null }"> --%>
          	<ul id="contentslist">
          		<c:forEach var="list" items="${generalreviewlist }">
 						<li id="contents">				
 							<input type="hidden" value="${list.contentno }" class="contentnodistinct">
-							<div id="id">${list.userid }, ${list.contentno }</div>
+							<div id="id">${list.userid }${list.contentno }</div>
 							<div id="date">${list.writedate }</div>
 							
 									
-							<!-- 스포일러 체크X -->		
-							<c:if test="${list.spoiler==0 }">							
+						<!-- 스포일러 체크X -->		
+						<c:if test="${list.spoiler==0 }">							
 							<div class="content">${list.contents }</div>
-							</c:if>
-							<!-- 스포일러 체크O -->
-							<c:if test="${list.spoiler==1 }">
+						</c:if>
+						<!-- 스포일러 체크O -->
+						<c:if test="${list.spoiler==1 }">
 							<input type="hidden" value="${list.contents }" class="spoilercontent">
 							<div class="content2"><button type="button" class="spoilerbtn">스포일러 포함</button></div>
 							<div class="content3" style="display:none"></div>
-							</c:if>
+						</c:if>
 							
 							
-							<c:if test="${sessionScope.user.user_id!=null}">
+							
 								<div id="like">															
 									<button class="likebtn" value="${list.contentno }">
-										<div><i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i></div>
-										<div>${list.like }</div>
+										<div><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div>
+										<div class="likeresult"></div>
 									</button>																			
 								</div>
 								<div id="dislike">
 									<button class="dislikebtn" value="${list.contentno }">
-										<div><i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
-										<div>${list.dislike }</div>
+										<div><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
+										<div class="dislikeresult"></div>
 									</button>
 								</div>
+								<c:if test="${sessionScope.user.user_id!=null}">
 								<div id="report">
 									<button type="button" class="reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" data-bs-whatever="t">
 										<i class="fas fa-flag" id="reportbtn2"></i>
 										신고
 									</button>
 								</div>
-							</c:if>
-							
-							<c:if test="${sessionScope.user.user_id==null}">						
-								<div id="like">									
-									<button class="likebtn" value="${list.contentno }" disabled="disabled">
-										<div><i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i></div>
-										<div>${list.like }</div>
-									</button>		
-								</div>
-								<div id="dislike">
-									<button class="dislikebtn" value="${list.contentno }" disabled="disabled">
-										<div><i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
-										<div>${list.dislike }</div>
-									</button>
-								</div>
+								</c:if>
+							<c:if test="${sessionScope.user.user_id==null}">
 								<div id="report">
 									<button class="reportbtn" value="${list.contentno }" disabled="disabled">
 										<i class="fas fa-flag" id="reportbtn2"></i>

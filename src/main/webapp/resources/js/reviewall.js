@@ -57,17 +57,10 @@ $('.deletebtn').click(function(){
 $(document).ready(function(){
 	$('#staticBackdrop').on('shown.bs.modal', function(e){
 	
-		  var recip=$(e.relatedTarget);	  
-		  console.log("recip: "+recip);
-		  
-		  var r=$(recip).parent().parent().siblings('.content').text();
-		  console.log("r: "+r);
-		  
-		  var r2=$(recip).parent().parent().siblings('.content3').text();
-		  console.log("r2: "+r2);
-		  
+		  var recip=$(e.relatedTarget);	  		  
+		  var r=$(recip).parent().parent().siblings('.content').text();		  
+		  var r2=$(recip).parent().parent().siblings('.content3').text();		  
 		  var no = $(recip).parent().parent().siblings('.contentnodistinct').attr('value');
-		  console.log("no: "+no);
 		  
 		  
 		  let m=$(this);		  
@@ -85,10 +78,7 @@ $(document).ready(function(){
 	$('#staticBackdrop1').on('shown.bs.modal', function(e){
 		
 		  var recip=$(e.relatedTarget);
-		  console.log("recip:"+recip);
- 
 		  var no = $(recip).parent().siblings('.contentnodistinct').attr('value');
-		  console.log("contentno:"+no);
   
 		 let m=$(this);
 		  m.find('.contentval').val(no);
