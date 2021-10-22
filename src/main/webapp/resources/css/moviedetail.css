@@ -112,11 +112,11 @@ ul.movieinfotop{
 }
 .nav-tabs>li.active a{
  font-weight:bold;
- color:blue !important;
+ color:orange !important;
  background-color: #212121;
 }
 .nav-tabs>li.active a:hover{
- color:blue !important;
+ color:orange !important;
 }
 
 .nav-tabs>li.active>a,
@@ -141,7 +141,7 @@ ul.movieinfotop{
     height: 0.25em;
     bottom: 0;
     background-color: #212121;
-    border-bottom: 3px solid blue;
+    border-bottom: 3px solid orange;
 }
 
 #tablelist {

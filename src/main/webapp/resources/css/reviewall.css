@@ -29,6 +29,7 @@ section{
    margin: 20px 0px;
    font-size: 18px;
    padding: 0px 15px;
+   box-shadow: 5px 5px 5px black;
 }
 
 
@@ -95,11 +96,14 @@ section{
 }
 
 .spoilerbtn{
-	border-radius: 10px;
+	outline: 0;
+	border: 0;
+	/* border-radius: 10px; */
 	background-color: #2f2f2f;
 	color: #ff0558;
-	border: 1px solid #ff0558;
+	/* border: 1px solid #ff0558; */
 	height: 30px;
+	text-shadow: 3px 3px 3px black;
 }
 #id{
    width: 80%;

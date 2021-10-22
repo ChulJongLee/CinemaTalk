@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 <link rel="stylesheet" href="/resources/css/header.css">
 </head>
 <body>
@@ -42,7 +43,8 @@
 			<div id="search">
 				<form method="get" action="/searchresult" id="searchBar">
 					<input type="text" id="header_keyword" name="keyword" placeholder="  영화명을 입력하세요.">
-					<img alt="검색" src="/resources/img/search.png" onclick="document.getElementById('searchBar').submit();" id="header_searchBtn">
+					<!-- <img alt="검색" src="/resources/img/search.png" onclick="document.getElementById('searchBar').submit();" id="header_searchBtn"> -->
+					<i class="fas fa-search fa-lg" onclick="document.getElementById('searchBar').submit();" id="header_searchBtn"></i>
 				</form>
 			</div>
 			

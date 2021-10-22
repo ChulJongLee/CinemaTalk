@@ -55,6 +55,7 @@ iframe{
 .person_pic{
 	width: 100px;
 	border-radius: 50%;
+	box-shadow: 5px 5px 5px black;
 }
 .peopleNm{
 	font-weight: 600;

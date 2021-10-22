@@ -43,6 +43,7 @@ header{
 	width:30px;
 	height: 26px;
 	cursor: pointer;
+	color: gold;
 }
 
 #header_logo{
@@ -57,6 +58,7 @@ header{
 	font-weight: 600;
 	color: gold;
 	text-decoration: none;
+	text-shadow: 10px 5px 5px black;
 }
 .headerBtn{
 	margin-left: 10px;
@@ -68,7 +70,7 @@ header{
 }
 
 .headerBtn:hover{
-	color: blue;
+	color: gold;
 }
 
 #header_login{
@@ -112,6 +114,6 @@ header{
 	box-shadow: none;
 }
 .btn-secondary:hover, .btn-secondary:focus{
-	color: blue;
+	color: gold;
 
 }
