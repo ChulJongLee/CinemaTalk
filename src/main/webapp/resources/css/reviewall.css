@@ -102,13 +102,14 @@ section{
 	height: 30px;
 }
 #id{
-   width: 70%;
-   padding: 5px 0px;
+   width: 80%;
+   padding: 1px;
 }
 #date{
-   width: 30%;
+   width: 100%;
    text-align: right;
-   padding: 5px 0px;
+   padding: 0px;
+   border-top : 1px solid #434343;
 }
 #like, #dislike{
    width: 20%;
@@ -149,24 +150,25 @@ section{
 #contentedit{
    display: flex;
    flex-direction: row;
-   width: 100%;
+   width: 20%;
+   padding-right: 15px;
 }
 
 #modify{
    width: 93%;
    margin: 0px;
    text-align: right;
-   border-top : 1px solid #434343;
 }
 #delete{
    width: 7%;
    text-align: center;
-   border-top : 1px solid #434343;
    margin: 0px;
 }
-.modifycheckbtn, .modifyreturnbtn, .modifybtn, .deletebtn{
-   background-color: #212121;
-   height: 3px;
+.modifybtn, .deletebtn{
+   border: 0;
+   outline: 0;
+   background-color: #2f2f2f;
+   margin: 0px 4px;
    color: white;
 }
 

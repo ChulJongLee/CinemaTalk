@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 body{
    display: flex;
     flex-direction: row;
@@ -70,16 +71,18 @@ body{
    width: 40%;
    margin: 20px 0px;
    padding: 0px 15px;
+
 }
 
 #id{
-   width: 70%;
-   padding: 5px 0px;
+   width: 80%;
+   padding-top: 1px;
 }
 #date{
-   width: 30%;
+   width: 100%;
    text-align: right;
-   padding: 5px 0px;
+   padding: 0px;
+   border-top : 1px solid #434343;
 }
 .content{
    width: 100%;
@@ -194,33 +197,26 @@ body{
 #contentedit{
    display: flex;
    flex-direction: row;
-   width: 100%;
-}
-#modifycheck{
-   width: 7%;
-   text-align: center;
-}
-#modifyreturn{
-   width: 7%;
-   text-align: center;
+   width: 20%;
+   padding-right: 15px;
+   /* border: 2px solid red; */
 }
 
 #modify{
    width: 93%;
    margin: 0px;
    text-align: right;
-   border-top : 1px solid #434343;
 }
 #delete{
    width: 7%;
    text-align: center;
-   border-top : 1px solid #434343;
    margin: 0px;
 }
-.modifycheckbtn, .modifyreturnbtn, .modifybtn, .deletebtn{
-   background-color: #212121;
-   height: 3px;
-   color: black;
+.modifybtn, .deletebtn{
+   border: 0;
+   outline: 0;
+   background-color: #2f2f2f;
+   margin: 0px 4px;
 }
 
 

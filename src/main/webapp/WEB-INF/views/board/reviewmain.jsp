@@ -29,7 +29,17 @@
          		<c:forEach var="list" items="${bestreviewlist }">        			
 					<li id="contents">
 						<input type="hidden" value="${list.contentno }" class="contentnodistinct">
-						<div id="id">${list.userid } ${list.contentno }</div>
+						<div id="id">${list.userid }</div>
+						<c:if test="${sessionScope.user.user_id==list.userid}">
+								<div id="contentedit">						
+									<div id="modify">
+										<button type="button" class="modifybtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-whatever="t"> 
+											<i class="fas fa-edit"></i>
+										</button>
+									</div>
+									<div id="delete"><button class="deletebtn" value="${list.contentno }"><i class="fas fa-times"></i></button></div>						
+								</div>
+						</c:if>
 						<div id="date">${list.writedate }</div>
 						
 						
@@ -74,16 +84,6 @@
 									</button>
 								</div>
 							</c:if>
-							<c:if test="${sessionScope.user.user_id==list.userid}">
-								<div id="contentedit">						
-									<div id="modify">
-										<button type="button" class="modifybtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-whatever="t"> 
-											<i class="fas fa-edit"></i>
-										</button>
-									</div>
-									<div id="delete"><button class="deletebtn" value="${list.contentno }"><i class="fas fa-times"></i></button></div>						
-								</div>
-							</c:if>
 					</li>
 				</c:forEach>
 			</ul>
@@ -99,20 +99,26 @@
     <section id="generalsection">
         <h1 id="generalreviewbtn">일반 리뷰</h1>
         <div class="generalreview">
-<%--        		<c:if test="${generalreviewlist==null }">              		
-         		자료가 없습니다.
-         	</c:if> --%>
          	<c:if test="${fn:length(generalreviewlist) == 0}">
                <h5>자료가 없습니다.</h5>
             </c:if>
          	
          	<c:if test="${fn:length(generalreviewlist) != 0}">
-         	<%-- <c:if test="${generalreviewlist!=null }"> --%>
          	<ul id="contentslist">
          		<c:forEach var="list" items="${generalreviewlist }">
 						<li id="contents">				
 							<input type="hidden" value="${list.contentno }" class="contentnodistinct">
-							<div id="id">${list.userid }${list.contentno }</div>
+							<div id="id">${list.userid }</div>
+							<c:if test="${sessionScope.user.user_id==list.userid}">
+								<div id="contentedit">						
+									<div id="modify">
+										<button type="button" class="modifybtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-whatever="t"> 
+											<i class="fas fa-edit"></i>
+										</button>
+									</div>
+									<div id="delete"><button class="deletebtn" value="${list.contentno }"><i class="fas fa-times"></i></button></div>						
+								</div>
+							</c:if>
 							<div id="date">${list.writedate }</div>
 							
 									
@@ -126,49 +132,37 @@
 							<div class="content2"><button type="button" class="spoilerbtn">스포일러 포함</button></div>
 							<div class="content3" style="display:none"></div>
 						</c:if>
+
 							
+							<div id="like">															
+								<button class="likebtn" value="${list.contentno }">
+									<div><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div>
+									<div class="likeresult"></div>
+								</button>																			
+							</div>
+							<div id="dislike">
+								<button class="dislikebtn" value="${list.contentno }">
+									<div><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
+									<div class="dislikeresult"></div>
+								</button>
+							</div>
 							
-							
-								<div id="like">															
-									<button class="likebtn" value="${list.contentno }">
-										<div><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div>
-										<div class="likeresult"></div>
-									</button>																			
-								</div>
-								<div id="dislike">
-									<button class="dislikebtn" value="${list.contentno }">
-										<div><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
-										<div class="dislikeresult"></div>
-									</button>
-								</div>
-								<c:if test="${sessionScope.user.user_id!=null}">
-								<div id="report">
-									<button type="button" class="reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" data-bs-whatever="t">
-										<i class="fas fa-flag" id="reportbtn2"></i>
-										신고
-									</button>
-								</div>
-								</c:if>
-							<c:if test="${sessionScope.user.user_id==null}">
-								<div id="report">
-									<button class="reportbtn" value="${list.contentno }" disabled="disabled">
-										<i class="fas fa-flag" id="reportbtn2"></i>
-										신고
-									</button>
-								</div>
+							<c:if test="${sessionScope.user.user_id!=null}">
+							<div id="report">
+								<button type="button" class="reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" data-bs-whatever="t">
+									<i class="fas fa-flag" id="reportbtn2"></i>
+									신고
+								</button>
+							</div>
 							</c:if>
-							
-							
-							<c:if test="${sessionScope.user.user_id==list.userid}">
-								<div id="contentedit">						
-									<div id="modify">
-										<button type="button" class="modifybtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-whatever="t"> 
-											<i class="fas fa-edit"></i>
-										</button>
-									</div>
-									<div id="delete"><button class="deletebtn" value="${list.contentno }"><i class="fas fa-times"></i></button></div>						
-								</div>
-							</c:if>
+						<c:if test="${sessionScope.user.user_id==null}">
+							<div id="report">
+								<button class="reportbtn" value="${list.contentno }" disabled="disabled">
+									<i class="fas fa-flag" id="reportbtn2"></i>
+									신고
+								</button>
+							</div>
+						</c:if>
 						</li>		
 				</c:forEach>
 			</ul>	
