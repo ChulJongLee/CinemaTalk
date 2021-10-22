@@ -39,7 +39,7 @@
 									onClick="location.href='/moviedetail/${movieCd }/userforumdetail/${list.content_no }'">
 								</c:if>
 								<c:if test="${list.imageName==null }">
-									<img alt="이미지" src="/resources/img/poster_noimg.png" class="forum_list_img"
+									<img alt="이미지" src="/resources/img/forum_noimg.PNG" class="forum_list_img"
 									onClick="location.href='/moviedetail/${movieCd }/userforumdetail/${list.content_no }'">
 								</c:if>
 							</div>
