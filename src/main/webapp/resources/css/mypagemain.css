@@ -60,12 +60,15 @@
 }
 
 #modifyinfo>a:link{
-	color: blue;
 	text-decoration: none;
 }
 
 .collectionlist:hover, .actorlist:hover, .directorlist:hover{
 	cursor: pointer;
+}
+
+#myCollection>.p-wrapper>p>a:hover, #myReview>.p-wrapper>p>a:hover, #mycontentlist-wrapper>a:hover{
+	color: gold;	
 }
 
 .moviename{
@@ -125,10 +128,23 @@
 
 .personimg>img{
 	border-radius: 50%;
+	overflow: hidden;
+	border: 0;
+	outline: 0;
+	box-shadow: none;
 }
 
 .personname{
 	margin-top: 10px;
+}
+
+.personimg>img:hover{
+  	transform: scale(0.9) translate3d(0, 0, 0); 
+  	transition: ease-in-out;
+ 	-webkit-transform: scale(0.9);
+ 	-moz-transform: scale(0.9);
+	-ms-transform: scale(0.9);
+	-o-transform: scale(0.9);
 }
 
 .genrelist, .nationlist{
@@ -161,26 +177,31 @@
    flex-wrap: wrap;
    justify-content: flex-start;
    width: 40%;
-   margin: 20px 0px;
+   margin: 30px 0px;
    padding: 0px 15px;
+   border: 2px solid #434343;
+   box-shadow: 5px 5px 5px black;
 }
 
 #id{
    width: 70%;
-   padding: 5px 0px;
+   padding: 3px 0px;
+   padding-left: 5px;
 }
 
 #date{
-   width: 30%;
+   width: 100%;
    text-align: right;
-   padding: 5px 0px;
+   padding: 2px 0px;
+   padding-right: 3px;
+   border-top : 1px solid #434343;
 }
 
 .content{
    width: 100%;
    height: 200px;
    overflow-y: scroll;
-   padding-right: 10px;
+   padding: 5px 10px;
    white-space: pre-wrap;
    border: 2px solid #434343;
 }
@@ -202,9 +223,8 @@
    width: 20%;
    text-align: center;
    padding: 5px 0px;
-
+   padding-left: 5px;
 }
-
 .likebtn, .dislikebtn{
    border: none;
    background-color: #2f2f2f;
@@ -218,17 +238,14 @@
 #likebtn2{
    color: #3498db;
 }
-
 #dislikebtn2{
    color: #f1c40f;
 }
-
 #report{
    width: 60%;
    text-align: right;
    padding: 5px 0px;
 }
-
 .reportbtn{
    border: none;
    background-color: #2f2f2f;
@@ -243,40 +260,27 @@
 #contentedit{
    display: flex;
    flex-direction: row;
-   width: 100%;
-}
-
-#modifycheck{
-   width: 7%;
-   text-align: center;
-}
-
-#modifyreturn{
-   width: 7%;
-   text-align: center;
+   width: 30%;
+   padding-right: 8px;
 }
 
 #modify{
    width: 93%;
    margin: 0px;
    text-align: right;
-   border-top : 1px solid #434343;
 }
-
 #delete{
    width: 7%;
-   text-align: center;
-   border-top : 1px solid #434343;
+   text-align: right;
    margin: 0px;
 }
-
-.modifycheckbtn, .modifyreturnbtn, .modifybtn, .deletebtn{
-   background-color: #212121;
-   height: 3px;
-   color: black;
-}
-
 .modifybtn, .deletebtn{
-	color: white;
+   border: 0;
+   outline: 0;
+   background-color: #2f2f2f;
+   margin: 0px 4px;
+   margin-top: 2px;
+   color: white;
+   text-align: right;
 }
 

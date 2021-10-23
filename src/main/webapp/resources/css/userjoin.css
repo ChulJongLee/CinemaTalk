@@ -44,6 +44,12 @@ div.first.label{
 #idCheck{
 	margin-left: 20px;
 	width: 70px;
+	color: gold;
+	background-color: rgba(0,0,0,0);
+	border: 0;
+	border: 2px solid gold;
+	border-radius: 5px;
+	padding-bottom: 2px;
 }
 
 .input>input{
@@ -75,8 +81,12 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 }
 
 .button{
-	color: black;
-	background-color: white;
  	width: 70px;
 	height: 33px;
+	color: gold;
+	background-color: rgba(0,0,0,0);
+	border: 0;
+	border: 2px solid gold;
+	border-radius: 5px;
+	padding-bottom: 2px;
 }

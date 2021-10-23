@@ -19,11 +19,11 @@
 		<div class="swiper-wrapper">
 			<div class="swiper-slide">
 				<img alt="배너1" 
-					src="/resources/img/reviewEvent2.jpg">
+					src="/resources/img/reviewEvent.jpg">
 			</div>
 			<div class="swiper-slide">
 				<img alt="배너2"
-					src="resources/img/reviewEvent.jpg">
+					src="resources/img/reviewEvent2.jpg">
 			</div>
 			<div class="swiper-slide">
 				<img alt="배너3"

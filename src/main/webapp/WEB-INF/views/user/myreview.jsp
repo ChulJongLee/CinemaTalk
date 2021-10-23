@@ -23,36 +23,8 @@
 	     </c:if>
 		 	<ul id="contentslist">
 				<c:forEach var="list" items="${reviewlist}">
-					<li id="contents">
-						<input type="hidden" value="${list.contentno}" class="contentnodistinct">
-						<div id="id">${list.title}</div>
-						<div id="date">${list.writedate}</div>
-						
-						<div class="content">${list.contents}</div>
-
-
-					<div id="like">
-						<button class="likebtn" value="${list.contentno}">
-							<div>
-								<i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i>
-							</div>
-							<div>${list.like }</div>
-						</button>
-					</div>
-					<div id="dislike">
-						<button class="dislikebtn" value="${list.contentno}">
-							<div>
-								<i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i>
-							</div>
-							<div>${list.dislike}</div>
-						</button>
-					</div>
-					<div id="report">
-						<button type="button" class="reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" data-bs-whatever="t">
-							<i class="fas fa-flag" id="reportbtn2"></i> 신고
-						</button>
-					</div>
-
+					<li id="contents"><input type="hidden" value="${list.contentno}" class="contentnodistinct">
+					<div id="id">${list.title}</div>
 					<div id="contentedit">
 						<div id="modify">
 							<button type="button" class="modifybtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-whatever="t">
@@ -65,7 +37,27 @@
 							</button>
 						</div>
 					</div>
-				</li>		
+					<div id="date">${list.writedate}</div>
+
+					<div class="content">${list.contents}</div>
+
+					<div id="like">
+						<button class="likebtn" value="${list.contentno}" disabled>
+							<div>
+								<i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i>
+							</div>
+							<div>${list.like}</div>
+						</button>
+					</div>
+					<div id="dislike">
+						<button class="dislikebtn" value="${list.contentno}" disabled>
+							<div>
+								<i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i>
+							</div>
+							<div>${list.dislike}</div>
+						</button>
+					</div> 
+					</li>		
 				
 						<!-- 리뷰 수정 Modal -->
   		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

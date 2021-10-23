@@ -48,14 +48,14 @@
 						</div>
 						<div id="functionBtns">
 							<div class="fucntionBtn">
-								<button class="forum_likebtn" value="${list.content_no}">
+								<button class="forum_likebtn" value="${list.content_no}" disabled>
 									<div>
 										<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>${list.content_like}
 									</div>
 								</button>
 							</div>
 							<div class="fucntionBtn">
-								<button class="forum_dislikebtn" value="${list.content_no}">
+								<button class="forum_dislikebtn" value="${list.content_no}" disabled>
 									<div>
 										<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>${list.content_hate}
 									</div>

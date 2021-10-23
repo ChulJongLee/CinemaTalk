@@ -19,7 +19,7 @@
 				<li>
 					<div class="first label"><label for="user_id"><b>아이디</b></label></div>
 					<div class="first input"><input type="text" name="user_id" id="user_id" placeholder="4 ~ 12자의 영문, 숫자 입력" onfocus="this.placeholder=''" onblur="this.placeholder='4~12자의 영문, 숫자 입력'" onkeydown="inputIdCheck()"></div>
-					<div class="first"><button type="button" id="idCheck" style="font-weight:bold;">중복 체크</button></div>
+					<div class="first"><button type="button" id="idCheck" style="font-weight:500;">중복 체크</button></div>
 					<div class="first"><input type="hidden" name="idDuplication" id="idDuplication" value="unChecked"></div>
 				</li>
 				<li>
