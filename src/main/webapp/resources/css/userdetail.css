@@ -63,4 +63,10 @@
 #usermodify, #userdel{
 	width: 110px;
 	height: 30px;
+	color: gold;
+	background-color: rgba(0,0,0,0);
+	border: 0;
+	border: 2px solid gold;
+	border-radius: 5px;
+	padding-bottom: 1px;
 }

@@ -140,7 +140,7 @@
 	
 	<div id="myContents">
 		<div class="p-wrapper"><p align="center"><b>나의 게시글</b></p></div>
-		<div id="mycontentlist-wrapper"><a href="/mypage/mycontent?user_id=${userdto.user_id}">내가 쓴 게시글 보러 가기</a></div>
+		<div id="mycontentlist-wrapper"><a href="/mypage/mycontent">내가 쓴 게시글 보러 가기</a></div>
 	</div>
 		
 	<div id="rate_statistics">

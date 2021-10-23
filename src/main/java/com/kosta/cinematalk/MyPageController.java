@@ -124,13 +124,13 @@ public class MyPageController {
 	}
 	
 	@GetMapping("/mypage/mycontent")
-	public String myContent(HttpSession session, @RequestParam(required = false, defaultValue = "1") int currPage, @RequestParam(required = false, defaultValue = "") String user_id, Model model) {
+	public String myContent(HttpSession session, @RequestParam(required = false, defaultValue = "1") int currPage, Model model) {
 		UserDTO user = (UserDTO) session.getAttribute("user");
 		
 		if(user == null) {
 			return "redirect:/login";
 		} else {
-			int user_no = user.getUser_no();
+			String user_id = user.getUser_id();
 
 			//전체 자료 수 확인
 			int totalcount = mypageService.myContentCount(user_id);

@@ -54,9 +54,13 @@
 }
 
 .modifybtn>.button{
-	color: black;
-	background-color: white;
+	color: gold;
+	background-color: rgba(0,0,0,0);
  	width: 60px;
-	height: 33px
+	height: 33px;
+	border: 0;
+	border: 1px solid gold;
+	border-radius: 5px;
+	padding-bottom: 2px;
 
 }

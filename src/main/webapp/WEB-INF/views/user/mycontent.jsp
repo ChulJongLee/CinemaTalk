@@ -119,26 +119,26 @@
 				<!-- 이전 버튼 -->
 				<c:if test="${page.prev == false}">
 					<li class="page-item disabled"><a class="page-link"
-						href="userforumlist?currPage=${page.startBlock-1 }&search=${search }&searchtxt=${searchtxt }">&laquo;</a>
+						href="/mypage/mycontent?currPage=${page.startBlock-1}">&laquo;</a>
 					</li>
 				</c:if>
 				<c:if test="${page.prev == true}">
 					<li class="page-item"><a class="page-link"
-						href="userforumlist?currPage=${page.startBlock-1 }&search=${search }&searchtxt=${searchtxt }">&laquo;</a>
+						href="/mypage/mycontent?currPage=${page.startBlock-1}">&laquo;</a>
 					</li>
 				</c:if>
 
 				<!-- 페이지 번호 -->
-				<c:forEach var="index" begin="${page.startBlock }"
+				<c:forEach var="index" begin="${page.startBlock}"
 					end="${page.endBlock }">
-					<c:if test="${index==page.currPage }">
+					<c:if test="${index==page.currPage}">
 						<li class="page-item active" aria-current="page"><a
-							class="page-link" href="#"><c:out value="${index }" /></a></li>
+							class="page-link" href="#"><c:out value="${index}" /></a></li>
 					</c:if>
-					<c:if test="${index!=page.currPage }">
+					<c:if test="${index!=page.currPage}">
 						<li class="page-item" aria-current="page"><a
 							class="page-link"
-							href="userforumlist?currPage=${index }&search=${search }&searchtxt=${searchtxt }"><c:out
+							href="/mypage/mycontent?currPage=${index}"><c:out
 									value="${index }" /></a></li>
 					</c:if>
 				</c:forEach>
@@ -146,12 +146,12 @@
 				<!-- 다음 버튼 -->
 				<c:if test="${page.next == false}">
 					<li class="page-item disabled"><a class="page-link"
-						href="userforumlist?currPage=${page.endBlock+1 }&search=${search }&searchtxt=${searchtxt }">&raquo;</a>
+						href="/mypage/mycontent?currPage=${page.endBlock+1}">&raquo;</a>
 					</li>
 				</c:if>
 				<c:if test="${page.next == true}">
 					<li class="page-item"><a class="page-link"
-						href="userforumlist?currPage=${page.endBlock+1 }&search=${search }&searchtxt=${searchtxt }">&raquo;</a>
+						href="/mypage/mycontent?currPage=${page.endBlock+1}">&raquo;</a>
 					</li>
 				</c:if>
 			</ul>

@@ -16,7 +16,6 @@
 	margin: 0px auto;
 	margin-top: 80px;
 	color: white;
-
 }
 
 #collection-wrap{
@@ -30,6 +29,11 @@
 	display: inline-block;
 	width: 250px;
 	margin-top: 20px;
+	margin-left: 3px;
+}
+
+.collectionlist:hover{
+	cursor: pointer;
 }
 
 .collectionlist>div{
