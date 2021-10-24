@@ -83,11 +83,11 @@
 .mySwiper>.swiper-wrapper>.swiper-slide span {
 	color: white;
 	text-shadow: 3px 3px 3px black;
+    font-weight: 600;
 }
 .swiper-title{
-	
 	color: white;
-	font-size: 20px;
+	font-size: 23px;
 	font-weight: 600;
 	padding-left: 25px;
 	padding-top: 30px;
@@ -96,7 +96,7 @@
 }
 .rank{
 	position: absolute;
-	font-weight: 500;
+	font-weight: 600;
 	width: 26px;
 	height: 27px;
 	background-color: gold;
