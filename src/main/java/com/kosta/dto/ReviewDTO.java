@@ -20,6 +20,8 @@ public class ReviewDTO {
 	private String contents;
 	private int like;
 	private int dislike;
+	private int likecheck;
+	private int hatecheck;
 	private String movieCd;
 	private int spoiler;
 

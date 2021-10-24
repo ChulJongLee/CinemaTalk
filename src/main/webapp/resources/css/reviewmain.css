@@ -155,7 +155,7 @@ body{
 	/* border-radius: 10px; */
 	background-color: #2f2f2f;
 	opacity: 90%;
-	color: #ff0558;
+	color: orange;
 	/* border: 1px solid #ff0558; */
 	height: 30px;
 	text-shadow: 3px 3px 3px black;
@@ -236,8 +236,9 @@ body{
    text-decoration: none;
    border-radius : 10px;
    padding: 5px;
-   border: 2px solid #ff0558;
-   color: #ff0558;
+   /* border: 2px solid #ff0558; */
+   border: 2px solid orange;
+   color: orange;
    box-shadow: 3px 3px 3px black;
    
 }

@@ -353,17 +353,24 @@ public class CommunityController {
 			LikeDTO likeresult = service.reviewLike(like.getContent_no(), like.getUser_no());
 	    	
 			
+			
+			
 	    	if(likeresult==null) {
 	    		// 좋아요 입력
 	        	service.insertlike(like.getContent_no(), like.getUser_no());
 	        	result.put("result", "종아요 완료");
+	        	result.put("likecheck", 1);
 	        }else {
+	        	
 	        	// 좋아요 수정
 	        	service.updatelike(likeresult);
-	        	if(likeresult.getLikecheck()==1)
+	        	if(likeresult.getLikecheck()==1) {
 	        		result.put("result", "종아요 취소");
-	        	else
+	        		result.put("likecheck", 0);
+	        	}else {
 		        	result.put("result", "종아요 완료");
+		        	result.put("likecheck", 1);
+	        	}
 	        }
     	 	
         }catch(NullPointerException e) {
@@ -377,11 +384,23 @@ public class CommunityController {
 	// 리뷰 좋아요 토탈
 	@PostMapping("/likeresult")
 	@ResponseBody
-	public int likeresult(int content_no) {
+	public Map<String, Object> likeresult(LikeDTO like, HttpSession session) {
 		
-		int like = service.getlike(content_no);
+		 Map<String, Object> result = new HashMap<String, Object>();
+		  try {
+		        UserDTO user = (UserDTO) session.getAttribute("user");			
+				like.setUser_no(user.getUser_no());
+				
+				LikeDTO likeresult = service.reviewLike(like.getContent_no(), like.getUser_no());
+				result.put("likecheck", likeresult.getLikecheck());
+				
+		  }catch(NullPointerException e){
+			  	result.put("likecheck", 0);			  	
+		  }
+				result.put("like", service.getlike(like.getContent_no()));
 		
-		return like;		
+
+		return result;		
 	}
 	
 	// 리뷰 싫어요

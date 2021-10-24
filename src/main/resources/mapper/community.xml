@@ -16,6 +16,8 @@
   	<result column="content_content" property="contents" />
   	<result column="content_like" property="like" />
   	<result column="content_hate" property="dislike" />
+  	<result column="likecheck" property="likecheck" />
+  	<result column="hatecheck" property="hatecheck" />
   	<result column="spoiler_tf" property="spoiler" />  	
   </resultMap>
   
@@ -53,14 +55,14 @@
   
 <!-- 리뷰 페이지 베스트 리뷰 -->
 <select id="getreview" resultMap="reviewdto">
-	select content_no, user_id, e1.user_no, e1.movieCd, content_date, content_content, content_like, content_hate, spoiler_tf
+    select e1.content_no, user_id, e1.user_no, movieCd, content_date, content_content
+        , spoiler_tf, ifnull(sum(likecheck),0) as content_like, ifnull(sum(hatecheck),0) as content_hate
 	from comm_board e1 left join user_info e2
-    on e1.user_no=e2.user_no
-    
-    left join movie_info e3
-	on e1.movieCd=e3.movieCd
-
-	where board_distinct_no = 1 and e1.movieCd = #{movieCd}   
+	on e1.user_no=e2.user_no
+	left outer join comm_likehate e4
+	on e1.content_no=e4.content_no
+	where board_distinct_no = 1 and movieCd = #{movieCd}
+	group by e1.content_no
 	order by content_like DESC, content_date DESC
 	limit 2
 </select>

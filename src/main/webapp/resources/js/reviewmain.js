@@ -3,9 +3,10 @@
  */
 
 
+
 // 좋아요 싫어요 토탈 
 $(".contentnodistinct").each( function likeNhateresult() {
-		
+	
     	var contentno = $(this).attr('value');
     	let y= this;
     	
@@ -15,10 +16,19 @@ $(".contentnodistinct").each( function likeNhateresult() {
 	        data: {
 	        	content_no: $(y).attr('value')
 	        }
-		    , dataType:"text"
-	        , success: function (likeresult) {
-
-	        	$(y).siblings('#like').find('.likeresult').html(likeresult);	       	
+//		    , dataType:"text"
+	        , success: function (res) {
+	        		console.log("res.like: ",res.like);
+	        		console.log("res.likecheck: ",res.likecheck);
+	        		console.log("res: ",res);
+	        		
+	        	if(res.likecheck==1){
+		    		$(y).siblings('#like').find('.likebtn').prepend('<div class="thumbup"><i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i></div>');
+	        	}else{
+	        		$(y).siblings('#like').find('.likebtn').prepend('<div class="thumbup"><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div>');	        		
+	        	}
+	        	$(y).siblings('#like').find('.likeresult').html(res.like);	   
+	        	
 	        },
 		});
 		
@@ -55,17 +65,20 @@ $(function(){
 		          success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
 		              // 응답코드 > 0000
 		              alert(res.result);
-		              likeresult(content_no, th);    
+		              likeresult(content_no, th, res.likecheck);    
 		          },
 		          error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
 		          }
 		      });
-		  
+	  
+		
 		});
 
-	function likeresult(content_no, loc) {
+	function likeresult(content_no, loc, likecheck) {
 				
 		var contentno=content_no;
+		var likecheck=likecheck;
+		
 		$.ajax({
 	        type: "POST",
 			url: "/likeresult",
@@ -73,7 +86,16 @@ $(function(){
 	        	content_no: contentno
 	        },
 	        success: function (likeresult) {
-	        	$(loc).children('.likeresult').text(likeresult);
+	        	$(loc).children('.likeresult').text(likeresult.like);
+	        	
+	        	if(likecheck==1){
+		        	$(loc).find('.thumbup').remove();
+		    		$(loc).prepend('<div class="thumbup"><i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i></div>');
+	        	}else{
+	        		$(loc).find('.thumbup').remove();
+	        		$(loc).prepend('<div class="thumbup"><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div>');	        		
+	        	}
+	        	
 	        	
 	        },
 		});

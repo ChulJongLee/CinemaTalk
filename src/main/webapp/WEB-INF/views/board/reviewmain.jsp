@@ -58,16 +58,20 @@
 
 								<div id="like">															
 									<button class="likebtn" value="${list.contentno }">
-										<div><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div>
+										<!-- <div class="thumbup"><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div> -->
 										<div class="likeresult"></div>
 									</button>																			
 								</div>
 								<div id="dislike">
 									<button class="dislikebtn" value="${list.contentno }">
-										<div><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
+										<div class="thumbdown"><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
 										<div class="dislikeresult"></div>
 									</button>
 								</div>
+								
+								
+								
+								
 								<c:if test="${sessionScope.user.user_id!=null}">
 								<div id="report">
 									<button type="button" class="reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" data-bs-whatever="t">
@@ -136,16 +140,18 @@
 							
 							<div id="like">															
 								<button class="likebtn" value="${list.contentno }">
-									<div><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div>
+									<!-- <div class="thumbup"><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div> -->
 									<div class="likeresult"></div>
 								</button>																			
 							</div>
 							<div id="dislike">
 								<button class="dislikebtn" value="${list.contentno }">
-									<div><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
+									<div class="thumbdown"><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
 									<div class="dislikeresult"></div>
 								</button>
 							</div>
+							
+							
 							
 							<c:if test="${sessionScope.user.user_id!=null}">
 							<div id="report">
