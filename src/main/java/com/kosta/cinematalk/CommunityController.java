@@ -374,7 +374,7 @@ public class CommunityController {
 	        }
     	 	
         }catch(NullPointerException e) {
-        	result.put("result", "로그인이 필요한 서비스 입니다.");
+        	result.put("result", "로그인이 필요한 서비스입니다.");
         }
         
 
@@ -435,7 +435,7 @@ public class CommunityController {
 	        }
     	 	
         }catch(NullPointerException e) {
-        	result.put("result", "로그인이 필요한 서비스 입니다.");
+        	result.put("result", "로그인이 필요한 서비스입니다.");
         }
         
         return result;       

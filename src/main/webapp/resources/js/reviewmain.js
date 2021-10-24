@@ -183,6 +183,7 @@ $(document).ready(function(){
 	});
 });
 
+
 // 신고하기
 $(document).ready(function(){
 	$('#staticBackdrop1').on('shown.bs.modal', function(e){

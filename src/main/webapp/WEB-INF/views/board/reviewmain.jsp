@@ -75,7 +75,7 @@
 								</c:if>
 							<c:if test="${sessionScope.user.user_id==null}">
 								<div id="report">
-									<button class="reportbtn" value="${list.contentno }" disabled="disabled">
+									<button class="reportbtn" value="${list.contentno }" disabled="disabled" title="로그인이 필요한 서비스입니다.">
 										<i class="fas fa-flag" id="reportbtn2"></i>
 										신고
 									</button>

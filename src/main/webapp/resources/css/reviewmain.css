@@ -177,9 +177,11 @@ body{
 
 #likebtn2{
    color: #3498db;
+   text-shadow: 1px 1px 1px black;
 }
 #dislikebtn2{
    color: #f1c40f;
+   text-shadow: 1px 1px 1px black;
 }
 #report{
    width: 60%;
@@ -195,6 +197,7 @@ body{
 
 #reportbtn2{
    color: red;
+   text-shadow: 1px 1px 1px black;
 }
 
 #contentedit{
