@@ -140,8 +140,15 @@ article{
     height: 30px;
     width: 60px;
 }
+
 #forum_reportbtn2{
 	color: red;
+	position: relative;
+   	top: 3px;
+}
+
+.fa-flag:before {
+    color: red;
 }
 #fucntionBtn{
 	display: flex;

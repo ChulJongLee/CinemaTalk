@@ -46,17 +46,11 @@
 						
 						<div id="forum_like">
 								<button class="forum_likebtn" value="${list.content_no }">
-									<div>
-										<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>
-									</div>
 									<div class="likeresult"></div>
 								</button>				
 							</div>
 							<div id="forum_dislike">
 								<button class="forum_dislikebtn" value="${list.content_no }">
-									<div>
-										<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>
-									</div>
 									<div class="dislikeresult"></div>
 								</button>
 							</div>
@@ -68,7 +62,7 @@
 									</button>
 								</c:if>
 								<c:if test="${sessionScope.user.user_id==null}">
-									<button class="forum_reportbtn" value="${list.content_no }" disabled="disabled">
+									<button type="button" class="forum_reportbtn" id="reportBtn">
 										<i class="fas fa-flag" id="reportbtn2"></i>
 										신고
 									</button>
@@ -97,7 +91,7 @@
          		<c:forEach var="list" items="${worstUserforumList }">
 					<li class="forum_contents">
 						<input type="hidden" value="${list.content_no }" class="contentnodistinct">
-						<div class="title">${list.content_title }</div>
+						<div class="title" onClick="location.href='/moviedetail/${detail.movieCd }/userforumdetail/${list.content_no }'">${list.content_title }</div>
 						<div class="user_id">${list.user_id }</div>
 						<div class="content_date">${list.content_date }</div>
 						<c:if test="${list.imageName!=null && list.imageName!='' }">
@@ -109,17 +103,11 @@
 						
 						<div id="forum_like">
 							<button class="forum_likebtn" value="${list.content_no }">
-								<div>
-									<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>
-								</div>
 								<div class="likeresult"></div>
 							</button>				
 						</div>
 						<div id="forum_dislike">
 							<button class="forum_dislikebtn" value="${list.content_no }">
-								<div>
-									<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>
-								</div>
 								<div class="dislikeresult"></div>
 							</button>
 						</div>

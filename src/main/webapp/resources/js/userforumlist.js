@@ -3,9 +3,6 @@
  */
 
 
-$('#userforuminsert').click(function(){
-    location.href="userforuminsert";		
-});
 
 //좋아요, 싫어요 로드
 $(".contentnodistinct").each( function likeNhateresult() {
@@ -16,11 +13,15 @@ $(".contentnodistinct").each( function likeNhateresult() {
 			url: "/likeresult",
 	        data: {
 	        	content_no: $(y).attr('value')
-	        }
-		    , dataType:"text"
-	        , success: function (likeresult) {
-	        	$(y).siblings('.fucntionBtn').find('.likeresult').html(likeresult);	
-	        },
+	        }		    	
+	    	, success: function (res) {
+	        	if(res.likecheck==1){
+		    		$(y).siblings('.fucntionBtn').find('.forum_likebtn').prepend('<div class="thumbup"><i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i></div>');
+	        	}else{
+	        		$(y).siblings('.fucntionBtn').find('.forum_likebtn').prepend('<div class="thumbup"><i class="far fa-thumbs-up" id="forum_likebtn2">&nbsp</i></div>');	        		
+	        	}
+	        	$(y).siblings('.fucntionBtn').find('.likeresult').html(res.like);
+	        	},	
 		});
 		
 		$.ajax({
@@ -29,9 +30,13 @@ $(".contentnodistinct").each( function likeNhateresult() {
 	        data: {
 	        	content_no: $(y).attr('value')
 	        }
-		    , dataType:"text"
-	        , success: function (dislikeresult) {
-	        	$(y).siblings('.fucntionBtn').find('.dislikeresult').html(dislikeresult);	
+			, success: function (res) {
+	        	if(res.hatecheck==1){
+		    		$(y).siblings('.fucntionBtn').find('.forum_dislikebtn').prepend('<div class="thumbdown"><i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i></div>');
+	        	}else{
+	        		$(y).siblings('.fucntionBtn').find('.forum_dislikebtn').prepend('<div class="thumbdown"><i class="far fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i></div>');	        		
+	        	}
+	        	$(y).siblings('.fucntionBtn').find('.dislikeresult').html(res.dislike);	
 	        },
 		});
 		
@@ -51,7 +56,7 @@ $(function(){
 		          success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
 		              // 응답코드 > 0000
 		              alert(res.result);
-		              likeresult(content_no, th);
+		              likeresult(content_no, th, res.likecheck);
 		          },
 		          error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
 		          }
@@ -59,8 +64,9 @@ $(function(){
 		  
 		});
 
-	function likeresult(content_no, loc) {
+	function likeresult(content_no, loc, likecheck) {
 		var contentno=content_no;
+		var likecheck=likecheck;
 		$.ajax({
 	        type: "POST",
 			url: "/likeresult",
@@ -68,7 +74,14 @@ $(function(){
 	        	content_no: contentno
 	        },
 	        success: function (likeresult) {
-	        	$(loc).find('.likeresult').text(likeresult);
+	        	$(loc).children('.likeresult').text(likeresult.like);
+	        	if(likecheck==1){
+		        	$(loc).find('.thumbup').remove();
+		    		$(loc).prepend('<div class="thumbup"><i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i></div>');
+	        	}else{
+	        		$(loc).find('.thumbup').remove();
+	        		$(loc).prepend('<div class="thumbup"><i class="far fa-thumbs-up" id="forum_likebtn2">&nbsp</i></div>');	        		
+	        	}
 	        },
 		});
 	};
@@ -88,15 +101,16 @@ $(function(){
 	          success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
 	              // 응답코드 > 0000
 	              alert(res.result);
-	              dislikeresult(content_no, th);
+	              dislikeresult(content_no, th, res.hatecheck);
 	          },
 	          error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
 	          }
 	      });
 		});
 
-	function dislikeresult(content_no, loc) {
+	function dislikeresult(content_no, loc, hatecheck) {
 		var contentno=content_no;
+		var hatecheck=hatecheck;
 		$.ajax({
 	        type: "POST",
 			url: "/dislikeresult",
@@ -104,19 +118,28 @@ $(function(){
 	        	content_no: contentno
 	        },
 	        success: function (dislikeresult) {
-	        	$(loc).find('.dislikeresult').text(dislikeresult);
+	        	$(loc).children('.dislikeresult').text(dislikeresult.dislike);
+	        	if(hatecheck==1){
+		        	$(loc).find('.thumbdown').remove();
+		    		$(loc).prepend('<div class="thumbdown"><i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i></div>');
+	        	}else{
+	        		$(loc).find('.thumbdown').remove();
+	        		$(loc).prepend('<div class="thumbdown"><i class="far fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i></div>');	        		
+	        	}
 	        },
 		});
 	};
 });
 
+//신고하기(로그인 안했을때)
+$('#reportBtn').click(function() {
+	alert("로그인이 필요한 서비스 입니다.");
+});
 //신고버튼
 $(document).ready(function(){
 	$('#staticBackdrop3').on('shown.bs.modal', function(e){
 		 var recip=$(e.relatedTarget);
 		 var no = $(recip).parent().siblings('.contentnodistinct').attr('value');
-		  console.log("contentno:"+no);
-
 		 let m=$(this);
 		 m.find('.contentval').val(no);
 	});

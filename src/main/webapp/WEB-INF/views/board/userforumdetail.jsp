@@ -39,26 +39,24 @@
 				
 					<div class="fucntionBtn">
 						<button class="forum_likebtn" value="${userforumdetail.content_no }">
-							<i class="fas fa-thumbs-up" id="forum_likebtn2">&nbsp</i>
 							<div class="likeresult"></div>
 						</button>				
 					</div>
 					<div class="fucntionBtn">
 						<button class="forum_dislikebtn" value="${userforumdetail.content_no }">
-							<i class="fas fa-thumbs-down" id="forum_dislikebtn2">&nbsp</i>
 							<div class="dislikeresult"></div>
 						</button>
 					</div>
 					<div class="fucntionBtn">
 						<c:if test="${sessionScope.user.user_id!=null}">
-							<button type="button" class="forum_reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop4" data-bs-whatever="t">
+							<button type="button" class="forum_reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" data-bs-whatever="t">
 								<i class="fas fa-flag" id="forum_reportbtn2"></i>
 								신고
 							</button>
 						</c:if>
 						<c:if test="${sessionScope.user.user_id==null}">
-							<button class="forum_reportbtn" value="${userforumdetail.content_no }" disabled="disabled">
-								<i class="fas fa-flag" id="forum_reportbtn2"></i>
+							<button type="button" class="forum_reportbtn" id="reportBtn">
+								<i class="fas fa-flag" id="reportbtn2"></i>
 								신고
 							</button>
 						</c:if>
@@ -77,7 +75,7 @@
 		</article>
 	</section>
 <!-- 리뷰 신고 Modal -->
-  		<div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  		<div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -104,6 +102,6 @@
 		    </div>
 		  </div>
 		</div>
-	<script src="/resources/js/userforumdetail.js"></script>
+	<script src="/resources/js/userforumlist.js"></script>
 </body>
 </html>
