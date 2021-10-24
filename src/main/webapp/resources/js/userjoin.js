@@ -104,10 +104,13 @@ $(function() {
 			data : "user_id="+user_id,
 			success : function(data) {
 				if (data.cnt > 0) {
-
 					alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
 					$("#user_id").focus();
 
+				} else if (user_id.length == 0){
+					alert('아이디를 입력하세요.');
+					$("#user_id").focus();
+					
 				} else {
 					alert("사용가능한 아이디입니다.");
 

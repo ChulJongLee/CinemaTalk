@@ -28,7 +28,7 @@
 			    <li><a class="dropdown-item" href="/genre/drama">드라마</a></li>
 			    <li><a class="dropdown-item" href="/genre/comedy">코미디</a></li>
 			    <li><a class="dropdown-item" href="/genre/horror">공포(호러)</a></li>
-			    <li><a class="dropdown-item" href="/genre/romance">멜로/로멘스</a></li>
+			    <li><a class="dropdown-item" href="/genre/romance">멜로/로맨스</a></li>
 			    <li><a class="dropdown-item" href="/genre/thriller">스릴러</a></li>
 			  </ul>
 			</div>

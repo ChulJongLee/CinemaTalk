@@ -134,8 +134,8 @@ public class MyPageController {
 
 			//전체 자료 수 확인
 			int totalcount = mypageService.myContentCount(user_id);
-			int pageSize=10;
-			int blockSize=5;
+			int pageSize = 10;
+			int blockSize = 5;
 			
 			PageBlock page = new PageBlock(currPage, totalcount, pageSize, blockSize);
 
