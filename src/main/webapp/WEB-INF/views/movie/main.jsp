@@ -23,19 +23,19 @@
 			</div>
 			<div class="swiper-slide">
 				<img alt="배너2"
-					src="resources/img/dune_image.jpg">
+					src="resources/img/dune_image.png">
 			</div>
 			<div class="swiper-slide">
 				<img alt="배너3"
-					src="resources/img/littleforest_image.jpg">
+					src="resources/img/littleforest_image.png">
 			</div>
 			<div class="swiper-slide">
 				<img alt="배너4"
-					src="resources/img/takecareofmycat_image.jpg">
+					src="resources/img/takecareofmycat_image.png">
 			</div>
 			<div class="swiper-slide">
 				<img alt="배너5"
-					src="resources/img/007_image.jpg">
+					src="resources/img/007_image.png">
 			</div>
 		</div>
 		<div class="swiper-button-next"></div>
