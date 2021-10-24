@@ -24,7 +24,7 @@
 				<c:forEach var="list" items="${allreview }">
 					<li id="contents">				
 							<input type="hidden" value="${list.contentno }" class="contentnodistinct">
-							<div id="id">${list.userid }${list.contentno }</div>
+							<div id="id">${list.userid }</div>
 							<c:if test="${sessionScope.user.user_id==list.userid}">
 								<div id="contentedit">						
 									<div id="modify">
@@ -48,18 +48,25 @@
 							<div class="content2"><button type="button" class="spoilerbtn">스포일러 포함</button></div>
 							<div class="content3" style="display:none"></div>
 						</c:if>
+						
+						
+						
 							<div id="like">															
 								<button class="likebtn" value="${list.contentno }">
-									<div><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div>
+									<!-- <div><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div> -->
 									<div class="likeresult"></div>
 								</button>																			
 							</div>
 							<div id="dislike">
 								<button class="dislikebtn" value="${list.contentno }">
-									<div><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
+									<!-- <div><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div> -->
 									<div class="dislikeresult"></div>
 								</button>
 							</div>
+							
+							
+							
+							
 						<c:if test="${sessionScope.user.user_id!=null}">
 							<div id="report">
 								<button type="button" class="reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" data-bs-whatever="t">

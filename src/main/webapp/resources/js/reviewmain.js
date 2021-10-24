@@ -3,7 +3,6 @@
  */
 
 
-
 // 좋아요 싫어요 토탈 
 $(".contentnodistinct").each( function likeNhateresult() {
 	
@@ -16,11 +15,7 @@ $(".contentnodistinct").each( function likeNhateresult() {
 	        data: {
 	        	content_no: $(y).attr('value')
 	        }
-//		    , dataType:"text"
 	        , success: function (res) {
-	        		console.log("res.like: ",res.like);
-	        		console.log("res.likecheck: ",res.likecheck);
-	        		console.log("res: ",res);
 	        		
 	        	if(res.likecheck==1){
 		    		$(y).siblings('#like').find('.likebtn').prepend('<div class="thumbup"><i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i></div>');
@@ -38,7 +33,6 @@ $(".contentnodistinct").each( function likeNhateresult() {
 	        data: {
 	        	content_no: $(y).attr('value')
 	        }
-//		    , dataType:"text"
 	        , success: function (res) {
 	        	
 	        	if(res.hatecheck==1){
