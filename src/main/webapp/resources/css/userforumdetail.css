@@ -101,14 +101,13 @@ article{
 /* 수정, 삭제, 목록 버튼 */
 .boardBtn{
 	background-color: #212121;
-    color: #ff0558;
+    color: gold;
     font-weight: 600;
     font-size: 20px;
     width: 80px;
     margin: 3px;
     border-radius: 10px;
-    border: 1px solid white;
-    opacity: 0.8;
+    border: 2px solid gold;
 }
 
 #reply{

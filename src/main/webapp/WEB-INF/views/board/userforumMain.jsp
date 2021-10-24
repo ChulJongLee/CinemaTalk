@@ -125,16 +125,16 @@
 						</div>
 						<div id="forum_report">
 							<c:if test="${sessionScope.user.user_id!=null}">
-									<button type="button" class="forum_reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" data-bs-whatever="t">
-										<i class="fas fa-flag" id="forum_reportbtn2"></i>
-										신고
-									</button>
-								</c:if>
-								<c:if test="${sessionScope.user.user_id==null}">
-									<button class="forum_reportbtn" value="${list.content_no }" disabled="disabled">
-										<i class="fas fa-flag" id="reportbtn2"></i>
-										신고
-									</button>
+								<button type="button" class="forum_reportbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" data-bs-whatever="t">
+									<i class="fas fa-flag" id="forum_reportbtn2"></i>
+									신고
+								</button>
+							</c:if>
+							<c:if test="${sessionScope.user.user_id==null}">
+								<button type="button" class="forum_reportbtn" id="reportBtn">
+									<i class="fas fa-flag" id="reportbtn2"></i>
+									신고
+								</button>
 							</c:if>
 						</div>
 					</li>

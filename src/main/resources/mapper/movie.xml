@@ -127,9 +127,10 @@
 		from movie_rating as r
 			inner join movie_info as i
 			on r.movieCd=i.movieCd
-		where ratingDate >=date_add(now(), interval-1 month)
+		where ratingDate >=date_add(now(), interval-1 month) and poster!=''
 		group by r.movieCd
-		order by avg(rate);
+		order by avg(rate)
+        limit 10
 	</select>
   
    <select id="getmovieopen" resultType="com.kosta.dto.KobisDTO">
