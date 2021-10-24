@@ -64,7 +64,7 @@
 								</div>
 								<div id="dislike">
 									<button class="dislikebtn" value="${list.contentno }">
-										<div class="thumbdown"><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
+										<!-- <div class="thumbdown"><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div> -->
 										<div class="dislikeresult"></div>
 									</button>
 								</div>
@@ -146,7 +146,7 @@
 							</div>
 							<div id="dislike">
 								<button class="dislikebtn" value="${list.contentno }">
-									<div class="thumbdown"><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>
+									<!-- <div class="thumbdown"><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div> -->
 									<div class="dislikeresult"></div>
 								</button>
 							</div>

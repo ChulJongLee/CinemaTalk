@@ -418,15 +418,19 @@ public class CommunityController {
 			
 	    	if(likeresult==null) {
 	    		// 싫어요 입력
-	        	service.insertlike(dislike.getContent_no(), dislike.getUser_no());
+	        	service.insertdislike(dislike.getContent_no(), dislike.getUser_no());
 	        	result.put("result", "싫어요 완료");
+	        	result.put("hatecheck", 1);
 	        }else {
 	        	// 싫어요 수정
 	        	service.updatedislike(likeresult);
-	        	if(likeresult.getHatecheck()==1)
+	        	if(likeresult.getHatecheck()==1) {
 	        		result.put("result", "싫어요 취소");
-	        	else
+	        		result.put("hatecheck", 0);	        	
+	        	}else {
 		        	result.put("result", "싫어요 완료");
+		        	result.put("hatecheck", 1);	 
+	        	}
 	        	
 	        }
     	 	
@@ -440,11 +444,23 @@ public class CommunityController {
 	// 리뷰 싫어요 토탈
 	@PostMapping("/dislikeresult")
 	@ResponseBody
-	public int dislikeresult(int content_no) {
+	public Map<String, Object> dislikeresult(LikeDTO dislike, HttpSession session) {
 		
-		int like = service.getdislike(content_no);
+		 Map<String, Object> result = new HashMap<String, Object>();
+		  try {
+		        UserDTO user = (UserDTO) session.getAttribute("user");			
+				dislike.setUser_no(user.getUser_no());
+				
+				LikeDTO likeresult = service.reviewLike(dislike.getContent_no(), dislike.getUser_no());
+				result.put("hatecheck", likeresult.getHatecheck());
+				
+		  }catch(NullPointerException e){
+			  	result.put("hatecheck", 0);			  	
+		  }
+				result.put("dislike", service.getdislike(dislike.getContent_no()));
 		
-		return like;		
+
+		return result;		
 	}
 	
 

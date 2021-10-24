@@ -38,10 +38,15 @@ $(".contentnodistinct").each( function likeNhateresult() {
 	        data: {
 	        	content_no: $(y).attr('value')
 	        }
-		    , dataType:"text"
-	        , success: function (dislikeresult) {
-
-	        	$(y).siblings('#dislike').find('.dislikeresult').html(dislikeresult);	
+//		    , dataType:"text"
+	        , success: function (res) {
+	        	
+	        	if(res.hatecheck==1){
+		    		$(y).siblings('#dislike').find('.dislikebtn').prepend('<div class="thumbdown"><i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>');
+	        	}else{
+	        		$(y).siblings('#dislike').find('.dislikebtn').prepend('<div class="thumbdown"><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>');	        		
+	        	}
+	        	$(y).siblings('#dislike').find('.dislikeresult').html(res.dislike);	
      	
 	        },
 		});
@@ -120,16 +125,18 @@ $(function(){
 		          success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
 		              // 응답코드 > 0000
 		              alert(res.result);
-		              dislikeresult(content_no, th);
+		              dislikeresult(content_no, th, res.hatecheck);
 		          },
 		          error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
 		          }
 		      });		  
 		});
 
-	function dislikeresult(content_no, loc) {
+	function dislikeresult(content_no, loc, hatecheck) {
 				
 		var contentno=content_no;
+		var hatecheck=hatecheck;
+		
 		$.ajax({
 	        type: "POST",
 			url: "/dislikeresult",
@@ -137,7 +144,17 @@ $(function(){
 	        	content_no: contentno
 	        },
 	        success: function (dislikeresult) {
-	        	$(loc).children('.dislikeresult').text(dislikeresult);	        	
+	        	$(loc).children('.dislikeresult').text(dislikeresult.dislike);	    
+	        	
+	        	if(hatecheck==1){
+		        	$(loc).find('.thumbdown').remove();
+		    		$(loc).prepend('<div class="thumbdown"><i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>');
+	        	}else{
+	        		$(loc).find('.thumbdown').remove();
+	        		$(loc).prepend('<div class="thumbdown"><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>');	        		
+	        	}
+	        	
+	        	
 	        },
 		});
 	};
