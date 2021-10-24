@@ -62,7 +62,7 @@
 									</button>
 								</c:if>
 								<c:if test="${sessionScope.user.user_id==null}">
-									<button type="button" class="forum_reportbtn" id="reportBtn">
+									<button type="button" class="forum_reportbtn forum_reportbtnNull" id="reportBtn">
 										<i class="fas fa-flag" id="reportbtn2"></i>
 										신고
 									</button>
@@ -119,7 +119,7 @@
 								</button>
 							</c:if>
 							<c:if test="${sessionScope.user.user_id==null}">
-								<button type="button" class="forum_reportbtn" id="reportBtn">
+								<button type="button" class="forum_reportbtn forum_reportbtnNull" id="reportBtn" >
 									<i class="fas fa-flag" id="reportbtn2"></i>
 									신고
 								</button>
