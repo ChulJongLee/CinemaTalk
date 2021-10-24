@@ -44,12 +44,7 @@ td{
 	cursor: pointer;
 }
 
-/* 페이징 */
-#paging{
-	display: flex;
-	justify-content: center;
-    margin-top: 20px;
-}
+
 
 #blankT{
 	border-left: none;
@@ -76,3 +71,28 @@ td{
     font-weight: 600;
 }
  
+/* 페이징 */
+#paging{
+	display: flex;
+	justify-content: center;
+    margin-top: 20px;
+}
+
+.page-item.disabled .page-link, .page-link{
+	color: white;
+	background-color: #212121;
+	border-color: #bebebe;
+	font-weight: 600;
+}
+
+a.page-link:hover{
+	color: white;
+	background-color: gold;
+}
+
+.page-item.active .page-link{
+	color: white;
+	background-color: gold;
+	border-color: #bebebe;
+	font-weight: 600;
+}

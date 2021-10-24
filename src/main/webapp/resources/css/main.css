@@ -82,15 +82,17 @@
 
 .mySwiper>.swiper-wrapper>.swiper-slide span {
 	color: white;
+	text-shadow: 3px 3px 3px black;
 }
 .swiper-title{
+	
 	color: white;
 	font-size: 20px;
 	font-weight: 600;
-	
 	padding-left: 25px;
 	padding-top: 30px;
 	padding-bottom: 10px;
+	text-shadow: 3px 3px 3px black;
 }
 .rank{
 	position: absolute;

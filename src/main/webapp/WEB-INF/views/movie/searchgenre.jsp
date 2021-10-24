@@ -13,7 +13,7 @@
 	<div id="boardWrap">
 		<p class="resultCount">검색 결과 : ${keyword } <span class="totalCount">(${totalCount })</span> </p>
 		<c:forEach var="item" items="${list}">
-			<div onclick="location.href='/moviedetail/${item.movieCd }'">
+			<div class="listsection" onclick="location.href='/moviedetail/${item.movieCd }'">
 				
 				<div class="movieList">
 					<c:if test="${item.poster==''}"><img src="/resources/img/poster_noimg.png" alt="포스터" class="poster"></c:if>
@@ -35,19 +35,6 @@
 							<c:if test="${item.showTm!='' }">분</c:if>
 							<c:if test="${item.openDt!=null }"> | </c:if>
 							${item.openDt}</p>
-						<%-- <p>감독 :
-						<c:forEach var="item2" items="${item.directors }">
-								${item2.peopleNm }
-						</c:forEach>
-						</p>
-						<p class="d-inline-block text-truncate" style="max-width: 1000px;">배우 : 
-						<c:forEach var="item2" items="${item.actors }">
-							<c:if test="${item2.peopleNmEn!=''}" >
-								${item2.peopleNm } |
-							 </c:if>
-							 
-						</c:forEach>
-						</p> --%>
 					</div>
 				</div>
 			</div>

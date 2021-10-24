@@ -11,6 +11,7 @@ body{
 .forum_title{	/* 베스트 리뷰 버튼 */
 	margin: 20px 10px;
 	color: white;
+	text-shadow: 3px 3px 3px black;
 }
 #bestNworst{	/* 베스트 리뷰 */
     /* border: 2px solid orange; */
@@ -75,9 +76,11 @@ body{
 }
 .forum_head_thumbs_up{
 	color: #3498db;
+	text-shadow: 3px 3px 3px black;
 }
 .forum_head_thumbs_down{
 	color: red;
+	text-shadow: 3px 3px 3px black;
 }
 
 .user_id, .content_date{
@@ -130,9 +133,13 @@ body{
 }
 #forum_likebtn2{
 	color: #3498db;
+    text-shadow: 1px 1px 1px black;
+	
 }
 #forum_dislikebtn2{
 	color: #f1c40f;
+    text-shadow: 1px 1px 1px black;
+	
 }
 #forum_report{
 	width: 60%;
@@ -146,6 +153,8 @@ body{
 }
 #forum_reportbtn2{
 	color: red;
+    text-shadow: 1px 1px 1px black;
+	
 }
 
 /* 모든 리뷰 보기 버튼*/
@@ -163,6 +172,8 @@ body{
 	padding: 5px;
 	border: 2px solid gold;
 	color: gold;
+    box-shadow: 3px 3px 3px black;
+    text-shadow: 3px 3px 3px black;
 }
 
 #writebtn{
@@ -179,6 +190,7 @@ body{
     margin: 3px;
     border-radius: 10px;
     border: 2px solid gold;
+    box-shadow: 3px 3px 3px black;
 }
 .updown {
     	border: 0.1px dotted white;
@@ -186,4 +198,3 @@ body{
     	opacity: 0.2;
         
 }
-

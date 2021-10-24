@@ -108,6 +108,7 @@ ul.movieinfotop{
  border: none;
  font-weight:bold;
  font-size: 22px;
+ text-shadow: 3px 3px 3px black;
  
 }
 .nav-tabs>li.active a{
@@ -125,6 +126,7 @@ ul.movieinfotop{
 	text-decoration: none;
 	background-color: #212121;
 	border: 0px solid #212121;
+	text-shadow: 3px 3px 3px black;
 	
 }
 

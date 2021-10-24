@@ -16,6 +16,16 @@
 	color: white;
 }
 
+#subtitle{
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+#subtitle h3{
+	font-weight: 600;
+    text-shadow: 3px 3px 3px black;
+}
 /* 게시판 헤더 */
 #listhead{
 	margin-top: 30px;
@@ -77,13 +87,11 @@
     margin: 3px;
     border-radius: 10px;
     border: 2px solid gold;
+    box-shadow: 3px 3px 3px black;
+    text-shadow: 3px 3px 3px black;
 }
 
-/* 페이징 */
-#paging{
-	display: flex;
-	justify-content: center;
-}
+
 .forum_list_img, #img_section{
     width: 150px;
     height: 120px;
@@ -98,9 +106,11 @@
 }
 #forum_likebtn2{
 	color: #3498db;
+    text-shadow: 1px 1px 1px black;
 }
 #forum_dislikebtn2{
 	color: #f1c40f;
+    text-shadow: 1px 1px 1px black;
 }
 
 .forum_likebtn, .forum_dislikebtn, .forum_reportbtn{
@@ -119,6 +129,7 @@
 	color: red;
 	position: relative;
    	top: 3px;
+    text-shadow: 1px 1px 1px black;
 }
 .fa-flag:before {
     color: red;
@@ -143,4 +154,29 @@
 }
 .fucntionBtn button{
 	display: flex;
+}
+
+/* 페이징 */
+#paging{
+	display: flex;
+	justify-content: center;
+}
+
+.page-item.disabled .page-link, .page-link{
+	color: white;
+	background-color: #212121;
+	border-color: #bebebe;
+	font-weight: 600;
+}
+
+a.page-link:hover{
+	color: white;
+	background-color: gold;
+}
+
+.page-item.active .page-link{
+	color: white;
+	background-color: gold;
+	border-color: #bebebe;
+	font-weight: 600;
 }

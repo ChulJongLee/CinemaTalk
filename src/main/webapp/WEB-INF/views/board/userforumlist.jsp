@@ -14,7 +14,9 @@
 	
 	<section>
 		<div id="userforumwrap">
-			<h3>자유게시판</h3>
+			<div id="subtitle">
+				<h3>자유게시판</h3>
+			</div>
 			<div id="writebtn">
 				<c:if test="${user != null}"><a href="/moviedetail/${movieCd }/userforuminsert" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>
 				<c:if test="${user == null}"><a href="/login" class="btn btn-outline-primary" id="userforuminsert">글쓰기</a></c:if>

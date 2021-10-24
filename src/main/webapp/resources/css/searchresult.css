@@ -21,7 +21,7 @@ ul li{
 }
 .resultCount{
 	font-size: 20px;
-    margin-top: 30px;
+    margin-top: 60px;
     margin-left: 15px;
     margin-bottom: auto;
     font-weight: 600;
@@ -63,7 +63,28 @@ hr{
 	width: 100%;
 	align-self: center;
 }
+
+/* 페이징 */
 #paging{
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
+}
+
+.page-item.disabled .page-link, .page-link{
+	color: white;
+	background-color: #212121;
+	border-color: #bebebe;
+	font-weight: 600;
+}
+
+a.page-link:hover{
+	color: white;
+	background-color: gold;
+}
+
+.page-item.active .page-link{
+	color: white;
+	background-color: gold;
+	border-color: #bebebe;
+	font-weight: 600;
 }
