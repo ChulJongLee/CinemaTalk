@@ -46,13 +46,16 @@
 	</resultMap>
 
 	<select id="getMyReview" parameterType="int" resultMap="review">
-		select movieNm, content_content, content_no, content_date, content_like, content_hate, user_id, c.movieCd movieCd
+		select c.content_no content_no, movieNm, content_content, content_date, ifnull(sum(likecheck), 0) content_like, ifnull(sum(hatecheck), 0) content_hate, user_id, c.movieCd movieCd
 		from comm_board c inner join movie_info m
 		on c.movieCd = m.movieCd
-		inner join user_info u
+		left join user_info u
 		on c.user_no = u.user_no
+		left join comm_likehate l
+		on c.content_no = l.content_no
 		where c.user_no = #{user_no} and board_distinct_no = 1
-		order by content_no DESC
+		group by c.content_no 
+        order by content_date DESC
 		limit 0, 2
 	</select>
 
@@ -142,13 +145,16 @@
 	</select>
 
 	<select id="getEveryReview" parameterType="java.util.HashMap" resultMap="review">
-		select movieNm, content_content, content_no, content_date, content_like, content_hate, user_id, c.movieCd movieCd
+		select c.content_no content_no, movieNm, content_content, content_date, ifnull(sum(likecheck), 0) content_like, ifnull(sum(hatecheck), 0) content_hate, user_id, c.movieCd movieCd
 		from comm_board c inner join movie_info m
 		on c.movieCd = m.movieCd
-		inner join user_info u
+		left join user_info u
 		on c.user_no = u.user_no
+        left join comm_likehate l
+        on c.content_no = l.content_no
 		where c.user_no = #{user_no} and board_distinct_no = 1
-		order by content_no DESC
+		group by c.content_no 
+        order by content_date DESC
 		limit #{startRow}, #{pageSize}
 	</select>
 
@@ -178,14 +184,17 @@
 	</select>
 
 	<select id="getEveryContent" parameterType="java.util.HashMap" resultType="com.kosta.dto.UserforumDTO">
-		select c.content_no, user_id, c.user_no, c.movieCd, movieNm, board_distinct_no, content_title, content_content, content_date, content_like, content_hate, imageNum, imagePath, imageName
+		select c.content_no, user_id, c.user_no, c.movieCd, movieNm, board_distinct_no, content_title, content_content, content_date, ifnull(sum(likecheck), 0) content_like, ifnull(sum(hatecheck), 0) content_hate, imageNum, imagePath, imageName
 		from comm_board c left join user_info u 
 		on c.user_no = u.user_no
 		left join board_image i
 		on c.content_no = i.content_no
 		left join movie_info m
 		on c.movieCd = m.movieCd
+        left join comm_likehate l
+        on c.content_no = l.content_no
 		where user_id = #{user_id} and board_distinct_no = 5
+		group by c.content_no
 		order by content_date DESC
 		limit #{startRow}, #{pageSize}
 	</select>

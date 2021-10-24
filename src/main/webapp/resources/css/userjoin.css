@@ -17,6 +17,7 @@
 
 #submitform>ul>li{
 	list-style: none;
+	margin: 0px auto;
 	margin-top: 30px;
 }
 
@@ -50,6 +51,7 @@ div.first.label{
 	border: 2px solid gold;
 	border-radius: 5px;
 	padding-bottom: 2px;
+	box-shadow: 3px 3px 3px black;
 }
 
 .input>input{
@@ -89,4 +91,5 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 	border: 2px solid gold;
 	border-radius: 5px;
 	padding-bottom: 2px;
+	box-shadow: 3px 3px 3px black;
 }

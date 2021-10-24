@@ -38,3 +38,10 @@ a.page-link:hover{
 	font-weight: 600;
 }
 
+.fucntionBtn, .forum_likebtn, .forum_dislikebtn{
+	background-color: #151515;
+}
+
+#paging{
+	padding-bottom: 30px;
+}
