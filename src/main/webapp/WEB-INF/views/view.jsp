@@ -9,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
 <link rel="shortcut icon" href="/resources/img/logo.jpg">
-<link rel="icon" href="favicon.ico">
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
