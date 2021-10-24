@@ -5,7 +5,7 @@
 
 // 좋아요 싫어요 토탈 
 $(".contentnodistinct").each( function likeNhateresult() {
-		
+	
     	var contentno = $(this).attr('value');
     	let y= this;
     	
@@ -15,10 +15,15 @@ $(".contentnodistinct").each( function likeNhateresult() {
 	        data: {
 	        	content_no: $(y).attr('value')
 	        }
-		    , dataType:"text"
-	        , success: function (likeresult) {
+	        , success: function (res) {
+	        		
+	        	if(res.likecheck==1){
+		    		$(y).siblings('#like').find('.likebtn').prepend('<div class="thumbup"><i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i></div>');
+	        	}else{
+	        		$(y).siblings('#like').find('.likebtn').prepend('<div class="thumbup"><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div>');	        		
+	        	}
+	        	$(y).siblings('#like').find('.likeresult').html(res.like);	   
 	        	
-	        	$(y).siblings('#like').find('.likeresult').html(likeresult);	       	
 	        },
 		});
 		
@@ -28,10 +33,14 @@ $(".contentnodistinct").each( function likeNhateresult() {
 	        data: {
 	        	content_no: $(y).attr('value')
 	        }
-		    , dataType:"text"
-	        , success: function (dislikeresult) {
-
-	        	$(y).siblings('#dislike').find('.dislikeresult').html(dislikeresult);	
+	        , success: function (res) {
+	        	
+	        	if(res.hatecheck==1){
+		    		$(y).siblings('#dislike').find('.dislikebtn').prepend('<div class="thumbdown"><i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>');
+	        	}else{
+	        		$(y).siblings('#dislike').find('.dislikebtn').prepend('<div class="thumbdown"><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>');	        		
+	        	}
+	        	$(y).siblings('#dislike').find('.dislikeresult').html(res.dislike);	
      	
 	        },
 		});
@@ -55,17 +64,20 @@ $(function(){
 		          success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
 		              // 응답코드 > 0000
 		              alert(res.result);
-		              likeresult(content_no, th);    
+		              likeresult(content_no, th, res.likecheck);    
 		          },
 		          error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
 		          }
 		      });
-		  
+	  
+		
 		});
 
-	function likeresult(content_no, loc) {
+	function likeresult(content_no, loc, likecheck) {
 				
 		var contentno=content_no;
+		var likecheck=likecheck;
+		
 		$.ajax({
 	        type: "POST",
 			url: "/likeresult",
@@ -73,7 +85,16 @@ $(function(){
 	        	content_no: contentno
 	        },
 	        success: function (likeresult) {
-	        	$(loc).children('.likeresult').text(likeresult);
+	        	$(loc).children('.likeresult').text(likeresult.like);
+	        	
+	        	if(likecheck==1){
+		        	$(loc).find('.thumbup').remove();
+		    		$(loc).prepend('<div class="thumbup"><i class="fas fa-thumbs-up" id="likebtn2">&nbsp</i></div>');
+	        	}else{
+	        		$(loc).find('.thumbup').remove();
+	        		$(loc).prepend('<div class="thumbup"><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div>');	        		
+	        	}
+	        	
 	        	
 	        },
 		});
@@ -98,16 +119,18 @@ $(function(){
 		          success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
 		              // 응답코드 > 0000
 		              alert(res.result);
-		              dislikeresult(content_no, th);
+		              dislikeresult(content_no, th, res.hatecheck);
 		          },
 		          error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
 		          }
 		      });		  
 		});
 
-	function dislikeresult(content_no, loc) {
+	function dislikeresult(content_no, loc, hatecheck) {
 				
 		var contentno=content_no;
+		var hatecheck=hatecheck;
+		
 		$.ajax({
 	        type: "POST",
 			url: "/dislikeresult",
@@ -115,7 +138,17 @@ $(function(){
 	        	content_no: contentno
 	        },
 	        success: function (dislikeresult) {
-	        	$(loc).children('.dislikeresult').text(dislikeresult);	        	
+	        	$(loc).children('.dislikeresult').text(dislikeresult.dislike);	    
+	        	
+	        	if(hatecheck==1){
+		        	$(loc).find('.thumbdown').remove();
+		    		$(loc).prepend('<div class="thumbdown"><i class="fas fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>');
+	        	}else{
+	        		$(loc).find('.thumbdown').remove();
+	        		$(loc).prepend('<div class="thumbdown"><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div>');	        		
+	        	}
+	        	
+	        	
 	        },
 		});
 	};
@@ -123,10 +156,7 @@ $(function(){
 });
 
 
-
-
-
-//삭제버튼 js
+// 삭제버튼 js
 $('.deletebtn').click(function(){	
 	let movieCd = $('#moviecd').val();
 	let no=$(this).attr('value');
@@ -134,7 +164,7 @@ $('.deletebtn').click(function(){
 });
 
 
-//수정하기 js
+// 수정하기 js
 $(document).ready(function(){
 	$('#staticBackdrop').on('shown.bs.modal', function(e){
 	
@@ -143,13 +173,12 @@ $(document).ready(function(){
 		  var r2=$(recip).parent().parent().siblings('.content3').text();		  
 		  var no = $(recip).parent().parent().siblings('.contentnodistinct').attr('value');
 		  
-		  
 		  let m=$(this);		  
 		  if(r==""){
 			  m.find('#modaltext').val(r2);
 		  }else{
 			  m.find('#modaltext').val(r);
-		  }
+		  }		  
 		  m.find('.contentval').val(no);
 	});
 });
@@ -158,20 +187,20 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$('#staticBackdrop1').on('shown.bs.modal', function(e){
 		
-		  var recip=$(e.relatedTarget);
+		  var recip=$(e.relatedTarget); 
 		  var no = $(recip).parent().siblings('.contentnodistinct').attr('value');
   
-		 let m=$(this);
+		  let m=$(this);
 		  m.find('.contentval').val(no);
 	});
 });	
 
 
-//스포일러
+// 스포일러
 $(document).ready(function(){
 	$('.spoilerbtn').click(function(event){
 		
-		var recip=$(event.currentTarget);			
+		var recip=$(event.currentTarget);
 		var no = $(recip).parent().siblings('.spoilercontent').attr('value');
 		
 		$(recip).parent('.content2').attr("style", "display:none");
@@ -181,3 +210,4 @@ $(document).ready(function(){
 		
 	});
 });	
+	  
