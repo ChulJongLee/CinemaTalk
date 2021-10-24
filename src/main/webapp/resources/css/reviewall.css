@@ -157,6 +157,18 @@ section{
    width: 20%;
    padding-right: 15px;
 }
+#editicon{
+	color: #434343;
+}
+#editicon:hover{
+	color: #238636;
+}
+#deleteicon{
+	color: #434343;
+}
+#deleteicon:hover{
+	color: white;
+}
 
 #modify{
    width: 93%;
@@ -181,4 +193,31 @@ section{
 #paging{
    display: flex;
    justify-content: center;
+}
+.page-item.disabled .page-link, .page-link{
+   color: white;
+   background-color: #212121;
+   border-color: #bebebe;
+   font-weight: 600;
+}
+
+a.page-link:hover{
+   color: white;
+   background-color: gold;
+}
+
+.page-item.active .page-link{
+   color: white;
+   background-color: gold;
+   border-color: #bebebe;
+   font-weight: 600;
+}
+.modal-footer{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#modalbtn{
+	color: white;
 }

@@ -15,6 +15,7 @@ public class ReviewDTO {
 	private int contentno;
 	private int userno;
 	private String userid;
+	private String nickname;
 	private String title;
 	private Date writedate;
 	private String contents;

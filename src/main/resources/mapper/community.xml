@@ -11,6 +11,7 @@
   	<result column="content_no" property="contentno" />
   	<result column="user_no" property="userno" />
   	<result column="user_id" property="userid" />
+  	<result column="user_nickname" property="nickname" />
   	<result column="content_title" property="title" />
   	<result column="content_date" property="writedate" />
   	<result column="content_content" property="contents" />
@@ -38,7 +39,7 @@
 
 <!-- 리뷰 페이지 모든 리뷰 -->
 <select id="list" parameterMap="hashmap" resultMap="reviewdto">
-	select content_no, user_id, e1.user_no, e1.movieCd, board_distinct_no, content_date, content_content, content_like, content_hate, spoiler_tf
+	select content_no, user_id, user_nickname, e1.user_no, e1.movieCd, board_distinct_no, content_date, content_content, content_like, content_hate, spoiler_tf
     from comm_board e1 left join user_info e2
 	on e1.user_no=e2.user_no
 
@@ -55,7 +56,7 @@
   
 <!-- 리뷰 페이지 베스트 리뷰 -->
 <select id="getreview" resultMap="reviewdto">
-    select e1.content_no, user_id, e1.user_no, movieCd, content_date, content_content
+    select e1.content_no, user_id, user_nickname, e1.user_no, movieCd, content_date, content_content
         , spoiler_tf, ifnull(sum(likecheck),0) as content_like, ifnull(sum(hatecheck),0) as content_hate
 	from comm_board e1 left join user_info e2
 	on e1.user_no=e2.user_no
@@ -69,7 +70,7 @@
 
 <!-- 리뷰 페이지 일반 리뷰 -->
 <select id="getgeneralreview" resultMap="reviewdto">
-	select content_no, user_id, e1.user_no, e1.movieCd, content_date, content_content, content_like, content_hate, spoiler_tf
+	select content_no, user_id, user_nickname, e1.user_no, e1.movieCd, content_date, content_content, content_like, content_hate, spoiler_tf
 	from comm_board e1 left join user_info e2
     on e1.user_no=e2.user_no
 	

@@ -24,15 +24,15 @@
 				<c:forEach var="list" items="${allreview }">
 					<li id="contents">				
 							<input type="hidden" value="${list.contentno }" class="contentnodistinct">
-							<div id="id">${list.userid }</div>
+							<div id="id">${list.nickname }</div>
 							<c:if test="${sessionScope.user.user_id==list.userid}">
 								<div id="contentedit">						
 									<div id="modify">
 										<button type="button" class="modifybtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-whatever="t"> 
-											<i class="fas fa-edit"></i>
+											<i class="fas fa-edit" id="editicon"></i>
 										</button>
 									</div>
-									<div id="delete"><button class="deletebtn" value="${list.contentno }"><i class="fas fa-times"></i></button></div>						
+									<div id="delete"><button class="deletebtn" value="${list.contentno }"><i class="fas fa-times" id="deleteicon"></i></button></div>						
 								</div>
 							</c:if>
 							<div id="date">${list.writedate }</div>
@@ -53,13 +53,11 @@
 						
 							<div id="like">															
 								<button class="likebtn" value="${list.contentno }">
-									<!-- <div><i class="far fa-thumbs-up" id="likebtn2">&nbsp</i></div> -->
 									<div class="likeresult"></div>
 								</button>																			
 							</div>
 							<div id="dislike">
 								<button class="dislikebtn" value="${list.contentno }">
-									<!-- <div><i class="far fa-thumbs-down" id="dislikebtn2">&nbsp</i></div> -->
 									<div class="dislikeresult"></div>
 								</button>
 							</div>
@@ -107,7 +105,7 @@
 		    	<textarea id="modaltext" name="contents" rows="10" cols="50"></textarea>			    	
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">취소</button>
+		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" id="modalbtn">취소</button>
 		        <button type="submit" class="btn btn-primary">수정하기</button>		        
 		      </div>
 		      </form>
@@ -137,7 +135,7 @@
 	            
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">취소</button>
+		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" id="modalbtn">취소</button>
 		        <button type="submit" class="btn btn-primary">신고하기</button>		        
 		      </div>
 		      </form>
