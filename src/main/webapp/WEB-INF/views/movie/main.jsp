@@ -23,19 +23,19 @@
 			</div>
 			<div class="swiper-slide">
 				<img alt="배너2"
-					src="resources/img/reviewEvent2.jpg">
+					src="resources/img/dune_image.jpg">
 			</div>
 			<div class="swiper-slide">
 				<img alt="배너3"
-					src="https://movie-phinf.pstatic.net/20210705_191/1625462967678XYlyf_JPEG/movie_image.jpg?type=m665_443_2">
+					src="resources/img/littleforest_image.jpg">
 			</div>
 			<div class="swiper-slide">
 				<img alt="배너4"
-					src="https://movie-phinf.pstatic.net/20210915_137/1631690627955HnN99_JPEG/movie_image.jpg?type=m665_443_2">
+					src="resources/img/takecareofmycat_image.jpg">
 			</div>
 			<div class="swiper-slide">
 				<img alt="배너5"
-					src="https://movie-phinf.pstatic.net/20210930_157/1632994577361mfwoc_JPEG/movie_image.jpg?type=m665_443_2">
+					src="resources/img/007_image.jpg">
 			</div>
 		</div>
 		<div class="swiper-button-next"></div>
