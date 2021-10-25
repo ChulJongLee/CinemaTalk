@@ -59,6 +59,30 @@
 	margin-bottom: 25px;	
 }
 
+.modal-footer{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#modalbtn{
+	color: white;
+	background-color: black;
+	font-weight: bolder;
+	font-size: large;
+	padding-bottom: 6px;
+}
+
+#modalbtn2{
+	background-color: gold;
+	border-color: gold;
+	font-weight: bold;
+	font-size: large;
+	padding: 4px 5px;
+	padding-bottom: 6px;
+}
+
 #modifyinfo>a:link{
 	text-decoration: none;
 }

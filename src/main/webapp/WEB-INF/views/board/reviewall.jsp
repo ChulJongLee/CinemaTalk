@@ -106,7 +106,7 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" id="modalbtn">취소</button>
-		        <button type="submit" class="btn btn-primary">수정하기</button>		        
+		        <button type="submit" class="btn btn-primary" id="modalbtn2">수정하기</button>		        
 		      </div>
 		      </form>
 		    </div>
@@ -136,7 +136,7 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" id="modalbtn">취소</button>
-		        <button type="submit" class="btn btn-primary">신고하기</button>		        
+		        <button type="submit" class="btn btn-primary" id="modalbtn2">신고하기</button>		        
 		      </div>
 		      </form>
 		    </div>

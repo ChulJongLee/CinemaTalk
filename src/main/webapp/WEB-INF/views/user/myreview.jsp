@@ -75,8 +75,8 @@
 		    	<textarea id="modaltext" name="contents" rows="10" cols="50"></textarea>			    	
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">취소</button>
-		        <button type="submit" class="btn btn-primary">수정하기</button>		        
+		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" id="modalbtn">취소</button>
+		        <button type="submit" class="btn btn-primary" id="modalbtn2">수정하기</button>		        
 		      </div>
 		      </form>
 		    </div>
