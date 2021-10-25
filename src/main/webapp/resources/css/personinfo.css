@@ -141,3 +141,12 @@ a.page-link:hover{
 	border-color: #bebebe;
 	font-weight: 600;
 }
+
+#peoplename{
+	max-width: 113px;
+	white-space: nowrap;
+	overflow: hidden;
+	display: block;
+	text-overflow: ellipsis;
+	text-align: center;	
+}

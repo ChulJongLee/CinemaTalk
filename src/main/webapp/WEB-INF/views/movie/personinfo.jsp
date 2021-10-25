@@ -93,7 +93,7 @@
 					<div class="pictureandname">
 						<ul>
 							<li><a href="/personinfo/${item.peopleCd}"><img src="${item.person_pic}" alt="${item.peopleNm}사진" width="113px"></a></li>
-							<li><span>${item.peopleNm}</span></li>
+							<li><span id="peoplename">${item.peopleNm}</span></li>
 						</ul>
 					</div>			
 			</c:forEach>

@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+*{
+	font-family: 'EliceDigitalBaeum_Bold';
+}
 
 body{
    display: flex;
@@ -286,6 +289,8 @@ body{
 }
 #modaltext{
    color: black;
+   width: 100%;
+   height: 250px;
 }
 .modal-footer{
 	display: flex;
@@ -295,6 +300,18 @@ body{
 }
 #modalbtn{
 	color: white;
+	background-color: black;
+	font-weight: bolder;
+	font-size: large;
+	padding-bottom: 6px;
+}
+#modalbtn2{
+	background-color: gold;
+	border-color: gold;
+	font-weight: bold;
+	font-size: large;
+	padding: 4px 5px;
+	padding-bottom: 6px;
 }
 
 
