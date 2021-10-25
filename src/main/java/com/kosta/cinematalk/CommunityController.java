@@ -19,10 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kosta.dto.KobisDTO;
 import com.kosta.dto.LikeDTO;
 import com.kosta.dto.PageBlock;
-import com.kosta.dto.PersonInfoDTO;
 import com.kosta.dto.ReportDTO;
 import com.kosta.dto.ReviewDTO;
 import com.kosta.dto.UserDTO;
@@ -32,7 +30,6 @@ import com.kosta.service.ImageService;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import kr.or.kobis.kobisopenapi.consumer.rest.exception.OpenAPIFault;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -48,7 +45,6 @@ public class CommunityController {
 		
 		return "/view.jsp?page=board/movieinfomain";
 	}	
-	
 	
 	// 리뷰 쓰기
 	@RequestMapping("/moviedetail/{movieCd}/reviewinsertresult")
@@ -76,7 +72,6 @@ public class CommunityController {
 		
 		return "redirect:/mypage/myreview";
 	}
-	
 	
 	// 리뷰 신고
 	@RequestMapping("/moviedetail/{movieCd}/reviewreport")
@@ -112,7 +107,6 @@ public class CommunityController {
 							, @RequestParam(required = false, defaultValue = "1") int currPage
 							, @RequestParam(required = false, defaultValue = "1") int boardno
 							, Model model) {
-		
 		int totalcount = service.totalCount2(movieCd, boardno); // 전체 자료수
 		int pagesize=10;
 		int blocksize=5;
@@ -132,22 +126,18 @@ public class CommunityController {
 	@RequestMapping("/moviedetail/{movieCd}/reviewdelete/{contentno}")
 	public String reviewdelete(@PathVariable String movieCd 
 								,@PathVariable(name = "contentno") int no, Model model) {
-		
 		service.reviewdelete(no);
 		
 		return "redirect:/moviedetail/{movieCd}";
 	}
 
-
 	// 마이페이지 리뷰 삭제
 	@RequestMapping("/mypage/reviewdelete/{contentno}")
 	public String mypagereviewdelete(@PathVariable(name = "contentno") int no, Model model) {
-		
 		service.reviewdelete(no);
 		
 		return "redirect:/mypage/myreview";
 	}
-	
 	
 	// 자유 게시판 리스트 페이지(메인)
 	@RequestMapping("/moviedetail/{movieCd}/userforumlist")
@@ -256,10 +246,8 @@ public class CommunityController {
 	
 	//자유게시판 삭제
 	@RequestMapping("/moviedetail/{movieCd}/userforumdelete/{contentno}")
-	public String userforumDelete(@PathVariable String movieCd ,@PathVariable(name = "contentno") int no, Model model) {
+	public String userforumDelete(@PathVariable String movieCd ,@PathVariable(name = "contentno") int no) {
 		service.reviewdelete(no);
-//		model.addAttribute("result", result);
-		
 		return "redirect:/moviedetail/{movieCd}";
 	}
 	
@@ -326,9 +314,15 @@ public class CommunityController {
 			
 			service.userforumModify(dto);
 			if(imageName!=null && !imageName.equals("")) { //사진 넣었을 경우
-				dto.setImageName(imageName);
-				dto.setImagePath(imagePath);
-				imageService.modifyImg(dto);
+				if(dto.getImageName()==null) {
+					dto.setImageName(imageName);
+					dto.setImagePath(imagePath);
+					imageService.insertImg(dto);
+				}else {
+					dto.setImageName(imageName);
+					dto.setImagePath(imagePath);
+					imageService.modifyImg(dto);
+				}
 			}
 			model.addAttribute("userforumdetail", dto);
 		
@@ -349,9 +343,6 @@ public class CommunityController {
 			
 			LikeDTO likeresult = service.reviewLike(like.getContent_no(), like.getUser_no());
 	    	
-			
-			
-			
 	    	if(likeresult==null) {
 	    		// 좋아요 입력
 	        	service.insertlike(like.getContent_no(), like.getUser_no());
@@ -374,7 +365,6 @@ public class CommunityController {
         	result.put("result", "로그인이 필요한 서비스입니다.");
         }
         
-
         return result;       
     }
 	
@@ -396,7 +386,6 @@ public class CommunityController {
 		  }
 				result.put("like", service.getlike(like.getContent_no()));
 		
-
 		return result;		
 	}
 	
@@ -428,7 +417,6 @@ public class CommunityController {
 		        	result.put("result", "싫어요 완료");
 		        	result.put("hatecheck", 1);	 
 	        	}
-	        	
 	        }
     	 	
         }catch(NullPointerException e) {
@@ -456,60 +444,10 @@ public class CommunityController {
 		  }
 				result.put("dislike", service.getdislike(dislike.getContent_no()));
 		
-
 		return result;		
 	}
 	
 
-	// 자유게시판 좋아요
-		@PostMapping("/forumlike")
-	    @ResponseBody
-	    public Map<String, Object> forumlikeAjax(UserforumDTO dto, HttpSession session){
-			Map<String, Object> result = new HashMap<String, Object>();
-			try {
-				UserDTO user = (UserDTO) session.getAttribute("user");
-				user.getUser_no();
-				
-				
-				
-//				service.reviewLike(dto.getContent_no());
-				
-				
-				
-				
-				result.put("result", "좋아요 완료");
-			}catch(NullPointerException e){
-				result.put("result", "로그인이 필요한 서비스입니다.");
-			}			
-			return result;      
-
-	    }
-		
-		
-		// 자유게시판 싫어요
-		@PostMapping("/forumdislike")
-	    @ResponseBody
-	    public Map<String, Object> forumdislikeAjax(UserforumDTO dto, HttpSession session){
-			Map<String, Object> result = new HashMap<String, Object>();
-			try {
-				UserDTO user = (UserDTO) session.getAttribute("user");
-				user.getUser_no();
-				
-				
-				
-//				service.reviewDisLike(dto.getContent_no());
-				
-				
-				
-				
-				result.put("result", "싫어요 완료");
-			}catch(NullPointerException e){
-				result.put("result", "로그인이 필요한 서비스입니다.");
-			}
-			
-			return result;      
-			  
-	    }
 		// 자유게시판 신고
 		@RequestMapping("/moviedetail/{movieCd}/forumreport")
 		public String forumreport(@PathVariable String movieCd, @RequestParam HashMap<String, Object> hm, HttpSession session) {
@@ -540,7 +478,6 @@ public class CommunityController {
 			}else {
 				return "redirect:/";
 			}
-					
 			
 		}
 }
