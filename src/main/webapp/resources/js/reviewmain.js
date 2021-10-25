@@ -184,6 +184,11 @@ $(document).ready(function(){
 });
 
 
+//신고하기(로그인 안했을때)
+$('.reportbtnnull').click(function() {
+	alert("로그인이 필요한 서비스입니다.");
+});
+
 // 신고하기
 $(document).ready(function(){
 	$('#staticBackdrop1').on('shown.bs.modal', function(e){
