@@ -129,7 +129,7 @@
 			on r.movieCd=i.movieCd
 		where ratingDate >=date_add(now(), interval-1 month) and poster!=''
 		group by r.movieCd
-		order by avg(rate)
+		order by avg(rate) desc
         limit 10
 	</select>
   

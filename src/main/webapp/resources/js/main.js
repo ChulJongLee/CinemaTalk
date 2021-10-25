@@ -25,6 +25,7 @@
         spaceBetween: 5,
         slidesPerGroup: 5,
         loop: true,
+        touchRatio: 0.2,
         loopFillGroupWithBlank: true,
         navigation: {
           nextEl: ".swiper-button-next",
