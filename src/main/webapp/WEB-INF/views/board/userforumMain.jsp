@@ -35,7 +35,7 @@
 					<li class="forum_contents">
 						<input type="hidden" value="${list.content_no }" class="contentnodistinct">
 						<div class="title" onClick="location.href='/moviedetail/${detail.movieCd }/userforumdetail/${list.content_no }'">${list.content_title }</div>
-						<div class="user_id">${list.user_id }</div>
+						<div class="user_id">${list.user_nickname }</div>
 						<div class="content_date">${list.content_date }</div>
 						<c:if test="${list.imageName!=null && list.imageName!='' }">
 							<div class="img_div">
@@ -92,7 +92,7 @@
 					<li class="forum_contents">
 						<input type="hidden" value="${list.content_no }" class="contentnodistinct">
 						<div class="title" onClick="location.href='/moviedetail/${detail.movieCd }/userforumdetail/${list.content_no }'">${list.content_title }</div>
-						<div class="user_id">${list.user_id }</div>
+						<div class="user_id">${list.user_nickname }</div>
 						<div class="content_date">${list.content_date }</div>
 						<c:if test="${list.imageName!=null && list.imageName!='' }">
 							<div class="img_div">

@@ -197,7 +197,7 @@
 
 <!-- 자유게시판 리스트 -->
 <select id="userforumlist" parameterType="hashmap" resultType="com.kosta.dto.UserforumDTO">
-	select e1.content_no, user_id, e1.user_no, board_distinct_no
+	select e1.content_no, user_id, user_nickname, e1.user_no, board_distinct_no
 	, content_title, content_content, content_date
 	, content_like, content_hate
 	, imageNum, imagePath, imageName
@@ -226,7 +226,7 @@
 </select>  
 
 <select id="getworstuserforms" resultType="com.kosta.dto.UserforumDTO">
-	select e1.content_no, user_id, e1.user_no, board_distinct_no
+	select e1.content_no, user_id, user_nickname, e1.user_no, board_distinct_no
 	, content_title, content_content, content_date
 	, content_like, content_hate
 	, imageNum, imagePath, imageName
@@ -240,7 +240,7 @@
 </select>
 
 <select id="getbestuserforms" resultType="com.kosta.dto.UserforumDTO">
-	select e1.content_no, user_id, e1.user_no, board_distinct_no
+	select e1.content_no, user_id, user_nickname, e1.user_no, board_distinct_no
 	, content_title, content_content, content_date
 	, content_like, content_hate
 	, imageNum, imagePath, imageName
@@ -255,7 +255,7 @@
 
 <!-- 자유게시판 디테일 -->
 <select id="userforumdetail" parameterType="int" resultType="com.kosta.dto.UserforumDTO">
-	select e1.content_no, user_id, e1.user_no, board_distinct_no
+	select e1.content_no, user_id, user_nickname, e1.user_no, board_distinct_no
 	, content_title, content_content, content_date
 	, content_like, content_hate
 	, imageNum, imagePath, imageName

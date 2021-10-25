@@ -31,7 +31,7 @@
 						<div id="listhead">
 							<div id="number">${list.content_no }</div>
 							<div id="writedate">${list.content_date }</div>
-							<div id="user_id">${list.user_id }</div>
+							<div id="user_id">${list.user_nickname }</div>
 						</div>
 						<hr id="under_title" style="margin: 5px 0;">
 						<li id="userforumlist">

@@ -25,7 +25,7 @@
 						<input type="button" value="삭제" class="boardBtn" onClick="location.href='/moviedetail/${movieCd}/userforumdelete/${userforumdetail.content_no }'">
 					</c:if>
 				</div>
-				<p id="id"> ${userforumdetail.user_id }   ${userforumdetail.content_date }</p>
+				<p id="id"> ${userforumdetail.user_nickname }   ${userforumdetail.content_date }</p>
 			</div>
 			
 			<div id="body">
