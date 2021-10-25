@@ -51,4 +51,22 @@ public class UserServiceImple implements UserService {
 		
 		return mapper.deleteUser(user_no);
 	}
+
+	@Override
+	public void deleteCommBoard(int user_no) {
+		
+		mapper.deleteCommBoard(user_no);
+	}
+
+	@Override
+	public void deleteMovieRating(int user_no) {
+		
+		mapper.deleteMovieRating(user_no);
+	}
+
+	@Override
+	public void deleteCommLikeHate(int user_no) {
+		
+		mapper.deleteCommLikeHate(user_no);
+	}
 }

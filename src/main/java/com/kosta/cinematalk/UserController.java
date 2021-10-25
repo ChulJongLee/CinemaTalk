@@ -121,6 +121,10 @@ public class UserController {
 		
 		UserDTO dto = (UserDTO)session.getAttribute("user");
 		int user_no = dto.getUser_no();
+		
+		service.deleteCommBoard(user_no);
+		service.deleteMovieRating(user_no);
+		service.deleteCommLikeHate(user_no);
 		int result = service.deleteUser(user_no);
 
 		model.addAttribute("result", result);

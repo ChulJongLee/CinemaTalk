@@ -39,6 +39,21 @@
   	where user_no = #{user_no}
   </update>
   
+  <delete id="deleteCommBoard" parameterType="int">
+  	delete from comm_board
+  	where user_no = #{user_no}
+  </delete>
+  
+  <delete id="deleteMovieRating" parameterType="int">
+  	delete from movie_rating
+  	where user_no = #{user_no}
+  </delete>
+  
+  <delete id="deleteCommLikeHate" parameterType="int">
+  	delete from comm_likehate
+  	where user_no = #{user_no}
+  </delete>
+  
   <!-- 회원 탈퇴 -->
   <delete id="deleteUser" parameterType="int">
   	delete from user_info

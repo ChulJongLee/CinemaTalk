@@ -23,4 +23,10 @@ public interface UserMapper {
 	
 	public int deleteUser(int user_no);
 
+	public void deleteCommBoard(int user_no);
+
+	public void deleteMovieRating(int user_no);
+
+	public void deleteCommLikeHate(int user_no);
+
 }
