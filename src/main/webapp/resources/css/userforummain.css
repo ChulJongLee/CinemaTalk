@@ -59,7 +59,7 @@ body{
 	display: inline-block;
 }
 .forumImg{
-	width:380px;
+	width:366px;
 	height: 200px;
 	cursor: pointer;
 }
@@ -73,6 +73,7 @@ body{
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+    text-shadow: 2px 2px 2px black;
 }
 .forum_head_thumbs_up{
 	color: #3498db;
@@ -85,6 +86,7 @@ body{
 
 .user_id, .content_date{
 	display: inline-block;
+    text-shadow: 2px 2px 2px black;
 }
 
 .user_id{
@@ -196,5 +198,25 @@ body{
     	border: 0.1px dotted white;
         width: 0.1px;
     	opacity: 0.2;
-        
+}
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#modalbtn{
+	color: white;
+	background-color: black;
+	font-weight: bolder;
+	font-size: large;
+	padding-bottom: 6px;
+}
+#modalbtn2{
+	background-color: gold;
+	border-color: gold;
+	font-weight: bold;
+	font-size: large;
+	padding: 4px 5px;
+	padding-bottom: 6px;
 }

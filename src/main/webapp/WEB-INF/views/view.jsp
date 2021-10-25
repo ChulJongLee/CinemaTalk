@@ -23,7 +23,7 @@
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Regular.woff') format('woff');
 
 }
-body{
+* {
 	font-family: 'EliceDigitalBaeum_Bold', cursive;
 }
 </style>

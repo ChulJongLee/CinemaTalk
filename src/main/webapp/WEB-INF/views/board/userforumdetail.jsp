@@ -56,7 +56,7 @@
 							</button>
 						</c:if>
 						<c:if test="${sessionScope.user.user_id==null}">
-							<button type="button" class="forum_reportbtn" id="reportBtn">
+							<button type="button" class="forum_reportbtn forum_reportbtnNull" id="reportBtn">
 								<i class="fas fa-flag" id="reportbtn2"></i>
 								신고
 							</button>
@@ -96,8 +96,8 @@
 	            
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">취소</button>
-		        <button type="submit" class="btn btn-primary">신고하기</button>		        
+		        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" id="modalbtn">취소</button>
+		        <button type="submit" class="btn btn-primary" id="modalbtn2">신고하기</button>		        
 		      </div>
 		      </form>
 		    </div>
