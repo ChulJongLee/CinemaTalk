@@ -87,7 +87,7 @@
 				<select id="search" name="search">
 					<option value="content_title">제목</option>
 					<option value="content_content">내용</option>
-					<option value="user_id">아이디</option>
+					<option value="user_nickname">닉네임</option>
 				</select>
 				<input type="text" name="searchtxt">
 				<input type="submit" value="검색" id="btn1">

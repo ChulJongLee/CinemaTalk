@@ -199,12 +199,14 @@
 <select id="userforumlist" parameterType="hashmap" resultType="com.kosta.dto.UserforumDTO">
 	select e1.content_no, user_id, user_nickname, e1.user_no, board_distinct_no
 	, content_title, content_content, content_date
-	, content_like, content_hate
+	, ifnull(sum(likecheck),0) as content_like, ifnull(sum(hatecheck),0) as content_hate
 	, imageNum, imagePath, imageName
 	from comm_board e1 left join user_info e2 
 	on e1.user_no=e2.user_no
 	left join board_image i
 	on e1.content_no=i.content_no
+	left outer join comm_likehate lh
+	on e1.content_no=lh.content_no
 	<where>
       <if test="searchtxt!=null and searchtxt!='' and !searchtxt.equals('') ">
          <choose>
@@ -214,13 +216,14 @@
             <when test="search=='content_content'">
                and content_content like CONCAT('%',#{searchtxt},'%')          
             </when>
-            <when test="search=='user_id'">
-               and e2.user_id like CONCAT('%',#{searchtxt},'%')             
+            <when test="search=='user_nickname'">
+               and e2.user_nickname like CONCAT('%',#{searchtxt},'%')             
             </when>
          </choose>   
       </if>  
       and movieCd = #{movieCd} and board_distinct_no = #{board_distinct_no}
    </where>
+   	group by e1.content_no
 	order by content_date DESC
 	limit #{startRow}, #{pageSize}
 </select>  
@@ -228,13 +231,16 @@
 <select id="getworstuserforms" resultType="com.kosta.dto.UserforumDTO">
 	select e1.content_no, user_id, user_nickname, e1.user_no, board_distinct_no
 	, content_title, content_content, content_date
-	, content_like, content_hate
+	, ifnull(sum(likecheck),0) as content_like, ifnull(sum(hatecheck),0) as content_hate
 	, imageNum, imagePath, imageName
 	from comm_board e1 left join user_info e2 
 	on e1.user_no=e2.user_no
 	left join board_image i
 	on e1.content_no=i.content_no
+	left outer join comm_likehate lh
+	on e1.content_no=lh.content_no
 	where movieCd = #{movieCd} and board_distinct_no = 5
+	group by e1.content_no
 	order by content_hate DESC
 	limit 3
 </select>
@@ -242,13 +248,16 @@
 <select id="getbestuserforms" resultType="com.kosta.dto.UserforumDTO">
 	select e1.content_no, user_id, user_nickname, e1.user_no, board_distinct_no
 	, content_title, content_content, content_date
-	, content_like, content_hate
+	, ifnull(sum(likecheck),0) as content_like, ifnull(sum(hatecheck),0) as content_hate
 	, imageNum, imagePath, imageName
 	from comm_board e1 left join user_info e2 
 	on e1.user_no=e2.user_no
 	left join board_image i
 	on e1.content_no=i.content_no
+	left outer join comm_likehate lh
+	on e1.content_no=lh.content_no
 	where movieCd = #{movieCd} and board_distinct_no = 5
+	group by e1.content_no
 	order by content_like DESC
 	limit 3
 </select>
@@ -257,13 +266,16 @@
 <select id="userforumdetail" parameterType="int" resultType="com.kosta.dto.UserforumDTO">
 	select e1.content_no, user_id, user_nickname, e1.user_no, board_distinct_no
 	, content_title, content_content, content_date
-	, content_like, content_hate
+	, ifnull(sum(likecheck),0) as content_like, ifnull(sum(hatecheck),0) as content_hate
 	, imageNum, imagePath, imageName
 	from comm_board e1 left join user_info e2 
 	on e1.user_no=e2.user_no
 	left join board_image i
 	on e1.content_no=i.content_no
+	left outer join comm_likehate lh
+	on e1.content_no=lh.content_no
 	where e1.content_no = #{contentno}
+	group by e1.content_no
 </select>
 
 <!-- 자유게시판 등록 -->  

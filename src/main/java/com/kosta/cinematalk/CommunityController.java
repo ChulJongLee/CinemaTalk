@@ -139,7 +139,7 @@ public class CommunityController {
 		return "redirect:/mypage/myreview";
 	}
 	
-	// 자유 게시판 리스트 페이지(메인)
+	// 자유 게시판 리스트 페이지
 	@RequestMapping("/moviedetail/{movieCd}/userforumlist")
 	public String userForumList(@PathVariable String movieCd
 								, @RequestParam(required = false, defaultValue = "1") int currPage
