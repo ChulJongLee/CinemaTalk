@@ -470,7 +470,6 @@ public class CommunityController {
 				int pageSize = 10;
 				int blockSize = 5;
 				PageBlock page = new PageBlock(currPage, totalCount, pageSize, blockSize);
-				
 				List<ReportDTO> reportList = service.getReportList(page.getStartRow() - 1, pageSize);
 				model.addAttribute("page", page);
 				model.addAttribute("reportList", reportList);

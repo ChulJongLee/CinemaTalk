@@ -14,11 +14,8 @@ import com.kosta.mapper.CommunityMapper;
 
 @Service
 public class CommunityServiceImple implements CommunityService {
-
-	
 	@Autowired
 	private CommunityMapper mapper;
-	
 	
 	@Override
 	public List<ReviewDTO> reviewList(String movieCd) {
@@ -32,14 +29,11 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.getgeneralreview(movieCd);
 	}
 
-
 	@Override
 	public int totalCount(String search, String searchtxt) {		
-		
 		HashMap<String, Object> hm = new HashMap<String, Object>();
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
-		
 		int result = mapper.totalCount(hm);
 		
 		return result;
@@ -50,12 +44,9 @@ public class CommunityServiceImple implements CommunityService {
 		return null;
 	}
 
-
 	@Override
 	public List<ReviewDTO> allReview(String movieCd, int startRow, int pageSize) {
 		HashMap<String, Object> hm = new HashMap<String, Object>();
-		
-
 		hm.put("startRow", startRow);
 		hm.put("pageSize", pageSize);
 		hm.put("movieCd", movieCd);
@@ -63,24 +54,10 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.list(hm);
 	}
 
-
 	@Override
 	public int totalCount2(String movieCd, int boardno) {
 		
 		return mapper.totalCount2(movieCd, boardno);
-	}
-	
-	
-
-	@Override
-	public List<UserforumDTO> getBestUserforms(String movieCd) {
-		
-		return mapper.getbestuserforms(movieCd);
-	}
-	@Override
-	public List<UserforumDTO> getWorstUserforms(String movieCd) {
-		
-		return mapper.getworstuserforms(movieCd);
 	}
 	
 	// 리뷰 좋아요.
@@ -107,6 +84,7 @@ public class CommunityServiceImple implements CommunityService {
 			
 		mapper.updatelike(hm);
 	}
+	
 	// 리뷰 좋아요 전체
 	@Override
 	public int getlike(int content_no) {
@@ -114,7 +92,6 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.likeresult(content_no);
 	}
 	
-
 	@Override
 	public void insertdislike(int content_no, int user_no) {
 		
@@ -137,20 +114,6 @@ public class CommunityServiceImple implements CommunityService {
 		
 		return mapper.dislikeresult(content_no);
 	}
-	
-
-	@Override
-	public UserforumDTO userforumdetail(int contentno) {
-		
-		
-		return mapper.userforumdetail(contentno);
-	}
-
-	@Override
-	public int userforumInsert(UserforumDTO dto) {
-
-		return mapper.userforuminsert(dto);
-	}
 
 	@Override
 	public void reviewinsert(HashMap<String, Object> hm) {
@@ -164,7 +127,7 @@ public class CommunityServiceImple implements CommunityService {
 		mapper.reviewinsert(hm);
 	}
 
-	// 리뷰 삭제 serviceimple
+	// 리뷰 삭제 serviceimple, 자유게시판 글 삭제
 	@Override
 	public int reviewdelete(int no) {
 		return mapper.reviewdelete(no);
@@ -191,34 +154,63 @@ public class CommunityServiceImple implements CommunityService {
 		return mapper.reportsearch(hm);
 	}
 	
-	@Override
-	public List<ReportDTO> getReportList(int startRow, int pageSize) {
-		// TODO Auto-generated method stub
-		HashMap<String, Object> hm = new HashMap<>();
-		hm.put("startRow", startRow);
-		hm.put("pageSize", pageSize);
-		return mapper.getreportlist(hm);
-	}
-	
 	// 리뷰 신고(중복)
 	@Override
 	public void reviewreportupdate(HashMap<String, Object> hm) {
 		
 		mapper.reviewreportupdate(hm);
 	}
+	
+	//자유게시판 입력
+	@Override
+	public int userforumInsert(UserforumDTO dto) {
+		return mapper.userforuminsert(dto);
+	}
+		
+	//자유게시판 디테일
+	@Override
+	public UserforumDTO userforumdetail(int contentno) {
+		return mapper.userforumdetail(contentno);
+	}
 
+	//자유게시판 수정
 	@Override
 	public void userforumModify(UserforumDTO dto) {
 
 		mapper.userforummodify(dto);
 	}
 
+	//베스트 리뷰 리스트
+	@Override
+	public List<UserforumDTO> getBestUserforms(String movieCd) {
+		
+		return mapper.getbestuserforms(movieCd);
+	}
+	
+	//워스트 리뷰 리스트
+	@Override
+	public List<UserforumDTO> getWorstUserforms(String movieCd) {
+		
+		return mapper.getworstuserforms(movieCd);
+	}
+
+	//신고 갯수 조회
 	@Override
 	public int getReportCount() {
 		// TODO Auto-generated method stub
 		return mapper.getreportcount();
 	}
-
+	
+	//신고리스트 조회
+		@Override
+		public List<ReportDTO> getReportList(int startRow, int pageSize) {
+			// TODO Auto-generated method stub
+			HashMap<String, Object> hm = new HashMap<>();
+			hm.put("startRow", startRow);
+			hm.put("pageSize", pageSize);
+			return mapper.getreportlist(hm);
+		}
+		
 	@Override
 	public int getTotalCount(String movieCd, int boardno, String search, String searchtxt) {
 		// TODO Auto-generated method stub

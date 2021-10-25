@@ -5,32 +5,53 @@
   
   <mapper namespace="com.kosta.mapper.MovieMapper">
 	
+	<insert id="insertmovie" parameterType="java.util.List">
+		replace into movie_info(movieCd, movieNm, plotText, genreNm, repNationNm
+			, openDt, watchGradeNm, showTm, poster, keywords
+		)
+		values
+		<foreach collection="list" item="item" separator=" , " >
+	        (#{item.movieCd}, #{item.movieNm}, #{item.plotText}, #{item.repGenreNm}, #{item.repNationNm}
+			, #{item.openDt}, #{item.watchGradeNm}, #{item.showTm}, #{item.poster}, #{item.keywords})
+   		 </foreach>
+	</insert>
+  
+  	<insert id="insertrank" parameterType="java.util.List">
+		replace into movie_dailyrank(rank, movieCd)
+		values
+		<foreach collection="list" item="item" separator=" , " >
+	        (#{item.rank}, #{item.movieCd})
+   		 </foreach>
+   	</insert>
+   	
 	<select id="getmovielist" resultType="com.kosta.dto.KobisDTO" parameterType="java.util.HashMap">
 		select movieCd, movieNm, plotText, genreNm, repNationNm, DATE_FORMAT(openDt, "%Y.%m.%d") as openDt, watchGradeNm, showTm, poster
 		from movie_info
 		where movieNm like CONCAT('%',#{keyword},'%')
 		order by openDt DESC
 		limit #{startRow}, #{pageSize}
-		
 	</select>
+	
 	<select id="getmoviegenrelist" resultType="com.kosta.dto.KobisDTO" parameterType="java.util.HashMap">
 		select movieCd, movieNm, plotText, genreNm, repNationNm, DATE_FORMAT(openDt, "%Y.%m.%d") as openDt, watchGradeNm, showTm, poster
 		from movie_info
 		where genreNm like CONCAT('%',#{keyword},'%')
 		order by openDt DESC
 		limit #{startRow}, #{pageSize}
-		
 	</select>
+	
 	<select id="gettotalcount" resultType="int"  parameterType="String">
 		select count(*)
 		from movie_info
 		where movieNm like CONCAT('%',#{keyword},'%')
 	</select>
+	
 	<select id="getgenrecount" resultType="int"  parameterType="String">
 		select count(*)
 		from movie_info
 		where genreNm like CONCAT('%',#{keyword},'%')
 	</select>
+	
 	<select id="getmoviedetail" resultType="com.kosta.dto.KobisDTO" parameterType="String">
 		select i.movieCd, movieNm, plotText, genreNm, repNationNm, DATE_FORMAT(openDt, "%Y.%m.%d") as openDt, watchGradeNm, showTm, poster, movie_trailer, round(avg(rate),2) as rate
 		from movie_info as i
@@ -40,48 +61,37 @@
 		group by r.movieCd
 	</select>
 	
-	
-	
-	<insert id="insertmovie" parameterType="java.util.List">
-		replace into movie_info(
-			movieCd
-			, movieNm
-			, plotText
-			, genreNm
-			, repNationNm
-			, openDt
-			, watchGradeNm
-			, showTm
-			, poster
-			, keywords
-		)
-		values
-		<foreach collection="list" item="item" separator=" , " >
-	        (#{item.movieCd}, #{item.movieNm}, #{item.plotText}, #{item.repGenreNm}, #{item.repNationNm}
-			, #{item.openDt}, #{item.watchGradeNm}, #{item.showTm}, #{item.poster}, #{item.keywords})
-   		 </foreach>
-		
-		
-	</insert>
+	<select id="getmoviedailyrank" resultType="com.kosta.dto.KobisDTO">
+		select rank, i.movieCd, movieNm, poster
+		from movie_dailyrank as d
+			inner join movie_info as i
+			on d.movieCd=i.movieCd
+		order by rank
+	</select>
   
-  	<insert id="insertrank" parameterType="java.util.List">
-		replace into movie_dailyrank(
-			rank,
-			movieCd
-		)
-		values
-		<foreach collection="list" item="item" separator=" , " >
-	        (#{item.rank}, #{item.movieCd})
-   		 </foreach>
-		
-		
-	</insert>
+   	<select id="getmovierate" resultType="com.kosta.dto.KobisDTO">
+		select round(avg(rate),2) as rate, i.movieCd, movieNm, poster
+		from movie_rating as r
+			inner join movie_info as i
+			on r.movieCd=i.movieCd
+		where ratingDate >=date_add(now(), interval-1 month) and poster!=''
+		group by r.movieCd
+		order by avg(rate) desc
+        limit 10
+	</select>
+  
+   	<select id="getmovieopen" resultType="com.kosta.dto.KobisDTO">
+		select movieCd, movieNm, poster, openDt
+		from movie_info
+        <![CDATA[where openDt <= now() and poster!=""]]>
+		order by openDt desc limit 10
+	</select>
+  
   	<select id="getrandomlist" resultType="com.kosta.dto.KobisDTO">
 		select movieCd, movieNm, plotText, genreNm, repNationNm, openDt, watchGradeNm, showTm, poster
 		from movie_info
 		where poster!="" and openDt!="" and plotText!="" and genreNm!="성인물(에로)"
 		order by rand() limit 10
-		
 	</select>
   
   	<insert id="movierate" parameterType="com.kosta.dto.RateDTO">
@@ -93,8 +103,6 @@
 		)
 		values
 			(#{user_no}, #{movieCd}, #{rate}, now())
-		
-		
 	</insert>
   
   	<resultMap type="com.kosta.dto.PersonInfoDTO" id="persondto">
@@ -113,32 +121,6 @@
 	  		on d.movieCd=m.movieCd
   		where m.movieCd=#{movieCd}
   	</select>
-  
-  <select id="getmoviedailyrank" resultType="com.kosta.dto.KobisDTO">
-		select rank, i.movieCd, movieNm, poster
-		from movie_dailyrank as d
-			inner join movie_info as i
-			on d.movieCd=i.movieCd
-		order by rank
-	</select>
-  
-   <select id="getmovierate" resultType="com.kosta.dto.KobisDTO">
-		select round(avg(rate),2) as rate, i.movieCd, movieNm, poster
-		from movie_rating as r
-			inner join movie_info as i
-			on r.movieCd=i.movieCd
-		where ratingDate >=date_add(now(), interval-1 month) and poster!=''
-		group by r.movieCd
-		order by avg(rate) desc
-        limit 10
-	</select>
-  
-   <select id="getmovieopen" resultType="com.kosta.dto.KobisDTO">
-		select movieCd, movieNm, poster, openDt
-		from movie_info
-        <![CDATA[where openDt <= now() and poster!=""]]>
-		order by openDt desc limit 10
-	</select>
   
   <select id="getmovierateone" resultType="float" parameterType="java.util.HashMap">
   select ifnull(max((select rate from movie_rating	where user_no=#{user_no} and movieCd=#{movieCd})),0) as rate

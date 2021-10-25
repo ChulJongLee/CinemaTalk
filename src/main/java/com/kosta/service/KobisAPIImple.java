@@ -222,16 +222,16 @@ public class KobisAPIImple implements KobisAPI {
 		String[] wordlist = word.split("");
 		word = "";
 		for (String item : wordlist) {
-			if (item.charAt(0) > 122 || item.charAt(0) == 32 || (item.charAt(0) >= 48) && item.charAt(0) <= 57) {
+			if (item.charAt(0) > 122 || item.charAt(0) == 32 
+				|| (item.charAt(0) >= 48) && item.charAt(0) <= 57) {
 				word += item;
 			}
 		}
-
 		return word;
 	}
 
 	public boolean getType(String word) {
-		//모두 영어이면 true 리턴하게 코드 짜야함
+		//모두 영어이면 true 리턴
 		boolean result=true;
 		for(int i=0;i<word.length();i++) {
 			int index = word.charAt(i);

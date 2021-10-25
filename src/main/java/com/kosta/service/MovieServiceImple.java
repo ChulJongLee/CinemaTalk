@@ -89,7 +89,6 @@ public class MovieServiceImple implements MovieService {
 		rdto.setKobiskey(kobiskey);
 		KobisAPI kobisAPI = new KobisAPIImple();
 		List<KobisDTO> list = kobisAPI.requestRank(rdto);
-//		System.out.println(list.size());
 		mapper.insertrank(list);
 	}
 
