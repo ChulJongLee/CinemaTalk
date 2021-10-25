@@ -11,7 +11,7 @@
 <body>
 
 <section>
-	<form action="userforuminsertresult" method="post" enctype="multipart/form-data"  onsubmit="return writeSubmit();">
+	<form action="/moviedetail/${movieCd}/userforuminsertresult" method="post" enctype="multipart/form-data"  onsubmit="return writeSubmit();">
 		<div id="submitBtn">
 			<input type="submit" value="등록" class="submitBtn">
 		</div>

@@ -187,8 +187,7 @@ public class CommunityController {
 	
 	// 자유 게시판 디테일 페이지
 	@RequestMapping("/moviedetail/{movieCd}/userforumdetail/{contentno}")
-	public String userForumDetail(@PathVariable String movieCd, @PathVariable int contentno, Model model) {
-		
+	public String userForumDetail(@PathVariable String movieCd, @PathVariable int contentno, Model model, HttpSession session) {
 		UserforumDTO userforumdetail = service.userforumdetail(contentno);
 		model.addAttribute("movieCd", movieCd);
 		model.addAttribute("userforumdetail", userforumdetail);
@@ -198,11 +197,11 @@ public class CommunityController {
 	
 	
 	// 자유게시판 글쓰기
-		@RequestMapping("/moviedetail/{movieCd}/userforuminsert")
-		public String userforuminsert() {
-			
-			return "/view.jsp?page=board/userforuminsert";
-		}
+	@RequestMapping("/moviedetail/{movieCd}/userforuminsert")
+	public String userforuminsert(@PathVariable String movieCd, Model model) {
+		model.addAttribute("movieCd", movieCd);
+		return "/view.jsp?page=board/userforuminsert";
+	}
 	
 	
 	// 자유게시판 글쓰기 result
@@ -216,7 +215,6 @@ public class CommunityController {
 			return "/view.jsp?page=user/userlogin";
 		}
 		else {
-
 			String imagePath = "";
 			String imageName = "";
 			@SuppressWarnings("deprecation")
@@ -243,7 +241,6 @@ public class CommunityController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 			service.userforumInsert(dto);
 			dto.setImageName("");
 			if(imageName!=null && !imageName.equals("")) { //사진 넣었을 경우
@@ -281,7 +278,7 @@ public class CommunityController {
 				model.addAttribute("userforumdetail", userforumdetail);
 				result="/view.jsp?page=board/userforumModify";
 			}else
-				result="/view.jsp?page=user/userlogin";
+				result="redirect:/moviedetail/{movieCd}";
 			
 		}catch(NullPointerException e){
 			result="/view.jsp?page=user/userlogin";

@@ -19,7 +19,8 @@
 				<hr id="titleUnderbar">
 				<div id="edit">
 					<input type="button" value="목록" class="boardBtn" onClick="location.href='/moviedetail/${movieCd }/userforumlist'">
-					<c:if test="${user != null}">
+										
+					<c:if test="${sessionScope.user.user_no==userforumdetail.user_no}">
 						<input type="button" value="수정" class="boardBtn" onClick="location.href='/moviedetail/${movieCd}/userforummodify/${userforumdetail.content_no}'">
 						<input type="button" value="삭제" class="boardBtn" onClick="location.href='/moviedetail/${movieCd}/userforumdelete/${userforumdetail.content_no }'">
 					</c:if>

@@ -107,7 +107,7 @@ header{
 	content: none;
 }
 
-.btn-secondary, .btn-secondary:hover, .btn-secondary:focus{
+.dropdown .btn-secondary, .dropdown .btn-secondary:hover, .dropdown .btn-secondary:focus{
 	background-color: #212121;
 	border-color: #212121;
     color: white;
