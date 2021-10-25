@@ -135,8 +135,6 @@ public class MovieServiceImple implements MovieService {
 		hm.put("user_no", user_no);
 		
 		float result=mapper.getmovierateone(hm);
-//		if(result==0)
-//			result=5;
 		return result;
 	}
 
